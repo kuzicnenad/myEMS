@@ -30,7 +30,6 @@ CREATE TABLE Passwords (
 CREATE TABLE Electricity_Live_Data(
 	live_data_id INT NOT NULL AUTO_INCREMENT,
     consumption FLOAT,
-    fault_detected VARCHAR(10),
     start_time  TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
     end_time TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
 	handshake VARCHAR(1),
@@ -40,7 +39,6 @@ CREATE TABLE Electricity_Live_Data(
 CREATE TABLE Water_Live_Data(
 	live_data_id INT NOT NULL AUTO_INCREMENT,
     consumption FLOAT,
-    fault_detected VARCHAR(20),
     start_time  TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
     end_time TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
 	handshake VARCHAR(1),
@@ -50,7 +48,6 @@ CREATE TABLE Water_Live_Data(
 CREATE TABLE Gas_Live_Data(
 	live_data_id INT NOT NULL AUTO_INCREMENT,
     consumption FLOAT,
-    fault_detected VARCHAR(20),
     start_time  TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
     end_time TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
 	handshake VARCHAR(1),
@@ -78,7 +75,6 @@ CREATE TABLE Gas_History_Data(
 );
 
 /* Alarm messages can be sent to email*/
-/* Missing data and logic for alarm table */
 CREATE TABLE Alarm_Data(
 	alarm_id INT NOT NULL AUTO_INCREMENT,
     alarm_code INT NOT NULL,

@@ -15,9 +15,9 @@ SELECT user_login as uname,first_name as Name,last_name Surname, u.time_stamp as
 INNER JOIN Passwords as p
 ON u.user_id = p.user_id;
 
-CALL generateElectricityData(10000);
-CALL generateWaterData(10000);
-CALL generateGasData(10000);
+CALL generateElectricityData(50000);
+CALL generateWaterData(50000);
+CALL generateGasData(50000);
 
 SET GLOBAL time_zone = '+00:00';
 
@@ -36,6 +36,17 @@ select hist_data_id as id, gas_consumption as cubeMeter, date from Gas_History_D
 DELETE FROM Electricity_Live_Data WHERE live_data_id > 0;
 
 /* ------- Clear consumption tables ------- */
+truncate table Electricity_History_Data;
+truncate table Water_Live_Data;
+truncate table Gas_Live_Data;
+
 truncate table Electricity_Live_Data;
 truncate table Water_Live_Data;
 truncate table Gas_Live_Data;
+
+/* --------- Alarms data tables --------- */
+SELECT * FROM Alarm_Data order  by time_stamp desc;
+
+truncate table Alarm_Data;
+
+

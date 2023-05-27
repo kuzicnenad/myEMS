@@ -1,4 +1,5 @@
 
+/* ------------ Password procedure ------------*/
 DROP PROCEDURE IF EXISTS addHashPassword
 DELIMITER $$
 CREATE PROCEDURE addHashPassword(
@@ -11,7 +12,7 @@ BEGIN
 END $$
 DELIMITER ;
 
-/* ------ Drop consumption procedures ------*/
+/* --------- Drop consumption procedures ---------*/
 DROP PROCEDURE IF EXISTS generateElectricityData;
 DROP PROCEDURE IF EXISTS generateWaterData;
 DROP PROCEDURE IF EXISTS generateGasData;
@@ -27,8 +28,7 @@ CREATE PROCEDURE generateElectricityData (
 BEGIN
 	DECLARE pConsumption INT;
     DECLARE pDailyConsumption FLOAT;
-    DECLARE ID_FAULT INT; 
-    DECLARE pFault_detected VARCHAR(10); 
+    DECLARE pFault_detected INT; 
     DECLARE pStart_time DATETIME; 
     DECLARE pEnd_time DATETIME; 
     DECLARE pHandshake VARCHAR(1);
@@ -38,7 +38,6 @@ BEGIN
 	SET GLOBAL time_zone = '+00:00';
 	SET updateTriger = '2019-03-15 23:59:59';
     SET pFault_detected = '0';
-    SET ID_FAULT = 0;
     SET pStart_time = '2019-03-15 12:00:01';
     SET pEnd_time = '2019-03-15 13:00:00';
     
@@ -46,13 +45,23 @@ BEGIN
 		SET pConsumption = FLOOR(ABS(RAND())*1000);
 		SET pDailyConsumption = pDailyCOnsumption + pCOnsumption;
 		
-		IF ID_FAULT = 150 THEN 
-			SET pFault_detected = FLOOR(ABS(RAND())*10);
-			SET ID_FAULT = 0;
-		ELSE
-			SET pFault_detected = 0;
-			SET ID_FAULT = ID_FAULT + 1;
-		END IF;
+		SET pFault_detected = FLOOR(ABS(RAND())*100000);
+        CASE pFault_detected
+			WHEN 1 THEN 
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+                VALUES(pFault_detected,'Electricity sensor failure',updateTriger);
+			WHEN 2 THEN 
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+                VALUES(pFault_detected,'Low voltage',updateTriger);
+			WHEN 3 THEN 
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+                VALUES(pFault_detected,'High voltage',updateTriger);
+			WHEN 4 THEN 
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+                VALUES(pFault_detected,'Electricity failure.',updateTriger);
+			ELSE
+				SET pFault_detected = 0;
+        END CASE;
 	          
 		IF DATE(updateTriger) < DATE(pEnd_time)  THEN 
 			SET pHandshake = 1;			
@@ -96,7 +105,7 @@ BEGIN
 END $$
 DELIMITER ;
 
-/* ------- Generate Water Data Sets ------- */
+/* --------- Generate Water Data Sets --------- */
 DELIMITER $$
 CREATE PROCEDURE generateWaterData (
 	IN data_sets INT
@@ -104,8 +113,7 @@ CREATE PROCEDURE generateWaterData (
 BEGIN
 	DECLARE pConsumption INT;
     DECLARE pDailyConsumption FLOAT;
-    DECLARE ID_FAULT INT; 
-    DECLARE pFault_detected VARCHAR(10); 
+    DECLARE pFault_detected INT; 
     DECLARE pStart_time DATETIME; 
     DECLARE pEnd_time DATETIME; 
     DECLARE pHandshake VARCHAR(1);
@@ -115,7 +123,6 @@ BEGIN
 	SET GLOBAL time_zone = '+00:00';
 	SET updateTriger = '2019-03-15 23:59:59';
     SET pFault_detected = '0';
-    SET ID_FAULT = 0;
     SET pStart_time = '2019-03-15 12:00:01';
     SET pEnd_time = '2019-03-15 13:00:00';
     
@@ -128,13 +135,20 @@ BEGIN
 			SET pDailyConsumption = pDailyCOnsumption + pCOnsumption;
 		END IF;
 		
-		IF ID_FAULT = 150 THEN 
-			SET pFault_detected = FLOOR(ABS(RAND())*10);
-			SET ID_FAULT = 0;
-		ELSE
-			SET pFault_detected = 0;
-			SET ID_FAULT = ID_FAULT + 1;
-		END IF;
+		SET pFault_detected = FLOOR(ABS(RAND())*100000);
+        CASE pFault_detected
+			WHEN 11 THEN 
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+                VALUES(pFault_detected,'Water sensor failure',updateTriger);
+			WHEN 12 THEN 
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+                VALUES(pFault_detected,'Water leak',updateTriger);
+			WHEN 13 THEN 
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+                VALUES(pFault_detected,'Water pipe blockage',updateTriger);
+			ELSE
+				SET pFault_detected = 0;
+        END CASE;
 	          
 		IF DATE(updateTriger) < DATE(pEnd_time)  THEN 
 			SET pHandshake = 1;			
@@ -178,7 +192,7 @@ BEGIN
 END $$
 DELIMITER ;
 
-/* ------- Generate Gas Data Sets ------- */
+/* ----------- Generate Gas Data Sets ----------- */
 DELIMITER $$
 CREATE PROCEDURE generateGasData (
 	IN data_sets INT
@@ -186,8 +200,7 @@ CREATE PROCEDURE generateGasData (
 BEGIN
 	DECLARE pConsumption INT;
     DECLARE pDailyConsumption FLOAT;
-    DECLARE ID_FAULT INT; 
-    DECLARE pFault_detected VARCHAR(10); 
+    DECLARE pFault_detected INT; 
     DECLARE pStart_time DATETIME; 
     DECLARE pEnd_time DATETIME; 
     DECLARE pHandshake VARCHAR(1);
@@ -197,7 +210,6 @@ BEGIN
 	SET GLOBAL time_zone = '+00:00';
 	SET updateTriger = '2019-03-15 23:59:59';
     SET pFault_detected = '0';
-    SET ID_FAULT = 0;
     SET pStart_time = '2019-03-15 12:00:01';
     SET pEnd_time = '2019-03-15 13:00:00';
     
@@ -210,13 +222,20 @@ BEGIN
 			SET pDailyConsumption = pDailyCOnsumption + pCOnsumption;
         END IF;
 		
-		IF ID_FAULT = 150 THEN 
-			SET pFault_detected = FLOOR(ABS(RAND())*10);
-			SET ID_FAULT = 0;
-		ELSE
-			SET pFault_detected = 0;
-			SET ID_FAULT = ID_FAULT + 1;
-		END IF;
+		SET pFault_detected = FLOOR(ABS(RAND())*100000);
+        CASE pFault_detected
+			WHEN 21 THEN 
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+                VALUES(pFault_detected,'Gas Sensor failure',updateTriger);
+			WHEN 22 THEN 
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+                VALUES(pFault_detected,'Flammable gas leak',updateTriger);
+			WHEN 23 THEN 
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+                VALUES(pFault_detected,'Toxic gas leak.',updateTriger);
+			ELSE
+				SET pFault_detected = 0;
+        END CASE;
 	          
 		IF DATE(updateTriger) < DATE(pEnd_time)  THEN 
 			SET pHandshake = 1;			
