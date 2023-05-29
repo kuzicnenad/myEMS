@@ -26,5 +26,35 @@ public class AlarmData {
     @Column
     private String time_stamp;
 
+    public Integer getAlarm_id() {
+        return alarm_id;
+    }
 
+    public void setAlarm_id(Integer alarm_id) {
+        this.alarm_id = alarm_id;
+    }
+
+    public Integer getAlarm_code() {
+        return alarm_code;
+    }
+
+    public void setAlarm_code(Integer alarm_code) {
+        this.alarm_code = alarm_code;
+    }
+
+    public String getSlarm_desc() {
+        return slarm_desc;
+    }
+
+    public void setSlarm_desc(String slarm_desc) {
+        this.slarm_desc = slarm_desc;
+    }
+
+    public String getTime_stamp() {
+        return time_stamp;
+    }
+
+    public void setTime_stamp(String time_stamp) {
+        this.time_stamp = time_stamp;
+    }
 }

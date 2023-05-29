@@ -6,4 +6,5 @@ import rs.energymanagementsystem.energymanagementsystem.entities.AlarmData;
 
 @Repository
 public interface AlarmDataRepository extends CrudRepository<AlarmData, Integer> {
+
 }

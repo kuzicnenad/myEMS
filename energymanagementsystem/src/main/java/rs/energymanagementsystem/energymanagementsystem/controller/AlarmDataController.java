@@ -50,5 +50,4 @@ public class AlarmDataController {
         return alarmDataRepository.save(alarmData);
     }
 
-
 }
