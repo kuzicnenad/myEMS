@@ -3,9 +3,7 @@ package rs.energymanagementsystem.energymanagementsystem.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.AlarmData;
-import rs.energymanagementsystem.energymanagementsystem.entities.Users;
 import rs.energymanagementsystem.energymanagementsystem.repositories.AlarmDataRepository;
-import rs.energymanagementsystem.energymanagementsystem.repositories.UsersRepository;
 
 @RestController
 @RequestMapping
@@ -19,7 +17,7 @@ public class AlarmDataController {
     }
 
     @CrossOrigin
-    @GetMapping(path = "/users")
+    @GetMapping(path = "/alarmData")
     public @ResponseBody Iterable<AlarmData> getAll(){
         // Returns a JSON or XML with users
         return alarmDataRepository.findAll();

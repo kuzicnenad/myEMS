@@ -17,10 +17,10 @@ public class GasHistoryData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private  Integer hist_data_id;
+    private Integer hist_data_id;
 
     @Column
-    private float gas_consumption;
+    private Integer gas_consumption;
 
     @DateTimeFormat
     @Column
@@ -34,11 +34,11 @@ public class GasHistoryData {
         this.hist_data_id = hist_data_id;
     }
 
-    public float getGas_consumption() {
+    public Integer getGas_consumption() {
         return gas_consumption;
     }
 
-    public void setGas_consumption(float gas_consumption) {
+    public void setGas_consumption(Integer gas_consumption) {
         this.gas_consumption = gas_consumption;
     }
 

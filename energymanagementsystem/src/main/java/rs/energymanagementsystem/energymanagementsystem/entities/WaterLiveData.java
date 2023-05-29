@@ -17,10 +17,10 @@ public class WaterLiveData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private  Integer live_data_id;
+    private Integer live_data_id;
 
     @Column
-    private float consumption;
+    private Integer consumption;
 
     @Column
     private String fault_detected;
@@ -35,4 +35,52 @@ public class WaterLiveData {
 
     @Column
     private Character handshake;
+
+    public Integer getLive_data_id() {
+        return live_data_id;
+    }
+
+    public void setLive_data_id(Integer live_data_id) {
+        this.live_data_id = live_data_id;
+    }
+
+    public Integer getConsumption() {
+        return consumption;
+    }
+
+    public void setConsumption(Integer consumption) {
+        this.consumption = consumption;
+    }
+
+    public String getFault_detected() {
+        return fault_detected;
+    }
+
+    public void setFault_detected(String fault_detected) {
+        this.fault_detected = fault_detected;
+    }
+
+    public String getStart_time() {
+        return start_time;
+    }
+
+    public void setStart_time(String start_time) {
+        this.start_time = start_time;
+    }
+
+    public String getEnd_time() {
+        return end_time;
+    }
+
+    public void setEnd_time(String end_time) {
+        this.end_time = end_time;
+    }
+
+    public Character getHandshake() {
+        return handshake;
+    }
+
+    public void setHandshake(Character handshake) {
+        this.handshake = handshake;
+    }
 }

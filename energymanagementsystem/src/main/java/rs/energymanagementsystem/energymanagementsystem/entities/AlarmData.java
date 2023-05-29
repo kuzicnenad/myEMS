@@ -21,7 +21,7 @@ public class AlarmData {
     private Integer alarm_code;
 
     @Column
-    private String slarm_desc;
+    private String alarm_desc;
 
     @Column
     private String time_stamp;
@@ -43,11 +43,11 @@ public class AlarmData {
     }
 
     public String getSlarm_desc() {
-        return slarm_desc;
+        return alarm_desc;
     }
 
     public void setSlarm_desc(String slarm_desc) {
-        this.slarm_desc = slarm_desc;
+        this.alarm_desc = slarm_desc;
     }
 
     public String getTime_stamp() {

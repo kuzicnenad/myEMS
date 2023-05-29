@@ -17,10 +17,10 @@ public class WaterHistoryData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private  Integer hist_data_id;
+    private Integer hist_data_id;
 
     @Column
-    private float water_consumption;
+    private Integer water_consumption;
 
     @DateTimeFormat
     @Column
@@ -34,11 +34,11 @@ public class WaterHistoryData {
         this.hist_data_id = hist_data_id;
     }
 
-    public float getWater_consumption() {
+    public Integer getWater_consumption() {
         return water_consumption;
     }
 
-    public void setWater_consumption(float water_consumption) {
+    public void setWater_consumption(Integer water_consumption) {
         this.water_consumption = water_consumption;
     }
 

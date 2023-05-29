@@ -37,15 +37,15 @@ public class UsersController {
     }
 
     @CrossOrigin
-    @DeleteMapping("/users/{id}")
-    public boolean deleteUser(@PathVariable Integer id) {
-        usersRepository.deleteById(id);
+    @DeleteMapping("/users/{user_id}")
+    public boolean deleteUser(@PathVariable Integer user_id) {
+        usersRepository.deleteById(user_id);
         return true;
     }
 
     @CrossOrigin
-    @PutMapping("/users/{id}")
-    public Users updateUser(@PathVariable Integer id, @RequestBody Users users) {
+    @PutMapping("/users/{user_id}")
+    public Users updateUser(@PathVariable Integer user_id, @RequestBody Users users) {
         return usersRepository.save(users);
     }
 

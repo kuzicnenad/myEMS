@@ -20,7 +20,7 @@ public class GasLiveData{
     private  Integer live_data_id;
 
     @Column
-    private float consumption;
+    private Integer consumption;
 
     @Column
     private String fault_detected;
@@ -48,7 +48,7 @@ public class GasLiveData{
         return consumption;
     }
 
-    public void setConsumption(float consumption) {
+    public void setConsumption(Integer consumption) {
         this.consumption = consumption;
     }
 

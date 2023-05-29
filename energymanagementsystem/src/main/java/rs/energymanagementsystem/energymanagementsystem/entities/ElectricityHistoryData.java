@@ -17,10 +17,10 @@ public class ElectricityHistoryData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private  Integer hist_data_id;
+    private Integer hist_data_id;
 
     @Column
-    private float electricity_consumption;
+    private Integer electricity_consumption;
 
     @DateTimeFormat
     @Column
@@ -34,11 +34,11 @@ public class ElectricityHistoryData {
         this.hist_data_id = hist_data_id;
     }
 
-    public float getElectricity_consumption() {
+    public Integer getElectricity_consumption() {
         return electricity_consumption;
     }
 
-    public void setElectricity_consumption(float electricity_consumption) {
+    public void setElectricity_consumption(Integer electricity_consumption) {
         this.electricity_consumption = electricity_consumption;
     }
 

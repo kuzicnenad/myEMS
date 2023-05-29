@@ -17,7 +17,7 @@ public class Passwords {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private  Integer hash_algorithm_id;
+    private Integer hash_algorithm_id;
 
     @Column
     private Integer user_id;
@@ -27,7 +27,7 @@ public class Passwords {
 
     @DateTimeFormat
     @Column
-    private String timestamp;
+    private String time_stamp;
 
     public Integer getHash_algorithm_id() {
         return hash_algorithm_id;
@@ -53,11 +53,11 @@ public class Passwords {
         this.password_hash = password_hash;
     }
 
-    public String getTimestamp() {
-        return timestamp;
+    public String getTime_stamp() {
+        return time_stamp;
     }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
+    public void setTimestamp(String time_stamp) {
+        this.time_stamp = time_stamp;
     }
 }
