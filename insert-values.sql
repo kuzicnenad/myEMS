@@ -15,9 +15,9 @@ SELECT user_login as uname,first_name as Name,last_name Surname, u.time_stamp as
 INNER JOIN Passwords as p
 ON u.user_id = p.user_id;
 
-CALL generateElectricityData(50000);
-CALL generateWaterData(50000);
-CALL generateGasData(50000);
+CALL generateElectricityData(5000);
+CALL generateWaterData(5000);
+CALL generateGasData(5000);
 
 SET GLOBAL time_zone = '+00:00';
 

@@ -30,8 +30,9 @@ CREATE TABLE Passwords (
 CREATE TABLE Electricity_Live_Data(
 	live_data_id INT NOT NULL AUTO_INCREMENT,
     consumption FLOAT,
-    start_time  TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-    end_time TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    fault_detected INT,
+    start_time  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+    end_time DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
 	handshake VARCHAR(1),
     PRIMARY KEY (live_data_id)
 ); 
@@ -39,8 +40,9 @@ CREATE TABLE Electricity_Live_Data(
 CREATE TABLE Water_Live_Data(
 	live_data_id INT NOT NULL AUTO_INCREMENT,
     consumption FLOAT,
-    start_time  TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-    end_time TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    fault_detected INT,
+    start_time  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+    end_time DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
 	handshake VARCHAR(1),
 	PRIMARY KEY (live_data_id)
 ); 
@@ -48,8 +50,9 @@ CREATE TABLE Water_Live_Data(
 CREATE TABLE Gas_Live_Data(
 	live_data_id INT NOT NULL AUTO_INCREMENT,
     consumption FLOAT,
-    start_time  TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-    end_time TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    fault_detected INT,
+    start_time  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+    end_time DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
 	handshake VARCHAR(1),
 	PRIMARY KEY (live_data_id)
 ); 
