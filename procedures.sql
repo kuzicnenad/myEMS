@@ -45,7 +45,7 @@ BEGIN
 		SET pConsumption = FLOOR(ABS(RAND())*1000);
 		SET pDailyConsumption = pDailyCOnsumption + pCOnsumption;
 		
-		SET pFault_detected = FLOOR(ABS(RAND())*100000);
+		SET pFault_detected = FLOOR(ABS(RAND())*10000);
         CASE pFault_detected
 			WHEN 1 THEN 
 				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
@@ -135,7 +135,7 @@ BEGIN
 			SET pDailyConsumption = pDailyCOnsumption + pCOnsumption;
 		END IF;
 		
-		SET pFault_detected = FLOOR(ABS(RAND())*100000);
+		SET pFault_detected = FLOOR(ABS(RAND())*10000);
         CASE pFault_detected
 			WHEN 11 THEN 
 				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
@@ -222,7 +222,7 @@ BEGIN
 			SET pDailyConsumption = pDailyCOnsumption + pCOnsumption;
         END IF;
 		
-		SET pFault_detected = FLOOR(ABS(RAND())*100000);
+		SET pFault_detected = FLOOR(ABS(RAND())*10000);
         CASE pFault_detected
 			WHEN 21 THEN 
 				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)

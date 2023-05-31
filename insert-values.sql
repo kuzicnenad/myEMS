@@ -45,7 +45,7 @@ truncate table Water_Live_Data;
 truncate table Gas_Live_Data;
 
 /* --------- Alarms data tables --------- */
-SELECT * FROM Alarm_Data order  by time_stamp desc;
+SELECT * FROM Alarm_Data order by time_stamp desc;
 
 truncate table Alarm_Data;
 

@@ -82,7 +82,7 @@ CREATE TABLE Alarm_Data(
 	alarm_id INT NOT NULL AUTO_INCREMENT,
     alarm_code INT NOT NULL,
     alarm_desc VARCHAR(200),
-    time_stamp  TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    time_stamp  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (alarm_id)
 );
 
