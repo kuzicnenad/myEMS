@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS myEMS;
 CREATE DATABASE myEMS;
 USE myEMS;
-
+	
 CREATE TABLE Users (
 	user_id INT NOT NULL auto_increment,
     user_login VARCHAR(50) NOT NULL,

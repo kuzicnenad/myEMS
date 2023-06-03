@@ -22,9 +22,7 @@ DROP PROCEDURE IF EXISTS generateGasHistoryData;
 
 /* ------- Generate Electricity Data Sets ------- */
 DELIMITER $$
-CREATE PROCEDURE generateElectricityData (
-	IN data_sets INT
-)
+CREATE PROCEDURE generateElectricityData ()
 BEGIN
 	DECLARE pConsumption INT;
     DECLARE pDailyConsumption FLOAT;
@@ -36,12 +34,12 @@ BEGIN
 	DECLARE updateTriger DATETIME;
     
 	SET GLOBAL time_zone = '+00:00';
-	SET updateTriger = '2019-03-15 23:59:59';
+	SET updateTriger = '2021-03-20 23:59:59';
+    SET pStart_time = '2021-03-20 12:00:01';
+    SET pEnd_time = '2021-03-20 13:00:00';
     SET pFault_detected = '0';
-    SET pStart_time = '2019-03-15 12:00:01';
-    SET pEnd_time = '2019-03-15 13:00:00';
     
-	WHILE data_sets > 0 DO
+	WHILE pEnd_time < DATE_SUB(DATE(current_timestamp), INTERVAL 2 DAY) DO
 		SET pConsumption = FLOOR(ABS(RAND())*1000);
 		SET pDailyConsumption = pDailyCOnsumption + pCOnsumption;
 		
@@ -84,7 +82,6 @@ BEGIN
 		INSERT INTO Electricity_Live_Data(consumption,fault_detected,start_time,end_time,handshake)
 		VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time,pHandshake);
         
-		SET data_sets = data_sets - 1;
 	END WHILE;    
 END $$
 DELIMITER ;
@@ -107,9 +104,7 @@ DELIMITER ;
 
 /* --------- Generate Water Data Sets --------- */
 DELIMITER $$
-CREATE PROCEDURE generateWaterData (
-	IN data_sets INT
-)
+CREATE PROCEDURE generateWaterData ()
 BEGIN
 	DECLARE pConsumption INT;
     DECLARE pDailyConsumption FLOAT;
@@ -119,19 +114,19 @@ BEGIN
     DECLARE pHandshake VARCHAR(1);
     DECLARE pReturnHandshake VARCHAR(1);
 	DECLARE updateTriger DATETIME;
-    
+        
 	SET GLOBAL time_zone = '+00:00';
-	SET updateTriger = '2019-03-15 23:59:59';
+	SET updateTriger = '2021-03-20 23:59:59';
+    SET pStart_time = '2021-03-20 12:00:01';
+    SET pEnd_time = '2021-03-20 13:00:00';
     SET pFault_detected = '0';
-    SET pStart_time = '2019-03-15 12:00:01';
-    SET pEnd_time = '2019-03-15 13:00:00';
     
-	WHILE data_sets > 0 DO
-		IF MONTH(updateTriger) > 6 OR MONTH(updateTriger) < 9 THEN
-			SET pConsumption = FLOOR(ABS(RAND())*(2000/3));
+	WHILE pEnd_time < DATE_SUB(DATE(current_timestamp), INTERVAL 2 DAY) DO
+		IF MONTH(updateTriger) > 6 AND MONTH(updateTriger) < 9 THEN
+			SET pConsumption = FLOOR(ABS(RAND())*1800);
 			SET pDailyConsumption = pDailyCOnsumption + pCOnsumption;
 		ELSE
-			SET pConsumption = FLOOR(ABS(RAND())*(2000/3));
+			SET pConsumption = FLOOR(ABS(RAND())*(1200));
 			SET pDailyConsumption = pDailyCOnsumption + pCOnsumption;
 		END IF;
 		
@@ -171,7 +166,6 @@ BEGIN
 		INSERT INTO Water_Live_Data(consumption,fault_detected,start_time,end_time,handshake)
 		VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time,pHandshake);
         
-		SET data_sets = data_sets - 1;
 	END WHILE;    
 END $$
 DELIMITER ;
@@ -194,9 +188,7 @@ DELIMITER ;
 
 /* ----------- Generate Gas Data Sets ----------- */
 DELIMITER $$
-CREATE PROCEDURE generateGasData (
-	IN data_sets INT
-)
+CREATE PROCEDURE generateGasData ()
 BEGIN
 	DECLARE pConsumption INT;
     DECLARE pDailyConsumption FLOAT;
@@ -208,12 +200,12 @@ BEGIN
 	DECLARE updateTriger DATETIME;
     
 	SET GLOBAL time_zone = '+00:00';
-	SET updateTriger = '2019-03-15 23:59:59';
+	SET updateTriger = '2021-03-20 23:59:59';
+    SET pStart_time = '2021-03-20 12:00:01';
+    SET pEnd_time = '2021-03-20 13:00:00';
     SET pFault_detected = '0';
-    SET pStart_time = '2019-03-15 12:00:01';
-    SET pEnd_time = '2019-03-15 13:00:00';
     
-	WHILE data_sets > 0 DO
+	WHILE pEnd_time < DATE_SUB(DATE(current_timestamp), INTERVAL 2 DAY) DO
 		IF MONTH(updateTriger) < 5 OR MONTH(updateTriger) > 9 THEN
 			SET pConsumption = FLOOR(ABS(RAND())*2000);
 			SET pDailyConsumption = pDailyCOnsumption + pCOnsumption;
@@ -258,7 +250,6 @@ BEGIN
 		INSERT INTO Gas_Live_Data(consumption,fault_detected,start_time,end_time,handshake)
 		VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time,pHandshake);
         
-		SET data_sets = data_sets - 1;
 	END WHILE;    
 END $$
 DELIMITER ;
@@ -278,3 +269,4 @@ BEGIN
     END IF;
 END $$
 DELIMITER ;
+
