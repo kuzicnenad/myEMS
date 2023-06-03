@@ -12,12 +12,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 @NoArgsConstructor
 @Entity
 @Table(name = "gas_live_data") // Tells Hibernate to make a table out of this class
-public class GasLiveData{
+public class GasLiveData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private  Integer live_data_id;
+    private Integer live_data_id;
 
     @Column
     private Integer consumption;
@@ -32,9 +32,6 @@ public class GasLiveData{
     @DateTimeFormat
     @Column
     private String end_time;
-
-    @Column
-    private Character handshake;
 
     public Integer getLive_data_id() {
         return live_data_id;
@@ -76,11 +73,4 @@ public class GasLiveData{
         this.end_time = end_time;
     }
 
-    public Character getHandshake() {
-        return handshake;
-    }
-
-    public void setHandshake(Character handshake) {
-        this.handshake = handshake;
-    }
 }

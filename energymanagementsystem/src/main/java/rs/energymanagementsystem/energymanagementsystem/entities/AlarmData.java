@@ -42,12 +42,12 @@ public class AlarmData {
         this.alarm_code = alarm_code;
     }
 
-    public String getSlarm_desc() {
+    public String getAlarm_desc() {
         return alarm_desc;
     }
 
-    public void setSlarm_desc(String slarm_desc) {
-        this.alarm_desc = slarm_desc;
+    public void setAlarm_desc(String alarm_desc) {
+        this.alarm_desc = alarm_desc;
     }
 
     public String getTime_stamp() {

@@ -33,9 +33,6 @@ public class ElectricityLiveData {
     @Column
     private String end_time;
 
-    @Column
-    private Character handshake;
-
     public Integer getLive_data_id() {
         return live_data_id;
     }
@@ -76,11 +73,4 @@ public class ElectricityLiveData {
         this.end_time = end_time;
     }
 
-    public Character getHandshake() {
-        return handshake;
-    }
-
-    public void setHandshake(Character handshake) {
-        this.handshake = handshake;
-    }
 }
