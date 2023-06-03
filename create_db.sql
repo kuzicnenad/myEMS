@@ -33,7 +33,6 @@ CREATE TABLE Electricity_Live_Data(
     fault_detected INT,
     start_time  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
     end_time DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-	handshake VARCHAR(1),
     PRIMARY KEY (live_data_id)
 ); 
 
@@ -43,7 +42,6 @@ CREATE TABLE Water_Live_Data(
     fault_detected INT,
     start_time  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
     end_time DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-	handshake VARCHAR(1),
 	PRIMARY KEY (live_data_id)
 ); 
 
@@ -53,7 +51,6 @@ CREATE TABLE Gas_Live_Data(
     fault_detected INT,
     start_time  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
     end_time DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-	handshake VARCHAR(1),
 	PRIMARY KEY (live_data_id)
 ); 
 
@@ -85,7 +82,6 @@ CREATE TABLE Alarm_Data(
     time_stamp  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (alarm_id)
 );
-
 
 /* App Menu -> Home, Live Data, History Data, Print reports, Settings*/
 

@@ -27,8 +27,6 @@ CREATE EVENT insert_live_data_electricity
 			DECLARE pConsumption INT;
 			DECLARE pDailyConsumption FLOAT;
 			DECLARE pFault_detected INT; 
-			DECLARE pHandshake VARCHAR(1);
-			DECLARE pReturnHandshake VARCHAR(1);
 			DECLARE pStart_time DATETIME; 
 			DECLARE pEnd_time DATETIME; 
             
@@ -57,8 +55,8 @@ CREATE EVENT insert_live_data_electricity
             SET pEnd_time = DATE_ADD(DATE_ADD(pStart_time,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
 			SET pConsumption = FLOOR(ABS(RAND())*1000);
             
-			INSERT INTO Electricity_Live_Data(consumption,fault_detected,start_time,end_time,handshake)
-			VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time,1); 
+			INSERT INTO Electricity_Live_Data(consumption,fault_detected,start_time,end_time)
+			VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time); 
                         
             /* Check for new day to insert history data */
 			IF DATE(pStart_time) < DATE(pEnd_time)  THEN 
@@ -86,8 +84,6 @@ CREATE EVENT insert_live_data_water
 			DECLARE pConsumption INT;
 			DECLARE pDailyConsumption FLOAT;
 			DECLARE pFault_detected INT; 
-			DECLARE pHandshake VARCHAR(1);
-			DECLARE pReturnHandshake VARCHAR(1);
 			DECLARE pStart_time DATETIME; 
 			DECLARE pEnd_time DATETIME; 
             
@@ -120,8 +116,8 @@ CREATE EVENT insert_live_data_water
 				SET pConsumption = FLOOR(ABS(RAND())*1200);
 			END IF;
                         
-			INSERT INTO water_live_data(consumption,fault_detected,start_time,end_time,handshake)
-			VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time,1); 
+			INSERT INTO water_live_data(consumption,fault_detected,start_time,end_time)
+			VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time); 
                         
             /* Check for new day to insert history data */
 			IF DATE(pStart_time) < DATE(pEnd_time)  THEN 
@@ -129,7 +125,7 @@ CREATE EVENT insert_live_data_water
 										FROM water_live_data
 										WHERE DATE(start_time) = DATE(pStart_time));
                 
-				INSERT INTO water_history_data(gas_consumption,date)
+				INSERT INTO water_history_data(water_consumption,date)
 				VALUES(pDailyConsumption,DATE(pStart_time));
                 
 			ELSE
@@ -149,8 +145,6 @@ CREATE EVENT insert_live_data_gas
 			DECLARE pConsumption INT;
 			DECLARE pDailyConsumption FLOAT;
 			DECLARE pFault_detected INT; 
-			DECLARE pHandshake VARCHAR(1);
-			DECLARE pReturnHandshake VARCHAR(1);
 			DECLARE pStart_time DATETIME; 
 			DECLARE pEnd_time DATETIME; 
             
@@ -184,13 +178,13 @@ CREATE EVENT insert_live_data_gas
 				SET pConsumption = FLOOR(ABS(RAND())*300);
 			END IF;
             
-			INSERT INTO Gas_Live_Data(consumption,fault_detected,start_time,end_time,handshake)
-			VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time,1); 
+			INSERT INTO Gas_Live_Data(consumption,fault_detected,start_time,end_time)
+			VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time); 
                         
             /* Check for new day to insert history data */
 			IF DATE(pStart_time) < DATE(pEnd_time)  THEN 
 				SET pDailyConsumption = (SELECT SUM(consumption)
-										FROM Electricity_Live_Data
+										FROM gas_live_data
 										WHERE DATE(start_time) = DATE(pStart_time));
                 
 				INSERT INTO gas_history_data(gas_consumption,date)

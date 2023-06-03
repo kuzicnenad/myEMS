@@ -1,5 +1,8 @@
 USE myEMS;
 
+SET GLOBAL time_zone = '+00:00';
+
+/* ---------- Generate users and passwords ---------- */
 INSERT INTO Users (user_login, first_name, last_name, job_title)
 VALUES 	('Admin','Admin_FirstName','Admin_LastName','1'),
 		('User1','User1_FirstName','User1_LastName','2'),
@@ -15,12 +18,11 @@ SELECT user_login as uname,first_name as Name,last_name Surname, u.time_stamp as
 INNER JOIN Passwords as p
 ON u.user_id = p.user_id;
 
+
+/* --- Generate procedures to create initial data --- */
 CALL generateElectricityData();
 CALL generateWaterData();
 CALL generateGasData();
-
-
-SET GLOBAL time_zone = '+00:00';
 
 /* units yet to be fixed for all tables */
 select * from Electricity_Live_Data order by live_data_id desc;
@@ -34,7 +36,8 @@ select hist_data_id as id, water_consumption as literDay, date from Water_Histor
 select * from Gas_Live_Data order by live_data_id desc;
 select hist_data_id as id, gas_consumption as cubeMeter, date from Gas_History_Data order by id desc;
 
-DELETE FROM Electricity_Live_Data WHERE live_data_id > 0;
+
+SELECT * FROM Alarm_Data order by time_stamp desc;
 
 /* ------- Clear consumption tables ------- */
 truncate table Electricity_History_Data;
@@ -42,12 +45,14 @@ truncate table Water_Live_Data;
 truncate table Gas_Live_Data;
 
 truncate table Electricity_Live_Data;
-truncate table Water_Live_Data;
-truncate table Gas_Live_Data;
+truncate table Water_History_Data;
+truncate table Gas_History_Data;
 
-/* --------- Alarms data tables --------- */
-SELECT * FROM Alarm_Data order by time_stamp desc;
-
+/* ---------- Clear alarms table ---------- */
 truncate table Alarm_Data;
+
+/* ---- Clear users and passwords table ----*/
+truncate table passwords;
+truncate table users;
 
 

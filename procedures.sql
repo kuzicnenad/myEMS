@@ -1,6 +1,9 @@
 
+
+SET GLOBAL time_zone = '+00:00';
+    
 /* ------------ Password procedure ------------*/
-DROP PROCEDURE IF EXISTS addHashPassword
+DROP PROCEDURE IF EXISTS addHashPassword;
 DELIMITER $$
 CREATE PROCEDURE addHashPassword(
 	IN pUser_id INT,
@@ -29,76 +32,49 @@ BEGIN
     DECLARE pFault_detected INT; 
     DECLARE pStart_time DATETIME; 
     DECLARE pEnd_time DATETIME; 
-    DECLARE pHandshake VARCHAR(1);
-    DECLARE pReturnHandshake VARCHAR(1);
-	DECLARE updateTriger DATETIME;
     
-	SET GLOBAL time_zone = '+00:00';
-	SET updateTriger = '2021-03-20 23:59:59';
     SET pStart_time = '2021-03-20 12:00:01';
     SET pEnd_time = '2021-03-20 13:00:00';
     SET pFault_detected = '0';
     
 	WHILE pEnd_time < DATE_SUB(DATE(current_timestamp), INTERVAL 2 DAY) DO
-		SET pConsumption = FLOOR(ABS(RAND())*1000);
-		SET pDailyConsumption = pDailyCOnsumption + pCOnsumption;
-		
+		SET pConsumption = FLOOR(ABS(RAND())*1000);		
 		SET pFault_detected = FLOOR(ABS(RAND())*10000);
         CASE pFault_detected
 			WHEN 1 THEN 
 				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
-                VALUES(pFault_detected,'Electricity sensor failure',updateTriger);
+                VALUES(pFault_detected,'Electricity sensor failure',pStart_time);
 			WHEN 2 THEN 
 				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
-                VALUES(pFault_detected,'Low voltage',updateTriger);
+                VALUES(pFault_detected,'Low voltage',pStart_time);
 			WHEN 3 THEN 
 				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
-                VALUES(pFault_detected,'High voltage',updateTriger);
+                VALUES(pFault_detected,'High voltage',pStart_time);
 			WHEN 4 THEN 
 				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
-                VALUES(pFault_detected,'Electricity failure.',updateTriger);
+                VALUES(pFault_detected,'Electricity failure.',pStart_time);
 			ELSE
 				SET pFault_detected = 0;
         END CASE;
-	          
-		IF DATE(updateTriger) < DATE(pEnd_time)  THEN 
-			SET pHandshake = 1;			
-			SET updateTriger =  DATE(pEnd_time);            
-            CALL generateElectricityHistoryData(pHandshake,pDailyConsumption,updateTriger,pReturnHandshake);
-            IF pReturnHandshake = 0 THEN
-				SET pDailyConsumption = 0;
-                SET pHandshake = 0;
-			ELSE
-				SET pDailyConsumption = 0;
-				SET pHandshake = 2;
-			END IF;
-		ELSE
-			SET pHandshake = 0;
-		END IF;
                       
         SET pStart_time = DATE_ADD(pEnd_time, INTERVAL 1 SECOND);
         SET pEnd_time = DATE_ADD(DATE_ADD(pStart_time,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
 	
-		INSERT INTO Electricity_Live_Data(consumption,fault_detected,start_time,end_time,handshake)
-		VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time,pHandshake);
+		INSERT INTO electricity_live_data(consumption,fault_detected,start_time,end_time)
+		VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time);
         
-	END WHILE;    
-END $$
-DELIMITER ;
+        /* Check for new day to insert history data */
+		IF DATE(pStart_time) < DATE(pEnd_time)  THEN 
+			SET pDailyConsumption = (SELECT SUM(consumption)
+									FROM electricity_live_data
+									WHERE DATE(start_time) = DATE(pStart_time));
+			INSERT INTO electricity_history_data(electricity_consumption,date)
+			VALUES(pDailyConsumption,DATE(pStart_time));
+		ELSE
+			SET pDailyConsumption = 0;
+		END IF;
 
-DELIMITER $$
-CREATE PROCEDURE generateElectricityHistoryData(
-	IN pHandshake VARCHAR(1),
-	IN pDailyConsumption FLOAT,
-    IN pDate DATE,
-    OUT pReturnHandshake VARCHAR(1)
-)
-BEGIN
-	IF pHandshake = 1 THEN
-		INSERT INTO Electricity_History_Data(electricity_consumption,date)
-		VALUES(pDailyConsumption,pDate);
-        SET pReturnHandshake = 0;
-    END IF;
+	END WHILE;    
 END $$
 DELIMITER ;
 
@@ -111,78 +87,51 @@ BEGIN
     DECLARE pFault_detected INT; 
     DECLARE pStart_time DATETIME; 
     DECLARE pEnd_time DATETIME; 
-    DECLARE pHandshake VARCHAR(1);
-    DECLARE pReturnHandshake VARCHAR(1);
-	DECLARE updateTriger DATETIME;
         
-	SET GLOBAL time_zone = '+00:00';
-	SET updateTriger = '2021-03-20 23:59:59';
     SET pStart_time = '2021-03-20 12:00:01';
     SET pEnd_time = '2021-03-20 13:00:00';
     SET pFault_detected = '0';
     
-	WHILE pEnd_time < DATE_SUB(DATE(current_timestamp), INTERVAL 2 DAY) DO
-		IF MONTH(updateTriger) > 6 AND MONTH(updateTriger) < 9 THEN
-			SET pConsumption = FLOOR(ABS(RAND())*1800);
-			SET pDailyConsumption = pDailyCOnsumption + pCOnsumption;
-		ELSE
-			SET pConsumption = FLOOR(ABS(RAND())*(1200));
-			SET pDailyConsumption = pDailyCOnsumption + pCOnsumption;
-		END IF;
-		
-		SET pFault_detected = FLOOR(ABS(RAND())*10000);
+	WHILE pEnd_time < DATE_SUB(DATE(current_timestamp), INTERVAL 2 DAY) DO				
+		SET pFault_detected = FLOOR(ABS(RAND())*10000);        
         CASE pFault_detected
 			WHEN 11 THEN 
 				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
-                VALUES(pFault_detected,'Water sensor failure',updateTriger);
+                VALUES(pFault_detected,'Water sensor failure',pStart_time);
 			WHEN 12 THEN 
 				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
-                VALUES(pFault_detected,'Water leak',updateTriger);
+                VALUES(pFault_detected,'Water leak',pStart_time);
 			WHEN 13 THEN 
 				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
-                VALUES(pFault_detected,'Water pipe blockage',updateTriger);
+                VALUES(pFault_detected,'Water pipe blockage',pStart_time);
 			ELSE
 				SET pFault_detected = 0;
         END CASE;
-	          
-		IF DATE(updateTriger) < DATE(pEnd_time)  THEN 
-			SET pHandshake = 1;			
-			SET updateTriger =  DATE(pEnd_time);            
-            CALL generateWaterHistoryData(pHandshake,pDailyConsumption,updateTriger,pReturnHandshake);
-            IF pReturnHandshake = 0 THEN
-				SET pDailyConsumption = 0;
-                SET pHandshake = 0;
-			ELSE
-				SET pDailyConsumption = 0;
-				SET pHandshake = 2;
-			END IF;
+		
+        IF MONTH(pStart_time) > 6 AND MONTH(pStart_time) < 9 THEN
+			SET pConsumption = FLOOR(ABS(RAND())*1800);
 		ELSE
-			SET pHandshake = 0;
+			SET pConsumption = FLOOR(ABS(RAND())*(1200));
 		END IF;
-                      
+        
         SET pStart_time = DATE_ADD(pEnd_time, INTERVAL 1 SECOND);
         SET pEnd_time = DATE_ADD(DATE_ADD(pStart_time,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
 	
-		INSERT INTO Water_Live_Data(consumption,fault_detected,start_time,end_time,handshake)
-		VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time,pHandshake);
+		INSERT INTO Water_Live_Data(consumption,fault_detected,start_time,end_time)
+		VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time);
+        
+		/* Check for new day to insert history data */
+		IF DATE(pStart_time) < DATE(pEnd_time)  THEN 
+			SET pDailyConsumption = (SELECT SUM(consumption)
+									FROM water_live_data
+									WHERE DATE(start_time) = DATE(pStart_time));
+			INSERT INTO water_history_data(water_consumption,date)
+			VALUES(pDailyConsumption,DATE(pStart_time));
+		ELSE
+			SET pDailyConsumption = 0;
+		END IF;
         
 	END WHILE;    
-END $$
-DELIMITER ;
-
-DELIMITER $$
-CREATE PROCEDURE generateWaterHistoryData(
-	IN pHandshake VARCHAR(1),
-	IN pDailyConsumption FLOAT,
-    IN pDate DATE,
-    OUT pReturnHandshake VARCHAR(1)
-)
-BEGIN
-	IF pHandshake = 1 THEN
-		INSERT INTO Water_History_Data(water_consumption,date)
-		VALUES(pDailyConsumption,pDate);
-        SET pReturnHandshake = 0;
-    END IF;
 END $$
 DELIMITER ;
 
@@ -194,79 +143,55 @@ BEGIN
     DECLARE pDailyConsumption FLOAT;
     DECLARE pFault_detected INT; 
     DECLARE pStart_time DATETIME; 
-    DECLARE pEnd_time DATETIME; 
-    DECLARE pHandshake VARCHAR(1);
-    DECLARE pReturnHandshake VARCHAR(1);
-	DECLARE updateTriger DATETIME;
+    DECLARE pEnd_time DATETIME;
     
-	SET GLOBAL time_zone = '+00:00';
-	SET updateTriger = '2021-03-20 23:59:59';
     SET pStart_time = '2021-03-20 12:00:01';
     SET pEnd_time = '2021-03-20 13:00:00';
     SET pFault_detected = '0';
     
 	WHILE pEnd_time < DATE_SUB(DATE(current_timestamp), INTERVAL 2 DAY) DO
-		IF MONTH(updateTriger) < 5 OR MONTH(updateTriger) > 9 THEN
-			SET pConsumption = FLOOR(ABS(RAND())*2000);
-			SET pDailyConsumption = pDailyCOnsumption + pCOnsumption;
-		ELSE
-			SET pConsumption = FLOOR(ABS(RAND())*300);
-			SET pDailyConsumption = pDailyCOnsumption + pCOnsumption;
-        END IF;
-		
+    
 		SET pFault_detected = FLOOR(ABS(RAND())*10000);
         CASE pFault_detected
 			WHEN 21 THEN 
 				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
-                VALUES(pFault_detected,'Gas Sensor failure',updateTriger);
+                VALUES(pFault_detected,'Gas Sensor failure',pStart_time);
 			WHEN 22 THEN 
 				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
-                VALUES(pFault_detected,'Flammable gas leak',updateTriger);
+                VALUES(pFault_detected,'Flammable gas leak',pStart_time);
 			WHEN 23 THEN 
 				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
-                VALUES(pFault_detected,'Toxic gas leak.',updateTriger);
+                VALUES(pFault_detected,'Toxic gas leak.',pStart_time);
 			ELSE
 				SET pFault_detected = 0;
         END CASE;
-	          
-		IF DATE(updateTriger) < DATE(pEnd_time)  THEN 
-			SET pHandshake = 1;			
-			SET updateTriger =  DATE(pEnd_time);            
-            CALL generateGasHistoryData(pHandshake,pDailyConsumption,updateTriger,pReturnHandshake);
-            IF pReturnHandshake = 0 THEN
-				SET pDailyConsumption = 0;
-                SET pHandshake = 0;
-			ELSE
-				SET pDailyConsumption = 0;
-				SET pHandshake = 2;
-			END IF;
-		ELSE
-			SET pHandshake = 0;
-		END IF;
                       
         SET pStart_time = DATE_ADD(pEnd_time, INTERVAL 1 SECOND);
         SET pEnd_time = DATE_ADD(DATE_ADD(pStart_time,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
 	
-		INSERT INTO Gas_Live_Data(consumption,fault_detected,start_time,end_time,handshake)
-		VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time,pHandshake);
+		IF MONTH(pStart_time) < 5 OR MONTH(pStart_time) > 9 THEN
+			SET pConsumption = FLOOR(ABS(RAND())*2000);
+		ELSE
+			SET pConsumption = FLOOR(ABS(RAND())*300);
+        END IF;
         
+		INSERT INTO gas_live_data(consumption,fault_detected,start_time,end_time)
+		VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time);
+        
+        /* Check for new day to insert history data */
+		IF DATE(pStart_time) < DATE(pEnd_time)  THEN 
+			SET pDailyConsumption = (SELECT SUM(consumption)
+									FROM gas_live_data
+									WHERE DATE(start_time) = DATE(pStart_time));
+			INSERT INTO gas_history_data(gas_consumption,date)
+			VALUES(pDailyConsumption,DATE(pStart_time));
+		ELSE
+			SET pDailyConsumption = 0;
+		END IF;
 	END WHILE;    
 END $$
 DELIMITER ;
 
-DELIMITER $$
-CREATE PROCEDURE generateGasHistoryData(
-	IN pHandshake VARCHAR(1),
-	IN pDailyConsumption FLOAT,
-    IN pDate DATE,
-    OUT pReturnHandshake VARCHAR(1)
-)
-BEGIN
-	IF pHandshake = 1 THEN
-		INSERT INTO Gas_History_Data(gas_consumption, date)
-		VALUES(pDailyConsumption,pDate);
-        SET pReturnHandshake = 0;
-    END IF;
-END $$
-DELIMITER ;
+
+
 
