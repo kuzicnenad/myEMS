@@ -37,7 +37,7 @@ BEGIN
     SET pEnd_time = '2021-03-20 13:00:00';
     SET pFault_detected = '0';
     
-	WHILE pEnd_time < DATE_SUB(DATE(current_timestamp), INTERVAL 2 DAY) DO
+	WHILE pEnd_time < DATE_SUB(current_timestamp, INTERVAL 2 DAY) DO
 		SET pConsumption = FLOOR(ABS(RAND())*1000);		
 		SET pFault_detected = FLOOR(ABS(RAND())*10000);
         CASE pFault_detected
@@ -92,7 +92,7 @@ BEGIN
     SET pEnd_time = '2021-03-20 13:00:00';
     SET pFault_detected = '0';
     
-	WHILE pEnd_time < DATE_SUB(DATE(current_timestamp), INTERVAL 2 DAY) DO				
+	WHILE pEnd_time < DATE_SUB(current_timestamp, INTERVAL 2 DAY) DO				
 		SET pFault_detected = FLOOR(ABS(RAND())*10000);        
         CASE pFault_detected
 			WHEN 11 THEN 
@@ -149,7 +149,7 @@ BEGIN
     SET pEnd_time = '2021-03-20 13:00:00';
     SET pFault_detected = '0';
     
-	WHILE pEnd_time < DATE_SUB(DATE(current_timestamp), INTERVAL 2 DAY) DO
+	WHILE pEnd_time < DATE_SUB(current_timestamp, INTERVAL 2 DAY) DO
     
 		SET pFault_detected = FLOOR(ABS(RAND())*10000);
         CASE pFault_detected
