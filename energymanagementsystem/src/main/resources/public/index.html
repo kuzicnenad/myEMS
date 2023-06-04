@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" content="text/html">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="EMS for monitoring consumption, giving live and history data and reports."/>
+    <meta name="keywords" content="Eenergy Mangement System, EMS, Energy"/>
+    <meta name="author" content="Kuzic Nenad" />
+    <meta name="copyright" content="Kuzic Nenad" />
+
+    <title>Energy Management System</title>
+</head>
+<body>
+    <header>
+        <nav> <!-- start navigation menu -->
+            <div class="logo">
+                <a href="index.html">E M S</a>
+            </div> 
+
+            <div class="menu">
+                <ul>
+                    <li class="menu-item active">
+                        <a class="menu-link" href="#">Home</a>
+                    </li>
+                    <li class="menu-item active">
+                        <a class="menu-link" href="#">Live data</a>
+                    </li>
+                    <li class="menu-item active">
+                        <a class="menu-link" href="#">History data</a>
+                    </li>
+                    <li class="menu-item active">
+                        <a class="menu-link" href="#">Reports</a>
+                    </li>
+                    <li class="menu-item active">
+                        <a class="menu-link" href="#">Settings</a>
+                    </li>
+                </ul>
+            </div>
+        </nav> <!-- end navigation menu -->
+
+        <div id="social-media">
+            <ul>        
+		       <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+		       <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+		       <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+		    </ul>
+        </div>
+    </header> <!-- end header-->
+
+    <main id="main-display">
+        <!-- Grid box to display last 3 to 5 data sets (depending on screen size)
+            logo    |
+            Home    |   
+            Live    |   ----- ----- ----- ----- -----
+            History |   |   | |   | |   | |   | |   |    
+            Reports |   ----- ----- ----- ----- -----   
+            Settings|   ----- ----- ----- ----- -----
+                    |   |   | |   | |   | |   | |   |
+                    |   ----- ----- ----- ----- -----
+                    |   ----- ----- ----- ----- -----
+                    |   |   | |   | |   | |   | |   |
+                    |   ----- ----- ----- ----- -----
+                    |
+            social  |
+
+            Electricity: 
+                  Water:
+                    Gas:
+        
+            Reports and additional settings will be implemented in phase 2
+         -->
+
+         <!-- Section Electricity Data -->
+         <section id="section-electricity" class="grid">
+            <div class="content-wrapper">
+                <li>
+                    <div class="data-item">
+                        <p>Data-1</p>
+                    </div>
+                    <div class="data-item">
+                        <p>Data-2</p>
+                    </div>
+                    <div class="data-item">
+                        <p>Data-2</p>
+                    </div>
+                    <div class="data-item">
+                        <p>Data-3</p>
+                    </div>
+                    <div class="data-item">
+                        <p>Data-4</p>
+                    </div>
+                </li>
+            </div>
+         </section>
+
+         <!-- Section Water Data -->
+         <section id="section-water" class="grid">
+            <div class="content-wrapper">
+                <li>
+                    <div class="data-item">
+                        <p>Data-1</p>
+                    </div>
+                    <div class="data-item">
+                        <p>Data-2</p>
+                    </div>
+                    <div class="data-item">
+                        <p>Data-2</p>
+                    </div>
+                    <div class="data-item">
+                        <p>Data-3</p>
+                    </div>
+                    <div class="data-item">
+                        <p>Data-4</p>
+                    </div>
+                </li>
+            </div>
+        </section>
+
+         <!-- Section Gas Data -->
+         <section id="section-gas" class="grid">
+            <div class="content-wrapper">
+                <li>
+                    <div class="data-item">
+                        <p>Data-1</p>
+                    </div>
+                    <div class="data-item">
+                        <p>Data-2</p>
+                    </div>
+                    <div class="data-item">
+                        <p>Data-2</p>
+                    </div>
+                    <div class="data-item">
+                        <p>Data-3</p>
+                    </div>
+                    <div class="data-item">
+                        <p>Data-4</p>
+                    </div>
+                </li>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
