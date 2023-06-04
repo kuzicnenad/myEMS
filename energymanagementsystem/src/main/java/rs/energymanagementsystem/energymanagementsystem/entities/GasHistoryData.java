@@ -1,15 +1,13 @@
 package rs.energymanagementsystem.energymanagementsystem.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
-@Getter
-@Setter
+@Data /* Getters and Setters */
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "gas_history_data") // Tells Hibernate to make a table out of this class
 public class GasHistoryData {
@@ -26,27 +24,6 @@ public class GasHistoryData {
     @Column
     private String date;
 
-    public Integer getHist_data_id() {
-        return hist_data_id;
-    }
 
-    public void setHist_data_id(Integer hist_data_id) {
-        this.hist_data_id = hist_data_id;
-    }
 
-    public Integer getGas_consumption() {
-        return gas_consumption;
-    }
-
-    public void setGas_consumption(Integer gas_consumption) {
-        this.gas_consumption = gas_consumption;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 }

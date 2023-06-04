@@ -2,14 +2,12 @@ package rs.energymanagementsystem.energymanagementsystem.entities;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Getter
-@Setter
+@Data /* Getters and Setters */
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "water_history_data")
 public class WaterHistoryData {
@@ -26,27 +24,6 @@ public class WaterHistoryData {
     @Column
     private String date;
 
-    public Integer getHist_data_id() {
-        return hist_data_id;
-    }
 
-    public void setHist_data_id(Integer hist_data_id) {
-        this.hist_data_id = hist_data_id;
-    }
 
-    public Integer getWater_consumption() {
-        return water_consumption;
-    }
-
-    public void setWater_consumption(Integer water_consumption) {
-        this.water_consumption = water_consumption;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 }
