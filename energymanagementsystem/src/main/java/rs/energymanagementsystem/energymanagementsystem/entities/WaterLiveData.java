@@ -31,6 +31,6 @@ public class WaterLiveData {
     @Column
     private String end_time;
 
-    
+
 
 }
