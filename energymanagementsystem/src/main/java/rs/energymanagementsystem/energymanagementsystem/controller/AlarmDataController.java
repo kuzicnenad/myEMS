@@ -1,5 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.controller;
 
+import com.sun.net.httpserver.HttpsServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,56 +9,51 @@ import rs.energymanagementsystem.energymanagementsystem.entities.AlarmData;
 import rs.energymanagementsystem.energymanagementsystem.repositories.AlarmDataRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.AlarmDataService;
 
+import java.util.List;
+
 @RestController
-@RequestMapping
+@RequestMapping("/api/alarmData")
 public class AlarmDataController {
 
     private AlarmDataService alarmDataService;
-    @Autowired // This is to get the bean called repository which is auto-generated. Used to handle the data
-    private AlarmDataRepository alarmDataRepository;
 
     public AlarmDataController(AlarmDataService alarmDataService){
         super();
         this.alarmDataService= alarmDataService;
     }
 
-    // Alarm data REST API
+    // POST alarmData REST API
     @PostMapping
-    @RequestMapping("/api/alarmData")
     public ResponseEntity<AlarmData> saveAlarmData(@RequestBody AlarmData alarmData){
         return new ResponseEntity<AlarmData>(alarmDataService.saveAlarmData(alarmData), HttpStatus.CREATED);
     }
 
-    @CrossOrigin
-    @GetMapping(path = "/alarmData")
-    public @ResponseBody Iterable<AlarmData> getAll(){
-        // Returns a JSON or XML with users
-        return alarmDataRepository.findAll();
+    // GET all alarmData REST API
+    @GetMapping
+    public List<AlarmData> getAllAlarmData(){
+        return alarmDataService.getAllAlarmData();
     }
 
-    @CrossOrigin
-    @GetMapping(path = "/alarmData/{alarm_id}")
-    public AlarmData getUsers(@PathVariable Integer alarm_id){
-        return  alarmDataRepository.findById(alarm_id).orElse(null);
+    // GET by ID alarmData REST API
+    // http://localhost:8080/api/alarmData/alarm_id(number)
+    @GetMapping("{alarm_id}")
+    public ResponseEntity<AlarmData> getAlarmDataById(@PathVariable ("alarm_id") Integer alarm_id){
+        return new ResponseEntity<AlarmData>(alarmDataService.getAlarmDataById(alarm_id), HttpStatus.OK);
     }
 
-    @CrossOrigin
-    @PostMapping("/alarmData")
-    public AlarmData createUser(@RequestBody AlarmData alarmData) {
-        return alarmDataRepository.save(alarmData);
+    // UPDATE by ID alarmData REST API
+    // http://localhost:8080/api/alarmData/alarm_id(number)
+    @PutMapping("{alard_id}")
+    public ResponseEntity<AlarmData> updateAlarmDate(@PathVariable ("alard_id") Integer alarm_id
+                                                    ,@RequestBody AlarmData alarmData){
+        return new ResponseEntity<AlarmData>(alarmDataService.updateAlarmDate(alarmData, alarm_id), HttpStatus.OK);
     }
 
-    @CrossOrigin
-    @DeleteMapping("/alarmData/{alarm_id}")
-    public boolean deleteAlarmData(@PathVariable Integer alarm_id) {
-        alarmDataRepository.deleteById(alarm_id);
-        return true;
-    }
-
-    @CrossOrigin
-    @PutMapping("/alarmData/{alarm_id}")
-    public AlarmData updateAlarmData(@PathVariable Integer id, @RequestBody AlarmData alarmData) {
-        return alarmDataRepository.save(alarmData);
+    // DELETE by ID alarmData REST API
+    @DeleteMapping("{alarm_id}")
+    public ResponseEntity<String> deleteAlarmData(@PathVariable("alarm_id") Integer alarm_id){
+        alarmDataService.deleteAlarmData(alarm_id);
+        return new ResponseEntity<String>("Alarm data deleted successfully!", HttpStatus.OK);
     }
 
 }
