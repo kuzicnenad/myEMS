@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class AlarmData {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Integer alarm_id;
 
