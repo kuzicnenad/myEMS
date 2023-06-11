@@ -1,52 +1,61 @@
 package rs.energymanagementsystem.energymanagementsystem.controller;
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import rs.energymanagementsystem.energymanagementsystem.entities.AlarmData;
 import rs.energymanagementsystem.energymanagementsystem.entities.Users;
 import rs.energymanagementsystem.energymanagementsystem.repositories.UsersRepository;
+import rs.energymanagementsystem.energymanagementsystem.services.UsersService;
+
+import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/users")
 public class UsersController {
 
-    @Autowired // This is to get the bean called repository which is auto-generated. Used to handle the data
-    private UsersRepository usersRepository;
+    private UsersService usersService;
 
-    public UsersController(UsersRepository repository){
-        this.usersRepository = repository;
+    public UsersController(UsersService usersService){
+        super();
+        this.usersService = usersService;
     }
 
 
-    @CrossOrigin
-    @GetMapping(path = "/users")
-    public @ResponseBody Iterable<Users> getAll(){
-        // Returns a JSON or XML with users
-        return usersRepository.findAll();
+    // POST users REST API
+    @PostMapping
+    public ResponseEntity<Users> saveAlarmData(@RequestBody Users users){
+        return new ResponseEntity<Users>(usersService.saveUser(users), HttpStatus.CREATED);
     }
 
-    @CrossOrigin
-    @GetMapping(path = "/users/{user_id}")
-    public Users getUsers(@PathVariable Integer user_id){
-        return  usersRepository.findById(user_id).orElse(null);
+    // GET all users REST API
+    @GetMapping
+    public List<Users> getAllUsers(){
+        return usersService.getAllUsers();
     }
 
-    @CrossOrigin
-    @PostMapping("/users")
-    public Users createUser(@RequestBody Users users) {
-        return usersRepository.save(users);
+    // GET by ID user REST API
+    // http://localhost:8080/api/users/user_id(number)
+    @GetMapping("{user_id}")
+    public ResponseEntity<Users> getUserById(@PathVariable ("user_id") Integer user_id){
+        return new ResponseEntity<Users>(usersService.getUserById(user_id), HttpStatus.OK);
     }
 
-    @CrossOrigin
-    @DeleteMapping("/users/{user_id}")
-    public boolean deleteUser(@PathVariable Integer user_id) {
-        usersRepository.deleteById(user_id);
-        return true;
+    // UPDATE by ID alarmData REST API
+    // http://localhost:8080/api/alarmData/alarm_id(number)
+    @PutMapping("{user_id}")
+    public ResponseEntity<Users> updateAlarmDate(@PathVariable ("user_id") Integer user_id
+            ,@RequestBody Users users){
+        return new ResponseEntity<Users>(usersService.updateUsers(users, user_id), HttpStatus.OK);
     }
 
-    @CrossOrigin
-    @PutMapping("/users/{user_id}")
-    public Users updateUser(@PathVariable Integer user_id, @RequestBody Users users) {
-        return usersRepository.save(users);
+    // DELETE by ID alarmData REST API
+    @DeleteMapping("{user_id}")
+    public ResponseEntity<String> deleteAlarmData(@PathVariable("user_id") Integer user_id){
+        usersService.deleteUser(user_id);
+        return new ResponseEntity<String>("Alarm data deleted successfully!", HttpStatus.OK);
     }
 
 }

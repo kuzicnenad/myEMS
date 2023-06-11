@@ -7,7 +7,6 @@ import rs.energymanagementsystem.energymanagementsystem.repositories.AlarmDataRe
 import rs.energymanagementsystem.energymanagementsystem.services.AlarmDataService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AlarmDataServiceImpl implements AlarmDataService {
