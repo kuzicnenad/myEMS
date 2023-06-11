@@ -1,19 +1,31 @@
 package rs.energymanagementsystem.energymanagementsystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.AlarmData;
 import rs.energymanagementsystem.energymanagementsystem.repositories.AlarmDataRepository;
+import rs.energymanagementsystem.energymanagementsystem.services.AlarmDataService;
 
 @RestController
 @RequestMapping
 public class AlarmDataController {
 
+    private AlarmDataService alarmDataService;
     @Autowired // This is to get the bean called repository which is auto-generated. Used to handle the data
     private AlarmDataRepository alarmDataRepository;
 
-    public AlarmDataController(AlarmDataRepository repository){
-        this.alarmDataRepository = repository;
+    public AlarmDataController(AlarmDataService alarmDataService){
+        super();
+        this.alarmDataService= alarmDataService;
+    }
+
+    // Alarm data REST API
+    @PostMapping
+    @RequestMapping("/api/alarmData")
+    public ResponseEntity<AlarmData> saveAlarmData(@RequestBody AlarmData alarmData){
+        return new ResponseEntity<AlarmData>(alarmDataService.saveAlarmData(alarmData), HttpStatus.CREATED);
     }
 
     @CrossOrigin
