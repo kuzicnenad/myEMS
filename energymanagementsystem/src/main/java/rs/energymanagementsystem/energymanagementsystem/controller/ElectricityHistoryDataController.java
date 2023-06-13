@@ -1,51 +1,35 @@
 package rs.energymanagementsystem.energymanagementsystem.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.ElectricityHistoryData;
-import rs.energymanagementsystem.energymanagementsystem.repositories.ElectricityHistoryDataRepository;
+import rs.energymanagementsystem.energymanagementsystem.services.ElectricityHistoryDataService;
+
+import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/electricityHistoryData")
 public class ElectricityHistoryDataController {
 
-    @Autowired // This is to get the bean called repository which is auto-generated. Used to handle the data
-    private ElectricityHistoryDataRepository electricityHistoryDataRepository;
+    private ElectricityHistoryDataService electricityHistoryDataService;
 
-    public ElectricityHistoryDataController(ElectricityHistoryDataRepository repository){
-        this.electricityHistoryDataRepository = repository;
+    public ElectricityHistoryDataController(ElectricityHistoryDataService electricityHistoryDataService){
+        super();
+        this.electricityHistoryDataService = electricityHistoryDataService;
     }
 
-    @CrossOrigin
-    @GetMapping(path = "/electricityHistoryData")
-    public @ResponseBody Iterable<ElectricityHistoryData> getAll(){
-        // Returns a JSON or XML with electricity history data
-        return electricityHistoryDataRepository.findAll();
+    // GET all electricity history data REST API
+    @GetMapping
+    public List<ElectricityHistoryData> getAllElectricityHistoryData(){
+        return electricityHistoryDataService.getAllElectricityHistoryData();
     }
 
-    @CrossOrigin
-    @GetMapping(path = "/electricityHistoryData/{hist_data_id}")
-    public ElectricityHistoryData getElectricityHistoryData(@PathVariable Integer hist_data_id){
-        return  electricityHistoryDataRepository.findById(hist_data_id).orElse(null);
-    }
-
-    @CrossOrigin
-    @PostMapping("/electricityHistoryData")
-    public ElectricityHistoryData createElectricityHistoryData(@RequestBody ElectricityHistoryData electricityHistoryData) {
-        return electricityHistoryDataRepository.save(electricityHistoryData);
-    }
-
-    @CrossOrigin
-    @DeleteMapping("/electricityHistoryData/{hist_data_id}")
-    public boolean deleteElectricityHistoryData(@PathVariable Integer hist_data_id) {
-        electricityHistoryDataRepository.deleteById(hist_data_id);
-        return true;
-    }
-
-    @CrossOrigin
-    @PutMapping("/electricityHistoryData/{hist_data_id}")
-    public ElectricityHistoryData updateElectricityHistoryData(@PathVariable Integer hist_data_id, @RequestBody ElectricityHistoryData electricityHistoryData) {
-        return electricityHistoryDataRepository.save(electricityHistoryData);
+    // GET by ID electricity history data REST API
+    // http://localhost:8080/api/electricityHistoryData/hist_data_id(number)
+    @GetMapping("{hist_data_id}")
+    public ResponseEntity<ElectricityHistoryData> getElectricityHistoryDataById(@PathVariable ("hist_data_id") Integer hist_data_id){
+        return new ResponseEntity<ElectricityHistoryData>(electricityHistoryDataService.getElectricityHistoryDataById(hist_data_id), HttpStatus.OK);
     }
 
 }

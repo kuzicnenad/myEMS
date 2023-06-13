@@ -1,8 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.services.impl;
 
-import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
-import rs.energymanagementsystem.energymanagementsystem.entities.AlarmData;
 import rs.energymanagementsystem.energymanagementsystem.entities.Users;
 import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
 import rs.energymanagementsystem.energymanagementsystem.repositories.UsersRepository;

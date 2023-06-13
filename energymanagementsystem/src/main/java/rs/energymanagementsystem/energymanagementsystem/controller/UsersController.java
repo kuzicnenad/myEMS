@@ -1,13 +1,9 @@
 package rs.energymanagementsystem.energymanagementsystem.controller;
 
-import org.apache.catalina.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import rs.energymanagementsystem.energymanagementsystem.entities.AlarmData;
 import rs.energymanagementsystem.energymanagementsystem.entities.Users;
-import rs.energymanagementsystem.energymanagementsystem.repositories.UsersRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.UsersService;
 
 import java.util.List;

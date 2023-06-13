@@ -1,6 +1,5 @@
 package rs.energymanagementsystem.energymanagementsystem.services;
 
-import org.apache.catalina.User;
 import rs.energymanagementsystem.energymanagementsystem.entities.Users;
 
 import java.util.List;
