@@ -1,55 +1,35 @@
 package rs.energymanagementsystem.energymanagementsystem.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.GasLiveData;
-import rs.energymanagementsystem.energymanagementsystem.repositories.GasLiveDataRepository;
+import rs.energymanagementsystem.energymanagementsystem.services.GasLiveDataService;
+
+import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/gasLiveData")
 public class GasLiveDataController {
-    @Autowired // This is to get the bean called repository which is auto-generated. Used to handle the data
-    private GasLiveDataRepository gasLiveDataRepository;
 
-    public GasLiveDataController(GasLiveDataRepository repository) {
-        this.gasLiveDataRepository = repository;
+    private GasLiveDataService gasLiveDataService;
+
+    public GasLiveDataController(GasLiveDataService gasLiveDataService) {
+        super();
+        this.gasLiveDataService = gasLiveDataService;
     }
 
-    @CrossOrigin
-    @GetMapping(path = "/gasLiveData")
-    public @ResponseBody Iterable<GasLiveData> getAll(){
-        // Returns a JSON or XML with GasLiveData
-        return gasLiveDataRepository.findAll();
+    // GET all electricity live data REST API
+    @GetMapping
+    public List<GasLiveData> getAllGasLiveData(){
+        return gasLiveDataService.getAllGasLiveData();
     }
 
-    @CrossOrigin
-    @GetMapping(path = "/gasLiveData/{live_data_id}")
-    public GasLiveData getGasLiveData(@PathVariable Integer live_data_id){
-        return  gasLiveDataRepository.findById(live_data_id).orElse(null);
+    // GET by ID electricity live data REST API
+    // http://localhost:8080/api/gasHistoryData/hist_data_id(number)
+    @GetMapping("{live_data_id}")
+    public ResponseEntity<GasLiveData> getElectricityLiveDataById(@PathVariable ("live_data_id") Integer live_data_id){
+        return new ResponseEntity<GasLiveData>(gasLiveDataService.getGasLiveDataById(live_data_id), HttpStatus.OK);
     }
-
-    @CrossOrigin
-    @PostMapping("/gasLiveData")
-    public GasLiveData createGasLiveData(@RequestBody GasLiveData gasLiveData) {
-        return gasLiveDataRepository.save(gasLiveData);
-    }
-
-    @CrossOrigin
-    @DeleteMapping("/gasLiveData/{live_data_id}")
-    public boolean deleteGasLiveData(@PathVariable Integer live_data_id) {
-        gasLiveDataRepository.deleteById(live_data_id);
-        return true;
-    }
-
-    @CrossOrigin
-    @PutMapping("/gasLiveData/{live_data_id}")
-    public GasLiveData updateGasLiveData(@PathVariable Integer live_data_id, @RequestBody GasLiveData gasLiveData) {
-        return gasLiveDataRepository.save(gasLiveData);
-    }
-    // live_data_id
-    // consumption
-    // start_time
-    // end_time
-    // handshake
 
 }
