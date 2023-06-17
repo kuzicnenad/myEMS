@@ -49,7 +49,7 @@
         </div>
     </header> <!-- end header-->
 
-    <main id="main-display">
+    <main class="main-grid">
         <!-- Grid box to display last 3 to 5 data sets (depending on screen size)
             logo    |
             Home    |   
@@ -72,28 +72,14 @@
          -->
 
          <!-- Section Electricity Data -->
-         <section id="section-electricity" class="grid">
+         <section id="section-electricity" class="grid-1">
             <div class="content-wrapper">
                 <table>
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Login</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Job title</th>
-                        <th>Creation time</th>
-                        <th></th>
-                    </tr>
-                    </thead>
                     <tbody>
-                        <tr th:each="users : ${usersList}">
-                            <td th:text="${users.user_id}"></td>
-                            <td th:text="${users.user_login}"></td>
-                            <td th:text="${users.first_name}"></td>
-                            <td th:text="${users.last_name}"></td>
-                            <td th:text="${users.job_title}"></td>
-                            <td th:text="${users.time_stamp}"></td>
+                        <tr th:each="electricity_live_data : ${lastElectricityData}" class="dataItems">
+                            <td th:text="${electricity_live_data.consumption}"></td>
+                            <td th:text="${electricity_live_data.start_time}"></td>
+                            <td th:text="${electricity_live_data.end_time}"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -101,19 +87,31 @@
          </section>
 
          <!-- Section Water Data -->
-         <section id="section-water" class="grid">
+         <section id="section-water" class="grid-2">
             <div class="content-wrapper">
                 <table>
-
+                    <tbody>
+                    <tr th:each="gas_live_data : ${lastGasData}" class="dataItems">
+                        <td th:text="${gas_live_data.consumption}"></td>
+                        <td th:text="${gas_live_data.start_time}"></td>
+                        <td th:text="${gas_live_data.end_time}"></td>
+                    </tr>
+                    </tbody>
                 </table>
             </div>
         </section>
 
          <!-- Section Gas Data -->
-         <section id="section-gas" class="grid">
+         <section id="section-gas" class="grid-3">
             <div class="content-wrapper">
                 <table>
-
+                    <tbody>
+                    <tr th:each="water_live_data : ${lastWaterData}" class="dataItems">
+                        <td th:text="${water_live_data.consumption}"></td>
+                        <td th:text="${water_live_data.start_time}"></td>
+                        <td th:text="${water_live_data.end_time}"></td>
+                    </tr>
+                    </tbody>
                 </table>
             </div>
         </section>

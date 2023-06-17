@@ -27,4 +27,8 @@ public class GasLiveDataServiceImpl implements GasLiveDataService {
         return gasLiveDataRepository.findById(live_data_id).orElseThrow(() ->
                 new ResourceNotFoundException("Gas Live Data","live_data_id",live_data_id));
     }
+    @Override
+    public List<GasLiveData> getLastData() {
+        return gasLiveDataRepository.getLastData();
+    }
 }

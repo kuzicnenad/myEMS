@@ -24,7 +24,7 @@ header {
     left: 0;
     top: 0;
     height: 100%;
-    width: 250px;
+    width: 15%;
     background: #042331;
 }
 
@@ -32,7 +32,7 @@ menu {
     height: 100%;
     width: 100%;
     padding: 0;
-    margin: 0;
+    margin: auto;
 }
 
 .logo {
@@ -70,5 +70,43 @@ ul{
 .nav-link {
     text-decoration: none;
     color: #F0F8FF;
+}
+
+main{
+    display: block;
+    margin-left: 15%;
+}
+
+.main-grid{
+    padding-top: 5%;
+    margin-top: 5%;
+    height: 100%;
+    width: auto;
+}
+
+.main-grid section{
+    display: block;
+    margin: 5px;
+    border: 1px solid red;
+}
+
+.grid-1 { grid-area: grid-1; }
+.grid-2 { grid-area: grid-2; }
+.grid-3 { grid-area: grid-3; }
+
+.main-grid{
+    display: grid;
+    grid-template-areas:
+        'grid-1 grid-1 grid-1'
+        'grid-2 grid-2 grid-2'
+        'grid-3 grid-3 grid-3';
+    gap: 10px;
+    }
+
+.dataItems{
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    border: 1px solid red;
 }
 

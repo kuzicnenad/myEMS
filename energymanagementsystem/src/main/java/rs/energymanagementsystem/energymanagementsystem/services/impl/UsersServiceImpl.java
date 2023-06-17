@@ -34,6 +34,8 @@ public class UsersServiceImpl implements UsersService {
                 new ResourceNotFoundException("User", "user_id", user_id));
     }
 
+
+
     @Override
     public Users updateUsers(Users users, Integer user_id) {
         // check if user_id exists in database
@@ -55,5 +57,10 @@ public class UsersServiceImpl implements UsersService {
         usersRepository.findById(user_id).orElseThrow(() ->
                 new ResourceNotFoundException("User", "user_id", user_id));
         usersRepository.deleteById(user_id);
+    }
+
+    @Override
+    public List<Users> getLastUsers() {
+        return usersRepository.getLastUsers();
     }
 }

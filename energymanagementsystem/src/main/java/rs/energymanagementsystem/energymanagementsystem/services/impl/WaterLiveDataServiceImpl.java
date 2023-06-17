@@ -1,6 +1,7 @@
 package rs.energymanagementsystem.energymanagementsystem.services.impl;
 
 import org.springframework.stereotype.Service;
+import rs.energymanagementsystem.energymanagementsystem.entities.ElectricityLiveData;
 import rs.energymanagementsystem.energymanagementsystem.entities.WaterLiveData;
 import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
 import rs.energymanagementsystem.energymanagementsystem.repositories.WaterLiveDataRepository;
@@ -27,5 +28,9 @@ public class WaterLiveDataServiceImpl implements WaterLiveDataService {
     public WaterLiveData getWaterLiveDataById(Integer live_data_id) {
         return waterLiveDataRepository.findById(live_data_id).orElseThrow(() ->
                 new ResourceNotFoundException("Electricity Live Data","live_data_id",live_data_id));
+    }
+    @Override
+    public List<WaterLiveData> getLastData() {
+        return waterLiveDataRepository.getLastData();
     }
 }

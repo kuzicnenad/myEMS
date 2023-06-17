@@ -10,4 +10,5 @@ public interface UsersService {
     Users getUserById(Integer user_id);
     Users updateUsers(Users users, Integer users_id);
     void deleteUser(Integer user_id);
+    List<Users> getLastUsers();
 }

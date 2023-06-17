@@ -27,4 +27,9 @@ public class ElectricityLiveDataServiceImpl implements ElectricityLiveDataServic
         return electricityLiveDataRepository.findById(live_data_id).orElseThrow(() ->
                 new ResourceNotFoundException("Electricity Live Data","live_data_id",live_data_id));
     }
+
+    @Override
+    public List<ElectricityLiveData> getLastData() {
+        return electricityLiveDataRepository.getLastData();
+    }
 }
