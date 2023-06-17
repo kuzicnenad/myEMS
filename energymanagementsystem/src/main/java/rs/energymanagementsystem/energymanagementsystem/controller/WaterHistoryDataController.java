@@ -1,53 +1,34 @@
 package rs.energymanagementsystem.energymanagementsystem.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.WaterHistoryData;
-import rs.energymanagementsystem.energymanagementsystem.repositories.WaterHistoryDataRepository;
+import rs.energymanagementsystem.energymanagementsystem.services.WaterHistoryDataService;
+
+import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/waterHistoryData")
 public class WaterHistoryDataController {
-    @Autowired // This is to get the bean called repository which is auto-generated. Used to handle the data
-    private WaterHistoryDataRepository waterHistoryDataRepository;
+    private WaterHistoryDataService waterHistoryDataService;
 
-    public WaterHistoryDataController(WaterHistoryDataRepository repository){
-        this.waterHistoryDataRepository = repository;
+    public WaterHistoryDataController(WaterHistoryDataService waterHistoryDataService){
+        super();
+        this.waterHistoryDataService = waterHistoryDataService;
     }
 
-    @CrossOrigin
-    @GetMapping(path = "/waterHistoryData")
-    public @ResponseBody Iterable<WaterHistoryData> getAll(){
-        // Returns a JSON or XML with waterHistoryData
-        return waterHistoryDataRepository.findAll();
+    // GET all electricity history data REST API
+    @GetMapping
+    public List<WaterHistoryData> getAllWaterHistoryData(){
+        return waterHistoryDataService.getAllWaterHistoryData();
     }
 
-    @CrossOrigin
-    @GetMapping(path = "/waterHistoryData/{hist_data_id}")
-    public WaterHistoryData getWaterHistoryData(@PathVariable Integer hist_data_id){
-        return  waterHistoryDataRepository.findById(hist_data_id).orElse(null);
+    // GET by ID electricity history data REST API
+    // http://localhost:8080/api/electricityHistoryData/hist_data_id(number)
+    @GetMapping("{hist_data_id}")
+    public ResponseEntity<WaterHistoryData> getElectricityHistoryDataById(@PathVariable ("hist_data_id") Integer hist_data_id){
+        return new ResponseEntity<WaterHistoryData>(waterHistoryDataService.getWaterHistoryDataById(hist_data_id), HttpStatus.OK);
     }
-
-    @CrossOrigin
-    @PostMapping("/waterHistoryData")
-    public WaterHistoryData createWaterHistoryData(@RequestBody WaterHistoryData waterHistoryData) {
-        return waterHistoryDataRepository.save(waterHistoryData);
-    }
-
-    @CrossOrigin
-    @DeleteMapping("/waterHistoryData/{hist_data_id}")
-    public boolean deleteWaterHistoryData(@PathVariable Integer hist_data_id) {
-        waterHistoryDataRepository.deleteById(hist_data_id);
-        return true;
-    }
-
-    @CrossOrigin
-    @PutMapping("/waterHistoryData/{hist_data_id}")
-    public WaterHistoryData updateWaterHistoryData(@PathVariable Integer hist_data_id, @RequestBody WaterHistoryData waterHistoryData) {
-        return waterHistoryDataRepository.save(waterHistoryData);
-    }
-    // hist_data_id
-    // water_consumption
-    // date
 
 }
