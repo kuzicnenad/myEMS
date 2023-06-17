@@ -1,55 +1,43 @@
 package rs.energymanagementsystem.energymanagementsystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.Passwords;
 import rs.energymanagementsystem.energymanagementsystem.repositories.PasswordsRepository;
+import rs.energymanagementsystem.energymanagementsystem.services.PasswordsService;
+
+import java.util.List;
 
 @RequestMapping
-@RestController
+@RestController("/api/passwords")
 public class PasswordsController {
 
-    @Autowired // This is to get the bean called repository which is auto-generated. Used to handle the data
-    private PasswordsRepository passwordsRepository;
+    private PasswordsService passwordsService;
 
-    public PasswordsController(PasswordsRepository repository){
-        this.passwordsRepository = repository;
+    public PasswordsController(PasswordsService passwordsService){
+        this.passwordsService = passwordsService;
     }
 
-    @CrossOrigin
-    @GetMapping(path = "/passwords")
-    public @ResponseBody Iterable<Passwords> getAll(){
-        // Returns a JSON or XML with Passwords
-        return passwordsRepository.findAll();
+    // POST passwords REST API
+    @PostMapping
+    public ResponseEntity<Passwords> savePasswordsData(@RequestBody Passwords passwords){
+        return new ResponseEntity<Passwords>(passwordsService.savePassword(passwords), HttpStatus.CREATED);
     }
 
-    @CrossOrigin
-    @GetMapping(path = "/passwords/{hash_algorithm_id}")
-    public Passwords getPasswords(@PathVariable Integer hash_algorithm_id){
-        return  passwordsRepository.findById(hash_algorithm_id).orElse(null);
+    // GET all users REST API
+    @GetMapping
+    public List<Passwords> getAllPasswords() {
+        return passwordsService.getAllPasswords();
     }
 
-    @CrossOrigin
-    @PostMapping("/passwords")
-    public Passwords createPasswords(@RequestBody Passwords passwords) {
-        return passwordsRepository.save(passwords);
+    // GET by ID user REST API
+    // http://localhost:8080/api/passwords/hash_algorithm_id(number)
+    @GetMapping("{hash_algorithm_id}")
+    public ResponseEntity<Passwords> getPasswordById(@PathVariable ("hash_algorithm_id") Integer hash_algorithm_id){
+        return new ResponseEntity<Passwords>(passwordsService.getPasswordById(hash_algorithm_id), HttpStatus.OK);
     }
 
-    @CrossOrigin
-    @DeleteMapping("/passwords/{hash_algorithm_id}")
-    public boolean deleteUser(@PathVariable Integer hash_algorithm_id) {
-        passwordsRepository.deleteById(hash_algorithm_id);
-        return true;
-    }
-
-    @CrossOrigin
-    @PutMapping("/passwords/{hash_algorithm_id}")
-    public Passwords updatePasswords(@PathVariable Integer hash_algorithm_id, @RequestBody Passwords passwords) {
-        return passwordsRepository.save(passwords);
-    }
-    // hash_algorithm_id
-    // user_id
-    // password_hash
-    // time_stamp
-
+    // UPDATE not implemented yet
 }
