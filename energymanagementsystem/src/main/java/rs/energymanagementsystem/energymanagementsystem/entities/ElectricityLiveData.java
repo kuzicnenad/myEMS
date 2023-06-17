@@ -9,7 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "gas_live_data") // Tells Hibernate to make a table out of this class
+@Table(name = "electricity_live_data") // Tells Hibernate to make a table out of this class
 public class ElectricityLiveData {
 
     @Id

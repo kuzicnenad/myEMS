@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" content="text/html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="EMS for monitoring consumption, giving live and history data and reports."/>
-    <meta name="keywords" content="Eenergy Mangement System, EMS, Energy"/>
+    <meta name="keywords" content="Energy Management System, EMS, Energy"/>
     <meta name="author" content="Kuzic Nenad" />
     <meta name="copyright" content="Kuzic Nenad" />
 
     <title>Energy Management System</title>
 
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
     <header>
@@ -74,69 +74,47 @@
          <!-- Section Electricity Data -->
          <section id="section-electricity" class="grid">
             <div class="content-wrapper">
-                <li>
-                    <div class="data-item">
-                        <p>Data-1</p>
-                    </div>
-                    <div class="data-item">
-                        <p>Data-2</p>
-                    </div>
-                    <div class="data-item">
-                        <p>Data-2</p>
-                    </div>
-                    <div class="data-item">
-                        <p>Data-3</p>
-                    </div>
-                    <div class="data-item">
-                        <p>Data-4</p>
-                    </div>
-                </li>
+                <table>
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Login</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Job title</th>
+                        <th>Creation time</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="users : ${usersList}">
+                            <td th:text="${users.user_id}"></td>
+                            <td th:text="${users.user_login}"></td>
+                            <td th:text="${users.first_name}"></td>
+                            <td th:text="${users.last_name}"></td>
+                            <td th:text="${users.job_title}"></td>
+                            <td th:text="${users.time_stamp}"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
          </section>
 
          <!-- Section Water Data -->
          <section id="section-water" class="grid">
             <div class="content-wrapper">
-                <li>
-                    <div class="data-item">
-                        <p>Data-1</p>
-                    </div>
-                    <div class="data-item">
-                        <p>Data-2</p>
-                    </div>
-                    <div class="data-item">
-                        <p>Data-2</p>
-                    </div>
-                    <div class="data-item">
-                        <p>Data-3</p>
-                    </div>
-                    <div class="data-item">
-                        <p>Data-4</p>
-                    </div>
-                </li>
+                <table>
+
+                </table>
             </div>
         </section>
 
          <!-- Section Gas Data -->
          <section id="section-gas" class="grid">
             <div class="content-wrapper">
-                <li>
-                    <div class="data-item">
-                        <p>Data-1</p>
-                    </div>
-                    <div class="data-item">
-                        <p>Data-2</p>
-                    </div>
-                    <div class="data-item">
-                        <p>Data-2</p>
-                    </div>
-                    <div class="data-item">
-                        <p>Data-3</p>
-                    </div>
-                    <div class="data-item">
-                        <p>Data-4</p>
-                    </div>
-                </li>
+                <table>
+
+                </table>
             </div>
         </section>
 

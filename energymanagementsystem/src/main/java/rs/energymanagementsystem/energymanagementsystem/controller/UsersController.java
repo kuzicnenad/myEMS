@@ -1,24 +1,22 @@
 package rs.energymanagementsystem.energymanagementsystem.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.Users;
 import rs.energymanagementsystem.energymanagementsystem.services.UsersService;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/api/users")
 public class UsersController {
 
+    @Autowired
     private UsersService usersService;
-
-    public UsersController(UsersService usersService){
-        super();
-        this.usersService = usersService;
-    }
-
 
     // POST users REST API
     @PostMapping
@@ -28,8 +26,11 @@ public class UsersController {
 
     // GET all users REST API
     @GetMapping
-    public List<Users> getAllUsers(){
-        return usersService.getAllUsers();
+    public String getAllUsers(Model model){
+        List<Users> usersList = usersService.getAllUsers();
+        model.addAttribute("usersList", usersList);
+
+        return "index";
     }
 
     // GET by ID user REST API

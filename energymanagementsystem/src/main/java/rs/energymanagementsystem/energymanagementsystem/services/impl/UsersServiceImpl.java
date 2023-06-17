@@ -1,5 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.services.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.Users;
 import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
@@ -11,6 +12,7 @@ import java.util.List;
 @Service
 public class UsersServiceImpl implements UsersService {
 
+    @Autowired
     private UsersRepository usersRepository;
 
     public UsersServiceImpl(UsersRepository usersRepository){

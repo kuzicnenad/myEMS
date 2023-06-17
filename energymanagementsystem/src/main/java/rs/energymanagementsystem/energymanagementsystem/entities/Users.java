@@ -31,6 +31,4 @@ public class Users {
     @Column
     private String time_stamp;
 
-
-
 }
