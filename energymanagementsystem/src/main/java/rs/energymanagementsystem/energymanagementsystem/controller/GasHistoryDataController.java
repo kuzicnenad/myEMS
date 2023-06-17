@@ -1,53 +1,34 @@
 package rs.energymanagementsystem.energymanagementsystem.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.GasHistoryData;
-import rs.energymanagementsystem.energymanagementsystem.repositories.GasHistoryDataRepository;
+import rs.energymanagementsystem.energymanagementsystem.services.GasHistoryDataService;
+
+import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/gasHistoryData")
 public class GasHistoryDataController {
-    @Autowired // This is to get the bean called repository which is auto-generated. Used to handle the data
-    private GasHistoryDataRepository gasHistoryDataRepository;
+    private GasHistoryDataService gasHistoryDataService;
 
-    public GasHistoryDataController(GasHistoryDataRepository repository){
-        this.gasHistoryDataRepository = repository;
+    public GasHistoryDataController(GasHistoryDataService gasHistoryDataService){
+        super();
+        this.gasHistoryDataService = gasHistoryDataService;
     }
 
-    @CrossOrigin
-    @GetMapping(path = "/gasHistoryData")
-    public @ResponseBody Iterable<GasHistoryData> getAll(){
-        // Returns a JSON or XML with GasHistoryData
-        return gasHistoryDataRepository.findAll();
+    // GET all gas history data REST API
+    @GetMapping
+    public List<GasHistoryData> getAllGasHistoryData(){
+        return gasHistoryDataService.getAllGasHistoryData();
     }
 
-    @CrossOrigin
-    @GetMapping(path = "/gasHistoryData/{hist_data_id}")
-    public GasHistoryData getGasHistoryData(@PathVariable Integer hist_data_id){
-        return  gasHistoryDataRepository.findById(hist_data_id).orElse(null);
+    // GET by ID gas history data REST API
+    // http://localhost:8080/api/electricityHistoryData/hist_data_id(number)
+    @GetMapping("{hist_data_id}")
+    public ResponseEntity<GasHistoryData> getGasHistoryDataById(@PathVariable ("hist_data_id") Integer hist_data_id){
+        return new ResponseEntity<GasHistoryData>(gasHistoryDataService.getGasHistoryDataById(hist_data_id), HttpStatus.OK);
     }
-
-    @CrossOrigin
-    @PostMapping("/gasHistoryData")
-    public GasHistoryData createGasHistoryData(@RequestBody GasHistoryData gasHistoryData) {
-        return gasHistoryDataRepository.save(gasHistoryData);
-    }
-
-    @CrossOrigin
-    @DeleteMapping("/gasHistoryData/{hist_data_id}")
-    public boolean deleteGasHistoryData(@PathVariable Integer hist_data_id) {
-        gasHistoryDataRepository.deleteById(hist_data_id);
-        return true;
-    }
-
-    @CrossOrigin
-    @PutMapping("/gasHistoryData/{hist_data_id}")
-    public GasHistoryData updateGasHistoryData(@PathVariable Integer hist_data_id, @RequestBody GasHistoryData gasHistoryData) {
-        return gasHistoryDataRepository.save(gasHistoryData);
-    }
-    // hist_data_id
-    // gas_consumption
-    // date
 
 }
