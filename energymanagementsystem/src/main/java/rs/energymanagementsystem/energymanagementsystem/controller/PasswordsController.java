@@ -1,30 +1,29 @@
 package rs.energymanagementsystem.energymanagementsystem.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.Passwords;
-import rs.energymanagementsystem.energymanagementsystem.repositories.PasswordsRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.PasswordsService;
 
 import java.util.List;
 
-@RequestMapping
-@RestController("/api/passwords")
+@RestController
+@RequestMapping("/api/passwords")
 public class PasswordsController {
 
     private PasswordsService passwordsService;
 
     public PasswordsController(PasswordsService passwordsService){
+        super();
         this.passwordsService = passwordsService;
     }
 
-    // POST passwords REST API
-    @PostMapping
-    public ResponseEntity<Passwords> savePasswordsData(@RequestBody Passwords passwords){
-        return new ResponseEntity<Passwords>(passwordsService.savePassword(passwords), HttpStatus.CREATED);
-    }
+    // POST passwords REST API <- not fully implemented yet
+    //@PostMapping
+    //public ResponseEntity<Passwords> savePasswordsData(@RequestBody Passwords passwords){
+    //    return new ResponseEntity<Passwords>(passwordsService.savePassword(passwords), HttpStatus.CREATED);
+    //}
 
     // GET all users REST API
     @GetMapping

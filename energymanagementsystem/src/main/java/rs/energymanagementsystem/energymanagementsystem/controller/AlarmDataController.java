@@ -40,8 +40,8 @@ public class AlarmDataController {
 
     // UPDATE by ID alarmData REST API
     // http://localhost:8080/api/alarmData/alarm_id(number)
-    @PutMapping("{alard_id}")
-    public ResponseEntity<AlarmData> updateAlarmDate(@PathVariable ("alard_id") Integer alarm_id
+    @PutMapping("{alarm_id}")
+    public ResponseEntity<AlarmData> updateAlarmDate(@PathVariable ("alarm_id") Integer alarm_id
                                                     ,@RequestBody AlarmData alarmData){
         return new ResponseEntity<AlarmData>(alarmDataService.updateAlarmDate(alarmData, alarm_id), HttpStatus.OK);
     }

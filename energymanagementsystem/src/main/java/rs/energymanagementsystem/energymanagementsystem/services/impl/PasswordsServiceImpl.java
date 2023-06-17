@@ -17,10 +17,11 @@ public class PasswordsServiceImpl implements PasswordsService {
         this.passwordsRepository = passwordsRepository;
     }
 
-    @Override
-    public Passwords savePassword(Passwords passwords) {
-        return passwordsRepository.save(passwords);
-    }
+    // not fully implemented yet
+    //@Override
+    //public Passwords savePassword(Passwords passwords) {
+    //    return passwordsRepository.save(passwords);
+    //}
 
     @Override
     public List<Passwords> getAllPasswords() {
