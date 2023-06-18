@@ -21,20 +21,26 @@
             </div>
             <nav>
                 <ul>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="#">Live data</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">History data</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#">Analysis</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Reports</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Log out</a>
                     </li>
                 </ul>
             </nav>
@@ -57,8 +63,12 @@
     <main>
 
         <header>
-            <div>
-                <p>IoT Energy Monitoring Solution</p>
+            <div id="headerText">
+                <p >IoT Energy Monitoring Solution</p>
+            </div>
+            <div id="headerInfo">
+                <p><i class="fa fa-user-secret"></i>Admin</p>
+                <p><i class="fa fa-wifi"></i>Conn</p>
             </div>
         </header>
         <!-- Grid box to display last 3 to 5 data sets (depending on screen size)
@@ -82,9 +92,8 @@
             Reports and additional settings will be implemented in phase 2
          -->
         <div class="preSection">
-            <p id="leftText">Live data monitoring. Average consumption for the last 10 hours.</p>
-            <p id="normalText">Normal</p>
-            <p id="alarmText">Alarm</p>
+            <p id="leftText">Live data monitoring</p>
+            <p id="alarmText">Alarm<i class="fa fa-bell"></i></p>
         </div>
 
          <!-- Section Electricity Data -->
@@ -100,6 +109,7 @@
                      </tbody>
                  </table>
              </div>
+
              <div class="sectionText">
                  <p>Electricity (w/h)</p>
              </div>
@@ -118,6 +128,7 @@
                     </tbody>
                  </table>
              </div>
+
              <div class="sectionText">
                  <p>Gas (w/h)</p>
              </div>
