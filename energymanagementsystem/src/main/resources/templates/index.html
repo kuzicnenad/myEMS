@@ -11,13 +11,10 @@
     <title>Energy Management System</title>
 
     <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <header>
-        <div>
-            <p>IoT Energy Monitoring Solution</p>
-        </div>
-    </header>
+    <div class="allWrapper">
         <menu> <!-- start navigation menu -->
             <div class="logo">
                 <a href="index.html">My E M S</a>
@@ -44,15 +41,22 @@
 
             <div id="social-media">
                 <ul>
-                    <li><a href="#"><i class="fab fa-facebook"></i>FB</a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i>TW</a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i>IG</a></li>
+                    <li><a href="#"><i class="fa fa-google-plus-official"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linux"></i></a></li>
+                    <li><a href="#"><i class="fa fa-reddit"></i></a></li>
+                    <li><a href="#"><i class="fa fa-github"></i></a></li>
                 </ul>
             </div>
         </menu>
         <!-- end menu-->
 
     <main>
+
+        <header>
+            <div>
+                <p>IoT Energy Monitoring Solution</p>
+            </div>
+        </header>
         <!-- Grid box to display last 3 to 5 data sets (depending on screen size)
             logo    |
             Home    |   
@@ -74,7 +78,9 @@
             Reports and additional settings will be implemented in phase 2
          -->
         <div class="preSection">
-            <p>Live data monitoring. Average consumption for the last 5 hours.</p>
+            <p id="leftText">Live data monitoring. Average consumption for the last 10 hours.</p>
+            <p id="normalText">Normal</p>
+            <p id="alarmText">Alarm</p>
         </div>
 
          <!-- Section Electricity Data -->
@@ -132,6 +138,6 @@
         </section>
 
     </main>
-
+    </div>
 </body>
 </html>
