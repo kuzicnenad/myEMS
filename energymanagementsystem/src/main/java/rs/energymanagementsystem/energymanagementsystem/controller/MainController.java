@@ -26,12 +26,12 @@ public class MainController {
     @Autowired
     private WaterLiveDataService waterLiveDataService;
 
-    @GetMapping("")
+    @GetMapping(value={"","/","/index"})
     public String showHomePage(){
         return "index";
     }
 
-    @GetMapping("/api/indexData")
+    @GetMapping("/liveData")
     public String getLastData(Model model){
         List<ElectricityLiveData> lastElectricityData = electricityLiveDataService.getLastData();
         model.addAttribute("lastElectricityData", lastElectricityData);
@@ -42,6 +42,6 @@ public class MainController {
         List<WaterLiveData> lastWaterData = waterLiveDataService.getLastData();
         model.addAttribute("lastWaterData", lastWaterData);
 
-        return "index";
+        return "liveData";
     }
 }

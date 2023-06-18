@@ -1,6 +1,7 @@
 html, body {
     height: 100%;
     max-height:100%;
+    width: 100%;
 }
 
 html {
@@ -15,9 +16,20 @@ body {
     align: center;
     padding-left: 0;
     margin: 0 auto;
-    background: #0a1f2b;
     color: #f2f2f2;
     font-size: 16px;
+}
+
+.indexPage{
+    background: #0a1f2b;
+}
+
+video{
+    width: 100%;
+}
+
+.liveDataPage{
+    background: #0a1f2b;
 }
 
 h1, h2, h3, h5, p {
@@ -27,6 +39,7 @@ h1, h2, h3, h5, p {
 
 .allWrapper{
     display: inline-flex;
+    width: 100%;
 }
 
 menu {
@@ -121,8 +134,7 @@ ul{
 }
 
 header {
-    left: 0;
-    top: 0;
+    display: flex;
     width: 100%;
     text-align: left;
     background: #0a1f2b;
@@ -136,11 +148,6 @@ header p{
     letter-spacing: 2px;
     font-style: italic;
     line-height: 70px;
-}
-
-header{
-    display: flex;
-    width: 100%;
 }
 
 #headerText{
