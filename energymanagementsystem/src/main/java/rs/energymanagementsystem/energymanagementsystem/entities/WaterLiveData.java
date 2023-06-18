@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.Date;
+
 @Data /* Getters and Setters */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,12 +27,10 @@ public class WaterLiveData {
 
     @DateTimeFormat
     @Column
-    private String start_time;
+    Date start_time;
 
     @DateTimeFormat
     @Column
-    private String end_time;
-
-
+    Date end_time;
 
 }

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data /* Getters and Setters */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,7 +26,7 @@ public class AlarmData {
     private String alarm_desc;
 
     @Column
-    private String time_stamp;
+    Date time_stamp;
 
     public Integer getAlarm_id() {
         return alarm_id;

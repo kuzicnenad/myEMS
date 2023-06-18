@@ -4,6 +4,8 @@ package rs.energymanagementsystem.energymanagementsystem.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
+
 @Data /* Getters and Setters */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,6 +31,6 @@ public class Users {
     private Integer job_title;
 
     @Column
-    private String time_stamp;
+    Date time_stamp;
 
 }

@@ -10,4 +10,5 @@ public interface ElectricityLiveDataService {
     List<ElectricityLiveData> getAllElectricityLiveData();
     ElectricityLiveData getElectricityLiveDataById(Integer live_data_id);
     List<ElectricityLiveData> getLastData();
+
 }

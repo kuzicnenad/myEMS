@@ -32,4 +32,5 @@ public class ElectricityLiveDataServiceImpl implements ElectricityLiveDataServic
     public List<ElectricityLiveData> getLastData() {
         return electricityLiveDataRepository.getLastData();
     }
+
 }

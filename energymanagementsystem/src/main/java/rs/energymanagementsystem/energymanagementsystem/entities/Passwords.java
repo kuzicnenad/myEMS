@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.Date;
+
 @Data /* Getters and Setters */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,7 +27,7 @@ public class Passwords {
 
     @DateTimeFormat
     @Column
-    private String time_stamp;
+    Date time_stamp;
 
 
 }

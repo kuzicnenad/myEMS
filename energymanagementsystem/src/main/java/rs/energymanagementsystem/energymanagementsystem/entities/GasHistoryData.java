@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.Date;
+
 
 @Data /* Getters and Setters */
 @NoArgsConstructor
@@ -22,7 +24,7 @@ public class GasHistoryData {
 
     @DateTimeFormat
     @Column
-    private String date;
+    Date date;
 
 
 
