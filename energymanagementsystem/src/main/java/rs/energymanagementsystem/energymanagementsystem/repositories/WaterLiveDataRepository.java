@@ -8,6 +8,6 @@ import java.util.List;
 
 
 public interface WaterLiveDataRepository extends JpaRepository<WaterLiveData, Integer> {
-    @Query(value = "SELECT * FROM water_live_data ORDER BY live_data_id DESC LIMIT 3", nativeQuery = true)
+    @Query(value = "select * FROM water_live_data ORDER BY live_data_id DESC LIMIT 5", nativeQuery = true)
     public List<WaterLiveData> getLastData();
 }

@@ -8,6 +8,6 @@ import java.util.List;
 
 
 public interface GasLiveDataRepository extends JpaRepository<GasLiveData, Integer> {
-    @Query(value = "SELECT * FROM gas_live_data ORDER BY live_data_id DESC LIMIT 3", nativeQuery = true)
+    @Query(value = "select * FROM gas_live_data ORDER BY live_data_id DESC LIMIT 5", nativeQuery = true)
     public List<GasLiveData> getLastData();
 }
