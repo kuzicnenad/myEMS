@@ -16,7 +16,7 @@ body {
     padding-left: 0;
     margin: 0 auto;
     background: #0a1f2b;
-    color: #D6E1EB;
+    color: #f2f2f2;
     font-size: 16px;
 }
 
@@ -47,7 +47,7 @@ menu {
 
 .logo {
     font-size: 42px;
-    color: #F0F8FF;
+    color: #f2f2f2;
     line-height: 70px;
     letter-spacing: 7px;
     text-align: left;
@@ -60,7 +60,7 @@ menu {
 
 .logo a{
     text-decoration: none;
-    color: #F0F8FF;
+    color: #f2f2f2;
     margin-left: 25px;
 }
 
@@ -87,7 +87,7 @@ ul{
 
 .nav-link{
     text-decoration: none;
-    color: #F0F8FF;
+    color: #f2f2f2;
 }
 
 header {
@@ -113,7 +113,7 @@ main{
     display: block;
     margin: 0 auto;
     width: auto;
-    margin-left: 5px;
+    margin-left: 1px;
     float: right;
 }
 
@@ -184,6 +184,42 @@ section{
     text-align: center;
     letter-spacing: 2px;
     background-color: #1F6F76;
+}
+
+/* FOOTER
+------------------------------------------------------------------- */
+
+#main-footer{
+    bottom: 0;
+	padding-top: .5em;
+	color: #f2f2f2;
+	text-align: center;
+	font-size: 1em;
+	position: fixed;
+	float: bottom;
+	width: 100%;
+}
+
+#main-footer a{
+	text-decoration: none;
+	font-size: 1.5em;
+	color: #f2f2f2;
+	outline: none;
+
+	-webkit-transition: .5s;
+       -moz-transition: .5s;
+    	 -o-transition: .5s;
+    	    transition: .5s;
+}
+
+#main-footer a:hover{
+	color: #063146;
+}
+.footer-social ul li{
+	display: inline-block;
+	margin: 2px;
+	padding-left: 25px;
+	padding-bottom: 15px;
 }
 
 
