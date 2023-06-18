@@ -1,15 +1,23 @@
-html{
-    width: auto;
-    margin: 0;
+html, body {
+    height: 100%;
 }
+
+html {
+    display: table;
+    margin: auto;
+}
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 0;
-  margin: 0 auto;
-  background: #000000;
-  color: #F0F8FF;
-  font-size: 16px;
-  position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    font-family: Arial, Helvetica, sans-serif;
+    align: center;
+    padding: 0;
+    margin: 0 auto;
+    background: #000000;
+    color: #F0F8FF;
+    font-size: 16px;
+    border: 2px solid orange;
 }
 
 h1, h2, h3, h5, p {
@@ -20,12 +28,12 @@ h1, h2, h3, h5, p {
 header {
     display: block;
     text-align: center;
-    position: fixed;
     left: 0;
     top: 0;
     height: 100%;
-    width: 15%;
+    min-width: 300px;
     background: #042331;
+    position: fixed;
 }
 
 menu {
@@ -62,51 +70,55 @@ ul{
     text-align: left;
 }
 
-.nav-item {
+.nav-item{
     padding-left: 20px;
     border-bottom: 1px solid orange;
 }
 
-.nav-link {
+.nav-link{
     text-decoration: none;
     color: #F0F8FF;
 }
 
 main{
-    display: block;
-    margin-left: 15%;
-}
-
-.main-grid{
-    padding-top: 5%;
-    margin-top: 5%;
     height: 100%;
-    width: auto;
+    width: fit-content;
+    border: 1px solid green;
 }
 
-.main-grid section{
+main section{
     display: block;
     margin: 5px;
     border: 1px solid red;
 }
 
-.grid-1 { grid-area: grid-1; }
-.grid-2 { grid-area: grid-2; }
-.grid-3 { grid-area: grid-3; }
-
-.main-grid{
-    display: grid;
-    grid-template-areas:
-        'grid-1 grid-1 grid-1'
-        'grid-2 grid-2 grid-2'
-        'grid-3 grid-3 grid-3';
-    gap: 10px;
-    }
-
 .dataItems{
     display: inline-block;
-    width: 200px;
-    height: 200px;
+    width: auto;
+    margin: 5px;
     border: 1px solid red;
 }
+
+.td-1{
+    display: block;
+    height: auto;
+    min-width: 150px;
+    margin: 5px;
+    border: 1px solid red;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+.td-2{
+    display: block;
+    width: auto;
+    margin: 5px;
+    border: 1px solid red;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+
 

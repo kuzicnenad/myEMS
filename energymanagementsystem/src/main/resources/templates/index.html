@@ -49,7 +49,7 @@
         </div>
     </header> <!-- end header-->
 
-    <main class="main-grid">
+    <main>
         <!-- Grid box to display last 3 to 5 data sets (depending on screen size)
             logo    |
             Home    |   
@@ -73,13 +73,13 @@
 
          <!-- Section Electricity Data -->
          <section id="section-electricity" class="grid-1">
-            <div class="content-wrapper">
+            <div class="content-wrapper"><p>Electricity (w/h)</p>
                 <table>
                     <tbody>
                         <tr th:each="electricity_live_data : ${lastElectricityData}" class="dataItems">
-                            <td th:text="${electricity_live_data.consumption}"></td>
-                            <td th:text="${electricity_live_data.start_time}"></td>
-                            <td th:text="${electricity_live_data.end_time}"></td>
+                            <td th:inline="text" class="td-1">[[${electricity_live_data.consumption}]] </td>
+                            <td th:text="${#dates.format(electricity_live_data.start_time, 'HH:mm')} +
+                            '-' + ${#dates.format(electricity_live_data.end_time, 'HH:mm')}" class="td-2"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -88,13 +88,13 @@
 
          <!-- Section Water Data -->
          <section id="section-water" class="grid-2">
-            <div class="content-wrapper">
+            <div class="content-wrapper"><p>Gas (w/h)</p>
                 <table>
                     <tbody>
                     <tr th:each="gas_live_data : ${lastGasData}" class="dataItems">
-                        <td th:text="${gas_live_data.consumption}"></td>
-                        <td th:text="${gas_live_data.start_time}"></td>
-                        <td th:text="${gas_live_data.end_time}"></td>
+                        <td th:inline="text" class="td-1">[[${gas_live_data.consumption}]] </td>
+                        <td th:text="${#dates.format(gas_live_data.start_time, 'HH:mm')} +
+                            '-' + ${#dates.format(gas_live_data.end_time, 'HH:mm')}" class="td-2"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -103,13 +103,13 @@
 
          <!-- Section Gas Data -->
          <section id="section-gas" class="grid-3">
-            <div class="content-wrapper">
+            <div class="content-wrapper"><p>Water (l/h)</p>
                 <table>
                     <tbody>
                     <tr th:each="water_live_data : ${lastWaterData}" class="dataItems">
-                        <td th:text="${water_live_data.consumption}"></td>
-                        <td th:text="${water_live_data.start_time}"></td>
-                        <td th:text="${water_live_data.end_time}"></td>
+                        <td th:inline="text" class="td-1">[[${water_live_data.consumption}]] </td>
+                        <td th:text="${#dates.format(water_live_data.start_time, 'HH:mm')} +
+                            '-' + ${#dates.format(water_live_data.end_time, 'HH:mm')}" class="td-2"></td>
                     </tr>
                     </tbody>
                 </table>
