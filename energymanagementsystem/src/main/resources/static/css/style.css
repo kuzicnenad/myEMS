@@ -5,19 +5,18 @@ html, body {
 html {
     display: table;
     margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
     display: table-cell;
     vertical-align: middle;
-    font-family: Arial, Helvetica, sans-serif;
     align: center;
-    padding: 0;
+    padding-left: 0;
     margin: 0 auto;
-    background: #000000;
-    color: #F0F8FF;
+    background: #0a1f2b;
+    color: #D6E1EB;
     font-size: 16px;
-    border: 2px solid orange;
 }
 
 h1, h2, h3, h5, p {
@@ -27,39 +26,67 @@ h1, h2, h3, h5, p {
 
 header {
     display: block;
+    left: 0;
+    top: 0;
+    height: auto;
+    width: 100%;
+    text-align: left;
+    background: #0a1f2b;
+    position: fixed;
+    line-height: 70px;
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+}
+
+header p{
+    margin-left: 320px;
+    letter-spacing: 2px;
+    font-style: italic;
+}
+
+menu {
+    padding: 0;
+    margin: auto;
+    display: block;
     text-align: center;
     left: 0;
     top: 0;
     height: 100%;
     min-width: 300px;
-    background: #042331;
+    background-image: linear-gradient(to bottom, #063146, #03394b, #04414f, #0a4853, #145055);
     position: fixed;
-}
-
-menu {
-    height: 100%;
-    width: 100%;
-    padding: 0;
-    margin: auto;
+    box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 .logo {
-    font-size: 32px;
+    font-size: 42px;
     color: #F0F8FF;
     line-height: 70px;
+    letter-spacing: 5px;
+    text-align: left;
     background: #063146;
     width: 100%;
-    border-bottom: 1px solid orange;
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
 }
 
 .logo a{
     text-decoration: none;
     color: #F0F8FF;
+    margin-left: 20px;
+}
+
+nav{
+    padding: 25px 0 0 0;
 }
 
 .nav-link{
     display: block;
-    line-height: 50px;
+    line-height: 40px;
     padding: 0;
 }
 
@@ -72,7 +99,6 @@ ul{
 
 .nav-item{
     padding-left: 20px;
-    border-bottom: 1px solid orange;
 }
 
 .nav-link{
@@ -80,44 +106,75 @@ ul{
     color: #F0F8FF;
 }
 
+
+
 main{
-    height: 100%;
-    width: fit-content;
-    border: 1px solid green;
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    margin-left: 50px;
 }
 
-main section{
-    display: block;
-    margin: 5px;
-    border: 1px solid red;
+.preSection{
+    align-items: center;
+    padding: 5px;
+    margin: 0 auto;
+    width: auto;
+    border-bottom: 2px solid #063146;
+    border-top: 2px solid #063146;
+}
+.preSection p{
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-left: 350px;
+}
+
+section{
+    display: inline-flex;
+    align-items: center;
+    height: 100px;
+    padding: 5px;
+    margin: 0 auto;
+    margin-left: 350px;
 }
 
 .dataItems{
     display: inline-block;
     width: auto;
-    margin: 5px;
-    border: 1px solid red;
+    min-width: 250px;
+    margin: 3px;
+    border: 1px solid #063146;
+}
+
+.sectionText{
+    min-width: 150px;
+}
+
+.sectionText p{
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding-left: 5px;
 }
 
 .td-1{
     display: block;
     height: auto;
     min-width: 150px;
-    margin: 5px;
-    border: 1px solid red;
     text-align: center;
     font-size: 50px;
     font-weight: bold;
     letter-spacing: 5px;
+    background-color: #145055;
 }
 
 .td-2{
     display: block;
     width: auto;
-    margin: 5px;
-    border: 1px solid red;
     text-align: center;
-    letter-spacing: 5px;
+    letter-spacing: 2px;
+    background-color: #1F6F76;
 }
 
 
