@@ -1,6 +1,5 @@
 package rs.energymanagementsystem.energymanagementsystem.entities;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;

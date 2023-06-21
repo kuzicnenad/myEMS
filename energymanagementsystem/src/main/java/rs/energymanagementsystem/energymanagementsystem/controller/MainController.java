@@ -4,9 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import rs.energymanagementsystem.energymanagementsystem.entities.ElectricityLiveData;
-import rs.energymanagementsystem.energymanagementsystem.entities.GasLiveData;
-import rs.energymanagementsystem.energymanagementsystem.entities.WaterLiveData;
+import rs.energymanagementsystem.energymanagementsystem.entities.*;
+import rs.energymanagementsystem.energymanagementsystem.services.ElectricityHistoryDataService;
 import rs.energymanagementsystem.energymanagementsystem.services.ElectricityLiveDataService;
 import rs.energymanagementsystem.energymanagementsystem.services.GasLiveDataService;
 import rs.energymanagementsystem.energymanagementsystem.services.WaterLiveDataService;
@@ -18,6 +17,10 @@ public class MainController {
 
     @Autowired
     private ElectricityLiveDataService electricityLiveDataService;
+
+    @Autowired
+    private ElectricityHistoryDataService electricityHistoryDataService;
+
     @Autowired
     private GasLiveDataService gasLiveDataService;
     @Autowired
@@ -44,5 +47,13 @@ public class MainController {
         model.addAttribute("lastWaterData", lastWaterData);
 
         return "liveData";
+    }
+
+    @GetMapping("/historyData")
+    public String getHistoryData(Model model){
+        List<ElectricityHistoryData> electricityHistoryData = electricityHistoryDataService.getHistoryData();
+        model.addAttribute("electricityHistoryData", electricityHistoryData);
+
+        return "historyData";
     }
 }

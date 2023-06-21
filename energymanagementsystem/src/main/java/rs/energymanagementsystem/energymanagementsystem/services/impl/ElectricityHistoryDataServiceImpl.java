@@ -27,4 +27,9 @@ public class ElectricityHistoryDataServiceImpl implements ElectricityHistoryData
         return electricityHistoryDataRepository.findById(hist_data_id).orElseThrow(() ->
                 new ResourceNotFoundException("Electricity History Data", "hist_data_id", hist_data_id));
     }
+
+    @Override
+    public List<ElectricityHistoryData> getHistoryData() {
+        return electricityHistoryDataRepository.getHistoryData();
+    }
 }

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" content="text/html">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="EMS for monitoring consumption, giving live and history data and reports."/>
+    <meta name="keywords" content="Energy Management System, EMS, Energy"/>
+    <meta name="author" content="Kuzic Nenad" />
+    <meta name="copyright" content="Kuzic Nenad" />
+
+    <title>Energy Management System</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="liveDataPage">
+<div class="allWrapper">
+    <menu> <!-- start navigation menu -->
+        <div class="logo">
+            <a href="/index">My E M S</a>
+        </div>
+        <nav>
+            <ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="/index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/liveData">Live data</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/historyData">History data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Analysis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Reports</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Log out</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Footer -->
+        <footer id="main-footer">
+            <div class="footer-social">
+                <ul> <!-- social network fa fa icons -->
+                    <li><a href="#"><i class="fa fa-google-plus-official"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linux"></i></a></li>
+                    <li><a href="#"><i class="fa fa-reddit"></i></a></li>
+                    <li><a href="#"><i class="fa fa-github"></i></a></li>
+                    <li><a href="#"><i class="fa fa-btc"></i></a></li>
+                </ul>
+            </div> <!-- /footer-social fa fa -icons -->
+        </footer> <!-- /footer -->
+    </menu>
+    <!-- end menu-->
+
+    <main>
+
+        <header>
+            <div id="headerText">
+                <p >IoT Energy Monitoring Solution</p>
+            </div>
+            <div id="headerInfo">
+                <p><i class="fa fa-user-secret"></i>Admin</p>
+                <p><i class="fa fa-wifi"></i>Conn</p>
+            </div>
+        </header>
+        <!-- Grid box to display last 3 to 5 data sets (depending on screen size)
+            logo    |
+            Home    |
+            Live    |   ----- ----- ----- ----- -----
+            History |   |   | |   | |   | |   | |   |
+            Reports |   ----- ----- ----- ----- -----
+            Settings|   ----- ----- ----- ----- -----
+                    |   |   | |   | |   | |   | |   |
+                    |   ----- ----- ----- ----- -----
+                    |   ----- ----- ----- ----- -----
+                    |   |   | |   | |   | |   | |   |
+                    |   ----- ----- ----- ----- -----
+            social  |
+
+            Electricity:
+                  Water:
+                    Gas:
+
+            Reports and additional settings will be implemented in phase 2
+         -->
+        <div class="preSection">
+            <p id="leftText">Consumption history data</p>
+            <p id="alarmText">Alarm<i class="fa fa-bell"></i></p>
+        </div>
+
+        <!-- Section Electricity Data -->
+        <section>
+            <div class="section-data-wrapper">
+                <table>
+                    <tbody>
+                    <tr th:each="electricity_history_data : ${electricityHistoryData}" class="dataItems">
+                        <td th:inline="text" class="td-1">[[${electricity_history_data.electricity_consumption}]] </td>
+                        <td th:text="${#dates.format(electricity_history_data.date, 'dd-MM-yyyy')}" class="td-2"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+    </main>
+</div>
+</body>
+</html>

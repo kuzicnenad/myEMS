@@ -1,6 +1,8 @@
 package rs.energymanagementsystem.energymanagementsystem.services.impl;
 
 import org.springframework.stereotype.Service;
+import rs.energymanagementsystem.energymanagementsystem.entities.ElectricityHistoryData;
+import rs.energymanagementsystem.energymanagementsystem.entities.ElectricityLiveData;
 import rs.energymanagementsystem.energymanagementsystem.entities.GasHistoryData;
 import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
 import rs.energymanagementsystem.energymanagementsystem.repositories.GasHistoryDataRepository;
