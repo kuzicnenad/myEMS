@@ -11,9 +11,6 @@ import rs.energymanagementsystem.energymanagementsystem.services.ElectricityLive
 import rs.energymanagementsystem.energymanagementsystem.services.GasLiveDataService;
 import rs.energymanagementsystem.energymanagementsystem.services.WaterLiveDataService;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -26,11 +23,15 @@ public class MainController {
     @Autowired
     private WaterLiveDataService waterLiveDataService;
 
-    @GetMapping(value={"","/","/index"})
+    @GetMapping(value={"","/"})
+    public String showLogInScreen(){
+        return "logInScreen";
+    }
+
+    @GetMapping(value={"/index"})
     public String showHomePage(){
         return "index";
     }
-
     @GetMapping("/liveData")
     public String getLastData(Model model){
         List<ElectricityLiveData> lastElectricityData = electricityLiveDataService.getLastData();

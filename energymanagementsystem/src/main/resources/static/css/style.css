@@ -24,10 +24,6 @@ body {
     background: #0a1f2b;
 }
 
-video{
-    width: 100%;
-}
-
 .liveDataPage{
     background: #0a1f2b;
 }
@@ -284,6 +280,8 @@ section{
 	padding-left: 25px;
 	padding-bottom: 15px;
 }
+
+
 
 
 
