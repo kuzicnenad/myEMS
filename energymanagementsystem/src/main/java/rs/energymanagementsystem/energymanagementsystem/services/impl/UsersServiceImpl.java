@@ -3,7 +3,7 @@ package rs.energymanagementsystem.energymanagementsystem.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
-import rs.energymanagementsystem.energymanagementsystem.entities.Users;
+import rs.energymanagementsystem.energymanagementsystem.entities.UsersEntity;
 import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
 import rs.energymanagementsystem.energymanagementsystem.repositories.UsersRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.UsersService;
@@ -22,16 +22,16 @@ public class UsersServiceImpl implements UsersService {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Override
-    public Users saveUser(Users users) {
-        return usersRepository.save(users);
+    public UsersEntity saveUser(UsersEntity usersEntity) {
+        return usersRepository.save(usersEntity);
     }
 
     @Override
-    public List<Users> getAllUsers() {
+    public List<UsersEntity> getAllUsers() {
         return usersRepository.findAll();
     }
 
-    public Users getUserById(Integer user_id){
+    public UsersEntity getUserById(Integer user_id){
         return usersRepository.findById(user_id).orElseThrow(() ->
                 new ResourceNotFoundException("User", "user_id", user_id));
     }
@@ -40,15 +40,15 @@ public class UsersServiceImpl implements UsersService {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Override
-    public Users updateUsers(Users users, Integer user_id) {
+    public UsersEntity updateUsers(UsersEntity usersEntity, Integer user_id) {
         // check if user_id exists in database
-        Users existingUser = usersRepository.findById(user_id).orElseThrow(() ->
+        UsersEntity existingUser = usersRepository.findById(user_id).orElseThrow(() ->
                 new ResourceNotFoundException("User", "user_id", user_id));
-        existingUser.setUser_login(users.getUser_login());
-        existingUser.setFirst_name(users.getFirst_name());
-        existingUser.setLast_name(users.getLast_name());
-        existingUser.setJob_title(users.getJob_title());
-        existingUser.setTime_stamp(users.getTime_stamp());
+        existingUser.setUser_login(usersEntity.getUser_login());
+        existingUser.setFirst_name(usersEntity.getFirst_name());
+        existingUser.setLast_name(usersEntity.getLast_name());
+        existingUser.setJob_title(usersEntity.getJob_title());
+        existingUser.setTime_stamp(usersEntity.getTime_stamp());
         // save existing alarmData to DB
         usersRepository.save(existingUser);
         return existingUser;
@@ -64,7 +64,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public List<Users> getLastUsers() {
+    public List<UsersEntity> getLastUsers() {
         return usersRepository.getLastUsers();
     }
 }

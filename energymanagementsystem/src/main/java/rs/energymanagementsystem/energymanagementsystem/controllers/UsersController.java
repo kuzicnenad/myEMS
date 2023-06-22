@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import rs.energymanagementsystem.energymanagementsystem.entities.Users;
+import rs.energymanagementsystem.energymanagementsystem.entities.UsersEntity;
 import rs.energymanagementsystem.energymanagementsystem.services.UsersService;
 
 import java.util.List;
@@ -19,15 +19,15 @@ public class UsersController {
 
     // POST users REST API
     @PostMapping
-    public ResponseEntity<Users> saveAlarmData(@RequestBody Users users){
-        return new ResponseEntity<Users>(usersService.saveUser(users), HttpStatus.CREATED);
+    public ResponseEntity<UsersEntity> saveAlarmData(@RequestBody UsersEntity usersEntity){
+        return new ResponseEntity<UsersEntity>(usersService.saveUser(usersEntity), HttpStatus.CREATED);
     }
 
     // GET all users REST API
     @GetMapping("/api/users")
     public String getAllUsers(Model model){
-        List<Users> usersList = usersService.getAllUsers();
-        model.addAttribute("usersList", usersList);
+        List<UsersEntity> usersEntityList = usersService.getAllUsers();
+        model.addAttribute("usersList", usersEntityList);
 
         return "index";
     }
@@ -35,16 +35,16 @@ public class UsersController {
     // GET by ID user REST API
     // http://localhost:8080/api/users/user_id(number)
     @GetMapping("/api/users/{user_id}")
-    public ResponseEntity<Users> getUserById(@PathVariable ("user_id") Integer user_id){
-        return new ResponseEntity<Users>(usersService.getUserById(user_id), HttpStatus.OK);
+    public ResponseEntity<UsersEntity> getUserById(@PathVariable ("user_id") Integer user_id){
+        return new ResponseEntity<UsersEntity>(usersService.getUserById(user_id), HttpStatus.OK);
     }
 
     // UPDATE by ID alarmData REST API
     // http://localhost:8080/api/alarmData/alarm_id(number)
     @PutMapping("/api/users/{user_id}")
-    public ResponseEntity<Users> updateAlarmDate(@PathVariable ("user_id") Integer user_id
-            ,@RequestBody Users users){
-        return new ResponseEntity<Users>(usersService.updateUsers(users, user_id), HttpStatus.OK);
+    public ResponseEntity<UsersEntity> updateAlarmDate(@PathVariable ("user_id") Integer user_id
+            , @RequestBody UsersEntity usersEntity){
+        return new ResponseEntity<UsersEntity>(usersService.updateUsers(usersEntity, user_id), HttpStatus.OK);
     }
 
     // DELETE by ID alarmData REST API

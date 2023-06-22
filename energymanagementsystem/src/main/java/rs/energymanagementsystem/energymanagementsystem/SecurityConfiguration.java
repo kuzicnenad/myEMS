@@ -21,7 +21,7 @@ public class SecurityConfiguration {
 
     /** Necessary configurations fo Authorize Requests
      * More specific rules must come first, followed by the more general ones.
-     * Currently not enabled **/
+     **/
     @Configuration
     @EnableWebSecurity
     public class SecurityConfig {
