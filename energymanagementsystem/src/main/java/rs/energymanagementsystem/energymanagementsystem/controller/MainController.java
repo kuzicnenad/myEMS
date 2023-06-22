@@ -29,6 +29,9 @@ public class MainController {
     @Autowired
     private WaterLiveDataService waterLiveDataService;
 
+    @Autowired
+    private WaterHistoryDataService waterHistoryDataService;
+
     @GetMapping(value={"","/"})
     public String showLogInScreen(){
         return "logInScreen";
@@ -80,5 +83,20 @@ public class MainController {
         model.addAttribute("listGasHistory", listGasHistory);
 
         return "historyDataGas";
+    }
+
+    @GetMapping("/historyDataWater/{pageNo}")
+    public String getHistoryDataWater(@PathVariable(value = "pageNo") int pageNo, Model model){
+        int pageSize = 36;
+
+        Page<WaterHistoryData> page = waterHistoryDataService.getHistoryDataWater(pageNo, pageSize);
+        List<WaterHistoryData> listWaterHistory = page.getContent();
+
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("listWaterHistory", listWaterHistory);
+
+        return "historyDataWater";
     }
 }

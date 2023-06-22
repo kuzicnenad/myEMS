@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" content="text/html">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="EMS for monitoring consumption, giving live and history data and reports."/>
+    <meta name="keywords" content="Energy Management System, EMS, Energy"/>
+    <meta name="author" content="Kuzic Nenad" />
+    <meta name="copyright" content="Kuzic Nenad" />
+
+    <title>Energy Management System</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="liveDataPage">
+    <div class="allWrapper">
+        <menu> <!-- start navigation menu -->
+            <div class="logo">
+                <a href="/index">My E M S</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/liveData">Live data</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/historyDataElectricity/1">History data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Analysis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Log out</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Footer -->
+            <footer id="main-footer">
+                <div class="footer-social">
+                    <ul> <!-- social network fa fa icons -->
+                        <li><a href="#"><i class="fa fa-google-plus-official"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linux"></i></a></li>
+                        <li><a href="#"><i class="fa fa-reddit"></i></a></li>
+                        <li><a href="#"><i class="fa fa-github"></i></a></li>
+                        <li><a href="#"><i class="fa fa-btc"></i></a></li>
+                    </ul>
+                </div> <!-- /footer-social fa fa -icons -->
+            </footer> <!-- /footer -->
+        </menu>
+        <!-- end menu-->
+
+        <main>
+
+            <header>
+                <div id="headerText">
+                    <p >IoT Energy Monitoring Solution</p>
+                </div>
+                <div id="headerInfo">
+                    <p><i class="fa fa-user-secret"></i>Admin</p>
+                    <p><i class="fa fa-wifi"></i>Conn</p>
+                </div>
+            </header>
+            <!-- Grid box to display last 3 to 5 data sets (depending on screen size)
+                logo    |
+                Home    |
+                Live    |   ----- ----- ----- ----- -----
+                History |   |   | |   | |   | |   | |   |
+                Reports |   ----- ----- ----- ----- -----
+                Settings|   ----- ----- ----- ----- -----
+                        |   |   | |   | |   | |   | |   |
+                        |   ----- ----- ----- ----- -----
+                        |   ----- ----- ----- ----- -----
+                        |   |   | |   | |   | |   | |   |
+                        |   ----- ----- ----- ----- -----
+                social  |
+
+                Electricity:
+                      Water:
+                        Gas:
+
+                Reports and additional settings will be implemented in phase 2
+             -->
+            <div class="preSection">
+                <p id="leftText">Consumption history data</p>
+                <p id="alarmText">Alarm<i class="fa fa-bell"></i></p>
+            </div>
+
+
+            <!-- Section Electricity Data -->
+            <section>
+                <div class="sectionDataWrapper">
+
+                    <nav class="historyNavPanel">
+                        <ul>
+                            <li><a href="/historyDataElectricity/1">Electricity</a></li>
+                            <li><a href="/historyDataGas/1">Gas</a></li>
+                            <li class="historyActive"><a href="/historyDataWater/1">Water</a></li>
+                        </ul>
+                    </nav>
+
+                    <table>
+                        <tbody>
+                        <tr th:each="water_history_data : ${listWaterHistory}" class="dataItems">
+                            <td th:inline="text" class="td-1">[[${water_history_data.water_consumption}]] </td>
+                            <td th:text="${#dates.format(water_history_data.date, 'dd-MM-yyyy')}" class="td-2"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div th:if="${totalPages > 1}">
+                        <div class="paginationWrapper">
+                            <div id="totalItems">
+                                Total records: [[${totalItems}]]
+                            </div>
+                            <div class="pageNumber">
+                                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                                    <a th:if="${currentPage != i}" th:href="@{'/historyDataWater/' + ${i}}">[[${i}]]</a>
+                                    <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                                </span>
+                            </div>
+
+                            <div class="paginationItems">
+                                <a th:if="${currentPage > 1}" th:href="@{'/historyDataWater/' + ${1}}">First</a>
+                                <span th:unless="${currentPage > 1}">First</span>
+                            </div>
+
+                            <div class="paginationItems">
+                                <a th:if="${currentPage > 1}" th:href="@{'/historyDataWater/' + ${currentPage - 1}}">Previous</a>
+                                <span th:unless="${currentPage > 1}">Previous</span>
+                            </div>
+
+                            <div class="paginationItems">
+                                <a th:if="${currentPage < totalPages}" th:href="@{'/historyDataWater/' + ${currentPage + 1}}">Next</a>
+                                <span th:unless="${currentPage < totalPages}">Next</span>
+                            </div>
+
+                            <div class="paginationItems">
+                                <a th:if="${currentPage < totalPages}" th:href="@{'/historyDataWater/' + ${totalPages}}">Last</a>
+                                <span th:unless="${currentPage < totalPages}">Last</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+    </div>
+</body>
+</html>

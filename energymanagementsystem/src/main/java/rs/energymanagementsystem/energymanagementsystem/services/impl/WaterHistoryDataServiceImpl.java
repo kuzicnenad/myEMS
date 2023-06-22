@@ -1,5 +1,8 @@
 package rs.energymanagementsystem.energymanagementsystem.services.impl;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.WaterHistoryData;
 import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
@@ -26,5 +29,11 @@ public class WaterHistoryDataServiceImpl implements WaterHistoryDataService {
     public WaterHistoryData getWaterHistoryDataById(Integer hist_data_id) {
         return waterHistoryDataRepository.findById(hist_data_id).orElseThrow(() ->
                 new ResourceNotFoundException("Water History Data", "hist_data_id", hist_data_id));
+    }
+
+    @Override
+    public Page<WaterHistoryData> getHistoryDataWater(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+        return this.waterHistoryDataRepository.findAll(pageable);
     }
 }
