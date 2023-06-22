@@ -90,6 +90,9 @@ nav{
     display: block;
     line-height: 40px;
     padding: 0;
+    text-decoration: none;
+    color: #f2f2f2;
+    padding-left: 20px;
 }
 
 ul{
@@ -114,12 +117,6 @@ ul{
     	 -o-transition: .3s;
     	    transition: .3s;
     color: #BE6125;
-}
-
-.nav-link{
-    text-decoration: none;
-    color: #f2f2f2;
-    padding-left: 20px;
 }
 
 .active{
@@ -174,10 +171,10 @@ main{
 
 .preSection{
     align-items: center;
-    height: 18px;
+    min-height: 18px;
     padding: 5px;
     margin: 0 auto;
-    margin-top: 150px;
+    margin-top: 120px;
     border-bottom: 2px solid #063146;
     border-top: 2px solid #063146;
 }
@@ -200,9 +197,58 @@ section{
     display: inline-flex;
     align-items: center;
     height: auto;
-    padding: 7px;
+    padding: 10px;
     margin: 0 auto;
     margin-left: 40px;
+}
+
+.sectionDataWrapper{
+    align-items: center;
+    text-align: center;
+}
+
+.historyNavPanel{
+    align-items: left;
+    margin: 0;
+    padding: 0;
+}
+.historyNavPanel ul{
+    border-bottom: 2px solid #063146;
+    display:flex;
+}
+.historyNavPanel ul li{
+	background: #063146;
+    margin: 1px;
+    padding: 0;
+    display: inline-block;
+    letter-spacing: 2px;
+	line-height: 30px;
+}
+
+.historyNavPanel a{
+    text-decoration: none;
+    margin: 10px;
+	color: #f2f2f2;
+}
+
+.historyActive{
+	background-color: #063146;
+	box-shadow: 5px -0px 5px 0px rgba(0,0,0,0.9) inset;
+    -webkit-box-shadow: 5px -0px 5px 0px rgba(0,0,0,0.9) inset;
+    -moz-box-shadow: 5px -0px 5px 0px rgba(0,0,0,0.9) inset;
+
+	-webkit-transition: .3s;
+       -moz-transition: .3s;
+    	 -o-transition: .3s;
+    	    transition: .3s;
+}
+
+.historyActive a{
+    color: #BE6125;
+}
+
+.historyNavPanel ul li a:hover{
+    color: #BE6125;
 }
 
 .dataItems{
@@ -243,6 +289,49 @@ section{
     text-align: center;
     letter-spacing: 2px;
     background-color: rgba(31, 111, 118, 0.9);
+}
+
+.paginationWrapper{
+    width: auto;
+
+}
+
+.paginationItems{
+    letter-spacing: 2px;
+    display: inline-flex;
+    width: auto;
+    margin: 5px;
+    border-radius: 5px;
+	line-height: 35px;
+    background-color: #063146;
+}
+
+.paginationItems a, .paginationItems span{
+	text-decoration: none;
+    margin-left: 5px;
+    margin-right: 5px;
+	color: #f2f2f2;
+}
+
+.paginationItems a:focus{
+    color: #BE6125;
+}
+.paginationItems:hover{
+    background-color: rgba(20, 80, 85, 0.7);
+}
+
+.pageNumber{
+    line-height: 30px;
+    color: #BE6125;
+}
+
+.pageNumber a{
+    text-decoration: none;
+    color: #f2f2f2;
+}
+
+#totalItems{
+    margin: 5px;
 }
 
 /* FOOTER

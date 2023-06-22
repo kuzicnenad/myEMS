@@ -105,7 +105,6 @@ video.fullscreen {
 	letter-spacing: 3px;
 	height: 50px;
 	margin: 20px;
-	transition: .7s;
 
 	-webkit-transition: .7s;
        -moz-transition: .7s;

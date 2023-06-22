@@ -1,5 +1,8 @@
 package rs.energymanagementsystem.energymanagementsystem.services.impl;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.ElectricityHistoryData;
 import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
@@ -29,7 +32,8 @@ public class ElectricityHistoryDataServiceImpl implements ElectricityHistoryData
     }
 
     @Override
-    public List<ElectricityHistoryData> getHistoryData() {
-        return electricityHistoryDataRepository.getHistoryData();
+    public Page<ElectricityHistoryData> getHistoryData(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+        return this.electricityHistoryDataRepository.findAll(pageable);
     }
 }

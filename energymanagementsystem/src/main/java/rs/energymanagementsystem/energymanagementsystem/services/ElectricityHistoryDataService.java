@@ -1,5 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.services;
 
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Repository;
 import rs.energymanagementsystem.energymanagementsystem.entities.ElectricityHistoryData;
 
@@ -9,5 +10,5 @@ import java.util.List;
 public interface ElectricityHistoryDataService {
     List<ElectricityHistoryData> getAllElectricityHistoryData();
     ElectricityHistoryData getElectricityHistoryDataById(Integer hist_data_id);
-    List<ElectricityHistoryData> getHistoryData();
+    Page<ElectricityHistoryData> getHistoryData(int pageNo, int pageSize);
 }

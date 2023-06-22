@@ -1,9 +1,11 @@
 package rs.energymanagementsystem.energymanagementsystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import rs.energymanagementsystem.energymanagementsystem.entities.*;
 import rs.energymanagementsystem.energymanagementsystem.services.ElectricityHistoryDataService;
 import rs.energymanagementsystem.energymanagementsystem.services.ElectricityLiveDataService;
@@ -31,7 +33,7 @@ public class MainController {
         return "logInScreen";
     }
 
-    @GetMapping(value={"/index"})
+    @GetMapping("/index")
     public String showHomePage(){
         return "index";
     }
@@ -49,10 +51,17 @@ public class MainController {
         return "liveData";
     }
 
-    @GetMapping("/historyData")
-    public String getHistoryData(Model model){
-        List<ElectricityHistoryData> electricityHistoryData = electricityHistoryDataService.getHistoryData();
-        model.addAttribute("electricityHistoryData", electricityHistoryData);
+    @GetMapping("/historyDataElectricity/{pageNo}")
+    public String getHistoryData(@PathVariable(value = "pageNo") int pageNo, Model model){
+        int pageSize = 36;
+
+        Page<ElectricityHistoryData> page = electricityHistoryDataService.getHistoryData(pageNo, pageSize);
+        List<ElectricityHistoryData> listElectricityHistory = page.getContent();
+
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("listElectricityHistory", listElectricityHistory);
 
         return "historyData";
     }
