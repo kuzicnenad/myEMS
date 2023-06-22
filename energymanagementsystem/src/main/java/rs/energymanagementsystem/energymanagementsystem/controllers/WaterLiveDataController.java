@@ -1,11 +1,9 @@
-package rs.energymanagementsystem.energymanagementsystem.controller;
+package rs.energymanagementsystem.energymanagementsystem.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.WaterLiveData;
-import rs.energymanagementsystem.energymanagementsystem.repositories.WaterLiveDataRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.WaterLiveDataService;
 
 import java.util.List;

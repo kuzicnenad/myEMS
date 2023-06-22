@@ -1,5 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.services.impl;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.AlarmData;
 import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
@@ -17,6 +18,7 @@ public class AlarmDataServiceImpl implements AlarmDataService {
         this.alarmDataRepository = alarmDataRepository;
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Override
     public AlarmData saveAlarmData(AlarmData alarmData) {
         return alarmDataRepository.save(alarmData);
@@ -39,6 +41,7 @@ public class AlarmDataServiceImpl implements AlarmDataService {
                 new ResourceNotFoundException("Alarm data", "alarm_id", alarm_id));
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Override
     public AlarmData updateAlarmDate(AlarmData alarmData, Integer alarm_id) {
         // check if alarm_id exists in database
@@ -52,6 +55,7 @@ public class AlarmDataServiceImpl implements AlarmDataService {
         return existingAlarmData;
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Override
     public void deleteAlarmData(Integer alarm_id) {
         // check if alarm exists in database

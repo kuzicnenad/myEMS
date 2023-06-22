@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.domain.Page;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @Controller
 @SpringBootApplication
+@EnableMethodSecurity(securedEnabled = true)
 public class EnergymanagementsystemApplication {
 
 	@Autowired
@@ -35,7 +37,7 @@ public class EnergymanagementsystemApplication {
 	@Autowired
 	private WaterHistoryDataService waterHistoryDataService;
 
-	@GetMapping(value={"","/"})
+	@GetMapping("/login")
 	public String showLogInScreen(){
 		return "logInScreen";
 	}

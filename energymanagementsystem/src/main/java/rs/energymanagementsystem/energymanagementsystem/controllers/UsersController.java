@@ -1,4 +1,4 @@
-package rs.energymanagementsystem.energymanagementsystem.controller;
+package rs.energymanagementsystem.energymanagementsystem.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

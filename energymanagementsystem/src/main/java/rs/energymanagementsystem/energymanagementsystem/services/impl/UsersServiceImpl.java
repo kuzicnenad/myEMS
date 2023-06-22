@@ -1,6 +1,7 @@
 package rs.energymanagementsystem.energymanagementsystem.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.Users;
 import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
@@ -19,6 +20,7 @@ public class UsersServiceImpl implements UsersService {
         this.usersRepository = usersRepository;
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Override
     public Users saveUser(Users users) {
         return usersRepository.save(users);
@@ -36,6 +38,7 @@ public class UsersServiceImpl implements UsersService {
 
 
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Override
     public Users updateUsers(Users users, Integer user_id) {
         // check if user_id exists in database
@@ -51,6 +54,7 @@ public class UsersServiceImpl implements UsersService {
         return existingUser;
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Override
     public void deleteUser(Integer user_id) {
         // check if user exists in database
