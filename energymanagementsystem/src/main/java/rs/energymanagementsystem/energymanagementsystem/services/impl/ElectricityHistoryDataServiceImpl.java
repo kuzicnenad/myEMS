@@ -32,7 +32,7 @@ public class ElectricityHistoryDataServiceImpl implements ElectricityHistoryData
     }
 
     @Override
-    public Page<ElectricityHistoryData> getHistoryData(int pageNo, int pageSize) {
+    public Page<ElectricityHistoryData> getHistoryDataElectricity(int pageNo, int pageSize) {
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
         return this.electricityHistoryDataRepository.findAll(pageable);
     }

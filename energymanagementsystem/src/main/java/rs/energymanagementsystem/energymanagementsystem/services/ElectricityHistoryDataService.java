@@ -10,5 +10,5 @@ import java.util.List;
 public interface ElectricityHistoryDataService {
     List<ElectricityHistoryData> getAllElectricityHistoryData();
     ElectricityHistoryData getElectricityHistoryDataById(Integer hist_data_id);
-    Page<ElectricityHistoryData> getHistoryData(int pageNo, int pageSize);
+    Page<ElectricityHistoryData> getHistoryDataElectricity(int pageNo, int pageSize);
 }

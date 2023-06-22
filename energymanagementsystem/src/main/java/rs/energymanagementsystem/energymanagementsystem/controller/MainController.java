@@ -7,10 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import rs.energymanagementsystem.energymanagementsystem.entities.*;
-import rs.energymanagementsystem.energymanagementsystem.services.ElectricityHistoryDataService;
-import rs.energymanagementsystem.energymanagementsystem.services.ElectricityLiveDataService;
-import rs.energymanagementsystem.energymanagementsystem.services.GasLiveDataService;
-import rs.energymanagementsystem.energymanagementsystem.services.WaterLiveDataService;
+import rs.energymanagementsystem.energymanagementsystem.services.*;
 
 import java.util.List;
 
@@ -25,6 +22,10 @@ public class MainController {
 
     @Autowired
     private GasLiveDataService gasLiveDataService;
+
+    @Autowired
+    private GasHistoryDataService gasHistoryDataService;
+
     @Autowired
     private WaterLiveDataService waterLiveDataService;
 
@@ -55,7 +56,7 @@ public class MainController {
     public String getHistoryData(@PathVariable(value = "pageNo") int pageNo, Model model){
         int pageSize = 36;
 
-        Page<ElectricityHistoryData> page = electricityHistoryDataService.getHistoryData(pageNo, pageSize);
+        Page<ElectricityHistoryData> page = electricityHistoryDataService.getHistoryDataElectricity(pageNo, pageSize);
         List<ElectricityHistoryData> listElectricityHistory = page.getContent();
 
         model.addAttribute("currentPage", pageNo);
@@ -63,6 +64,21 @@ public class MainController {
         model.addAttribute("totalItems", page.getTotalElements());
         model.addAttribute("listElectricityHistory", listElectricityHistory);
 
-        return "historyData";
+        return "historyDataElectricity";
+    }
+
+    @GetMapping("/historyDataGas/{pageNo}")
+    public String getHistoryDataGas(@PathVariable(value = "pageNo") int pageNo, Model model){
+        int pageSize = 36;
+
+        Page<GasHistoryData> page = gasHistoryDataService.getHistoryDataGas(pageNo, pageSize);
+        List<GasHistoryData> listGasHistory = page.getContent();
+
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("listGasHistory", listGasHistory);
+
+        return "historyDataGas";
     }
 }
