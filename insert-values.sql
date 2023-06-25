@@ -9,9 +9,9 @@ VALUES 	('Admin','Admin_FirstName','Admin_LastName','1'),
 		('User1','User1_FirstName','User1_LastName','3')
 ;
 
-INSERT INTO User( name, username, email, password)
-VALUES 	('Admin_1', 'Admin_1', 'admin_1@myems.com', 'admin'),
-		('User_1', 'User_1', 'user_1@myems.com', 'user');
+INSERT INTO User(name, username, email, password)
+VALUES 	('Admin_1', 'Admin_1', 'admin_1@myems.com', '$2a$12$OJM5mRrY9gC61uhk5Dbtt.5xmcT0QF6loN6HnKSr9fqSWKwrqGFLC'), 	/* pass -> admin */
+		('User_1', 'User_1', 'user_1@myems.com', '$2a$12$C4brIjIkdcSF0dJBvyFsjesGqq19Spy0xGbKEPXax0NfD/j6MicrG');		/* pass -> user */
         
 INSERT INTO Role(name)
 VALUES	('ADMIN'),
@@ -21,7 +21,10 @@ INSERT INTO users_roles
 VALUES	(1,1),
 		(1,2),
 		(2,2);
-
+        
+DROP TABLE IF EXISTS Users_Roles;
+DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS Role;
 
 
 CALL addHashPassword(1,'admin111');

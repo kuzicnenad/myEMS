@@ -7,7 +7,7 @@ CREATE TABLE User (
     name VARCHAR(50) NOT NULL,
     username VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    password VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     PRIMARY KEY CLUSTERED (id ASC),
     UNIQUE KEY (email)
 );
