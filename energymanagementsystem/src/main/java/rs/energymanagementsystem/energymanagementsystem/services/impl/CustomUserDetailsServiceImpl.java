@@ -68,11 +68,11 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
                         new UsernameNotFoundException("User not found with username or email: "+ usernameOrEmail));
 
         Set<GrantedAuthority> authorities = user
-                .getRoles()
+                .getRole()
                 .stream()
                 .map((role) -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toSet());
 
-        return new org.springframework.security.core.userdetails.User(user.getEmail(),
+        return new org.springframework.security.core.userdetails.User(user.getUsername(),
                 user.getPassword(),
                 authorities);
     }

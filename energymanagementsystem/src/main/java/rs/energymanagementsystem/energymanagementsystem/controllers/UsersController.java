@@ -51,7 +51,7 @@ public class UsersController {
     @DeleteMapping("/api/user/{id}")
     public ResponseEntity<String> deleteAlarmData(@PathVariable("id") Long id){
         customUserDetailsService.deleteUser(id);
-        return new ResponseEntity<String>("Alarm data deleted successfully!", HttpStatus.OK);
+        return new ResponseEntity<String>("User data deleted successfully!", HttpStatus.OK);
     }
 
 }

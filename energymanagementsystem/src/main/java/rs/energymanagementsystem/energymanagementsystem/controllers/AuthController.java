@@ -17,7 +17,6 @@ import rs.energymanagementsystem.energymanagementsystem.repositories.RoleReposit
 import rs.energymanagementsystem.energymanagementsystem.repositories.UserRepository;
 
 @RestController
-@RequestMapping("/api/auth")
 public class AuthController {
 
     @Autowired

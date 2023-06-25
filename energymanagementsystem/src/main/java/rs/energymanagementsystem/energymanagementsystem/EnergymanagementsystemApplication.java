@@ -42,7 +42,7 @@ public class EnergymanagementsystemApplication {
 		return "login";
 	}
 
-	@GetMapping("/index")
+	@GetMapping({"/","/index","home"})
 	public String showHomePage(){
 		return "index";
 	}

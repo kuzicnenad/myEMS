@@ -9,13 +9,18 @@ VALUES 	('Admin','Admin_FirstName','Admin_LastName','1'),
 		('User1','User1_FirstName','User1_LastName','3')
 ;
 
-INSERT INTO user(name, username, password)
-VALUES 	('Admin_1', 'Admin_1','admin'),
-		('User_1', 'User_1','user');
+INSERT INTO User( name, username, email, password)
+VALUES 	('Admin_1', 'Admin_1', 'admin_1@myems.com', 'admin'),
+		('User_1', 'User_1', 'user_1@myems.com', 'user');
         
-INSERT INTO role(name)
+INSERT INTO Role(name)
 VALUES	('ADMIN'),
 		('USER');
+        
+INSERT INTO users_roles
+VALUES	(1,1),
+		(1,2),
+		(2,2);
 
 
 

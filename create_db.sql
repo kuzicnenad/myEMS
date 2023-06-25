@@ -3,11 +3,13 @@ CREATE DATABASE myEMS;
 USE myEMS;
 	
 CREATE TABLE User (
-	id INT NOT NULL auto_increment,
+	id BIGINT NOT NULL auto_increment,
     name VARCHAR(50) NOT NULL,
     username VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT NULL,
-    PRIMARY KEY CLUSTERED (id ASC)
+    PRIMARY KEY CLUSTERED (id ASC),
+    UNIQUE KEY (email)
 );
 
 CREATE TABLE Passwords (
@@ -20,9 +22,16 @@ CREATE TABLE Passwords (
 );
 
 CREATE TABLE Role(
-	id INT NOT NULL auto_increment,
+	id BIGINT NOT NULL auto_increment,
     name VARCHAR(50) NOT NULL,
     PRIMARY KEY CLUSTERED (id ASC)
+);
+
+CREATE TABLE users_roles (
+  user_id BIGINT NOT NULL,
+  role_id BIGINT NOT NULL,
+  FOREIGN KEY (role_id) REFERENCES Role (id),
+  FOREIGN KEY (user_id) REFERENCES User (id)
 );
 
 /* Electricity (Electricity KWh), Water(t/h), Gas(t/h, total(t). preassure(KPa), Temperature(C) ---> table updated on consumption trigger or timing, keep records up to 48hours

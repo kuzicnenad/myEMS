@@ -41,6 +41,13 @@ public class SecurityConfig {
             "/images/**",
             "/image"
     };
+    public static final String LOGIN_URL = "/login";
+    public static final String LOGIN_PROCESSING_URL = "/login";
+    public static final String LOGOUT_URL = "/logout";
+    public static final String LOGIN_FAIL_URL = LOGIN_URL + "?error";
+    public static final String DEFAULT_SUCCESS_URL = "/index";
+    public static final String USERNAME = "username";
+    public static final String PASSWORD = "password";
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -48,7 +55,17 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorize) -> authorize
                         //authorize.anyRequest().authenticated()
                         .requestMatchers(staticResources).permitAll()
-                        .requestMatchers(HttpMethod.GET, "/login/**").permitAll()
+                        .requestMatchers(LOGIN_URL).permitAll()
+                        .requestMatchers(DEFAULT_SUCCESS_URL).hasAnyAuthority("USER","ADMIN")
+                        .requestMatchers("/**").hasAnyAuthority("USER","ADMIN")
+                        .requestMatchers("/api/**").hasAuthority("ADMIN")
+                        .anyRequest().authenticated()
+                )
+                .formLogin(form -> form
+                        .loginPage(LOGIN_URL)
+                        .loginProcessingUrl(LOGIN_PROCESSING_URL)
+                        .defaultSuccessUrl(DEFAULT_SUCCESS_URL)
+                        //.failureUrl("/login?error=true")
                 );
 
         return http.build();
