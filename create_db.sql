@@ -2,14 +2,12 @@ DROP DATABASE IF EXISTS myEMS;
 CREATE DATABASE myEMS;
 USE myEMS;
 	
-CREATE TABLE Users (
-	user_id INT NOT NULL auto_increment,
-    user_login VARCHAR(50) NOT NULL,
-    first_name VARCHAR(100) NOT NULL,
-    last_name VARCHAR(100) NOT NULL,
-    job_title INT,
-    time_stamp  TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY CLUSTERED (user_id ASC)
+CREATE TABLE User (
+	id INT NOT NULL auto_increment,
+    name VARCHAR(50) NOT NULL,
+    username VARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    PRIMARY KEY CLUSTERED (id ASC)
 );
 
 CREATE TABLE Passwords (
@@ -21,6 +19,11 @@ CREATE TABLE Passwords (
     FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+CREATE TABLE Role(
+	id INT NOT NULL auto_increment,
+    name VARCHAR(50) NOT NULL,
+    PRIMARY KEY CLUSTERED (id ASC)
+);
 
 /* Electricity (Electricity KWh), Water(t/h), Gas(t/h, total(t). preassure(KPa), Temperature(C) ---> table updated on consumption trigger or timing, keep records up to 48hours
 	Electricity consumption is updated every 60min,
@@ -83,7 +86,11 @@ CREATE TABLE Alarm_Data(
     PRIMARY KEY (alarm_id)
 );
 
+
+
 /* App Menu -> Home, Live Data, History Data, Print reports, Settings*/
+
+select consumption, date_format(end_time,'%H:%i') as timestamp from electricity_live_data ORDER BY live_data_id DESC LIMIT 5
 
 
 

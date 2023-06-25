@@ -6,8 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import rs.energymanagementsystem.energymanagementsystem.entities.UsersEntity;
-import rs.energymanagementsystem.energymanagementsystem.services.UsersService;
+import rs.energymanagementsystem.energymanagementsystem.entities.User;
+import rs.energymanagementsystem.energymanagementsystem.services.CustomUserDetailsService;
 
 import java.util.List;
 
@@ -15,18 +15,18 @@ import java.util.List;
 public class UsersController {
 
     @Autowired
-    private UsersService usersService;
+    private CustomUserDetailsService customUserDetailsService;
 
     // POST users REST API
     @PostMapping
-    public ResponseEntity<UsersEntity> saveAlarmData(@RequestBody UsersEntity usersEntity){
-        return new ResponseEntity<UsersEntity>(usersService.saveUser(usersEntity), HttpStatus.CREATED);
+    public ResponseEntity<User> saveAlarmData(@RequestBody User user){
+        return new ResponseEntity<User>(customUserDetailsService.saveUser(user), HttpStatus.CREATED);
     }
 
     // GET all users REST API
-    @GetMapping("/api/users")
+    @GetMapping("/api/user")
     public String getAllUsers(Model model){
-        List<UsersEntity> usersEntityList = usersService.getAllUsers();
+        List<User> usersEntityList = customUserDetailsService.getAllUsers();
         model.addAttribute("usersList", usersEntityList);
 
         return "index";
@@ -34,23 +34,23 @@ public class UsersController {
 
     // GET by ID user REST API
     // http://localhost:8080/api/users/user_id(number)
-    @GetMapping("/api/users/{user_id}")
-    public ResponseEntity<UsersEntity> getUserById(@PathVariable ("user_id") Integer user_id){
-        return new ResponseEntity<UsersEntity>(usersService.getUserById(user_id), HttpStatus.OK);
+    @GetMapping("/api/user/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable ("id") Long id){
+        return new ResponseEntity<User>(customUserDetailsService.getUserById(id), HttpStatus.OK);
     }
 
     // UPDATE by ID alarmData REST API
     // http://localhost:8080/api/alarmData/alarm_id(number)
-    @PutMapping("/api/users/{user_id}")
-    public ResponseEntity<UsersEntity> updateAlarmDate(@PathVariable ("user_id") Integer user_id
-            , @RequestBody UsersEntity usersEntity){
-        return new ResponseEntity<UsersEntity>(usersService.updateUsers(usersEntity, user_id), HttpStatus.OK);
+    @PutMapping("/api/user/{id}")
+    public ResponseEntity<User> updateAlarmDate(@PathVariable ("id") Long id
+            , @RequestBody User user){
+        return new ResponseEntity<User>(customUserDetailsService.updateUser(user, id), HttpStatus.OK);
     }
 
     // DELETE by ID alarmData REST API
-    @DeleteMapping("/api/users/{user_id}")
-    public ResponseEntity<String> deleteAlarmData(@PathVariable("user_id") Integer user_id){
-        usersService.deleteUser(user_id);
+    @DeleteMapping("/api/user/{id}")
+    public ResponseEntity<String> deleteAlarmData(@PathVariable("id") Long id){
+        customUserDetailsService.deleteUser(id);
         return new ResponseEntity<String>("Alarm data deleted successfully!", HttpStatus.OK);
     }
 

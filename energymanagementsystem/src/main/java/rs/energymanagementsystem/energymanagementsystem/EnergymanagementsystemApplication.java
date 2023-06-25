@@ -39,7 +39,7 @@ public class EnergymanagementsystemApplication {
 
 	@GetMapping("/login")
 	public String showLogInScreen(){
-		return "logInScreen";
+		return "login";
 	}
 
 	@GetMapping("/index")

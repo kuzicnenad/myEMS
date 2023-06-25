@@ -9,12 +9,24 @@ VALUES 	('Admin','Admin_FirstName','Admin_LastName','1'),
 		('User1','User1_FirstName','User1_LastName','3')
 ;
 
+INSERT INTO user(name, username, password)
+VALUES 	('Admin_1', 'Admin_1','admin'),
+		('User_1', 'User_1','user');
+        
+INSERT INTO role(name)
+VALUES	('ADMIN'),
+		('USER');
+
+
+
 CALL addHashPassword(1,'admin111');
 CALL addHashPassword(2,'user111');
 CALL addHashPassword(3,'user222');
 
 
-SELECT user_login as uname,first_name as Name,last_name Surname, u.time_stamp as userCreationDate, password_hash, p.time_stamp as psdAddDate FROM Users as u
+
+
+SELECT user_login as uname,first_name as Name,last_name as Surname, u.time_stamp as userCreationDate, password_hash, p.time_stamp as psdAddDate FROM Users as u
 INNER JOIN Passwords as p
 ON u.user_id = p.user_id;
 
