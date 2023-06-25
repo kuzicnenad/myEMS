@@ -42,7 +42,7 @@ public class SecurityConfig {
             "/image"
     };
     public static final String LOGIN_URL = "/login";
-    public static final String LOGIN_PROCESSING_URL = "/login";
+    public static final String SESSION_ID = "JSESSIONID";
     public static final String LOGOUT_URL = "/logout";
     public static final String LOGIN_FAIL_URL = LOGIN_URL + "?error";
     public static final String DEFAULT_SUCCESS_URL = "/index";
@@ -63,9 +63,14 @@ public class SecurityConfig {
                 )
                 .formLogin(form -> form
                         .loginPage(LOGIN_URL)
-                        .loginProcessingUrl(LOGIN_PROCESSING_URL)
                         .defaultSuccessUrl(DEFAULT_SUCCESS_URL)
-                        //.failureUrl("/login?error=true")
+                        .failureUrl(LOGIN_FAIL_URL)
+                )
+                .logout(logout -> logout
+                        .logoutUrl(LOGOUT_URL)
+                        .invalidateHttpSession(true)
+                        .deleteCookies(SESSION_ID)
+                        .logoutSuccessUrl(LOGIN_URL)
                 );
 
         return http.build();
