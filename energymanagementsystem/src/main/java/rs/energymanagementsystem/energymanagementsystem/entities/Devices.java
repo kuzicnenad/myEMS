@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -11,25 +12,28 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "alarm_data")
-public class AlarmData {
+@Table(name = "devices")
+public class Devices {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column
-    private Integer alarm_id;
+    private Integer device_id;
 
     @Column
-    private Integer alarm_code;
+    private String device_name;
 
     @Column
-    private String alarm_desc;
+    private String description;
 
     @Column
-    private Date time_stamp;
+    private Date production_date;
 
-    public Integer getAlarm_id() {
-        return alarm_id;
-    }
+    @Column
+    private String made_in;
+
+    @Column
+    private Date last_update;
+
 
 }

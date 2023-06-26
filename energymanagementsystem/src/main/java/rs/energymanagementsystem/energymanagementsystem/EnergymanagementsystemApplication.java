@@ -110,6 +110,11 @@ public class EnergymanagementsystemApplication {
 		return "settings";
 	}
 
+	@GetMapping({"/devices"})
+	public String showDevicesPage(){
+		return "devices";
+	}
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(EnergymanagementsystemApplication.class, args);
