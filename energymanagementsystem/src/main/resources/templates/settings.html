@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" content="text/html">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="EMS for monitoring consumption, giving live and history data and reports."/>
+    <meta name="keywords" content="Energy Management System, EMS, Energy"/>
+    <meta name="author" content="Kuzic Nenad" />
+    <meta name="copyright" content="Kuzic Nenad" />
+
+    <title>Energy Management System</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="indexPage">
+    <div class="allWrapper">
+        <menu> <!-- start navigation menu -->
+            <div class="logo">
+                <a href="/index">My E M S</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/liveData">Live data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/historyDataElectricity/1">History data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Analysis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reports</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Log out</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Footer -->
+            <footer id="main-footer">
+                <div class="footer-social">
+                    <ul> <!-- social network fa fa icons -->
+                        <li><a href="#"><i class="fa fa-google-plus-official"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linux"></i></a></li>
+                        <li><a href="#"><i class="fa fa-reddit"></i></a></li>
+                        <li><a href="#"><i class="fa fa-github"></i></a></li>
+                        <li><a href="#"><i class="fa fa-btc"></i></a></li>
+                    </ul>
+                </div> <!-- /footer-social fa fa -icons -->
+            </footer> <!-- /footer -->
+        </menu>
+        <!-- end menu-->
+
+        <main>
+            <div class="wrapSettingsItems">
+                <div class="settingsItems">
+                    <p>Devices</p>
+                </div>
+                <div class="settingsItems">
+                    <p>Administration</p>
+                </div>
+                <div class="settingsItems">
+                    <p>Preferences</p>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

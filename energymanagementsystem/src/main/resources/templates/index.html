@@ -37,7 +37,7 @@
                         <a class="nav-link" href="#">Reports</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Settings</a>
+                        <a class="nav-link" href="/settings">Settings</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">Log out</a>
@@ -74,36 +74,60 @@
                 </div>
 
                 <div class="indexMainRight">
-                    <div class="peakValues">
-                        <h2>Peak values</h2>
-                        <div class="dataItems">
-                            <p>Electricity</p>
-
+                    <section class="peakValues">
+                        <div class="section-data-wrapper">
+                            <table>
+                                <tbody>
+                                <tr th:each="gas_live_data : ${lastGasData}" class="dataItems">
+                                    <td th:inline="text" class="td-1">[[${gas_live_data.consumption}]] </td>
+                                    <td th:text="${#dates.format(gas_live_data.start_time, 'HH:mm')} +
+                        '-' + ${#dates.format(gas_live_data.end_time, 'HH:mm')}" class="td-2"></td>
+                                </tr>
+                                <tr th:each="gas_live_data : ${lastGasData}" class="dataItems">
+                                    <td th:inline="text" class="td-1">[[${gas_live_data.consumption}]] </td>
+                                    <td th:text="${#dates.format(gas_live_data.start_time, 'HH:mm')} +
+                        '-' + ${#dates.format(gas_live_data.end_time, 'HH:mm')}" class="td-2"></td>
+                                </tr>
+                                <tr th:each="gas_live_data : ${lastGasData}" class="dataItems">
+                                    <td th:inline="text" class="td-1">[[${gas_live_data.consumption}]] </td>
+                                    <td th:text="${#dates.format(gas_live_data.start_time, 'HH:mm')} +
+                        '-' + ${#dates.format(gas_live_data.end_time, 'HH:mm')}" class="td-2"></td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="dataItems">
-                            <p>Gas</p>
 
+                        <div class="sectionText">
+                            <p>Peak values</p>
                         </div>
-                        <div class="dataItems">
-                            <p>Water</p>
+                    </section>
+                    <section class="previousDayValues">
+                        <div class="section-data-wrapper">
+                            <table>
+                                <tbody>
+                                <tr th:each="gas_live_data : ${lastGasData}" class="dataItems">
+                                    <td th:inline="text" class="td-1">[[${gas_live_data.consumption}]] </td>
+                                    <td th:text="${#dates.format(gas_live_data.start_time, 'HH:mm')} +
+                        '-' + ${#dates.format(gas_live_data.end_time, 'HH:mm')}" class="td-2"></td>
+                                </tr>
+                                <tr th:each="gas_live_data : ${lastGasData}" class="dataItems">
+                                    <td th:inline="text" class="td-1">[[${gas_live_data.consumption}]] </td>
+                                    <td th:text="${#dates.format(gas_live_data.start_time, 'HH:mm')} +
+                        '-' + ${#dates.format(gas_live_data.end_time, 'HH:mm')}" class="td-2"></td>
+                                </tr>
+                                <tr th:each="gas_live_data : ${lastGasData}" class="dataItems">
+                                    <td th:inline="text" class="td-1">[[${gas_live_data.consumption}]] </td>
+                                    <td th:text="${#dates.format(gas_live_data.start_time, 'HH:mm')} +
+                        '-' + ${#dates.format(gas_live_data.end_time, 'HH:mm')}" class="td-2"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
+                        <div class="sectionText">
+                            <p>Previous day values</p>
                         </div>
-                    </div>
-                    <div class="previousDayValues">
-                        <h2>Previous Day Values</h2>
-                        <div class="dataItems">
-                            <p>Electricity</p>
-
-                        </div>
-                        <div class="dataItems">
-                            <p>Gas</p>
-
-                        </div>
-                        <div class="dataItems">
-                            <p>Water</p>
-
-                        </div>
-                    </div>
+                    </section>
                 </div>
             </div>
         </main>

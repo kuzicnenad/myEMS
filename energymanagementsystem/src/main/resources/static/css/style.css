@@ -410,7 +410,34 @@ section{
 	padding-left: 25px;
 	padding-bottom: 15px;
 }
+/* END FOOTER
+------------------------------------------------------------------- */
 
+
+/* SETTINGS specific styles
+------------------------------------------------------------------- */
+.wrapSettingsItems{
+    margin: 100px auto;
+    max-width: 1280px;
+    height: auto;
+    display: inline-flex;
+    height: auto;
+}
+
+.settingsItems{
+    width: 250px;
+    background-color: rgba(31, 111, 118, 0.4);
+    padding: 45px;
+    margin-left: 50px;
+}
+.settingsItems p{
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* END SETTINGS
+------------------------------------------------------------------- */
 
 
 

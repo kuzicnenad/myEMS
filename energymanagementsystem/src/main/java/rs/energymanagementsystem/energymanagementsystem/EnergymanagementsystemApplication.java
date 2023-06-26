@@ -42,7 +42,7 @@ public class EnergymanagementsystemApplication {
 		return "login";
 	}
 
-	@GetMapping({"/","/index","home"})
+	@GetMapping({"/","/index","/home"})
 	public String showHomePage(){
 		return "index";
 	}
@@ -104,6 +104,12 @@ public class EnergymanagementsystemApplication {
 
 		return "historyDataWater";
 	}
+
+	@GetMapping({"/settings"})
+	public String showSettingsPage(){
+		return "settings";
+	}
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(EnergymanagementsystemApplication.class, args);
