@@ -96,6 +96,19 @@ CREATE TABLE Alarm_Data(
 );
 
 
+/* Devices in system */
+CREATE TABLE Devices(
+	device_id INT NOT NULL AUTO_INCREMENT,
+    device_name VARCHAR (100) NOT NULL,
+    description VARCHAR(255),
+    production_date DATE NOT NULL,
+    made_in VARCHAR (50) NOT NULL,
+    last_update  DATETIME NULL DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    PRIMARY KEY (device_id)
+);
+
+
+drop table if exists Devices;
 
 /* App Menu -> Home, Live Data, History Data, Print reports, Settings*/
 
