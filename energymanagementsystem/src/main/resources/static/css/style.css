@@ -24,6 +24,47 @@ body {
     background: #0a1f2b;
 }
 
+.wrapIndexItems{
+    margin: 100px auto;
+    max-width: 1280px;
+    height: auto;
+    display: inline-flex;
+    height: auto;
+}
+
+.indexMainLeft{
+    display: inline-block;
+    height: auto;
+    margin-left: 100px;
+}
+
+.indexMainRight{
+    display: inline-flex;
+    margin-left: 100px;
+}
+
+.deviceStatus, .alarmEventStatus{
+    width: auto;
+    width: 350px;
+    height: 340px;
+    background-color: rgba(31, 111, 118, 0.4);
+}
+
+.alarmEventStatus{
+    margin-top: 20px;
+}
+
+.peakValues, .previousDayValues {
+    width: auto;
+    width: 350px;
+    height: 700px;
+    background: #063146;
+    background-color: rgba(31, 111, 118, 0.4);
+}
+.peakValues .dataItems{
+}
+
+
 .liveDataPage{
     background: #0a1f2b;
 }
