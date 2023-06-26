@@ -37,6 +37,9 @@ public class EnergymanagementsystemApplication {
 	@Autowired
 	private WaterHistoryDataService waterHistoryDataService;
 
+	@Autowired
+	private DevicesService devicesService;
+
 	@GetMapping("/login")
 	public String showLogInScreen(){
 		return "login";
@@ -110,8 +113,12 @@ public class EnergymanagementsystemApplication {
 		return "settings";
 	}
 
-	@GetMapping({"/devices"})
-	public String showDevicesPage(){
+
+	@GetMapping("/devices")
+	public String getDevices(Model model){
+		List<Devices> devicesList = devicesService.getAllDevices();
+		model.addAttribute("devicesList", devicesList);
+
 		return "devices";
 	}
 

@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/style.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body class="indexPage">
+<body class="devicesPage">
     <div class="allWrapper">
         <menu> <!-- start navigation menu -->
             <div class="logo">
@@ -61,7 +61,47 @@
         <!-- end menu-->
 
         <main>
+            <section class="deviceSection">
+                <h2>Available devices</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th><th>Device</th><th>Description</th><th>Produced date</th><th>Made in</th><th>Last update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="devices : ${devicesList}" >
+                            <td th:inline="text" class="td-devices">[[${devices.device_id}]] </td>
+                            <td th:inline="text" class="td-devices">[[${devices.device_name}]] </td>
+                            <td th:inline="text" class="td-devices">[[${devices.description}]] </td>
+                            <td th:text="${#dates.format(devices.production_date, 'dd-MM-yyyy')}"> </td>
+                            <td th:inline="text" class="td-devices">[[${devices.made_in}]] </td>
+                            <td th:text="${#dates.format(devices.last_update, 'dd-MM-yyyy HH:mm')}"> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
 
+            <section class="deviceSection">
+                <h2>Active devices</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th><th>Device</th><th>Description</th><th>Produced date</th><th>Made in</th><th>Last update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="devices : ${devicesList}" >
+                            <td th:inline="text" class="td-devices">[[${devices.device_id}]] </td>
+                            <td th:inline="text" class="td-devices">[[${devices.device_name}]] </td>
+                            <td th:inline="text" class="td-devices">[[${devices.description}]] </td>
+                            <td th:text="${#dates.format(devices.production_date, 'dd-MM-yyyy')}"> </td>
+                            <td th:inline="text" class="td-devices">[[${devices.made_in}]] </td>
+                            <td th:text="${#dates.format(devices.last_update, 'dd-MM-yyyy HH:mm')}"> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
 
         </main>
     </div>

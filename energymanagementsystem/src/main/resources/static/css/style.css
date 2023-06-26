@@ -438,6 +438,54 @@ section{
     color: #f2f2f2;
 }
 
+/* Devices */
+.devicesPage{
+    background: #0a1f2b;
+}
+
+.devicesPage main{
+    margin: 0 auto;
+    padding: 0;
+    height: auto;
+    width: 100%;
+    display: inline-flex;
+}
+
+.deviceSection {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 100px;
+}
+
+.td-devices, .deviceSection tr{
+    height: auto;
+    width: auto;
+    text-align: left;
+    font-size: 14px;
+    background-color: rgba(20, 80, 85, 0.7);
+}
+
+table{
+	width: 100%;
+	max-width: 1280px;
+	padding-bottom: 1em;
+}
+
+table tbody td{
+	font-size: 12px;
+	padding: .5em;
+}
+
+table thead{
+	font-weight: bolder;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+	font-size: 14px;
+}
+
+
 /* END SETTINGS
 ------------------------------------------------------------------- */
 
