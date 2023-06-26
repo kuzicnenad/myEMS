@@ -16,7 +16,7 @@ public class AlarmDataController {
 
     public AlarmDataController(AlarmDataService alarmDataService){
         super();
-        this.alarmDataService= alarmDataService;
+        this.alarmDataService = alarmDataService;
     }
 
     // POST alarmData REST API
