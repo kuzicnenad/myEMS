@@ -430,10 +430,12 @@ section{
     padding: 45px;
     margin-left: 50px;
 }
-.settingsItems p{
+.settingsItems a{
     font-weight: bold;
     letter-spacing: 2px;
     text-transform: uppercase;
+    text-decoration: none;
+    color: #f2f2f2;
 }
 
 /* END SETTINGS
