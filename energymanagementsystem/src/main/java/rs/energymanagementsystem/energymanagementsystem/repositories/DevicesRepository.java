@@ -14,7 +14,7 @@ public interface DevicesRepository extends JpaRepository<Devices, Integer> {
 
     @Transactional
     @Modifying(clearAutomatically = true)
-    @Query(value = "UPDATE devices d SET d.active_flag = IF(active_flag=1, 0, 1) WHERE d.device_id = :device_id",
+    @Query(value = "UPDATE devices d SET d.active_flag = IF(active_flag=1, 0, 1), d.last_update = CURRENT_TIMESTAMP WHERE d.device_id = :device_id",
             nativeQuery = true)
     void deviceActiveFlag(@Param("device_id") Integer device_id);
 
