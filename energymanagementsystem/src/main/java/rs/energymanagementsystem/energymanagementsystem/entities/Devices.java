@@ -34,6 +34,7 @@ public class Devices {
     private String made_in;
 
     @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date last_update;
 
 

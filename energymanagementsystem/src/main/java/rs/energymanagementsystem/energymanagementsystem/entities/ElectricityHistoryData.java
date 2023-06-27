@@ -22,9 +22,9 @@ public class ElectricityHistoryData {
     @Column
     private Integer electricity_consumption;
 
-    @DateTimeFormat
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column
-    Date date;
+    private Date date;
 
 
 }

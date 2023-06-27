@@ -25,9 +25,9 @@ public class Passwords {
     @Column
     private String password_hash;
 
-    @DateTimeFormat
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column
-    Date time_stamp;
+    private Date time_stamp;
 
 
 }

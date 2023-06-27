@@ -22,9 +22,9 @@ public class WaterHistoryData {
     @Column
     private Integer water_consumption;
 
-    @DateTimeFormat
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column
-    Date date;
+    private Date date;
 
 
 }

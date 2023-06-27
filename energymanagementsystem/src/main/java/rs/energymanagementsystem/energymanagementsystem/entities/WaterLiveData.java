@@ -25,12 +25,12 @@ public class WaterLiveData {
     @Column
     private String fault_detected;
 
-    @DateTimeFormat
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column
-    Date start_time;
+    private Date start_time;
 
-    @DateTimeFormat
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column
-    Date end_time;
+    private Date end_time;
 
 }
