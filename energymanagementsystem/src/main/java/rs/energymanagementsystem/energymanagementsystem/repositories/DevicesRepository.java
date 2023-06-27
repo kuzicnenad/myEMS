@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import rs.energymanagementsystem.energymanagementsystem.entities.Devices;
+import rs.energymanagementsystem.energymanagementsystem.entities.GasLiveData;
 
 import java.util.List;
 
@@ -18,6 +19,9 @@ public interface DevicesRepository extends JpaRepository<Devices, Integer> {
     void deviceActiveFlag(@Param("device_id") Integer device_id);
 
 
+    @Query(value = "SELECT * FROM devices WHERE active_flag = 1",
+            nativeQuery = true)
+    public List<Devices> getActiveDevices();
 }
 
 

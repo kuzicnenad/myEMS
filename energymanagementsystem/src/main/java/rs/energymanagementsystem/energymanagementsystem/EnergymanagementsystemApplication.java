@@ -122,6 +122,9 @@ public class EnergymanagementsystemApplication {
 		List<Devices> devicesList = devicesService.getAllDevices();
 		model.addAttribute("devicesList", devicesList);
 
+		List<Devices> activeDevicesList = devicesService.getActiveDevices();
+		model.addAttribute("activeDevicesList", activeDevicesList);
+
 		return "devices";
 	}
 

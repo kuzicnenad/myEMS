@@ -85,5 +85,8 @@ public class DevicesServiceimpl implements DevicesService {
         devicesRepository.deviceActiveFlag(device_id);
     }
 
-
+    @Override
+    public List<Devices> getActiveDevices() {
+        return devicesRepository.getActiveDevices();
+    }
 }

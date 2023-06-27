@@ -96,7 +96,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="devices : ${devicesList}" >
+                        <tr th:each="devices : ${activeDevicesList}" >
                             <td th:inline="text" class="td-devices">[[${devices.device_id}]] </td>
                             <td th:inline="text" class="td-devices">[[${devices.device_name}]] </td>
                             <td th:inline="text" class="td-devices">[[${devices.description}]] </td>

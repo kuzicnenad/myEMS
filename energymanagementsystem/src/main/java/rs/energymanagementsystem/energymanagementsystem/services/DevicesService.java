@@ -19,4 +19,6 @@ public interface DevicesService {
     void deleteDevice(Integer device_id);
 
     void  deviceActiveFlag(Integer device_id);
+
+    List<Devices> getActiveDevices();
 }
