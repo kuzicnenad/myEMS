@@ -104,7 +104,7 @@ CREATE TABLE Devices(
     production_date DATE NOT NULL,
     made_in VARCHAR (50) NOT NULL,
     last_update DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    active_flag BOOL NOT NULL,
+    active_flag BOOL NOT NULL DEFAULT 0,
     PRIMARY KEY (device_id)
 );
 

@@ -483,6 +483,7 @@ section{
 	font-size: 14px;
 	padding: .2em;
 	text-align: left;
+	max-width: 20ch;
 }
 
 .deviceSection table thead{

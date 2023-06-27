@@ -39,7 +39,14 @@ public class Devices {
     @UpdateTimestamp
     private Date last_update;
 
-    @Column
+    @Column(name = "active_flag", columnDefinition = "varchar(20) default '0'")
     private Boolean active_flag;
 
 }
+
+
+/** NASTAVI SA LINKOM SA STACKOVERFLOW
+ * TREBA DA ISPRAVIM ZASTO MI ACTIVE_FLAG NIJE DEFAULT PREKO THYMELEAFE
+ * KAKO RAZUMEM, PROBLEM JE THYMELEAFE, SA NATIVE QUERY NA REPO BI RADILO
+ * DA POGLEDAM DA LI MOGU DA ZAMENIM THYMELEAFE BAR ZA NESTO NA NATIVE QUERY
+ * **/

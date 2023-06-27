@@ -67,12 +67,11 @@
                 <table id="availableDeviceTable">
                     <thead>
                         <tr>
-                            <th>Id</th><th>Device</th><th>Description</th><th>Produced date</th><th>Made in</th><th>Last change</th><th>Action</th>
+                            <th>Device</th><th>Description</th><th>Produced date</th><th>Made in</th><th>Last change</th><th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="devices : ${devicesList}" >
-                            <td th:inline="text" class="td-devices">[[${devices.device_id}]] </td>
                             <td th:inline="text" class="td-devices">[[${devices.device_name}]] </td>
                             <td th:inline="text" class="td-devices">[[${devices.description}]] </td>
                             <td th:text="${#dates.format(devices.production_date, 'dd-MM-yyyy')}"> </td>
@@ -98,14 +97,12 @@
                 <table id="activeDeviceTable">
                     <thead>
                         <tr>
-                            <th>Id</th><th>Device</th><th>Description</th><th>Produced date</th><th>Made in</th><th>Activated</th>
+                            <th>Device</th><th>Produced date</th><th>Made in</th><th>Activated</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="devices : ${activeDevicesList}" >
-                            <td th:inline="text" class="td-devices">[[${devices.device_id}]] </td>
                             <td th:inline="text" class="td-devices">[[${devices.device_name}]] </td>
-                            <td th:inline="text" class="td-devices">[[${devices.description}]] </td>
                             <td th:text="${#dates.format(devices.production_date, 'dd-MM-yyyy')}"> </td>
                             <td th:inline="text" class="td-devices">[[${devices.made_in}]] </td>
                             <td th:text="${#dates.format(devices.last_update, 'dd-MM-yyyy HH:mm')}"> </td>

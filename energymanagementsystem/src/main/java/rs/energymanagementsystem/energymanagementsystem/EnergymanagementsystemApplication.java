@@ -135,6 +135,14 @@ public class EnergymanagementsystemApplication {
 		return "redirect:/devices";
 	}
 
+	@GetMapping("/newDeviceForm")
+	public String addNewDeviceForm(Model model){
+		// Create model attribute to bind form data
+		Devices device = new Devices();
+		model.addAttribute("device", device);
+		return "newDevice";
+	}
+
 	@GetMapping("/deviceUpdateForm/{device_id}")
 	public String deviceUpdateForm(@PathVariable(value = "device_id") Integer device_id, Model model) {
 
