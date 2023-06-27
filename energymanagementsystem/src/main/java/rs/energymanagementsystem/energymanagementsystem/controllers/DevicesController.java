@@ -29,20 +29,20 @@ public class DevicesController {
         return new ResponseEntity<Devices>(devicesService.saveDevice(devices), HttpStatus.CREATED);
     }
 
-    // GET all alarmData REST API
+    // GET all device REST API
     @GetMapping
     public List<Devices> getAllDevices(){
         return devicesService.getAllDevices();
     }
 
-    // GET by ID alarmData REST API
+    // GET by ID device REST API
     // http://localhost:8080/api/devices/device_id(number)
     @GetMapping("{device_id}")
     public ResponseEntity<Devices> getDeviceById(@PathVariable ("device_id") Integer device_id){
         return new ResponseEntity<Devices>(devicesService.getDeviceById(device_id), HttpStatus.OK);
     }
 
-    // UPDATE by ID alarmData REST API
+    // UPDATE by ID device REST API
     // http://localhost:8080/api/device/device_id(number)
     @PutMapping("{device_id}")
     public ResponseEntity<Devices> updateDevice(@PathVariable ("device_id") Integer device_id
@@ -50,7 +50,7 @@ public class DevicesController {
         return new ResponseEntity<Devices>(devicesService.updateDevice(devices, device_id), HttpStatus.OK);
     }
 
-    // DELETE by ID alarmData REST API
+    // DELETE by ID device REST API
     @DeleteMapping("{device_id}")
     public ResponseEntity<String> deleteDevice(@PathVariable("device_id") Integer device_id){
         devicesService.deleteDevice(device_id);

@@ -76,7 +76,11 @@
                             <td th:inline="text" class="td-devices">[[${devices.description}]] </td>
                             <td th:text="${#dates.format(devices.production_date, 'dd-MM-yyyy')}"> </td>
                             <td th:inline="text" class="td-devices">[[${devices.made_in}]] </td>
-                            <td th:text="${#dates.format(devices.last_update, 'dd-MM-yyyy HH:mm')}"> </td>
+                            <td th:text="${#dates.format(devices.last_update, 'dd-MM-yyyy HH:mm')}"></td>
+                            <td>
+                                <a th:href="@{/deviceUpdateForm/{device_id}(device_id=${devices.device_id})}">Upd</a>
+                                <a th:href="@{/deleteDevice/{device_id}(device_id=${devices.device_id})}">Del</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

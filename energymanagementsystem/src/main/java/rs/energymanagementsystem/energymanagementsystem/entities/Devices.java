@@ -27,6 +27,7 @@ public class Devices {
     private String description;
 
     @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date production_date;
 
     @Column

@@ -1,15 +1,13 @@
 package rs.energymanagementsystem.energymanagementsystem.services.impl;
 
 import org.springframework.stereotype.Service;
-import rs.energymanagementsystem.energymanagementsystem.entities.AlarmData;
 import rs.energymanagementsystem.energymanagementsystem.entities.Devices;
 import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
-import rs.energymanagementsystem.energymanagementsystem.repositories.AlarmDataRepository;
 import rs.energymanagementsystem.energymanagementsystem.repositories.DevicesRepository;
-import rs.energymanagementsystem.energymanagementsystem.services.AlarmDataService;
 import rs.energymanagementsystem.energymanagementsystem.services.DevicesService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DevicesServiceimpl implements DevicesService {
@@ -20,6 +18,13 @@ public class DevicesServiceimpl implements DevicesService {
         this.devicesRepository = devicesRepository;
     }
 
+    /** Used for application database update via html form **/
+    @Override
+    public Devices saveDeviceViaForm(Devices devices) {
+        return devicesRepository.save(devices);
+    }
+
+    /** Used for database update via API **/
     @Override
     public Devices saveDevice(Devices devices) {
         return devicesRepository.save(devices);
@@ -35,6 +40,7 @@ public class DevicesServiceimpl implements DevicesService {
                 new ResourceNotFoundException("Device", "device_id", device_id));
     }
 
+    /** Used for database update via API **/
     @Override
     public Devices updateDevice(Devices devices, Integer device_id) {
         // check if device_id exists in database
@@ -48,6 +54,19 @@ public class DevicesServiceimpl implements DevicesService {
         // save existing device to DB
         devicesRepository.save(devices);
         return existingDevice;
+    }
+    /** Used for application database update via html form **/
+    @Override
+    public Devices updateDeviceById(Integer device_id) {
+        Optional< Devices > optional = devicesRepository.findById(device_id);
+        Devices devices = null;
+        if (optional.isPresent()) {
+            devices = optional.get();
+        } else {
+            return devicesRepository.findById(device_id).orElseThrow(() ->
+                    new ResourceNotFoundException("Device", "device_id", device_id));
+        }
+        return devices;
     }
 
     @Override

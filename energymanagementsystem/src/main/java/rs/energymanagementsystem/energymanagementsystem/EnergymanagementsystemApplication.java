@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.*;
 import rs.energymanagementsystem.energymanagementsystem.services.*;
 
@@ -120,6 +121,33 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("devicesList", devicesList);
 
 		return "devices";
+	}
+
+	@PostMapping("/saveDeviceViaForm")
+	public String saveDeviceViaForm(@ModelAttribute("devices") Devices device){
+		// save device to database
+		devicesService.saveDevice(device);
+		return "redirect:/devices";
+	}
+
+	@GetMapping("/deviceUpdateForm/{device_id}")
+	public String deviceUpdateForm(@PathVariable(value = "device_id") Integer device_id, Model model) {
+
+		// get device from the service
+		Devices devices = devicesService.getDeviceById(device_id);
+
+		// set device as a model attribute to pre-populate the form
+		model.addAttribute("devices", devices);
+
+		return "updateDevice";
+	}
+
+	@GetMapping("/deleteDevice/{device_id}")
+	public String deleteDevice(@PathVariable(value = "device_id") Integer device_id) {
+
+		// call delete employee method
+		this.devicesService.deleteDevice(device_id);
+		return "redirect:/devices";
 	}
 
 

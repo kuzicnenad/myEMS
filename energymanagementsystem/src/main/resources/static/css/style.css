@@ -430,9 +430,15 @@ section{
     padding: 45px;
     margin-left: 50px;
 }
-.settingsItems a{
+
+.settingsItems:hover{
+    background-color: rgba(31, 111, 118, 0.7);
+    cursor: pointer;
+}
+
+.wrapSettingsItems a{
     font-weight: bold;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     text-decoration: none;
     color: #f2f2f2;
@@ -462,23 +468,22 @@ section{
 .td-devices, .deviceSection tr{
     height: auto;
     width: auto;
-    text-align: left;
     font-size: 14px;
     background-color: rgba(20, 80, 85, 0.7);
 }
 
-table{
+.deviceSection table{
 	width: 100%;
 	max-width: 1280px;
 	padding-bottom: 1em;
 }
 
-table tbody td{
+.deviceSection table tbody td{
 	font-size: 12px;
 	padding: .5em;
 }
 
-table thead{
+.deviceSection table thead{
 	font-weight: bolder;
 	text-transform: uppercase;
 	letter-spacing: .2em;
