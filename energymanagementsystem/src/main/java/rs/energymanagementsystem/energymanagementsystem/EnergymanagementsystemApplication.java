@@ -1,5 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -149,6 +150,12 @@ public class EnergymanagementsystemApplication {
 
 		// call delete employee method
 		this.devicesService.deleteDevice(device_id);
+		return "redirect:/devices";
+	}
+
+	@GetMapping("/toggleFlag/{device_id}")
+	public String deviceActiveFlag(@PathVariable(value = "device_id") Integer device_id){
+		devicesService.deviceActiveFlag(device_id);
 		return "redirect:/devices";
 	}
 

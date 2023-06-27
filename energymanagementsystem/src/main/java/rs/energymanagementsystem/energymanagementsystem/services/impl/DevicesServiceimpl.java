@@ -76,4 +76,14 @@ public class DevicesServiceimpl implements DevicesService {
                 new ResourceNotFoundException("Device", "device_id", device_id));
         devicesRepository.deleteById(device_id);
     }
+
+    @Override
+    public void deviceActiveFlag(Integer device_id) {
+        // check if device exists in database
+        devicesRepository.findById(device_id).orElseThrow(() ->
+                new ResourceNotFoundException("Device", "device_id", device_id));
+        devicesRepository.deviceActiveFlag(device_id);
+    }
+
+
 }

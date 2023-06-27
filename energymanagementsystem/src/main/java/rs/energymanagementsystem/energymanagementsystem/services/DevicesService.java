@@ -17,4 +17,6 @@ public interface DevicesService {
     Devices updateDevice(Devices devices, Integer device_id);
 
     void deleteDevice(Integer device_id);
+
+    void  deviceActiveFlag(Integer device_id);
 }

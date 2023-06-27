@@ -39,4 +39,7 @@ public class Devices {
     @UpdateTimestamp
     private Date last_update;
 
+    @Column
+    private Boolean active_flag;
+
 }
