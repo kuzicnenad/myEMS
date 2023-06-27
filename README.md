@@ -6,7 +6,7 @@ First version include:
 2. "Live" and History data monitoring
 3. Java spring security for user log in and log out
 4. Authorisation roles
-5. User creation (BCrypted)
+5. User management and creation (BCrypted password)
 6. Basic operation tests via Postman
 7. Manage devices
 
