@@ -32,6 +32,9 @@
 
       <input type="text" th:field="*{made_in}">
 
+      <!-- Hidden active_flag field to handle update requests -->
+      <input type="hidden" th:field="*{active_flag}">
+
       <button type="submit" th:field="*{device_id}">Update device</button>
 
     </form>
