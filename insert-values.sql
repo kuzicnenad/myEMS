@@ -24,24 +24,13 @@ VALUES	(1,1),
 
 
 /* ---------- Generate devices ---------- */
-INSERT INTO Devices(device_name, production_date, made_in)
-VALUES	('device_one','2017-11-20','Serbia'),
-		('device_two','2014-09-22','Germany'),
-		('device_three','2022-05-11','Germany'),
-		('device_four','2021-12-10','Serbia'),
-		('device_five','2022-07-05','Croatia'),
-		('device_six','2009-04-09','Slovenia');
-
-CREATE TABLE Devices(
-	device_id INT NOT NULL AUTO_INCREMENT,
-    device_name VARCHAR (100),
-    description VARCHAR(255),
-    production_date DATETIME,
-    made_in VARCHAR (50),
-    time_stamp  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (device_id)
-);
-
+INSERT INTO Devices(device_name, production_date, made_in, active_flag)
+VALUES	('device_one','2017-11-20','Serbia', 1),
+		('device_two','2014-09-22','Germany', 0),
+		('device_three','2022-05-11','Germany', 1),
+		('device_four','2021-12-10','Serbia', 0),
+		('device_five','2022-07-05','Croatia', 1),
+		('device_six','2009-04-09','Slovenia', 1);
 
 
 CALL addHashPassword(1,'admin111');

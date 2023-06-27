@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.*;
 import rs.energymanagementsystem.energymanagementsystem.services.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -124,7 +125,7 @@ public class EnergymanagementsystemApplication {
 	}
 
 	@PostMapping("/saveDeviceViaForm")
-	public String saveDeviceViaForm(@ModelAttribute("devices") Devices device){
+	public String saveDeviceViaForm(@ModelAttribute(value = "devices") Devices device){
 		// save device to database
 		devicesService.saveDevice(device);
 		return "redirect:/devices";
@@ -138,6 +139,7 @@ public class EnergymanagementsystemApplication {
 
 		// set device as a model attribute to pre-populate the form
 		model.addAttribute("devices", devices);
+		model.addAttribute("localDateTime", LocalDateTime.now());
 
 		return "updateDevice";
 	}
