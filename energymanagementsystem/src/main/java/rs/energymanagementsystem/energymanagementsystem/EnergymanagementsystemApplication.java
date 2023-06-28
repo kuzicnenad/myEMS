@@ -1,5 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -45,12 +46,20 @@ public class EnergymanagementsystemApplication {
 		return "login";
 	}
 
+	/**
+	 * For nav style active class is switched with thymeleaf and HttpServletRequest
+	 * Active class is changed based on link provided with mapping methods
+	 * **/
 	@GetMapping({"/","/index","/home"})
-	public String showHomePage(){
+	public String showHomePage(HttpServletRequest request, Model model){
+
+		/* Navigation active class object */
+		model.addAttribute("request", request);
+
 		return "index";
 	}
 	@GetMapping("/liveData")
-	public String getLastData(Model model){
+	public String getLastData(HttpServletRequest request, Model model){
 		List<ElectricityLiveData> lastElectricityData = electricityLiveDataService.getLastData();
 		model.addAttribute("lastElectricityData", lastElectricityData);
 
@@ -60,11 +69,14 @@ public class EnergymanagementsystemApplication {
 		List<WaterLiveData> lastWaterData = waterLiveDataService.getLastData();
 		model.addAttribute("lastWaterData", lastWaterData);
 
+		/* Navigation active class object */
+		model.addAttribute("request", request);
+
 		return "liveData";
 	}
 
 	@GetMapping("/historyDataElectricity/{pageNo}")
-	public String getHistoryData(@PathVariable(value = "pageNo") int pageNo, Model model){
+	public String getHistoryData(HttpServletRequest request, @PathVariable(value = "pageNo") int pageNo, Model model){
 		int pageSize = 36;
 
 		Page<ElectricityHistoryData> page = electricityHistoryDataService.getHistoryDataElectricity(pageNo, pageSize);
@@ -75,11 +87,14 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("totalItems", page.getTotalElements());
 		model.addAttribute("listElectricityHistory", listElectricityHistory);
 
+		/* Navigation active class object */
+		model.addAttribute("request", request);
+
 		return "historyDataElectricity";
 	}
 
 	@GetMapping("/historyDataGas/{pageNo}")
-	public String getHistoryDataGas(@PathVariable(value = "pageNo") int pageNo, Model model){
+	public String getHistoryDataGas(HttpServletRequest request, @PathVariable(value = "pageNo") int pageNo, Model model){
 		int pageSize = 36;
 
 		Page<GasHistoryData> page = gasHistoryDataService.getHistoryDataGas(pageNo, pageSize);
@@ -90,11 +105,14 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("totalItems", page.getTotalElements());
 		model.addAttribute("listGasHistory", listGasHistory);
 
+		/* Navigation active class object */
+		model.addAttribute("request", request);
+
 		return "historyDataGas";
 	}
 
 	@GetMapping("/historyDataWater/{pageNo}")
-	public String getHistoryDataWater(@PathVariable(value = "pageNo") int pageNo, Model model){
+	public String getHistoryDataWater(HttpServletRequest request, @PathVariable(value = "pageNo") int pageNo, Model model){
 		int pageSize = 36;
 
 		Page<WaterHistoryData> page = waterHistoryDataService.getHistoryDataWater(pageNo, pageSize);
@@ -105,22 +123,32 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("totalItems", page.getTotalElements());
 		model.addAttribute("listWaterHistory", listWaterHistory);
 
+		/* Navigation active class object */
+		model.addAttribute("request", request);
+
 		return "historyDataWater";
 	}
 
 	@GetMapping({"/settings"})
-	public String showSettingsPage(){
+	public String showSettingsPage(HttpServletRequest request, Model model){
+
+		/* Navigation active class object */
+		model.addAttribute("request", request);
+
 		return "settings";
 	}
 
 
 	@GetMapping("/devices")
-	public String getDevices(Model model){
+	public String getDevices(HttpServletRequest request, Model model){
 		List<Devices> devicesList = devicesService.getAllDevices();
 		model.addAttribute("devicesList", devicesList);
 
 		List<Devices> activeDevicesList = devicesService.getActiveDevices();
 		model.addAttribute("activeDevicesList", activeDevicesList);
+
+		/* Navigation active class object */
+		model.addAttribute("request", request);
 
 		return "devices";
 	}

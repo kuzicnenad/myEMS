@@ -19,31 +19,9 @@
             <div class="logo">
                 <a href="/index">My E M S</a>
             </div>
-            <nav>
-                <ul>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/liveData">Live data</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/historyDataElectricity/1">History data</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Analysis</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Reports</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/settings">Settings</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">Log out</a>
-                    </li>
-                </ul>
-            </nav>
+
+            <!-- Navigation -->
+            <div th:insert="~{nav :: nav}"></div>
 
             <!-- Footer -->
             <div th:insert="~{footer :: footer}"></div>
