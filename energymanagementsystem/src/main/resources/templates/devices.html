@@ -62,8 +62,12 @@
 
         <main>
             <section class="deviceSection deviceAvailableSection">
-                <h2>Available devices</h2>
-                <a th:href="@{/newDeviceForm}"><i class="fa fa-pencil">Add new device</i></a>
+                <div class="devicesHeader">
+                    <h2>Available devices</h2>
+                    <div class="addNewRecord">
+                        <a th:href="@{/newDeviceForm}"><i class="fa fa-pencil">Add new device</i></a>
+                    </div>
+                </div>
                 <table id="availableDeviceTable">
                     <thead>
                         <tr>
@@ -74,9 +78,9 @@
                         <tr th:each="devices : ${devicesList}" >
                             <td th:inline="text" class="td-devices">[[${devices.device_name}]] </td>
                             <td th:inline="text" class="td-devices">[[${devices.description}]] </td>
-                            <td th:text="${#dates.format(devices.production_date, 'dd-MM-yyyy')}"> </td>
+                            <td th:text="${#dates.format(devices.production_date, 'dd-MM-yyyy')}" class="td-devices"> </td>
                             <td th:inline="text" class="td-devices">[[${devices.made_in}]] </td>
-                            <td th:text="${#dates.format(devices.last_update, 'dd-MM-yyyy HH:mm')}"></td>
+                            <td th:text="${#dates.format(devices.last_update, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
                             <td>
                                 <a th:href="@{/deviceUpdateForm/{device_id}(device_id=${devices.device_id})}">
                                     <i class="fa fa-pencil"></i></a>
@@ -93,7 +97,9 @@
             </section>
 
             <section class="deviceSection deviceActiveSection">
-                <h2>Active devices</h2>
+                <div class="devicesHeader">
+                    <h2>Available devices</h2>
+                </div>
                 <table id="activeDeviceTable">
                     <thead>
                         <tr>
