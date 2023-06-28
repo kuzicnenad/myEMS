@@ -15,7 +15,7 @@
     <li class="nav-item">
       <a class="nav-link" href="#">Reports</a>
     </li>
-    <li class="nav-item" th:class="${request.getRequestURI() == '/settings' ? 'nav-item active' : 'nav-item'}">
+    <li class="nav-item" th:class="${#strings.startsWith(request.getRequestURI(), '/settings') || #strings.startsWith(request.getRequestURI(), '/devices') ? 'nav-item active' : 'nav-item'}">
       <a class="nav-link" href="/settings">Settings</a>
     </li>
     <li class="nav-item" th:class="${request.getRequestURI() == '/logout' ? 'nav-item active' : 'nav-item'}">
