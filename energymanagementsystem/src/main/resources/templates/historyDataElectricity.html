@@ -21,10 +21,10 @@
             </div>
 
             <!-- Navigation -->
-            <div th:insert="~{nav :: nav}"></div>
+            <nav th:replace="~{nav :: nav}"></nav>
 
             <!-- Footer -->
-            <div th:insert="~{footer :: footer}"></div>
+            <footer th:replace="~{footer :: footer}"></footer>
         </menu>
         <!-- end menu-->
 
@@ -71,7 +71,6 @@
 
                     <!-- Nav panel -->
                     <div th:insert="~{historyNavPanel :: historyNavPanel}"></div>
-                    </nav>
 
                     <table>
                         <tbody>
