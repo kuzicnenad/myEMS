@@ -29,7 +29,7 @@
 
       <input type="text" th:field="*{made_in}">
 
-      <input type="text" th:field="*{active_flag}">
+      <input type="hidden" th:field="*{active_flag}" th:value="true"> <!-- Assign default -->
 
       <button type="submit">Add device</button>
 

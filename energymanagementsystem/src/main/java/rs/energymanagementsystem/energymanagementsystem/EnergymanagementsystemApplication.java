@@ -130,7 +130,15 @@ public class EnergymanagementsystemApplication {
 
 	@PostMapping("/saveDeviceViaForm")
 	public String saveDeviceViaForm(@ModelAttribute(value = "devices") Devices device){
-		// save device to database
+		//Assign default value for active_flag
+		if(device.getActive_flag() == null){
+			device.setActive_flag(false); // default value set to false (same as in SQL)
+		}
+
+		if(device.getDescription() == null || device.getDescription() == ""){
+			device.setDescription("missing description entry"); // autofill message
+		}
+		// save device to database repository
 		devicesService.saveDevice(device);
 		return "redirect:/devices";
 	}
