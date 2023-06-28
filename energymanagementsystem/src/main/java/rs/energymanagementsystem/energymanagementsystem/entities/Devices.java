@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -40,14 +39,7 @@ public class Devices {
     @UpdateTimestamp
     private Date last_update;
 
-    @Column(name = "active_flag", columnDefinition = "varchar(20) default '0'")
+    @Column(name = "active_flag")
     private Boolean active_flag;
 
 }
-
-
-/** NASTAVI SA LINKOM SA STACKOVERFLOW
- * TREBA DA ISPRAVIM ZASTO MI ACTIVE_FLAG NIJE DEFAULT PREKO THYMELEAFE
- * KAKO RAZUMEM, PROBLEM JE THYMELEAFE, SA NATIVE QUERY NA REPO BI RADILO
- * DA POGLEDAM DA LI MOGU DA ZAMENIM THYMELEAFE BAR ZA NESTO NA NATIVE QUERY
- * **/

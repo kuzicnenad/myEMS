@@ -21,13 +21,16 @@
 
     <form action="#" th:action="@{/saveDeviceViaForm}" th:object="${device}" method="POST">
 
-      <input type="text" th:field="*{device_name}">
+      <input type="text" th:field="*{device_name}"
+             pattern="[a-zA-ZÀ-ž ]{2,20}" title="Only characters are allowed and length must be between 2 and 20 characters." required>
 
-      <input type="text" th:field="*{description}">
+      <input type="text" th:field="*{description}" th:value="true"
+             pattern="[a-zA-ZÀ-ž ]{5,50}" title="Only characters are allowed and length must be between 5 and 50 characters.">
 
-      <input type="date" th:field="*{production_date}">
+      <input type="date" th:field="*{production_date}" required>
 
-      <input type="text" th:field="*{made_in}">
+      <input type="text" th:field="*{made_in}"
+             pattern="[a-zA-ZÀ-ž ]{2,20}" title="Only characters are allowed and length must be between 2 and 20 characters." required>
 
       <input type="hidden" th:field="*{active_flag}" th:value="true"> <!-- Assign default -->
 
