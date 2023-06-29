@@ -70,7 +70,7 @@
                 <div class="sectionDataWrapper">
 
                     <!-- Nav panel -->
-                    <div th:replace="~{navPanelHist :: navPanelHist}"></div>
+                    <div th:replace="fragments/historyNavPanel :: nav"></div>
 
 
                     <table>
@@ -109,7 +109,7 @@
                             </div>
 
                             <div class="paginationItems">
-                                <a th:if="${currentPage < totalPages}" th:href="@{'/historyDataElectricity/' + ${totalPages}}">Last</a>
+                                <a th:if="${currentPage < totalPages}" th:href="@{'/historyDataGas/' + ${totalPages}}">Last</a>
                                 <span th:unless="${currentPage < totalPages}">Last</span>
                             </div>
                         </div>
