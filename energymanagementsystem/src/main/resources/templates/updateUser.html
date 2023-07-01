@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" content="text/html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="EMS for monitoring consumption, giving live and history data and reports."/>
+  <meta name="keywords" content="Energy Management System, EMS, Energy"/>
+  <meta name="author" content="Kuzic Nenad" />
+  <meta name="copyright" content="Kuzic Nenad" />
+
+  <title>Energy Management System</title>
+
+  <link rel="stylesheet" type="text/css" href="/css/logIn.css" th:href="@{/css/style.css}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <main>
+    <h1>Energy Management System</h1>
+    <hr>
+    <h2>Update User</h2>
+
+    <form action="#" th:action="@{/saveUserViaForm}" th:object="${user}" method="POST">
+
+      <!-- Hidden ID field to handle update requests -->
+      <input type="hidden" th:field="*{id}">
+
+      <input type="text" th:field="*{name}"
+             pattern="[a-zA-ZÀ-ž ]{2,20}" title="Only characters are allowed and length must be between 2 and 20 characters." required>
+
+      <input type="text" th:field="*{username}" th:value="true"
+             pattern="[a-zA-ZÀ-ž ]{5,50}" title="Only characters are allowed and length must be between 5 and 50 characters." required>
+
+      <input type="email" th:field="*{email}" th:value="true" required>
+
+      <input type="password" th:field="*{password}" th:value="true" required>
+
+      <button type="submit" th:field="*{id}">Update user</button>
+
+    </form>
+
+    <hr>
+
+    <a th:href="@{/users}">Back</a>
+  </main>
+</body>
+</html>

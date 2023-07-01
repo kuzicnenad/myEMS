@@ -2,12 +2,8 @@ package rs.energymanagementsystem.energymanagementsystem.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.Devices;
-import rs.energymanagementsystem.energymanagementsystem.entities.ElectricityLiveData;
-import rs.energymanagementsystem.energymanagementsystem.entities.GasLiveData;
-import rs.energymanagementsystem.energymanagementsystem.entities.WaterLiveData;
 import rs.energymanagementsystem.energymanagementsystem.services.DevicesService;
 
 import java.util.List;

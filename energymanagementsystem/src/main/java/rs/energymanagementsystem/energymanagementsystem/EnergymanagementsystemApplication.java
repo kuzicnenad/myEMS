@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.domain.Page;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +41,9 @@ public class EnergymanagementsystemApplication {
 
 	@Autowired
 	private DevicesService devicesService;
+
+	@Autowired
+	private CustomUserDetailsService usersService;
 
 	@GetMapping("/login")
 	public String showLogInScreen(){
@@ -139,6 +143,12 @@ public class EnergymanagementsystemApplication {
 	}
 
 
+	/**
+	 * Devices managements section
+	 * This part of controller manages basic device CRUD operations
+	 * This is an additional control over the API controls that
+	 * are available under controllers package
+	 * **/
 	@GetMapping("/devices")
 	public String getDevices(HttpServletRequest request, Model model){
 		List<Devices> devicesList = devicesService.getAllDevices();
@@ -192,7 +202,7 @@ public class EnergymanagementsystemApplication {
 	@GetMapping("/deleteDevice/{device_id}")
 	public String deleteDevice(@PathVariable(value = "device_id") Integer device_id) {
 
-		// call delete employee method
+		// call delete device method
 		this.devicesService.deleteDevice(device_id);
 		return "redirect:/devices";
 	}
@@ -201,6 +211,57 @@ public class EnergymanagementsystemApplication {
 	public String deviceActiveFlag(@PathVariable(value = "device_id") Integer device_id){
 		devicesService.deviceActiveFlag(device_id);
 		return "redirect:/devices";
+	}
+
+	/**
+	 * Users managements section
+	 * This part of controller manages basic user CRUD operations
+	 * This is an additional control over the API controls that
+	 * are available under controllers package
+	 * **/
+	@GetMapping("/users")
+	public String getUsers(HttpServletRequest request, Model model){
+		List<User> usersList = usersService.getAllUsers();
+		model.addAttribute("usersList", usersList);
+
+		/* Navigation active class object */
+		model.addAttribute("request", request);
+
+		return "users";
+	}
+
+	@PostMapping("/saveUserViaForm")
+	public String saveUserViaForm(@ModelAttribute(value = "user") User user){
+		// save user to database repository
+		usersService.saveUser(user);
+		return "redirect:/users";
+	}
+
+	@GetMapping("/newUserForm")
+	public String addNewUserForm(Model model){
+		// Create model attribute to bind form data
+		User user = new User();
+		model.addAttribute("user", user);
+		return "newUser";
+	}
+
+	@GetMapping("/userUpdateForm/{id}")
+	public String userUpdateForm(@PathVariable(value = "id") Long id, Model model) {
+
+		// get device from the service
+		User user = usersService.getUserById(id);
+
+		// set device as a model attribute to pre-populate the form
+		model.addAttribute("user", user);
+		return "updateUser";
+	}
+
+	@GetMapping("/deleteUser/{id}")
+	public String deleteUser(@PathVariable(value = "id") Long id) {
+
+		// call delete user method
+		this.usersService.deleteUser(id);
+		return "redirect:/users";
 	}
 
 

@@ -17,30 +17,27 @@
   <main>
     <h1>Energy Management System</h1>
     <hr>
-    <h2>Add Device</h2>
+    <h2>Add User</h2>
 
-    <form action="#" th:action="@{/saveDeviceViaForm}" th:object="${device}" method="POST">
+    <form action="#" th:action="@{/saveUserViaForm}" th:object="${user}" method="POST">
 
-      <input type="text" th:field="*{device_name}"
+      <input type="text" th:field="*{name}"
              pattern="[a-zA-ZÀ-ž ]{2,20}" title="Only characters are allowed and length must be between 2 and 20 characters." required>
 
-      <input type="text" th:field="*{description}" th:value="true"
-             pattern="[a-zA-ZÀ-ž ]{5,50}" title="Only characters are allowed and length must be between 5 and 50 characters.">
+      <input type="text" th:field="*{username}" th:value="true"
+             pattern="[a-zA-ZÀ-ž ]{5,50}" title="Only characters are allowed and length must be between 5 and 50 characters." required>
 
-      <input type="date" th:field="*{production_date}" required>
+      <input type="email" th:field="*{email}" th:value="true" required>
 
-      <input type="text" th:field="*{made_in}"
-             pattern="[a-zA-ZÀ-ž ]{2,20}" title="Only characters are allowed and length must be between 2 and 20 characters." required>
+      <input type="password" th:field="*{password}" th:value="true" required>
 
-      <input type="hidden" th:field="*{active_flag}" th:value="true"> <!-- Assign default -->
-
-      <button type="submit">Add device</button>
+      <button type="submit">Add user</button>
 
     </form>
 
     <hr>
 
-    <a th:href="@{/devices}">Back</a>
+    <a th:href="@{/users}">Back</a>
   </main>
 </body>
 </html>

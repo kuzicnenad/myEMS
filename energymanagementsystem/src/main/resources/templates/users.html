@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" content="text/html">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="EMS for monitoring consumption, giving live and history data and reports."/>
+    <meta name="keywords" content="Energy Management System, EMS, Energy"/>
+    <meta name="author" content="Kuzic Nenad" />
+    <meta name="copyright" content="Kuzic Nenad" />
+
+    <title>Energy Management System</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/logIn.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="devicesPage">
+    <div class="allWrapper">
+        <menu> <!-- start navigation menu -->
+            <div class="logo">
+                <a href="/index">My E M S</a>
+            </div>
+
+            <!-- Navigation -->
+            <nav th:replace="~{fragments/nav :: nav}"></nav>
+
+            <!-- Footer -->
+            <footer th:replace="~{fragments/footer :: footer}"></footer>
+        </menu>
+        <!-- end menu-->
+
+        <main>
+            <section class="userSection">
+                <div class="userHeader">
+                    <h2>Users list</h2>
+                    <div class="addNewRecord">
+                        <a th:href="@{/newUserForm}"><i class="fa fa-pencil">Add new user</i></a>
+                    </div>
+                </div>
+                <table id="availableDeviceTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th><th>Username</th><th>email</th><th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="user : ${usersList}" >
+                            <td th:inline="text" class="td-devices">[[${user.name}]] </td>
+                            <td th:inline="text" class="td-devices">[[${user.username}]] </td>
+                            <td th:inline="text" class="td-devices">[[${user.email}]] </td>
+                            <td>
+                                <a th:href="@{/userUpdateForm/{id}(id=${user.id})}">
+                                    <i class="fa fa-pencil"></i></a>
+                                <a th:href="@{/deleteUser/{id}(id=${user.id})}">
+                                    <i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+        </main>
+    </div>
+</body>
+</html>
