@@ -1,7 +1,7 @@
 <nav>
   <ul>
     <li class="nav-item active" th:class="${request.getRequestURI() == '/index' ? 'nav-item active' : 'nav-item'}">
-      <a class="nav-link" href="/index">Home <i><small>(TBD)</small></i></a>
+      <a class="nav-link" href="/index">Home (TBD)</a>
     </li>
     <li class="nav-item" th:class="${request.getRequestURI() == '/liveData' ? 'nav-item active' : 'nav-item'}">
       <a class="nav-link" href="/liveData">Live data</a>
@@ -10,10 +10,10 @@
       <a class="nav-link" href="/historyDataElectricity/1">History data</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Analysis <i><small>(TBD)</small></i></a>
+      <a class="nav-link" href="#">Analysis (TBD)</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Reports <i><small>(TBD)</small></i></a>
+      <a class="nav-link" href="#">Reports (TBD)</a>
     </li>
     <li class="nav-item" th:class="${#strings.startsWith(request.getRequestURI(), '/settings') || #strings.startsWith(request.getRequestURI(), '/devices') ? 'nav-item active' : 'nav-item'}">
       <a class="nav-link" href="/settings">Settings</a>
