@@ -259,16 +259,26 @@ section{
 }
 .historyNavPanel ul li{
 	background: #063146;
-    margin: 1px;
-    padding: 0;
+    margin: 2px;
+    padding: 0px;
     display: inline-block;
     letter-spacing: 2px;
 	line-height: 30px;
+    border-radius: 10px 100px / 120px 100px;
+
+	-webkit-transition: .3s;
+       -moz-transition: .3s;
+    	 -o-transition: .3s;
+    	    transition: .3s;
+}
+
+.historyNavPanel ul li:hover{
+    background-color: rgba(6, 49, 70, 0.4);
 }
 
 .historyNavPanel a{
     text-decoration: none;
-    margin: 10px;
+    padding: 10px;
 	color: #f2f2f2;
 }
 
@@ -277,11 +287,6 @@ section{
 	box-shadow: 5px -0px 5px 0px rgba(0,0,0,0.9) inset;
     -webkit-box-shadow: 5px -0px 5px 0px rgba(0,0,0,0.9) inset;
     -moz-box-shadow: 5px -0px 5px 0px rgba(0,0,0,0.9) inset;
-
-	-webkit-transition: .3s;
-       -moz-transition: .3s;
-    	 -o-transition: .3s;
-    	    transition: .3s;
 }
 
 .historyActive a{
