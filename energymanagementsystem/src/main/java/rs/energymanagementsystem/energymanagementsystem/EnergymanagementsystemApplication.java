@@ -6,7 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.domain.Page;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +20,20 @@ import java.util.List;
 @EnableMethodSecurity(securedEnabled = true)
 public class EnergymanagementsystemApplication {
 
+	/** ---------------------------------------------------------------------------------------
+	 * Main Application Controller
+	 * Necessary for managing application business logic with separate APIs.
+	 * ---------------------------------------------------------------------------------------
+	 * Loading services for:
+	 * Electricity Live Data
+	 * Electricity History Data
+	 * Gas Live Data
+	 * Gas History Data
+	 * Water Live Data
+	 * Water History Data
+	 * Devices
+	 * Users
+	 * --------------------------------------------------------------------------------------- **/
 	@Autowired
 	private ElectricityLiveDataService electricityLiveDataService;
 
@@ -50,10 +63,10 @@ public class EnergymanagementsystemApplication {
 		return "login";
 	}
 
-	/**
+	/** ---------------------------------------------------------------------------------------
 	 * For nav style active class is switched with thymeleaf and HttpServletRequest
-	 * Active class is changed based on link provided with mapping methods
-	 * **/
+	 * Active class is changed based on URI provided with mapping API methods
+	 * --------------------------------------------------------------------------------------- **/
 	@GetMapping({"/","/index","/home"})
 	public String showHomePage(HttpServletRequest request, Model model){
 
@@ -62,6 +75,12 @@ public class EnergymanagementsystemApplication {
 
 		return "index";
 	}
+
+	/** ---------------------------------------------------------------------------------------
+	 * Live Data page
+	 * Electricity, Water, Gas
+	 * Idea is to update database more realistic values in future.
+	 * --------------------------------------------------------------------------------------- **/
 	@GetMapping("/liveData")
 	public String getLastData(HttpServletRequest request, Model model){
 		List<ElectricityLiveData> lastElectricityData = electricityLiveDataService.getLastData();
@@ -79,6 +98,12 @@ public class EnergymanagementsystemApplication {
 		return "liveData";
 	}
 
+	/** ---------------------------------------------------------------------------------------
+	 * History Data pages displayed in order:
+	 * 	- Electricity
+	 * 	- Gas
+	 * 	- Water
+	 * --------------------------------------------------------------------------------------- **/
 	@GetMapping("/historyDataElectricity/{pageNo}")
 	public String getHistoryData(HttpServletRequest request, @PathVariable(value = "pageNo") int pageNo, Model model){
 		int pageSize = 36;
@@ -133,6 +158,10 @@ public class EnergymanagementsystemApplication {
 		return "historyDataWater";
 	}
 
+
+	/** ---------------------------------------------------------------------------------------
+	 * Settings page
+	 * --------------------------------------------------------------------------------------- **/
 	@GetMapping({"/settings"})
 	public String showSettingsPage(HttpServletRequest request, Model model){
 
@@ -143,12 +172,12 @@ public class EnergymanagementsystemApplication {
 	}
 
 
-	/**
+	/** ---------------------------------------------------------------------------------------
 	 * Devices managements section
 	 * This part of controller manages basic device CRUD operations
 	 * This is an additional control over the API controls that
 	 * are available under controllers package
-	 * **/
+	 * --------------------------------------------------------------------------------------- **/
 	@GetMapping("/devices")
 	public String getDevices(HttpServletRequest request, Model model){
 		List<Devices> devicesList = devicesService.getAllDevices();
@@ -213,12 +242,12 @@ public class EnergymanagementsystemApplication {
 		return "redirect:/devices";
 	}
 
-	/**
+	/** ---------------------------------------------------------------------------------------
 	 * Users managements section
 	 * This part of controller manages basic user CRUD operations
 	 * This is an additional control over the API controls that
 	 * are available under controllers package
-	 * **/
+	 * --------------------------------------------------------------------------------------- **/
 	@GetMapping("/users")
 	public String getUsers(HttpServletRequest request, Model model){
 		List<User> usersList = usersService.getAllUsers();
@@ -265,6 +294,9 @@ public class EnergymanagementsystemApplication {
 	}
 
 
+	/** ---------------------------------------------------------------------------------------
+	 * Standard main class
+	 * --------------------------------------------------------------------------------------- **/
 	public static void main(String[] args) {
 		SpringApplication.run(EnergymanagementsystemApplication.class, args);
 	}
