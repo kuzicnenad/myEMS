@@ -30,8 +30,8 @@ CREATE TABLE Role(
 CREATE TABLE users_roles (
   user_id BIGINT NOT NULL,
   role_id BIGINT NOT NULL,
-  FOREIGN KEY (role_id) REFERENCES Role (id),
-  FOREIGN KEY (user_id) REFERENCES User (id)
+  FOREIGN KEY (role_id) REFERENCES Role (id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES User (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /* Electricity (Electricity KWh), Water(t/h), Gas(t/h, total(t). preassure(KPa), Temperature(C) ---> table updated on consumption trigger or timing, keep records up to 48hours
@@ -109,11 +109,15 @@ CREATE TABLE Devices(
 );
 
 
-drop table if exists Devices;
+drop table if exists users_roles;
+drop table if exists role;
 
 /* App Menu -> Home, Live Data, History Data, Print reports, Settings*/
 
-select consumption, date_format(end_time,'%H:%i') as timestamp from electricity_live_data ORDER BY live_data_id DESC LIMIT 5
+select consumption, date_format(end_time,'%H:%i') as timestamp from electricity_live_data ORDER BY live_data_id DESC LIMIT 5;
+
+
+
 
 
 
