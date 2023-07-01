@@ -449,15 +449,15 @@ section{
     color: #f2f2f2;
 }
 
-/* Devices */
-.devicesHeader{
+/* Devices, Users, Preferences */
+.settingsSectionHeader{
     display: inline-block;
     width: 100%;
 	font-size: 1.2em;
 	border-bottom: 1px solid #f2f2f2;
 }
 
-.devicesHeader h2{
+.settingsSectionHeader h2{
     float: left;
 }
 
@@ -484,11 +484,11 @@ section{
     background-color: rgba(20, 80, 85, 0.9);
 }
 
-.devicesPage{
+.devicesPage, .usersPage{
     background: #0a1f2b;
 }
 
-.devicesPage main{
+.devicesPage main, .usersPage main{
     margin: 0 auto;
     padding: 0;
     height: auto;
@@ -496,7 +496,7 @@ section{
     display: inline-flex;
 }
 
-.deviceSection {
+.deviceSection, .userSection {
     display: block;
     font-size: 12px;
     font-weight: bold;
@@ -504,7 +504,7 @@ section{
     margin-top: 100px;
 }
 
-.td-devices, .deviceSection tr{
+.td-devices, .deviceSection tr, .userSection tr{
     height: auto;
     line-height: 25px;
     width: auto;
@@ -512,7 +512,7 @@ section{
     background-color: rgba(20, 80, 85, 0.7);
 }
 
-.deviceSection table{
+.deviceSection table, userSection table{
 	width: 100%;
 	max-width: 1280px;
 	padding-bottom: 1em;
@@ -525,7 +525,14 @@ section{
 	max-width: 20ch;
 }
 
-.deviceSection table thead{
+..userSection table tbody td{
+	font-size: 14px;
+	padding: .2em;
+	text-align: left;
+	max-width: 50ch;
+}
+
+.deviceSection table thead, userSection table thead{
 	font-weight: bolder;
 	text-transform: uppercase;
 	letter-spacing: .2em;
@@ -542,7 +549,7 @@ section{
     margin-left: -30px;
 }
 
-#availableDeviceTable a, .devicesHeader a{
+#availableDeviceTable a, .settingsSectionHeader a, #availableUsersTable a{
 	text-decoration: none;
 	color: #f2f2f2;
 	outline: none;
@@ -554,7 +561,7 @@ section{
     	    transition: .5s;
 }
 
-#availableDeviceTable a:hover, .devicesHeader a:hover{
+#availableDeviceTable a:hover, .settingsSectionHeader a:hover, #availableUsersTable a:hover{
 	color: #BE6125;
 }
 

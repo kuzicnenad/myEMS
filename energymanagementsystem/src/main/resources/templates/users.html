@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/css/logIn.css" th:href="@{/css/style.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body class="devicesPage">
+<body class="usersPage">
     <div class="allWrapper">
         <menu> <!-- start navigation menu -->
             <div class="logo">
@@ -30,13 +30,13 @@
 
         <main>
             <section class="userSection">
-                <div class="userHeader">
+                <div class="settingsSectionHeader">
                     <h2>Users list</h2>
                     <div class="addNewRecord">
                         <a th:href="@{/newUserForm}"><i class="fa fa-pencil">Add new user</i></a>
                     </div>
                 </div>
-                <table id="availableDeviceTable">
+                <table id="availableUsersTable">
                     <thead>
                         <tr>
                             <th>Name</th><th>Username</th><th>email</th><th>Actions</th>
