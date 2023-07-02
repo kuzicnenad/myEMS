@@ -350,6 +350,11 @@ section{
     border-radius: 5px;
 	line-height: 35px;
     background-color: #063146;
+
+	-webkit-transition: .5s;
+       -moz-transition: .5s;
+    	 -o-transition: .5s;
+    	    transition: .5s;
 }
 
 .paginationItems a, .paginationItems span{
@@ -563,6 +568,13 @@ section{
 
 #availableDeviceTable a:hover, .settingsSectionHeader a:hover, #availableUsersTable a:hover{
 	color: #BE6125;
+}
+
+.backToSettingsm {
+	-webkit-transition: .5s;
+       -moz-transition: .5s;
+    	 -o-transition: .5s;
+    	    transition: .5s;
 }
 
 /* END SETTINGS
