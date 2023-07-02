@@ -554,10 +554,6 @@ section{
 	margin: 2px;
 }
 
-.deviceAvailableSection{
-    border-right: 2px solid #063146;
-}
-
 .deviceActiveSection{
     padding-left: 0;
 }
