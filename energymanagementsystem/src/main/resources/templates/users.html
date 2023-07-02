@@ -29,39 +29,41 @@
         <!-- end menu-->
 
         <main>
-            <section class="userSection">
-                <div class="settingsSectionHeader">
-                    <h2>Users list</h2>
-                    <div class="addNewRecord">
-                        <a th:href="@{/newUserForm}"><i class="fa fa-pencil">Add new user</i></a>
+            <div class="contentDataWrapper">
+                <section class="userSection">
+                    <div class="settingsSectionHeader">
+                        <h2>Users list</h2>
+                        <div class="addNewRecord">
+                            <a th:href="@{/newUserForm}"><i class="fa fa-pencil">Add new user</i></a>
+                        </div>
                     </div>
-                </div>
-                <table id="availableUsersTable">
-                    <thead>
-                        <tr>
-                            <th>Name</th><th>Username</th><th>Email</th><th>Creation date</th><th>Last change</th><th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="user : ${usersList}" >
-                            <td th:inline="text" class="td-devices">[[${user.name}]] </td>
-                            <td th:inline="text" class="td-devices">[[${user.username}]] </td>
-                            <td th:inline="text" class="td-devices">[[${user.email}]] </td>
-                            <td th:text="${#dates.format(user.creation_date, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
-                            <td th:text="${#dates.format(user.last_update, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
-                            <td>
-                                <a th:href="@{/userUpdateForm/{id}(id=${user.id})}">
-                                    <i class="fa fa-pencil"></i></a>
-                                <a th:href="@{/deleteUser/{id}(id=${user.id})}">
-                                    <i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="backToSettings paginationItems">
-                    <a th:href="@{/settings}">Back</a>
-                </div>
-            </section>
+                    <table id="availableUsersTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th><th>Username</th><th>Email</th><th>Creation date</th><th>Last change</th><th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="user : ${usersList}" >
+                                <td th:inline="text" class="td-devices">[[${user.name}]] </td>
+                                <td th:inline="text" class="td-devices">[[${user.username}]] </td>
+                                <td th:inline="text" class="td-devices">[[${user.email}]] </td>
+                                <td th:text="${#dates.format(user.creation_date, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
+                                <td th:text="${#dates.format(user.last_update, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
+                                <td>
+                                    <a th:href="@{/userUpdateForm/{id}(id=${user.id})}">
+                                        <i class="fa fa-pencil"></i></a>
+                                    <a th:href="@{/deleteUser/{id}(id=${user.id})}">
+                                        <i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="backToSettings paginationItems">
+                        <a th:href="@{/settings}">Back</a>
+                    </div>
+                </section>
+            </div>
         </main>
     </div>
 </body>

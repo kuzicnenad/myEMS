@@ -29,64 +29,66 @@
         <!-- end menu-->
 
         <main>
-            <section class="deviceSection deviceAvailableSection">
-                <div class="settingsSectionHeader">
-                    <h2>Available devices</h2>
-                    <div class="addNewRecord">
-                        <a th:href="@{/newDeviceForm}"><i class="fa fa-pencil">Add new device</i></a>
+            <div class="contentDataWrapper">
+                <section class="deviceSection deviceAvailableSection">
+                    <div class="settingsSectionHeader">
+                        <h2>Available devices</h2>
+                        <div class="addNewRecord">
+                            <a th:href="@{/newDeviceForm}"><i class="fa fa-pencil">Add new device</i></a>
+                        </div>
                     </div>
-                </div>
-                <table id="availableDeviceTable">
-                    <thead>
-                        <tr>
-                            <th>Device</th><th>Description</th><th>Produced date</th><th>Made in</th><th>Last change</th><th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="devices : ${devicesList}" >
-                            <td th:inline="text" class="td-devices">[[${devices.device_name}]] </td>
-                            <td th:inline="text" class="td-devices">[[${devices.description}]] </td>
-                            <td th:text="${#dates.format(devices.production_date, 'dd-MM-yyyy')}" class="td-devices"> </td>
-                            <td th:inline="text" class="td-devices">[[${devices.made_in}]] </td>
-                            <td th:text="${#dates.format(devices.last_update, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
-                            <td>
-                                <a th:href="@{/deviceUpdateForm/{device_id}(device_id=${devices.device_id})}">
-                                    <i class="fa fa-pencil"></i></a>
-                                <a th:href="@{/deleteDevice/{device_id}(device_id=${devices.device_id})}">
-                                    <i class="fa fa-trash"></i></a>
-                                <a th:href="@{/toggleFlag/{device_id}(device_id=${devices.device_id})}">
-                                    <i th:if="${devices.active_flag}" class="fa fa-circle" style="color: #21BF73"></i>
-                                    <i th:unless="${devices.active_flag}" class="fa fa-circle" style="color: #FF1700"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="backToSettings paginationItems">
-                    <a th:href="@{/settings}">Back</a>
-                </div>
-            </section>
+                    <table id="availableDeviceTable">
+                        <thead>
+                            <tr>
+                                <th>Device</th><th>Description</th><th>Produced date</th><th>Made in</th><th>Last change</th><th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="devices : ${devicesList}" >
+                                <td th:inline="text" class="td-devices">[[${devices.device_name}]] </td>
+                                <td th:inline="text" class="td-devices">[[${devices.description}]] </td>
+                                <td th:text="${#dates.format(devices.production_date, 'dd-MM-yyyy')}" class="td-devices"> </td>
+                                <td th:inline="text" class="td-devices">[[${devices.made_in}]] </td>
+                                <td th:text="${#dates.format(devices.last_update, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
+                                <td>
+                                    <a th:href="@{/deviceUpdateForm/{device_id}(device_id=${devices.device_id})}">
+                                        <i class="fa fa-pencil"></i></a>
+                                    <a th:href="@{/deleteDevice/{device_id}(device_id=${devices.device_id})}">
+                                        <i class="fa fa-trash"></i></a>
+                                    <a th:href="@{/toggleFlag/{device_id}(device_id=${devices.device_id})}">
+                                        <i th:if="${devices.active_flag}" class="fa fa-circle" style="color: #21BF73"></i>
+                                        <i th:unless="${devices.active_flag}" class="fa fa-circle" style="color: #FF1700"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="backToSettings paginationItems">
+                        <a th:href="@{/settings}">Back</a>
+                    </div>
+                </section>
 
-            <section class="deviceSection deviceActiveSection">
-                <div class="devicesHeader">
-                    <h2>Active devices</h2>
-                </div>
-                <table id="activeDeviceTable">
-                    <thead>
-                        <tr>
-                            <th>Device</th><th>Produced date</th><th>Made in</th><th>Activated</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="devices : ${activeDevicesList}" >
-                            <td th:inline="text" class="td-devices">[[${devices.device_name}]] </td>
-                            <td th:text="${#dates.format(devices.production_date, 'dd-MM-yyyy')}"> </td>
-                            <td th:inline="text" class="td-devices">[[${devices.made_in}]] </td>
-                            <td th:text="${#dates.format(devices.last_update, 'dd-MM-yyyy HH:mm')}"> </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+                <section class="deviceSection deviceActiveSection">
+                    <div class="devicesHeader">
+                        <h2>Active devices</h2>
+                    </div>
+                    <table id="activeDeviceTable">
+                        <thead>
+                            <tr>
+                                <th>Device</th><th>Produced date</th><th>Made in</th><th>Activated</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="devices : ${activeDevicesList}" >
+                                <td th:inline="text" class="td-devices">[[${devices.device_name}]] </td>
+                                <td th:text="${#dates.format(devices.production_date, 'dd-MM-yyyy')}"> </td>
+                                <td th:inline="text" class="td-devices">[[${devices.made_in}]] </td>
+                                <td th:text="${#dates.format(devices.last_update, 'dd-MM-yyyy HH:mm')}"> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
         </main>
     </div>
 </body>

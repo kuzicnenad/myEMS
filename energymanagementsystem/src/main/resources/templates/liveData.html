@@ -38,62 +38,63 @@
             <p id="alarmText">Alarm<i class="fa fa-bell"></i></p>
         </div>
 
-         <!-- Section Electricity Data -->
-         <section>
-             <div class="section-data-wrapper">
-                 <table>
-                     <tbody>
-                     <tr th:each="electricity_live_data : ${lastElectricityData}" class="dataItems">
-                         <td th:inline="text" class="td-1">[[${electricity_live_data.consumption}]] </td>
-                         <td th:text="${#dates.format(electricity_live_data.start_time, 'HH:mm')} +
-                    '-' + ${#dates.format(electricity_live_data.end_time, 'HH:mm')}" class="td-2"></td>
-                     </tr>
-                     </tbody>
-                 </table>
-             </div>
+        <div class="contentDataWrapper">
+             <!-- Section Electricity Data -->
+             <section>
+                 <div class="section-data-wrapper">
+                     <table>
+                         <tbody>
+                         <tr th:each="electricity_live_data : ${lastElectricityData}" class="dataItems">
+                             <td th:inline="text" class="td-1">[[${electricity_live_data.consumption}]] </td>
+                             <td th:text="${#dates.format(electricity_live_data.start_time, 'HH:mm')} +
+                        '-' + ${#dates.format(electricity_live_data.end_time, 'HH:mm')}" class="td-2"></td>
+                         </tr>
+                         </tbody>
+                     </table>
+                 </div>
 
-             <div class="sectionText">
-                 <p>Electricity (w/h)</p>
-             </div>
-         </section>
+                 <div class="sectionText">
+                     <p>Electricity (w/h)</p>
+                 </div>
+             </section>
 
-         <!-- Section Water Data -->
-         <section>
-             <div class="section-data-wrapper">
-                 <table>
-                    <tbody>
-                    <tr th:each="gas_live_data : ${lastGasData}" class="dataItems">
-                        <td th:inline="text" class="td-1">[[${gas_live_data.consumption}]] </td>
-                        <td th:text="${#dates.format(gas_live_data.start_time, 'HH:mm')} +
-                        '-' + ${#dates.format(gas_live_data.end_time, 'HH:mm')}" class="td-2"></td>
-                    </tr>
-                    </tbody>
-                 </table>
-             </div>
+             <!-- Section Water Data -->
+             <section>
+                 <div class="section-data-wrapper">
+                     <table>
+                        <tbody>
+                        <tr th:each="gas_live_data : ${lastGasData}" class="dataItems">
+                            <td th:inline="text" class="td-1">[[${gas_live_data.consumption}]] </td>
+                            <td th:text="${#dates.format(gas_live_data.start_time, 'HH:mm')} +
+                            '-' + ${#dates.format(gas_live_data.end_time, 'HH:mm')}" class="td-2"></td>
+                        </tr>
+                        </tbody>
+                     </table>
+                 </div>
 
-             <div class="sectionText">
-                 <p>Gas (w/h)</p>
-             </div>
-        </section>
+                 <div class="sectionText">
+                     <p>Gas (w/h)</p>
+                 </div>
+            </section>
 
-         <!-- Section Gas Data -->
-         <section>
-             <div class="section-data-wrapper">
-                 <table>
-                    <tbody>
-                    <tr th:each="water_live_data : ${lastWaterData}" class="dataItems">
-                        <td th:inline="text" class="td-1">[[${water_live_data.consumption}]] </td>
-                        <td th:text="${#dates.format(water_live_data.start_time, 'HH:mm')} +
-                        '-' + ${#dates.format(water_live_data.end_time, 'HH:mm')}" class="td-2"></td>
-                    </tr>
-                    </tbody>
-                 </table>
-             </div>
-             <div class="sectionText">
-                 <p>Water (l/h)</p>
-             </div>
-        </section>
-
+             <!-- Section Gas Data -->
+             <section>
+                 <div class="section-data-wrapper">
+                     <table>
+                        <tbody>
+                        <tr th:each="water_live_data : ${lastWaterData}" class="dataItems">
+                            <td th:inline="text" class="td-1">[[${water_live_data.consumption}]] </td>
+                            <td th:text="${#dates.format(water_live_data.start_time, 'HH:mm')} +
+                            '-' + ${#dates.format(water_live_data.end_time, 'HH:mm')}" class="td-2"></td>
+                        </tr>
+                        </tbody>
+                     </table>
+                 </div>
+                 <div class="sectionText">
+                     <p>Water (l/h)</p>
+                 </div>
+            </section>
+        </div>
     </main>
     </div>
 </body>

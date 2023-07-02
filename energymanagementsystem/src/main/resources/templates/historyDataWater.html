@@ -38,58 +38,58 @@
                 <p id="alarmText">Alarm<i class="fa fa-bell"></i></p>
             </div>
 
+            <div class="contentDataWrapper">
+                <!-- Section Electricity Data -->
+                <section class="contentDataWrapper">
+                    <div class="sectionDataWrapper">
 
-            <!-- Section Electricity Data -->
-            <section>
-                <div class="sectionDataWrapper">
+                        <!-- Nav panel -->
+                        <div th:replace="fragments/historyNavPanel :: nav"></div>
 
-                    <!-- Nav panel -->
-                    <div th:replace="fragments/historyNavPanel :: nav"></div>
+                        <table>
+                            <tbody>
+                            <tr th:each="water_history_data : ${listWaterHistory}" class="dataItems">
+                                <td th:inline="text" class="td-1">[[${water_history_data.water_consumption}]] </td>
+                                <td th:text="${#dates.format(water_history_data.date, 'dd-MM-yyyy')}" class="td-2"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div th:if="${totalPages > 1}">
+                            <div class="paginationWrapper">
+                                <div id="totalItems">
+                                    Total records: [[${totalItems}]]
+                                </div>
+                                <div class="pageNumber">
+                                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                                        <a th:if="${currentPage != i}" th:href="@{'/historyDataWater/' + ${i}}">[[${i}]]</a>
+                                        <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                                    </span>
+                                </div>
 
-                    <table>
-                        <tbody>
-                        <tr th:each="water_history_data : ${listWaterHistory}" class="dataItems">
-                            <td th:inline="text" class="td-1">[[${water_history_data.water_consumption}]] </td>
-                            <td th:text="${#dates.format(water_history_data.date, 'dd-MM-yyyy')}" class="td-2"></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div th:if="${totalPages > 1}">
-                        <div class="paginationWrapper">
-                            <div id="totalItems">
-                                Total records: [[${totalItems}]]
-                            </div>
-                            <div class="pageNumber">
-                                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-                                    <a th:if="${currentPage != i}" th:href="@{'/historyDataWater/' + ${i}}">[[${i}]]</a>
-                                    <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
-                                </span>
-                            </div>
+                                <div class="paginationItems">
+                                    <a th:if="${currentPage > 1}" th:href="@{'/historyDataWater/' + ${1}}">First</a>
+                                    <span th:unless="${currentPage > 1}">First</span>
+                                </div>
 
-                            <div class="paginationItems">
-                                <a th:if="${currentPage > 1}" th:href="@{'/historyDataWater/' + ${1}}">First</a>
-                                <span th:unless="${currentPage > 1}">First</span>
-                            </div>
+                                <div class="paginationItems">
+                                    <a th:if="${currentPage > 1}" th:href="@{'/historyDataWater/' + ${currentPage - 1}}">Previous</a>
+                                    <span th:unless="${currentPage > 1}">Previous</span>
+                                </div>
 
-                            <div class="paginationItems">
-                                <a th:if="${currentPage > 1}" th:href="@{'/historyDataWater/' + ${currentPage - 1}}">Previous</a>
-                                <span th:unless="${currentPage > 1}">Previous</span>
-                            </div>
+                                <div class="paginationItems">
+                                    <a th:if="${currentPage < totalPages}" th:href="@{'/historyDataWater/' + ${currentPage + 1}}">Next</a>
+                                    <span th:unless="${currentPage < totalPages}">Next</span>
+                                </div>
 
-                            <div class="paginationItems">
-                                <a th:if="${currentPage < totalPages}" th:href="@{'/historyDataWater/' + ${currentPage + 1}}">Next</a>
-                                <span th:unless="${currentPage < totalPages}">Next</span>
-                            </div>
-
-                            <div class="paginationItems">
-                                <a th:if="${currentPage < totalPages}" th:href="@{'/historyDataWater/' + ${totalPages}}">Last</a>
-                                <span th:unless="${currentPage < totalPages}">Last</span>
+                                <div class="paginationItems">
+                                    <a th:if="${currentPage < totalPages}" th:href="@{'/historyDataWater/' + ${totalPages}}">Last</a>
+                                    <span th:unless="${currentPage < totalPages}">Last</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-
+                </section>
+            </div>
 
         </main>
     </div>

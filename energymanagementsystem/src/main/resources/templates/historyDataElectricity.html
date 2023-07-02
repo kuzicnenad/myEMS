@@ -31,7 +31,6 @@
 
         <main>
 
-            <span sec:authentication="name"></span>
             <!-- Header and pre section -->
             <div th:replace="fragments/historyHeader :: header"></div>
 
@@ -40,57 +39,58 @@
                 <p id="alarmText">Alarm<i class="fa fa-bell"></i></p>
             </div>
 
+            <div class="contentDataWrapper">
             <!-- Section Electricity Data -->
-            <section>
-                <div class="sectionDataWrapper">
+                <section>
+                    <div class="sectionDataWrapper">
 
-                    <!-- Navigation -->
-                    <div th:replace="fragments/historyNavPanel :: nav"></div>
+                        <!-- Navigation -->
+                        <div th:replace="fragments/historyNavPanel :: nav"></div>
 
-                    <table>
-                        <tbody>
-                        <tr th:each="electricity_history_data : ${listElectricityHistory}" class="dataItems">
-                            <td th:inline="text" class="td-1">[[${electricity_history_data.electricity_consumption}]] </td>
-                            <td th:text="${#dates.format(electricity_history_data.date, 'dd-MM-yyyy')}" class="td-2"></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div th:if="${totalPages > 1}">
-                        <div class="paginationWrapper">
-                            <div id="totalItems">
-                                Total records: [[${totalItems}]]
-                            </div>
-                            <div class="pageNumber">
-                                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-                                    <a th:if="${currentPage != i}" th:href="@{'/historyDataElectricity/' + ${i}}">[[${i}]]</a>
-                                    <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
-                                </span>
-                            </div>
+                        <table>
+                            <tbody>
+                            <tr th:each="electricity_history_data : ${listElectricityHistory}" class="dataItems">
+                                <td th:inline="text" class="td-1">[[${electricity_history_data.electricity_consumption}]] </td>
+                                <td th:text="${#dates.format(electricity_history_data.date, 'dd-MM-yyyy')}" class="td-2"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div th:if="${totalPages > 1}">
+                            <div class="paginationWrapper">
+                                <div id="totalItems">
+                                    Total records: [[${totalItems}]]
+                                </div>
+                                <div class="pageNumber">
+                                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                                        <a th:if="${currentPage != i}" th:href="@{'/historyDataElectricity/' + ${i}}">[[${i}]]</a>
+                                        <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                                    </span>
+                                </div>
 
-                            <div class="paginationItems">
-                                <a th:if="${currentPage > 1}" th:href="@{'/historyDataElectricity/' + ${1}}">First</a>
-                                <span th:unless="${currentPage > 1}">First</span>
-                            </div>
+                                <div class="paginationItems">
+                                    <a th:if="${currentPage > 1}" th:href="@{'/historyDataElectricity/' + ${1}}">First</a>
+                                    <span th:unless="${currentPage > 1}">First</span>
+                                </div>
 
-                            <div class="paginationItems">
-                                <a th:if="${currentPage > 1}" th:href="@{'/historyDataElectricity/' + ${currentPage - 1}}">Previous</a>
-                                <span th:unless="${currentPage > 1}">Previous</span>
-                            </div>
+                                <div class="paginationItems">
+                                    <a th:if="${currentPage > 1}" th:href="@{'/historyDataElectricity/' + ${currentPage - 1}}">Previous</a>
+                                    <span th:unless="${currentPage > 1}">Previous</span>
+                                </div>
 
-                            <div class="paginationItems">
-                                <a th:if="${currentPage < totalPages}" th:href="@{'/historyDataElectricity/' + ${currentPage + 1}}">Next</a>
-                                <span th:unless="${currentPage < totalPages}">Next</span>
-                            </div>
+                                <div class="paginationItems">
+                                    <a th:if="${currentPage < totalPages}" th:href="@{'/historyDataElectricity/' + ${currentPage + 1}}">Next</a>
+                                    <span th:unless="${currentPage < totalPages}">Next</span>
+                                </div>
 
-                            <div class="paginationItems">
-                                <a th:if="${currentPage < totalPages}" th:href="@{'/historyDataElectricity/' + ${totalPages}}">Last</a>
-                                <span th:unless="${currentPage < totalPages}">Last</span>
+                                <div class="paginationItems">
+                                    <a th:if="${currentPage < totalPages}" th:href="@{'/historyDataElectricity/' + ${totalPages}}">Last</a>
+                                    <span th:unless="${currentPage < totalPages}">Last</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-
+                </section>
+            </div>
 
         </main>
     </div>

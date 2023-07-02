@@ -210,6 +210,11 @@ main{
     margin-left: 2px;
 }
 
+.contentDataWrapper{
+    max-width: 1680px;
+    margin: 0 auto;
+}
+
 .preSection{
     align-items: center;
     min-height: 18px;
@@ -246,6 +251,10 @@ section{
 .sectionDataWrapper{
     align-items: center;
     text-align: center;
+}
+
+.sectionDataWrapper table{
+    margin: 0 auto;
 }
 
 .historyNavPanel{
@@ -551,7 +560,6 @@ section{
 
 .deviceActiveSection{
     padding-left: 0;
-    margin-left: -30px;
 }
 
 #availableDeviceTable a, .settingsSectionHeader a, #availableUsersTable a{
@@ -569,44 +577,6 @@ section{
 #availableDeviceTable a:hover, .settingsSectionHeader a:hover, #availableUsersTable a:hover{
 	color: #BE6125;
 }
-
-.backToSettingsm {
-	-webkit-transition: .5s;
-       -moz-transition: .5s;
-    	 -o-transition: .5s;
-    	    transition: .5s;
-}
-
-.usersFormPage{
-    background: #0a1f2b;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-}
-
-.addUpdateForm{
-    background-color: #15172b;
-    border-radius: 20px;
-    box-sizing: border-box;
-    height: 500px;
-    padding: 20px;
-    width: 320px;
-}
-
-.inputForm {
-  height: 40px;
-  position: relative;
-  width: 100%;
-}
-
-.in1 {
-  margin-top: 40px;
-}
-
-.in2 {
-  margin-top: 30px;
-}
-
 
 /* END SETTINGS
 ------------------------------------------------------------------- */
