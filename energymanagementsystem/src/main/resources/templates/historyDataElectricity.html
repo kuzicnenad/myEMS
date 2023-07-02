@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags">
 <head>
     <meta charset="UTF-8" content="text/html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,6 +31,7 @@
 
         <main>
 
+            <span sec:authentication="name"></span>
             <!-- Header and pre section -->
             <div th:replace="fragments/historyHeader :: header"></div>
 

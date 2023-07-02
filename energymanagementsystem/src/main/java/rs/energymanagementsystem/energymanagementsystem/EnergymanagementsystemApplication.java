@@ -261,8 +261,9 @@ public class EnergymanagementsystemApplication {
 
 	@PostMapping("/saveUserViaForm") // SAVE
 	public String saveUserViaForm(@ModelAttribute(value = "user") User user){
+
 		// save user to database repository
-		usersService.saveUser(user);
+		usersService.updateUser(user, user.getId());
 		return "redirect:/users";
 	}
 
@@ -282,6 +283,7 @@ public class EnergymanagementsystemApplication {
 
 		// set device as a model attribute to pre-populate the form
 		model.addAttribute("user", user);
+
 		return "updateUser";
 	}
 

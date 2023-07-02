@@ -24,6 +24,7 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
         this.userRepository = userRepository;
     }
 
+    /** Create new user with default API save**/
     @Override
     public User saveUser(User user) {
         return userRepository.save(user);
@@ -31,7 +32,7 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
 
     @Override
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        return userRepository.getUsersList();
     }
 
     public User getUserById(Long id){
@@ -39,7 +40,8 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
                 new ResourceNotFoundException("User", "id", id));
     }
 
-    @Override
+    /** Update user details with custom API save and native query **/
+     @Override
     public User updateUser(User usersEntity, Long id) {
         // check if user_id exists in database
         User existingUser = userRepository.findById(id).orElseThrow(() ->
@@ -69,7 +71,7 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
                         new UsernameNotFoundException("User not found with username or email: "+ usernameOrEmail));
 
         Set<GrantedAuthority> authorities = user
-                .getRole()
+                .getRoles()
                 .stream()
                 .map((role) -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toSet());
 

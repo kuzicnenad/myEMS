@@ -18,8 +18,7 @@ VALUES	('ADMIN'),
 		('USER');
         
 INSERT INTO users_roles
-VALUES	(1,1),
-		(1,2),
+VALUES	
 		(2,2);
 
 

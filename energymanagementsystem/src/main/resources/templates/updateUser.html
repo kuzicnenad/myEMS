@@ -32,6 +32,11 @@
 
       <input type="email" th:field="*{email}" th:value="true" required>
 
+      <!-- Hidden password and production_date fields to handle update requests -->
+      <input type="hidden" th:field="*{password}">
+
+      <input type="hidden" th:field="*{creation_date}">
+
       <button type="submit" th:field="*{id}">Update user</button>
 
     </form>
