@@ -39,17 +39,17 @@ public class UsersController {
         return new ResponseEntity<User>(customUserDetailsService.getUserById(id), HttpStatus.OK);
     }
 
-    // UPDATE by ID alarmData REST API
+    // UPDATE by ID user REST API
     // http://localhost:8080/api/alarmData/alarm_id(number)
     @PutMapping("/api/user/{id}")
-    public ResponseEntity<User> updateAlarmDate(@PathVariable ("id") Long id
+    public ResponseEntity<User> updateUser(@PathVariable ("id") Long id
             , @RequestBody User user){
         return new ResponseEntity<User>(customUserDetailsService.updateUser(user, id), HttpStatus.OK);
     }
 
     // DELETE by ID alarmData REST API
     @DeleteMapping("/api/user/{id}")
-    public ResponseEntity<String> deleteAlarmData(@PathVariable("id") Long id){
+    public ResponseEntity<String> deleteUser(@PathVariable("id") Long id){
         customUserDetailsService.deleteUser(id);
         return new ResponseEntity<String>("User data deleted successfully!", HttpStatus.OK);
     }
