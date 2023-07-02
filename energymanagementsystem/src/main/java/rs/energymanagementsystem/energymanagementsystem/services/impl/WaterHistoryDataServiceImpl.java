@@ -3,6 +3,7 @@ package rs.energymanagementsystem.energymanagementsystem.services.impl;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.WaterHistoryData;
 import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
@@ -33,7 +34,7 @@ public class WaterHistoryDataServiceImpl implements WaterHistoryDataService {
 
     @Override
     public Page<WaterHistoryData> getHistoryDataWater(int pageNo, int pageSize) {
-        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize, Sort.by("date").descending());
         return this.waterHistoryDataRepository.findAll(pageable);
     }
 }
