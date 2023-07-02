@@ -48,6 +48,7 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
         existingUser.setUsername(usersEntity.getUsername());
         existingUser.setEmail(usersEntity.getEmail());
         existingUser.setPassword(usersEntity.getPassword());
+        existingUser.setLast_update(usersEntity.getLast_update());
         // save existing alarmData to DB
         userRepository.save(existingUser);
         return existingUser;

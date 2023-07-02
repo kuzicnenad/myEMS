@@ -3,7 +3,11 @@ package rs.energymanagementsystem.energymanagementsystem.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.Date;
 import java.util.Set;
 
 
@@ -18,10 +22,22 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String name;
+    @Column
     private String username;
+    @Column
     private String email;
+    @Column
     private String password;
+    @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date creation_date;
+    @Column
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @UpdateTimestamp
+    private Date last_update;
+
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
