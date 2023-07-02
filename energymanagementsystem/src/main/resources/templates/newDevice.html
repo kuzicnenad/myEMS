@@ -10,33 +10,46 @@
 
   <title>Energy Management System</title>
 
-  <link rel="stylesheet" type="text/css" href="/css/logIn.css" th:href="@{/css/style.css}">
+  <link rel="stylesheet" type="text/css" href="/css/logIn.css" th:href="@{/css/formNewSave.css}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <main>
     <h1>Energy Management System</h1>
     <hr>
-    <h2>Add Device</h2>
+    <h2>Add new Device</h2>
 
-    <form action="#" th:action="@{/saveDeviceViaForm}" th:object="${device}" method="POST">
+    <div class="content">
+      <form class="loginForm" action="#" th:action="@{/saveDeviceViaForm}" th:object="${device}" method="POST">
+        <div class="formGroup">
+          <input class="formInput"  type="text" th:field="*{device_name}"
+               pattern="[a-zA-ZÀ-ž ]{2,20}" title="Only characters are allowed and length must be between 2 and 20 characters."
+                 placeholder="Device name" required>
+        </div>
 
-      <input type="text" th:field="*{device_name}"
-             pattern="[a-zA-ZÀ-ž ]{2,20}" title="Only characters are allowed and length must be between 2 and 20 characters." required>
+        <div class="formGroup">
+          <input class="formInput"  type="text" th:field="*{description}" th:value="true"
+               pattern="[a-zA-ZÀ-ž ]{5,50}" title="Only characters are allowed and length must be between 5 and 50 characters."
+                 placeholder="Description">
+        </div>
 
-      <input type="text" th:field="*{description}" th:value="true"
-             pattern="[a-zA-ZÀ-ž ]{5,50}" title="Only characters are allowed and length must be between 5 and 50 characters.">
+        <div class="formGroup">
+          <input class="formInput"  type="date" th:field="*{production_date}"
+                 placeholder="Production date" required>
+        </div>
 
-      <input type="date" th:field="*{production_date}" required>
+        <div class="formGroup">
+          <input class="formInput"  type="text" th:field="*{made_in}"
+               pattern="[a-zA-ZÀ-ž ]{2,20}" title="Only characters are allowed and length must be between 2 and 20 characters."
+                 placeholder="Made in" required>
+        </div>
 
-      <input type="text" th:field="*{made_in}"
-             pattern="[a-zA-ZÀ-ž ]{2,20}" title="Only characters are allowed and length must be between 2 and 20 characters." required>
+        <input class="formInput" type="hidden" th:field="*{active_flag}" th:value="true"> <!-- Assign default -->
 
-      <input type="hidden" th:field="*{active_flag}" th:value="true"> <!-- Assign default -->
+        <input class="saveBtn" name="AddDevice" type="submit" value="Add Device"></input>
 
-      <button type="submit">Add device</button>
-
-    </form>
+      </form>
+    </div>
 
     <hr>
     <div class="backToSettings paginationItems">

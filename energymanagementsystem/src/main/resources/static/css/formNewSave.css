@@ -82,7 +82,7 @@ body {
 	letter-spacing: 3px;
 }
 
-.loginBtn{
+.saveBtn{
 	background-color: #063146;
 	border-color: transparent;
     width: 250px;
@@ -99,7 +99,7 @@ body {
     	    transition: .7s;
 }
 
-.loginBtn:hover{
+.saveBtn:hover{
     color: #870b00;
 	cursor: pointer;
     border-radius: 15px;
