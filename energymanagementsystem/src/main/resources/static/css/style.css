@@ -577,6 +577,37 @@ section{
     	    transition: .5s;
 }
 
+.usersFormPage{
+    background: #0a1f2b;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.addUpdateForm{
+    background-color: #15172b;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height: 500px;
+    padding: 20px;
+    width: 320px;
+}
+
+.inputForm {
+  height: 40px;
+  position: relative;
+  width: 100%;
+}
+
+.in1 {
+  margin-top: 40px;
+}
+
+.in2 {
+  margin-top: 30px;
+}
+
+
 /* END SETTINGS
 ------------------------------------------------------------------- */
 

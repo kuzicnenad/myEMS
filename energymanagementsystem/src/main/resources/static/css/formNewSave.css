@@ -1,0 +1,136 @@
+body {
+   height: 100vh;
+   display: grid;
+   place-items: center;
+   margin: 0;
+   padding: 0;
+   vertical-align: middle;
+   align: center;
+   color: #f2f2f2;
+   font-size: 16px;
+   background: #0a1f2b;
+}
+
+.container {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    width: 100vw;
+    margin: 0 auto;
+    background: #ccc;
+}
+
+.content {
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    width: 700px;
+    height: auto;
+    margin: 10px;
+}
+
+.loginForm{
+    list-style-type: none;
+    text-align: center;
+    margin: 30px;
+}
+
+.formGroup{
+    font-size: 24px;
+    background-color: rgba(6, 49, 70, 0.7);
+	margin: 20px;
+	display: inline-block;
+
+	-webkit-transition: 1s;
+       -moz-transition: 1s;
+    	 -o-transition: 1s;
+    	    transition: 1s;
+}
+
+.fa-android,.fa-lock{
+    place-items: center;
+    vertical-align: middle;
+    margin-left: 10px;
+    color: #0055d4;
+ }
+
+.fa-android{color: #0055d4;}
+.fa-lock{color: #870b00;}
+
+.formInput{
+    height: 50px;
+    width: 500px;
+    background: transparent;
+    color: #f2f2f2;
+	border: none;
+	outline: none;
+	margin-left: 10px;
+}
+
+.formGroup:hover {
+	border-bottom: 1px solid #0055d4;
+}
+
+.content {
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+	border-color: transparent;
+	letter-spacing: 3px;
+}
+
+.loginBtn{
+	background-color: #063146;
+	border-color: transparent;
+    width: 250px;
+	font-size: 1.2em;
+    color: #f2f2f2;
+	font-weight: bold;
+	letter-spacing: 3px;
+	height: 50px;
+	margin: 20px;
+
+	-webkit-transition: .7s;
+       -moz-transition: .7s;
+    	 -o-transition: .7s;
+    	    transition: .7s;
+}
+
+.loginBtn:hover{
+    color: #870b00;
+	cursor: pointer;
+    border-radius: 15px;
+}
+
+
+.paginationItems{
+    letter-spacing: 2px;
+    display: inline-flex;
+    width: auto;
+    margin: 5px;
+    border-radius: 5px;
+	line-height: 35px;
+    background-color: #063146;
+
+	-webkit-transition: .5s;
+       -moz-transition: .5s;
+    	 -o-transition: .5s;
+    	    transition: .5s;
+}
+
+.paginationItems a{
+	text-decoration: none;
+    margin-left: 5px;
+    margin-right: 5px;
+	color: #f2f2f2;
+}
+
+.paginationItems a:focus{
+    color: #BE6125;
+}
+.paginationItems:hover{
+    background-color: rgba(20, 80, 85, 0.7);
+}
