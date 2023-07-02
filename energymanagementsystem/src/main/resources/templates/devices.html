@@ -30,14 +30,14 @@
 
         <main>
             <div class="contentDataWrapper">
-                <section class="deviceSection deviceAvailableSection">
+                <section class="deviceSection">
                     <div class="settingsSectionHeader">
                         <h2>Available devices</h2>
                         <div class="addNewRecord">
                             <a th:href="@{/newDeviceForm}"><i class="fa fa-pencil">Add new device</i></a>
                         </div>
                     </div>
-                    <table id="availableDeviceTable">
+                    <table class="deviceTable">
                         <thead>
                             <tr>
                                 <th>Device</th><th>Description</th><th>Produced date</th><th>Made in</th><th>Last change</th><th>Action</th>
@@ -68,11 +68,11 @@
                     </div>
                 </section>
 
-                <section class="deviceSection deviceActiveSection">
+                <section class="deviceSection">
                     <div class="devicesHeader">
                         <h2>Active devices</h2>
                     </div>
-                    <table id="activeDeviceTable">
+                    <table class="deviceTable">
                         <thead>
                             <tr>
                                 <th>Device</th><th>Produced date</th><th>Made in</th><th>Activated</th>

@@ -510,7 +510,7 @@ section{
     display: inline-flex;
 }
 
-.deviceSection, .userSection {
+.deviceSection, .usersSection {
     display: block;
     font-size: 12px;
     font-weight: bold;
@@ -518,7 +518,7 @@ section{
     margin-top: 100px;
 }
 
-.td-devices, .deviceSection tr, .userSection tr{
+.td-devices, .deviceSection tr, .usersSection tr{
     height: auto;
     line-height: 25px;
     width: auto;
@@ -526,39 +526,29 @@ section{
     background-color: rgba(20, 80, 85, 0.7);
 }
 
-.deviceSection table, userSection table{
+.deviceSection table, .usersSection table{
 	width: 100%;
 	max-width: 1280px;
 	padding-bottom: 1em;
 }
 
-.deviceSection table tbody td{
+.deviceSection table tbody td, .usersSection table tbody td{
 	font-size: 14px;
 	padding: .2em;
 	text-align: left;
-	max-width: 20ch;
+	width: 30ch;
 }
 
-..userSection table tbody td{
-	font-size: 14px;
-	padding: .2em;
-	text-align: left;
-	max-width: 50ch;
-}
-
-.deviceSection table thead, userSection table thead{
+.deviceSection table thead, .usersSection table thead{
 	font-weight: bolder;
 	text-transform: uppercase;
 	letter-spacing: .2em;
 	font-size: 14px;
 	margin: 2px;
+	padding: 0px;
 }
 
-.deviceActiveSection{
-    padding-left: 0;
-}
-
-#availableDeviceTable a, .settingsSectionHeader a, #availableUsersTable a{
+.deviceTable a, .settingsSectionHeader a, .usersTable a{
 	text-decoration: none;
 	color: #f2f2f2;
 	outline: none;
@@ -570,7 +560,7 @@ section{
     	    transition: .5s;
 }
 
-#availableDeviceTable a:hover, .settingsSectionHeader a:hover, #availableUsersTable a:hover{
+.deviceTable a:hover, .settingsSectionHeader a:hover, .usersTable a:hover{
 	color: #BE6125;
 }
 
