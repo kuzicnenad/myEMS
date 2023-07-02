@@ -25,14 +25,12 @@
       <input type="hidden" th:field="*{id}">
 
       <input type="text" th:field="*{name}"
-             pattern="[a-zA-ZÀ-ž ]{2,20}" title="Only characters are allowed and length must be between 2 and 20 characters." required>
+             pattern="[a-zA-ZÀ-ž ]{2,20}" title="Only characters allowed and length must be between 2 and 20 characters." required>
 
       <input type="text" th:field="*{username}" th:value="true"
-             pattern="[a-zA-ZÀ-ž ]{5,50}" title="Only characters are allowed and length must be between 5 and 50 characters." required>
+             pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,50}" title="Length must be between 5 and 50 characters." required>
 
       <input type="email" th:field="*{email}" th:value="true" required>
-
-      <input type="password" th:field="*{password}" th:value="true" required>
 
       <button type="submit" th:field="*{id}">Update user</button>
 

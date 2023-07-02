@@ -39,7 +39,7 @@
                 <table id="availableUsersTable">
                     <thead>
                         <tr>
-                            <th>Name</th><th>Username</th><th>email</th><th>Actions</th>
+                            <th>Name</th><th>Username</th><th>Email</th><th>Creation date</th><th>Last change</th><th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,6 +47,8 @@
                             <td th:inline="text" class="td-devices">[[${user.name}]] </td>
                             <td th:inline="text" class="td-devices">[[${user.username}]] </td>
                             <td th:inline="text" class="td-devices">[[${user.email}]] </td>
+                            <td th:text="${#dates.format(user.creation_date, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
+                            <td th:text="${#dates.format(user.last_update, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
                             <td>
                                 <a th:href="@{/userUpdateForm/{id}(id=${user.id})}">
                                     <i class="fa fa-pencil"></i></a>

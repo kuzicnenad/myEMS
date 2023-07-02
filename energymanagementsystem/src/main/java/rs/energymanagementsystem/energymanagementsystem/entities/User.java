@@ -3,6 +3,7 @@ package rs.energymanagementsystem.energymanagementsystem.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -32,6 +33,7 @@ public class User {
     private String password;
     @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @CreationTimestamp
     private Date creation_date;
     @Column
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
