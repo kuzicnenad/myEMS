@@ -178,7 +178,7 @@ public class EnergymanagementsystemApplication {
 	 * This is an additional control over the API controls that
 	 * are available under controllers package
 	 * --------------------------------------------------------------------------------------- **/
-	@GetMapping("/devices")
+	@GetMapping("/devices") // GET
 	public String getDevices(HttpServletRequest request, Model model){
 		List<Devices> devicesList = devicesService.getAllDevices();
 		model.addAttribute("devicesList", devicesList);
@@ -192,7 +192,7 @@ public class EnergymanagementsystemApplication {
 		return "devices";
 	}
 
-	@PostMapping("/saveDeviceViaForm")
+	@PostMapping("/saveDeviceViaForm") // SAVE
 	public String saveDeviceViaForm(@ModelAttribute(value = "devices") Devices device){
 		//Assign default value for active_flag
 		if(device.getActive_flag() == null){
@@ -207,7 +207,7 @@ public class EnergymanagementsystemApplication {
 		return "redirect:/devices";
 	}
 
-	@GetMapping("/newDeviceForm")
+	@GetMapping("/newDeviceForm") // NEW FORM
 	public String addNewDeviceForm(Model model){
 		// Create model attribute to bind form data
 		Devices device = new Devices();
@@ -215,7 +215,7 @@ public class EnergymanagementsystemApplication {
 		return "newDevice";
 	}
 
-	@GetMapping("/deviceUpdateForm/{device_id}")
+	@GetMapping("/deviceUpdateForm/{device_id}") // UPDATE, RETURN FORM
 	public String deviceUpdateForm(@PathVariable(value = "device_id") Integer device_id, Model model) {
 
 		// get device from the service
@@ -228,7 +228,7 @@ public class EnergymanagementsystemApplication {
 		return "updateDevice";
 	}
 
-	@GetMapping("/deleteDevice/{device_id}")
+	@GetMapping("/deleteDevice/{device_id}") // DELETE
 	public String deleteDevice(@PathVariable(value = "device_id") Integer device_id) {
 
 		// call delete device method
@@ -236,7 +236,7 @@ public class EnergymanagementsystemApplication {
 		return "redirect:/devices";
 	}
 
-	@GetMapping("/toggleFlag/{device_id}")
+	@GetMapping("/toggleFlag/{device_id}") // CHANGE ACTIVE FLAG
 	public String deviceActiveFlag(@PathVariable(value = "device_id") Integer device_id){
 		devicesService.deviceActiveFlag(device_id);
 		return "redirect:/devices";
@@ -248,7 +248,7 @@ public class EnergymanagementsystemApplication {
 	 * This is an additional control over the API controls that
 	 * are available under controllers package
 	 * --------------------------------------------------------------------------------------- **/
-	@GetMapping("/users")
+	@GetMapping("/users") // GET
 	public String getUsers(HttpServletRequest request, Model model){
 		List<User> usersList = usersService.getAllUsers();
 		model.addAttribute("usersList", usersList);
@@ -259,14 +259,14 @@ public class EnergymanagementsystemApplication {
 		return "users";
 	}
 
-	@PostMapping("/saveUserViaForm")
+	@PostMapping("/saveUserViaForm") // SAVE
 	public String saveUserViaForm(@ModelAttribute(value = "user") User user){
 		// save user to database repository
 		usersService.saveUser(user);
 		return "redirect:/users";
 	}
 
-	@GetMapping("/newUserForm")
+	@GetMapping("/newUserForm") // OPEN NEW FORM
 	public String addNewUserForm(Model model){
 		// Create model attribute to bind form data
 		User user = new User();
@@ -274,7 +274,7 @@ public class EnergymanagementsystemApplication {
 		return "newUser";
 	}
 
-	@GetMapping("/userUpdateForm/{id}")
+	@GetMapping("/userUpdateForm/{id}") // UPDATE, RETURN FORM
 	public String userUpdateForm(@PathVariable(value = "id") Long id, Model model) {
 
 		// get device from the service
@@ -285,7 +285,7 @@ public class EnergymanagementsystemApplication {
 		return "updateUser";
 	}
 
-	@GetMapping("/deleteUser/{id}")
+	@GetMapping("/deleteUser/{id}") // DELETE
 	public String deleteUser(@PathVariable(value = "id") Long id) {
 
 		// call delete user method
