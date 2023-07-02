@@ -19,7 +19,7 @@ public class UsersController {
 
     // POST users REST API
     @PostMapping
-    public ResponseEntity<User> saveAlarmData(@RequestBody User user){
+    public ResponseEntity<User> saveUser(@RequestBody User user){
         return new ResponseEntity<User>(customUserDetailsService.saveUser(user), HttpStatus.CREATED);
     }
 
