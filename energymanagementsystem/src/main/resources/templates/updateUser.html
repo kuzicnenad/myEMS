@@ -10,7 +10,7 @@
 
   <title>Energy Management System</title>
 
-  <link rel="stylesheet" type="text/css" href="/css/logIn.css" th:href="@{/css/style.css}">
+  <link rel="stylesheet" type="text/css" href="/css/logIn.css" th:href="@{/css/formNewSave.css}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -19,31 +19,45 @@
     <hr>
     <h2>Update User</h2>
 
-    <form action="#" th:action="@{/saveUserViaForm}" th:object="${user}" method="POST">
+    <div class="content">
+      <form class="loginForm" action="#" th:action="@{/saveUserViaForm}" th:object="${user}" method="POST">
 
-      <!-- Hidden ID field to handle update requests -->
-      <input type="hidden" th:field="*{id}">
+        <!-- Hidden ID field to handle update requests -->
+        <input type="hidden" th:field="*{id}">
 
-      <input type="text" th:field="*{name}"
-             pattern="[a-zA-ZÀ-ž ]{2,20}" title="Only characters allowed and length must be between 2 and 20 characters." required>
+        <div class="formGroup">
+          <p>Full name</p>
+          <input class="formInput" type="text" th:field="*{name}"
+                 pattern="[a-zA-ZÀ-ž ]{2,20}" title="Only characters are allowed and length must be between 2 and 20 characters."
+                 placeholder="Full name" required>
+        </div>
 
-      <input type="text" th:field="*{username}" th:value="true"
-             pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,50}" title="Length must be between 5 and 50 characters." required>
+        <div class="formGroup">
+          <p>Username</p>
+          <input class="formInput" type="text" th:field="*{username}" th:value="true"
+                 pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,50}" title="Length must be between 5 and 50 characters."
+                 placeholder="Username" required>
+        </div>
 
-      <input type="email" th:field="*{email}" th:value="true" required>
+        <div class="formGroup">
+          <p>E-mail address</p>
+          <input class="formInput" type="email" th:field="*{email}" th:value="true"
+                 placeholder="E-mail address"  required>
+        </div>
 
-      <!-- Hidden password and production_date fields to handle update requests -->
-      <input type="hidden" th:field="*{password}">
+        <!-- Hidden password and production_date fields to handle update requests -->
+        <input type="hidden" th:field="*{password}">
 
-      <input type="hidden" th:field="*{creation_date}">
+        <input type="hidden" th:field="*{creation_date}">
 
-      <button type="submit" th:field="*{id}">Update user</button>
+        <input class="saveBtn" name="updateUser" type="submit" th:field="*{id}" value="Update User"></input>
 
-    </form>
+      </form>
+    </div>
 
-    <hr>
-
-    <a th:href="@{/users}">Back</a>
+    <div class="backToSettings backButton">
+      <a th:href="@{/users}">Back</a>
+    </div>
   </main>
 </body>
 </html>

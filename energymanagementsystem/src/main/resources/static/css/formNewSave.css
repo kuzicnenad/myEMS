@@ -48,6 +48,16 @@ body {
     	    transition: 1s;
 }
 
+.formGroup p{
+	margin-top: 0px;
+    background: rgba(0, 0, 0, 0.2);
+    margin: 0;
+    padding: 2px;
+    text-align: left;
+    font-size: 0.6em;
+    padding-left: 10px;
+}
+
 .fa-android,.fa-lock{
     place-items: center;
     vertical-align: middle;
@@ -106,11 +116,12 @@ body {
 }
 
 
-.paginationItems{
+.backButton{
     letter-spacing: 2px;
     display: inline-flex;
     width: auto;
     margin: 5px;
+    padding: 3px;
     border-radius: 5px;
 	line-height: 35px;
     background-color: #063146;
@@ -121,16 +132,16 @@ body {
     	    transition: .5s;
 }
 
-.paginationItems a{
+.backButton a{
 	text-decoration: none;
     margin-left: 5px;
     margin-right: 5px;
 	color: #f2f2f2;
 }
 
-.paginationItems a:focus{
+.backButton a:focus{
     color: #BE6125;
 }
-.paginationItems:hover{
+.backButton:hover{
     background-color: rgba(20, 80, 85, 0.7);
 }
