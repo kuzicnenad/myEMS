@@ -444,10 +444,12 @@ section{
 }
 
 .settingsItems{
-    width: 250px;
+    width: 300px;
     background-color: rgba(31, 111, 118, 0.4);
-    padding: 45px;
+    padding: 60px;
     margin-left: 50px;
+    text-align: center;
+    font-size: 1.5em;
 }
 
 .settingsItems:hover{
