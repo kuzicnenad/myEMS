@@ -22,6 +22,11 @@ public class GasHistoryDataServiceImpl implements GasHistoryDataService {
         this.gasHistoryDataRepository = gasHistoryDataRepository;
     }
 
+    /** ---------------------------------------------------------------------------------------
+     * - Get all history data records. valuable for GET APIs
+     * - Get history data record by ID, valuable for CRUD APIs
+     * - Service for pagination of history records
+     --------------------------------------------------------------------------------------- **/
     @Override
     public List<GasHistoryData> getAllGasHistoryData() {
         return gasHistoryDataRepository.findAll();
@@ -39,6 +44,13 @@ public class GasHistoryDataServiceImpl implements GasHistoryDataService {
         return this.gasHistoryDataRepository.findAll(pageable);
     }
 
+    /** ---------------------------------------------------------------------------------------
+     * Services used to call native query repos
+     * and generate valuable data information:
+     *      -> Maximum recorded value and date of record
+     *      -> Average recorded value and date of first and last record
+     *      -> Minimum recorded value and date of record
+     --------------------------------------------------------------------------------------- **/
     @Override
     public Integer getGasMaxValue() {
         return gasHistoryDataRepository.getMaxValue();

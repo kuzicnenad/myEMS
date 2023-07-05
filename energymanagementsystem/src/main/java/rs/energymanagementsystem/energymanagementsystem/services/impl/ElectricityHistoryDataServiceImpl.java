@@ -22,6 +22,11 @@ public class ElectricityHistoryDataServiceImpl implements ElectricityHistoryData
         this.electricityHistoryDataRepository = electricityHistoryDataRepository;
     }
 
+    /** ---------------------------------------------------------------------------------------
+     * - Get all history data records. valuable for GET APIs
+     * - Get history data record by ID, valuable for CRUD APIs
+     * - Service for pagination of history records
+     --------------------------------------------------------------------------------------- **/
     @Override
     public List<ElectricityHistoryData> getAllElectricityHistoryData() {
         return electricityHistoryDataRepository.findAll();
@@ -39,6 +44,13 @@ public class ElectricityHistoryDataServiceImpl implements ElectricityHistoryData
         return this.electricityHistoryDataRepository.findAll(pageable);
     }
 
+    /** ---------------------------------------------------------------------------------------
+     * Services used to call native query repos
+     * and generate valuable data information:
+     *      -> Maximum recorded value and date of record
+     *      -> Average recorded value and date of first and last record
+     *      -> Minimum recorded value and date of record
+     --------------------------------------------------------------------------------------- **/
     @Override
     public Integer getElectricityMaxValue() {
         return electricityHistoryDataRepository.getMaxValue();
