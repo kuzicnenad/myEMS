@@ -15,9 +15,12 @@ public interface ElectricityHistoryDataService {
 
     Integer getElectricityMaxValue();
 
+    Date getElectricityMaxValueDate();
+
     Float getElectricityAvgValue();
 
     Integer getElectricityMinValue();
+
     Date getElectricityMinValueDate();
 
 }

@@ -13,6 +13,11 @@ public interface ElectricityHistoryDataRepository extends JpaRepository<Electric
             nativeQuery = true)
     Integer getMaxValue();
 
+    @Query(value =  "SELECT date FROM electricity_history_data WHERE electricity_consumption = " +
+            "(SELECT MAX(electricity_consumption) FROM electricity_history_data)",
+            nativeQuery = true)
+    Date getMaxValueDate();
+
     @Query(value = "SELECT AVG(electricity_consumption) FROM electricity_history_data",
             nativeQuery = true)
     Float getAvgValue();

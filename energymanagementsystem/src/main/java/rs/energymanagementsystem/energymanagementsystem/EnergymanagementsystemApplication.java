@@ -86,6 +86,8 @@ public class EnergymanagementsystemApplication {
 		 * **/
 		Integer electricityMaxValue = electricityHistoryDataService.getElectricityMaxValue();
 		model.addAttribute("electricityMaxValue", electricityMaxValue);
+		Date electricityMaxValueDate = electricityHistoryDataService.getElectricityMaxValueDate();
+		model.addAttribute("electricityMaxValueDate", electricityMaxValueDate);
 
 		Float electricityAvgValue = electricityHistoryDataService.getElectricityAvgValue();
 		model.addAttribute("electricityAvgValue", electricityAvgValue);
