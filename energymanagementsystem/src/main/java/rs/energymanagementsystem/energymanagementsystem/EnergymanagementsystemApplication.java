@@ -84,8 +84,11 @@ public class EnergymanagementsystemApplication {
 		 * 					-> gas,
 		 * 					-> water.
 		 * **/
-		Integer electricityPeakValue = electricityHistoryDataService.getElectricityPeakValue();
-		model.addAttribute("electricityPeakValue", electricityPeakValue);
+		Integer electricityMaxValue = electricityHistoryDataService.getElectricityMaxValue();
+		model.addAttribute("electricityMaxValue", electricityMaxValue);
+
+		Float electricityAvgValue = electricityHistoryDataService.getElectricityAvgValue();
+		model.addAttribute("electricityAvgValue", electricityAvgValue);
 
 		return "index";
 	}

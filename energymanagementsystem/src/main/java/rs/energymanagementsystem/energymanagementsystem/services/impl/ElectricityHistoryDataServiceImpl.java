@@ -39,8 +39,12 @@ public class ElectricityHistoryDataServiceImpl implements ElectricityHistoryData
     }
 
     @Override
-    public Integer getElectricityPeakValue() {
+    public Integer getElectricityMaxValue() {
         return electricityHistoryDataRepository.getMaxValue();
+    }
+    @Override
+    public Float getElectricityAvgValue() {
+        return electricityHistoryDataRepository.getAvgValue();
     }
 
 
