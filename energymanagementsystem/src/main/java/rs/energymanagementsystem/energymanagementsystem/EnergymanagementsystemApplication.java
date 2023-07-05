@@ -130,16 +130,23 @@ public class EnergymanagementsystemApplication {
 		 * Calculate MIN values
 		 * Get date of MIN value
 		 * **/
+		/* Electricity */
 		Integer electricityMinValue = electricityHistoryDataService.getElectricityMinValue();
 		model.addAttribute("electricityMinValue", electricityMinValue);
 		Date electricityMinValueDate = electricityHistoryDataService.getElectricityMinValueDate();
 		model.addAttribute("electricityMinValueDate", electricityMinValueDate);
 
+		/* Gas */
 		Integer gasMinValue = gasHistoryDataService.getGasMinValue();
 		model.addAttribute("gasMinValue", gasMinValue);
 		Date gasMinValueDate = gasHistoryDataService.getGasMinValueDate();
 		model.addAttribute("gasMinValueDate", gasMinValueDate);
 
+		/* Water */
+		Integer waterMinValue = waterHistoryDataService.getWaterMinValue();
+		model.addAttribute("waterMinValue", waterMinValue);
+		Date waterMinValueDate = waterHistoryDataService.getWaterMinValueDate();
+		model.addAttribute("waterMinValueDate", waterMinValueDate);
 
 		return "index";
 	}

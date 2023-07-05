@@ -29,4 +29,13 @@ public interface WaterHistoryDataRepository extends JpaRepository<WaterHistoryDa
     @Query(value = "SELECT date FROM water_history_data ORDER BY hist_data_id DESC LIMIT 1",
             nativeQuery = true)
     Date getLastDate();
+
+    @Query(value = "SELECT MIN(water_consumption) FROM water_history_data",
+            nativeQuery = true)
+    Integer getMinValue();
+
+    @Query(value =  "SELECT date FROM water_history_data WHERE water_consumption = " +
+            "(SELECT MIN(water_consumption) FROM water_history_data)",
+            nativeQuery = true)
+    Date getMinValueDate();
 }

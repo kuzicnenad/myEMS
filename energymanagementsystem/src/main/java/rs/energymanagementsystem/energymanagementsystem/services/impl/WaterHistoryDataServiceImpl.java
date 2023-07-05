@@ -64,5 +64,15 @@ public class WaterHistoryDataServiceImpl implements WaterHistoryDataService {
         return waterHistoryDataRepository.getLastDate();
     }
 
+    @Override
+    public Integer getWaterMinValue() {
+        return waterHistoryDataRepository.getMinValue();
+    }
+
+    @Override
+    public Date getWaterMinValueDate() {
+        return waterHistoryDataRepository.getMinValueDate();
+    }
+
 
 }

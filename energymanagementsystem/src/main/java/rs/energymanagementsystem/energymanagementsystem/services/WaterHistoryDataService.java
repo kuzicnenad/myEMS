@@ -33,4 +33,8 @@ public interface WaterHistoryDataService {
     Date getFirstDate();
 
     Date getLastDate();
+
+    Integer getWaterMinValue();
+
+    Date getWaterMinValueDate();
 }
