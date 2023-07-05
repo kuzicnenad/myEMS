@@ -17,6 +17,11 @@ public class GasLiveDataServiceImpl implements GasLiveDataService {
         this.gasLiveDataRepository = gasLiveDataRepository;
     }
 
+    /** ---------------------------------------------------------------------------------------
+     * - Get all live data records. valuable for GET APIs
+     * - Get live data record by ID, valuable for CRUD APIs
+     * - Get latest(last 10) records, used on liveData html
+     --------------------------------------------------------------------------------------- **/
     @Override
     public List<GasLiveData> getAllGasLiveData() {
         return gasLiveDataRepository.findAll();

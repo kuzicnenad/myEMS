@@ -17,6 +17,11 @@ public class ElectricityLiveDataServiceImpl implements ElectricityLiveDataServic
         this.electricityLiveDataRepository = electricityLiveDataRepository;
     }
 
+    /** ---------------------------------------------------------------------------------------
+     * - Get all live data records. valuable for GET APIs
+     * - Get live data record by ID, valuable for CRUD APIs
+     * - Get latest(last 10) records, used on liveData html
+     --------------------------------------------------------------------------------------- **/
     @Override
     public List<ElectricityLiveData> getAllElectricityLiveData() {
         return electricityLiveDataRepository.findAll();
