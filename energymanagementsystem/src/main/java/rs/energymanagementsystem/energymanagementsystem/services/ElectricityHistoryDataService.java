@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Repository;
 import rs.energymanagementsystem.energymanagementsystem.entities.ElectricityHistoryData;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -17,5 +18,6 @@ public interface ElectricityHistoryDataService {
     Float getElectricityAvgValue();
 
     Integer getElectricityMinValue();
+    Date getElectricityMinValueDate();
 
 }

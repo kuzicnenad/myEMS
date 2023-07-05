@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import rs.energymanagementsystem.energymanagementsystem.entities.ElectricityHistoryData;
 
+import java.util.Date;
+
 public interface ElectricityHistoryDataRepository extends JpaRepository<ElectricityHistoryData, Integer>, PagingAndSortingRepository<ElectricityHistoryData, Integer> {
 
     @Query(value = "SELECT MAX(electricity_consumption) FROM electricity_history_data",
@@ -18,5 +20,10 @@ public interface ElectricityHistoryDataRepository extends JpaRepository<Electric
     @Query(value = "SELECT MIN(electricity_consumption) FROM electricity_history_data",
             nativeQuery = true)
     Integer getMinValue();
+
+    @Query(value =  "SELECT date FROM electricity_history_data WHERE electricity_consumption = " +
+                    "(SELECT MIN(electricity_consumption) FROM electricity_history_data)",
+            nativeQuery = true)
+    Date getMinValueDate();
 
 }

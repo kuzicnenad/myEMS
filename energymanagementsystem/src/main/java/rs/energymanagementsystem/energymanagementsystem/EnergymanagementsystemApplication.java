@@ -92,6 +92,8 @@ public class EnergymanagementsystemApplication {
 
 		Integer electricityMinValue = electricityHistoryDataService.getElectricityMinValue();
 		model.addAttribute("electricityMinValue", electricityMinValue);
+		Date electricityMinValueDate = electricityHistoryDataService.getElectricityMinValueDate();
+		model.addAttribute("electricityMinValueDate", electricityMinValueDate);
 
 		return "index";
 	}

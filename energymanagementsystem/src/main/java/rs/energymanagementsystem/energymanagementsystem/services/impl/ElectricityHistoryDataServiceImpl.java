@@ -10,6 +10,7 @@ import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFou
 import rs.energymanagementsystem.energymanagementsystem.repositories.ElectricityHistoryDataRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.ElectricityHistoryDataService;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -49,6 +50,11 @@ public class ElectricityHistoryDataServiceImpl implements ElectricityHistoryData
     @Override
     public Integer getElectricityMinValue() {
         return electricityHistoryDataRepository.getMinValue();
+    }
+
+    @Override
+    public Date getElectricityMinValueDate() {
+        return electricityHistoryDataRepository.getMinValueDate();
     }
 
 
