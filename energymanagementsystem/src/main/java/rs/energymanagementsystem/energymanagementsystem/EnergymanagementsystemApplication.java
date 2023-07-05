@@ -83,6 +83,9 @@ public class EnergymanagementsystemApplication {
 	 * Live Data page
 	 * Electricity, Water, Gas
 	 * Idea is to update database more realistic values in future.
+	 * 
+	 * Live Data is refreshed every 10s with HTML meta tag (this is solution for exam demonstration)
+	 * <meta HTTP-EQUIV="Refresh" CONTENT="10">
 	 * --------------------------------------------------------------------------------------- **/
 	@GetMapping("/liveData")
 	public String getLastData(HttpServletRequest request, Model model){
@@ -307,10 +310,9 @@ public class EnergymanagementsystemApplication {
 	 * --------------------------------------------------------------------------------------- **/
 	public static String getCurrentTimeUsingDate() {
 		Date date = new Date();
-		String strDateFormat = "HH:mm:ss";
+		String strDateFormat = "HH:mm";
 		DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
 		String formattedDate= dateFormat.format(date);
-		System.out.println("Current time of the day using Date - 12 hour format: " + formattedDate);
 
 		return formattedDate;
 	}
@@ -320,6 +322,7 @@ public class EnergymanagementsystemApplication {
 	 * Standard main class
 	 * --------------------------------------------------------------------------------------- **/
 	public static void main(String[] args) {
+
 		SpringApplication.run(EnergymanagementsystemApplication.class, args);
 	}
 
