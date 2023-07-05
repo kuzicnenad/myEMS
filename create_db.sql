@@ -8,7 +8,7 @@ CREATE TABLE User (
     username VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    creation_date DATE NOT NULL  DEFAULT CURRENT_TIMESTAMP,
+    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     last_update DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY CLUSTERED (id ASC),
     UNIQUE KEY (email)
@@ -16,11 +16,11 @@ CREATE TABLE User (
 
 CREATE TABLE Passwords (
 	hash_algorithm_id INT NOT NULL AUTO_INCREMENT,
-    user_id INT NOT NULL,
+    user_id BIGINT NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
     time_stamp  TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (hash_algorithm_id),
-    FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (user_id) REFERENCES User (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Role(
@@ -92,7 +92,7 @@ CREATE TABLE Gas_History_Data(
 CREATE TABLE Alarm_Data(
 	alarm_id INT NOT NULL AUTO_INCREMENT,
     alarm_code INT NOT NULL,
-    alarm_desc VARCHAR(200),
+    alarm_desc VARCHAR(255),
     time_stamp  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (alarm_id)
 );
@@ -113,6 +113,7 @@ CREATE TABLE Devices(
 
 drop table if exists users_roles;
 drop table if exists role;
+drop table if exists Alarm_Data;
 
 /* App Menu -> Home, Live Data, History Data, Print reports, Settings*/
 
