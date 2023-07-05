@@ -232,7 +232,7 @@ main{
     float: left;
 }
 
-#normalText, #alarmText{
+#normalText, #rightText{
     font-size: 18px;
     float: right;
     padding-right: 5px;

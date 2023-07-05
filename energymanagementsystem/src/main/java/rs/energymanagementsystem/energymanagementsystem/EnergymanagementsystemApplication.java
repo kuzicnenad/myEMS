@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.*;
 import rs.energymanagementsystem.energymanagementsystem.services.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -94,6 +97,9 @@ public class EnergymanagementsystemApplication {
 
 		/* Navigation active class object */
 		model.addAttribute("request", request);
+
+		String getCurrentDateTime = getCurrentTimeUsingDate();
+		model.addAttribute("getCurrentDateTime", getCurrentDateTime);
 
 		return "liveData";
 	}
@@ -293,6 +299,20 @@ public class EnergymanagementsystemApplication {
 		// call delete user method
 		this.usersService.deleteUser(id);
 		return "redirect:/users";
+	}
+
+
+	/** ---------------------------------------------------------------------------------------
+	 * Get current date and time
+	 * --------------------------------------------------------------------------------------- **/
+	public static String getCurrentTimeUsingDate() {
+		Date date = new Date();
+		String strDateFormat = "HH:mm:ss";
+		DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
+		String formattedDate= dateFormat.format(date);
+		System.out.println("Current time of the day using Date - 12 hour format: " + formattedDate);
+
+		return formattedDate;
 	}
 
 
