@@ -20,7 +20,15 @@ public interface ElectricityHistoryDataRepository extends JpaRepository<Electric
 
     @Query(value = "SELECT AVG(electricity_consumption) FROM electricity_history_data",
             nativeQuery = true)
-    Float getAvgValue();
+    Integer getAvgValue();
+
+    @Query(value = "SELECT date FROM electricity_history_data ORDER BY hist_data_id ASC LIMIT 1",
+          nativeQuery = true)
+    Date getFirstDate();
+
+    @Query(value = "SELECT date FROM electricity_history_data ORDER BY hist_data_id DESC LIMIT 1",
+            nativeQuery = true)
+    Date getLastDate();
 
     @Query(value = "SELECT MIN(electricity_consumption) FROM electricity_history_data",
             nativeQuery = true)

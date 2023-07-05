@@ -79,23 +79,37 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("request", request);
 
 		/**
-		 * Calculate MIN, AVG, MAX values
-		 * for history data -> electricity,
-		 * 					-> gas,
-		 * 					-> water.
+		 * Calculate MIN values
+		 * Get date of MIN value
 		 * **/
 		Integer electricityMaxValue = electricityHistoryDataService.getElectricityMaxValue();
 		model.addAttribute("electricityMaxValue", electricityMaxValue);
 		Date electricityMaxValueDate = electricityHistoryDataService.getElectricityMaxValueDate();
 		model.addAttribute("electricityMaxValueDate", electricityMaxValueDate);
 
-		Float electricityAvgValue = electricityHistoryDataService.getElectricityAvgValue();
-		model.addAttribute("electricityAvgValue", electricityAvgValue);
 
+		/**
+		 * Calculate AVG values
+		 * Get date of first and last record
+		 * **/
+		Integer electricityAvgValue = electricityHistoryDataService.getElectricityAvgValue();
+		model.addAttribute("electricityAvgValue", electricityAvgValue);
+		Date getFirstDate = electricityHistoryDataService.getFirstDate();
+		model.addAttribute("getFirstDate", getFirstDate);
+		Date getLastDate = electricityHistoryDataService.getLastDate();
+		model.addAttribute("getLastDate", getLastDate);
+
+
+		/**
+		 * Calculate MAX values
+		 * Get date of MAX value
+		 * **/
 		Integer electricityMinValue = electricityHistoryDataService.getElectricityMinValue();
 		model.addAttribute("electricityMinValue", electricityMinValue);
 		Date electricityMinValueDate = electricityHistoryDataService.getElectricityMinValueDate();
 		model.addAttribute("electricityMinValueDate", electricityMinValueDate);
+
+
 
 		return "index";
 	}
