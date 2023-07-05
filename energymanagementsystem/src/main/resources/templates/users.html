@@ -50,7 +50,7 @@
                                 <td th:inline="text" class="td-devices">[[${user.email}]] </td>
                                 <td th:text="${#dates.format(user.creation_date, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
                                 <td th:text="${#dates.format(user.last_update, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
-                                <td>
+                                <td class="td-center-items">
                                     <a th:href="@{/userUpdateForm/{id}(id=${user.id})}">
                                         <i class="fa fa-pencil"></i></a>
                                     <a th:href="@{/deleteUser/{id}(id=${user.id})}">

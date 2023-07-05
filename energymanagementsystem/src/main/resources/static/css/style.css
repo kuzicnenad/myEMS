@@ -446,7 +446,7 @@ section{
 .settingsItems{
     width: 300px;
     background-color: rgba(31, 111, 118, 0.4);
-    padding: 60px;
+    padding: 50px;
     margin-left: 50px;
     text-align: center;
     font-size: 1.5em;
@@ -520,6 +520,10 @@ section{
     margin-top: 100px;
 }
 
+.section-down{
+    margin-top: 20px;
+}
+
 .td-devices, .deviceSection tr, .usersSection tr{
     height: auto;
     line-height: 25px;
@@ -528,20 +532,20 @@ section{
     background-color: rgba(20, 80, 85, 0.7);
 }
 
-.deviceSection table, .usersSection table{
+.deviceTable, .usersTable{
 	width: 100%;
-	max-width: 1280px;
+	max-width: 960px;
 	padding-bottom: 1em;
 }
 
-.deviceSection table tbody td, .usersSection table tbody td{
+.deviceTable tbody td, .usersTable tbody td{
 	font-size: 14px;
 	padding: .2em;
 	text-align: left;
 	width: 30ch;
 }
 
-.deviceSection table thead, .usersSection table thead{
+.deviceSection table thead, .usersTable thead{
 	font-weight: bolder;
 	text-transform: uppercase;
 	letter-spacing: .2em;
@@ -555,6 +559,7 @@ section{
 	color: #f2f2f2;
 	outline: none;
 	margin: 3px;
+	font-size: 1.5em;
 
 	-webkit-transition: .5s;
        -moz-transition: .5s;
@@ -562,8 +567,18 @@ section{
     	    transition: .5s;
 }
 
+.deviceTable .td-center-items, .usersTable .td-center-items{
+	text-align: center;
+	width: 20ch;
+}
+
 .deviceTable a:hover, .settingsSectionHeader a:hover, .usersTable a:hover{
 	color: #BE6125;
+}
+
+.backToSettings{
+    margin: 5px;
+    padding: 3px;
 }
 
 /* END SETTINGS
