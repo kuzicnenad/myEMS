@@ -17,7 +17,6 @@ public interface DevicesRepository extends JpaRepository<Devices, Integer> {
             nativeQuery = true)
     void deviceActiveFlag(@Param("device_id") Integer device_id);
 
-
     @Query(value = "SELECT * FROM devices WHERE active_flag = 1",
             nativeQuery = true)
     public List<Devices> getActiveDevices();

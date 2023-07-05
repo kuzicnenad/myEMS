@@ -37,4 +37,11 @@ public class ElectricityHistoryDataServiceImpl implements ElectricityHistoryData
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize, Sort.by("date").descending());
         return this.electricityHistoryDataRepository.findAll(pageable);
     }
+
+    @Override
+    public Integer getElectricityPeakValue() {
+        return electricityHistoryDataRepository.getMaxValue();
+    }
+
+
 }

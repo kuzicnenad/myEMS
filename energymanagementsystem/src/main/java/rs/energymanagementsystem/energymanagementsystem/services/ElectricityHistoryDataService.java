@@ -11,4 +11,6 @@ public interface ElectricityHistoryDataService {
     List<ElectricityHistoryData> getAllElectricityHistoryData();
     ElectricityHistoryData getElectricityHistoryDataById(Integer hist_data_id);
     Page<ElectricityHistoryData> getHistoryDataElectricity(int pageNo, int pageSize);
+
+    Integer getElectricityPeakValue();
 }

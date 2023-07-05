@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.*;
+import rs.energymanagementsystem.energymanagementsystem.repositories.ElectricityHistoryDataRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.*;
+import rs.energymanagementsystem.energymanagementsystem.services.impl.ElectricityHistoryDataServiceImpl;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -76,6 +78,15 @@ public class EnergymanagementsystemApplication {
 		/* Navigation active class object */
 		model.addAttribute("request", request);
 
+		/**
+		 * Calculate MIN, AVG, MAX values
+		 * for history data -> electricity,
+		 * 					-> gas,
+		 * 					-> water.
+		 * **/
+		Integer electricityPeakValue = electricityHistoryDataService.getElectricityPeakValue();
+		model.addAttribute("electricityPeakValue", electricityPeakValue);
+
 		return "index";
 	}
 
@@ -128,6 +139,9 @@ public class EnergymanagementsystemApplication {
 		/* Navigation active class object */
 		model.addAttribute("request", request);
 
+		String getCurrentDateTime = getCurrentTimeUsingDate();
+		model.addAttribute("getCurrentDateTime", getCurrentDateTime);
+
 		return "historyDataElectricity";
 	}
 
@@ -146,6 +160,9 @@ public class EnergymanagementsystemApplication {
 		/* Navigation active class object */
 		model.addAttribute("request", request);
 
+		String getCurrentDateTime = getCurrentTimeUsingDate();
+		model.addAttribute("getCurrentDateTime", getCurrentDateTime);
+
 		return "historyDataGas";
 	}
 
@@ -163,6 +180,9 @@ public class EnergymanagementsystemApplication {
 
 		/* Navigation active class object */
 		model.addAttribute("request", request);
+
+		String getCurrentDateTime = getCurrentTimeUsingDate();
+		model.addAttribute("getCurrentDateTime", getCurrentDateTime);
 
 		return "historyDataWater";
 	}
