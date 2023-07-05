@@ -10,6 +10,7 @@ import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFou
 import rs.energymanagementsystem.energymanagementsystem.repositories.GasHistoryDataRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.GasHistoryDataService;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -37,4 +38,39 @@ public class GasHistoryDataServiceImpl implements GasHistoryDataService {
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize, Sort.by("date").descending());
         return this.gasHistoryDataRepository.findAll(pageable);
     }
+
+    @Override
+    public Integer getGasMaxValue() {
+        return gasHistoryDataRepository.getMaxValue();
+    }
+
+    @Override
+    public Date getGasMaxValueDate() {
+        return gasHistoryDataRepository.getMaxValueDate();
+    }
+
+    @Override
+    public Integer getGasAvgValue() {
+        return gasHistoryDataRepository.getAvgValue();
+    }
+
+    @Override
+    public Date getFirstDate() {
+        return gasHistoryDataRepository.getFirstDate();
+    }
+
+    @Override
+    public Date getLastDate() {
+        return gasHistoryDataRepository.getLastDate();
+    }
+
+    @Override
+    public Integer getGasMinValue() {
+        return gasHistoryDataRepository.getMinValue();
+    }
+    @Override
+    public Date getGasMinValueDate() {
+        return getGasMaxValueDate();
+    }
+
 }

@@ -10,9 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.*;
-import rs.energymanagementsystem.energymanagementsystem.repositories.ElectricityHistoryDataRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.*;
-import rs.energymanagementsystem.energymanagementsystem.services.impl.ElectricityHistoryDataServiceImpl;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -82,11 +80,17 @@ public class EnergymanagementsystemApplication {
 		 * Calculate MIN values
 		 * Get date of MIN value
 		 * **/
+		/* Electricity */
 		Integer electricityMaxValue = electricityHistoryDataService.getElectricityMaxValue();
 		model.addAttribute("electricityMaxValue", electricityMaxValue);
 		Date electricityMaxValueDate = electricityHistoryDataService.getElectricityMaxValueDate();
 		model.addAttribute("electricityMaxValueDate", electricityMaxValueDate);
 
+		/* Gas */
+		Integer gasMaxValue = gasHistoryDataService.getGasMaxValue();
+		model.addAttribute("gasMaxValue", gasMaxValue);
+		Date gasMaxValueDate = gasHistoryDataService.getGasMaxValueDate();
+		model.addAttribute("gasMaxValueDate", gasMaxValueDate);
 
 		/**
 		 * Calculate AVG values
@@ -94,21 +98,32 @@ public class EnergymanagementsystemApplication {
 		 * **/
 		Integer electricityAvgValue = electricityHistoryDataService.getElectricityAvgValue();
 		model.addAttribute("electricityAvgValue", electricityAvgValue);
-		Date getFirstDate = electricityHistoryDataService.getFirstDate();
-		model.addAttribute("getFirstDate", getFirstDate);
-		Date getLastDate = electricityHistoryDataService.getLastDate();
-		model.addAttribute("getLastDate", getLastDate);
+		Date getElectricityFirstRecordDate = electricityHistoryDataService.getFirstDate();
+		model.addAttribute("getElectricityFirstRecordDate", getElectricityFirstRecordDate);
+		Date getElectricityLastRecordDate = electricityHistoryDataService.getLastDate();
+		model.addAttribute("getElectricityLastRecordDate", getElectricityLastRecordDate);
+
+		Integer gasAvgValue = gasHistoryDataService.getGasAvgValue();
+		model.addAttribute("gasAvgValue", gasAvgValue);
+		Date getGasFirstRecordDate = electricityHistoryDataService.getFirstDate();
+		model.addAttribute("getGasFirstRecordDate", getGasFirstRecordDate);
+		Date getGasLastRecordDate = electricityHistoryDataService.getLastDate();
+		model.addAttribute("getGasLastRecordDate", getGasLastRecordDate);
 
 
 		/**
-		 * Calculate MAX values
-		 * Get date of MAX value
+		 * Calculate MIN values
+		 * Get date of MIN value
 		 * **/
 		Integer electricityMinValue = electricityHistoryDataService.getElectricityMinValue();
 		model.addAttribute("electricityMinValue", electricityMinValue);
 		Date electricityMinValueDate = electricityHistoryDataService.getElectricityMinValueDate();
 		model.addAttribute("electricityMinValueDate", electricityMinValueDate);
 
+		Integer gasMinValue = gasHistoryDataService.getGasMinValue();
+		model.addAttribute("gasMinValue", gasMinValue);
+		Date gasMinValueDate = gasHistoryDataService.getGasMinValueDate();
+		model.addAttribute("gasMinValueDate", gasMinValueDate);
 
 
 		return "index";
