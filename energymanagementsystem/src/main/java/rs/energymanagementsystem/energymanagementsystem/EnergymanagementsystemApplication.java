@@ -83,7 +83,7 @@ public class EnergymanagementsystemApplication {
 	 * Live Data page
 	 * Electricity, Water, Gas
 	 * Idea is to update database more realistic values in future.
-	 * 
+	 *
 	 * Live Data is refreshed every 10s with HTML meta tag (this is solution for exam demonstration)
 	 * <meta HTTP-EQUIV="Refresh" CONTENT="10">
 	 * --------------------------------------------------------------------------------------- **/
@@ -310,7 +310,7 @@ public class EnergymanagementsystemApplication {
 	 * --------------------------------------------------------------------------------------- **/
 	public static String getCurrentTimeUsingDate() {
 		Date date = new Date();
-		String strDateFormat = "HH:mm";
+		String strDateFormat = "yyyy/MM/dd  HH:mm";
 		DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
 		String formattedDate= dateFormat.format(date);
 
