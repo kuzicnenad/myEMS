@@ -39,7 +39,22 @@
                         </div>
                         <div class="alarmEventStatus">
                             <h2>Alarm Event Status</h2>
-
+                            <div class="section-data-wrapper">
+                                <thead>
+                                <tr>
+                                    <th>Code</th><th>Description</th><th>Timestamp</th>
+                                </tr>
+                                </thead>
+                                <table>
+                                    <tbody>
+                                    <tr th:each="alarm_data : ${latestAlarmData}" class="dataItems">
+                                        <td th:inline="text">[[${alarm_data.alarm_code}]]</td>
+                                        <td th:inline="text">[[${alarm_data.alarm_desc}]]</td>
+                                        <td th:inline="text">[[${alarm_data.time_stamp}]]</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
@@ -50,16 +65,16 @@
                                     <tbody>
                                     <tr class="dataItems">
                                         <td th:text="${electricityMaxValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(electricityMaxValueDate, 'YYY/dd/MM')}" class="td-2"></td>
+                                        <td th:text="${#dates.format(electricityMaxValueDate, 'dd-MM-yyyy')}" class="td-2"></td>
                                     </tr>
                                     <tr class="dataItems">
                                         <td th:text="${electricityAvgValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(getElectricityFirstRecordDate, 'YYY/MM/dd')}  +
-                                        '-' + ${#dates.format(getElectricityLastRecordDate, 'YYY/MM/dd')}" class="td-2"></td>
+                                        <td th:text="${#dates.format(getElectricityFirstRecordDate, 'dd-MM-yyyy')}  +
+                                        '-' + ${#dates.format(getElectricityLastRecordDate, 'dd-MM-yyyy')}" class="td-2"></td>
                                     </tr>
                                     <tr class="dataItems">
                                         <td th:text="${electricityMinValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(electricityMinValueDate, 'YYY/dd/MM')}" class="td-2"></td>
+                                        <td th:text="${#dates.format(electricityMinValueDate, 'dd-MM-yyyy')}" class="td-2"></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -69,16 +84,16 @@
                                     <tbody>
                                     <tr class="dataItems">
                                         <td th:text="${gasMaxValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(gasMaxValueDate, 'YYY/dd/MM')}" class="td-2"></td>
+                                        <td th:text="${#dates.format(gasMaxValueDate, 'dd-MM-yyyy')}" class="td-2"></td>
                                     </tr>
                                     <tr class="dataItems">
                                         <td th:text="${gasAvgValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(getGasFirstRecordDate, 'YYY/MM/dd')}  +
-                                        '-' + ${#dates.format(getGasLastRecordDate, 'YYY/MM/dd')}" class="td-2"></td>
+                                        <td th:text="${#dates.format(getGasFirstRecordDate, 'dd-MM-yyyy')}  +
+                                        '-' + ${#dates.format(getGasLastRecordDate, 'dd-MM-yyyy')}" class="td-2"></td>
                                     </tr>
                                     <tr class="dataItems">
                                         <td th:text="${gasMinValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(gasMinValueDate, 'YYY/dd/MM')}" class="td-2"></td>
+                                        <td th:text="${#dates.format(gasMinValueDate, 'dd-MM-yyyy')}" class="td-2"></td>
                                     </tr>
                                     </tbody>
                                 </table>

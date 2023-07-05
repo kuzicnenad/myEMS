@@ -3,6 +3,7 @@ package rs.energymanagementsystem.energymanagementsystem.services.impl;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.AlarmData;
+import rs.energymanagementsystem.energymanagementsystem.entities.WaterLiveData;
 import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
 import rs.energymanagementsystem.energymanagementsystem.repositories.AlarmDataRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.AlarmDataService;
@@ -18,6 +19,10 @@ public class AlarmDataServiceImpl implements AlarmDataService {
         this.alarmDataRepository = alarmDataRepository;
     }
 
+    /** ---------------------------------------------------------------------------------------
+     * Get all alarm data records and get alarm data record by ID.
+     * Basic CRUD functionality, used for API testing
+     --------------------------------------------------------------------------------------- **/
     @Override
     public AlarmData saveAlarmData(AlarmData alarmData) {
         return alarmDataRepository.save(alarmData);
@@ -60,4 +65,14 @@ public class AlarmDataServiceImpl implements AlarmDataService {
                 new ResourceNotFoundException("AlarmData", "alarm_id", alarm_id));
         alarmDataRepository.deleteById(alarm_id);
     }
+
+    /** ---------------------------------------------------------------------------------------
+     * Get latest (last 10) records for index page visualisation
+     --------------------------------------------------------------------------------------- **/
+    @Override
+    public List<AlarmData> getLatestDate() {
+        return alarmDataRepository.getLatestData();
+    }
+
+
 }

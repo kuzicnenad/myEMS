@@ -77,6 +77,10 @@ public class DevicesServiceimpl implements DevicesService {
         devicesRepository.deleteById(device_id);
     }
 
+    /** ---------------------------------------------------------------------------------------
+     * Change device active flag, 0 -> Inactive, 1 -> Active
+     * Get active devices list
+     --------------------------------------------------------------------------------------- **/
     @Override
     public void deviceActiveFlag(Integer device_id) {
         // check if device exists in database
@@ -89,4 +93,11 @@ public class DevicesServiceimpl implements DevicesService {
     public List<Devices> getActiveDevices() {
         return devicesRepository.getActiveDevices();
     }
+
+
+    /** ---------------------------------------------------------------------------------------
+     * Additional services for data visualisation on index page
+     * Number of active devices
+     * Number of inactive devices
+     --------------------------------------------------------------------------------------- **/
 }

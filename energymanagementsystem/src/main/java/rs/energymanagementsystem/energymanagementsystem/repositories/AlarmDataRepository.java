@@ -10,5 +10,5 @@ import java.util.List;
 /* Table, PK Data type */
 public interface AlarmDataRepository extends JpaRepository<AlarmData, Integer> {
     @Query(value = "select * FROM alarm_data ORDER BY alarm_id DESC LIMIT 10", nativeQuery = true)
-    public List<AlarmData> getLastData();
+    public List<AlarmData> getLatestData();
 }

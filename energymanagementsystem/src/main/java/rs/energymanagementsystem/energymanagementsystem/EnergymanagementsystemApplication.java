@@ -28,14 +28,15 @@ public class EnergymanagementsystemApplication {
 	 * Necessary for managing application business logic with separate APIs.
 	 * ---------------------------------------------------------------------------------------
 	 * Loading services for:
-	 * Electricity Live Data
-	 * Electricity History Data
-	 * Gas Live Data
-	 * Gas History Data
-	 * Water Live Data
-	 * Water History Data
-	 * Devices
-	 * Users
+	 *  -> Electricity Live Data
+	 * 	-> Electricity History Data
+	 * 	-> Gas Live Data
+	 * 	-> Gas History Data
+	 * 	-> Water Live Data
+	 * 	-> Water History Data
+	 * 	-> Devices
+	 * 	-> Users
+	 * 	-> Alarms
 	 * --------------------------------------------------------------------------------------- **/
 	@Autowired
 	private ElectricityLiveDataService electricityLiveDataService;
@@ -60,6 +61,9 @@ public class EnergymanagementsystemApplication {
 
 	@Autowired
 	private CustomUserDetailsService usersService;
+
+	@Autowired
+	private AlarmDataService alarmDataService;
 
 	@GetMapping("/login")
 	public String showLogInScreen(){
@@ -147,6 +151,12 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("waterMinValue", waterMinValue);
 		Date waterMinValueDate = waterHistoryDataService.getWaterMinValueDate();
 		model.addAttribute("waterMinValueDate", waterMinValueDate);
+
+		/**
+		 * Get the latest alarm data records
+		 * **/
+		List<AlarmData> latestAlarmData = alarmDataService.getLatestDate();
+		model.addAttribute("latestAlarmData", latestAlarmData);
 
 		return "index";
 	}

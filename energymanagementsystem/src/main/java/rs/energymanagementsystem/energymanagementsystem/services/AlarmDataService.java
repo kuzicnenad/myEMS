@@ -8,8 +8,8 @@ import java.util.List;
 public interface AlarmDataService {
 
     /** ---------------------------------------------------------------------------------------
-     * - Get all alarms data records. valuable for GET APIs
-     * - Get alarm data record by ID, valuable for CRUD APIs
+     * Get all alarm data records and get alarm data record by ID.
+     * Basic CRUD functionality, used for API testing
      --------------------------------------------------------------------------------------- **/
     AlarmData saveAlarmData(AlarmData alarmData);
     List<AlarmData> getAllAlarmData();
@@ -20,5 +20,5 @@ public interface AlarmDataService {
     /** ---------------------------------------------------------------------------------------
      * - Get last 10 records (for index page)
      --------------------------------------------------------------------------------------- **/
-    List<WaterLiveData> getLatestDate();
+    List<AlarmData> getLatestDate();
 }

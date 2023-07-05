@@ -11,6 +11,7 @@ import java.util.List;
 
 public interface DevicesRepository extends JpaRepository<Devices, Integer> {
 
+    /** Chan**/
     @Transactional
     @Modifying(clearAutomatically = true)
     @Query(value = "UPDATE devices d SET d.active_flag = IF(active_flag=1, 0, 1), d.last_update = CURRENT_TIMESTAMP WHERE d.device_id = :device_id",
