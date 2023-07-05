@@ -1,7 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.services;
 
 import rs.energymanagementsystem.energymanagementsystem.entities.AlarmData;
-import rs.energymanagementsystem.energymanagementsystem.entities.WaterLiveData;
 
 import java.util.List;
 
