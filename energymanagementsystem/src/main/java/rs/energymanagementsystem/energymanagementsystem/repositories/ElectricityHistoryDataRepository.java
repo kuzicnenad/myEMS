@@ -15,4 +15,8 @@ public interface ElectricityHistoryDataRepository extends JpaRepository<Electric
             nativeQuery = true)
     Float getAvgValue();
 
+    @Query(value = "SELECT MIN(electricity_consumption) FROM electricity_history_data",
+            nativeQuery = true)
+    Integer getMinValue();
+
 }

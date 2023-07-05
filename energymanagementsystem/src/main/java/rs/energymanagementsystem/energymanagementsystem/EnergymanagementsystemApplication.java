@@ -90,6 +90,9 @@ public class EnergymanagementsystemApplication {
 		Float electricityAvgValue = electricityHistoryDataService.getElectricityAvgValue();
 		model.addAttribute("electricityAvgValue", electricityAvgValue);
 
+		Integer electricityMinValue = electricityHistoryDataService.getElectricityMinValue();
+		model.addAttribute("electricityMinValue", electricityMinValue);
+
 		return "index";
 	}
 

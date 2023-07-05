@@ -46,6 +46,10 @@ public class ElectricityHistoryDataServiceImpl implements ElectricityHistoryData
     public Float getElectricityAvgValue() {
         return electricityHistoryDataRepository.getAvgValue();
     }
+    @Override
+    public Integer getElectricityMinValue() {
+        return electricityHistoryDataRepository.getMinValue();
+    }
 
 
 }

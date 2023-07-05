@@ -16,4 +16,6 @@ public interface ElectricityHistoryDataService {
 
     Float getElectricityAvgValue();
 
+    Integer getElectricityMinValue();
+
 }
