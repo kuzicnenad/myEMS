@@ -11,4 +11,5 @@ public interface WaterLiveDataService {
     List<WaterLiveData> getAllWaterLiveData();
     WaterLiveData getWaterLiveDataById(Integer live_data_id);
     List<WaterLiveData> getLastData();
+
 }

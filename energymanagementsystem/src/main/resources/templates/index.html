@@ -87,17 +87,17 @@
                                 <table>
                                     <tbody>
                                     <tr class="dataItems">
-                                        <td th:text="${electricityMaxValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(electricityMaxValueDate, 'YYY/dd/MM')}" class="td-2"></td>
+                                        <td th:text="${waterMaxValue}" class="td-1"></td>
+                                        <td th:text="${#dates.format(waterMaxValueDate, 'YYY/dd/MM')}" class="td-2"></td>
                                     </tr>
                                     <tr class="dataItems">
-                                        <td th:text="${electricityAvgValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(getFirstDate, 'YYY/MM/dd')}  +
-                                        '-' + ${#dates.format(getLastDate, 'YYY/MM/dd')}" class="td-2"></td>
+                                        <td th:text="${waterAvgValue}" class="td-1"></td>
+                                        <td th:text="${#dates.format(getWaterFirstRecordDate, 'YYY/MM/dd')}  +
+                                        '-' + ${#dates.format(getWaterLastRecordDate, 'YYY/MM/dd')}" class="td-2"></td>
                                     </tr>
                                     <tr class="dataItems">
-                                        <td th:text="${electricityMinValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(electricityMinValueDate, 'YYY/dd/MM')}" class="td-2"></td>
+                                        <td th:text="${waterMinValue}" class="td-1"></td>
+                                        <td th:text="${#dates.format(waterMinValueDate, 'YYY/dd/MM')}" class="td-2"></td>
                                     </tr>
                                     </tbody>
                                 </table>

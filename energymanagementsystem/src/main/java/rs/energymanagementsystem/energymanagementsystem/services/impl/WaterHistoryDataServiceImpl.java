@@ -10,6 +10,7 @@ import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFou
 import rs.energymanagementsystem.energymanagementsystem.repositories.WaterHistoryDataRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.WaterHistoryDataService;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -37,4 +38,16 @@ public class WaterHistoryDataServiceImpl implements WaterHistoryDataService {
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize, Sort.by("date").descending());
         return this.waterHistoryDataRepository.findAll(pageable);
     }
+
+    @Override
+    public Integer getWaterMaxValue() {
+        return waterHistoryDataRepository.getMaxValue();
+    }
+
+    @Override
+    public Date getWaterMaxValueDate() {
+        return waterHistoryDataRepository.getMaxValueDate();
+    }
+
+
 }

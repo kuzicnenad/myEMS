@@ -92,6 +92,12 @@ public class EnergymanagementsystemApplication {
 		Date gasMaxValueDate = gasHistoryDataService.getGasMaxValueDate();
 		model.addAttribute("gasMaxValueDate", gasMaxValueDate);
 
+		/* Water */
+		Integer waterMaxValue = waterHistoryDataService.getWaterMaxValue();
+		model.addAttribute("waterMaxValue", waterMaxValue);
+		Date waterMaxValueDate = waterHistoryDataService.getWaterMaxValueDate();
+		model.addAttribute("waterMaxValueDate", waterMaxValueDate);
+
 		/**
 		 * Calculate AVG values
 		 * Get date of first and last record
@@ -158,7 +164,7 @@ public class EnergymanagementsystemApplication {
 	}
 
 	/** ---------------------------------------------------------------------------------------
-	 * History Data pages displayed in order:
+	 * History Data records displayed by pages in following order:
 	 * 	- Electricity
 	 * 	- Gas
 	 * 	- Water
