@@ -100,4 +100,14 @@ public class DevicesServiceimpl implements DevicesService {
      * Number of active devices
      * Number of inactive devices
      --------------------------------------------------------------------------------------- **/
+    @Override
+    public Integer getNumberOfActiveDevices() {
+        return devicesRepository.numberOfActiveDevices();
+    }
+
+    @Override
+    public Integer getNumberOfInactiveDevices() {
+        return devicesRepository.numberOfInactiveDevices();
+    }
+
 }

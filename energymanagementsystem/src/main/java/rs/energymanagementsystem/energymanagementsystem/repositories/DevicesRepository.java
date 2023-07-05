@@ -31,14 +31,14 @@ public interface DevicesRepository extends JpaRepository<Devices, Integer> {
     /** ---------------------------------------------------------------------------------------
      * Get number of Active devices
      --------------------------------------------------------------------------------------- **/
-    @Query(value = "SELECT * FROM devices WHERE active_flag = 1",
+    @Query(value = "SELECT COUNT(device_id) FROM devices WHERE active_flag = 1;",
             nativeQuery = true)
     public Integer numberOfActiveDevices();
 
     /** ---------------------------------------------------------------------------------------
      * Get number of Inactive devices
      --------------------------------------------------------------------------------------- **/
-    @Query(value = "SELECT * FROM devices WHERE active_flag = 1",
+    @Query(value = "SELECT COUNT(device_id) FROM devices WHERE active_flag = 0;",
             nativeQuery = true)
     public Integer numberOfInactiveDevices();
 }

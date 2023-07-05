@@ -36,4 +36,7 @@ public interface DevicesService {
      * Number of active devices
      * Number of inactive devices
      --------------------------------------------------------------------------------------- **/
+    Integer getNumberOfActiveDevices();
+    Integer getNumberOfInactiveDevices();
+
 }

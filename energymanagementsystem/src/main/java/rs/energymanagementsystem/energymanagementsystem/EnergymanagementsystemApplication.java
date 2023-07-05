@@ -158,6 +158,16 @@ public class EnergymanagementsystemApplication {
 		List<AlarmData> latestAlarmData = alarmDataService.getLatestDate();
 		model.addAttribute("latestAlarmData", latestAlarmData);
 
+
+		/** ---------------------------------------------------------------------------------------
+		 * Get Number of active devices
+		 * Get Number of inactive devices
+		 --------------------------------------------------------------------------------------- **/
+		Integer numberOfActiveDevices = devicesService.getNumberOfActiveDevices();
+		model.addAttribute("numberOfActiveDevices", numberOfActiveDevices);
+		Integer numberOfInactiveDevices = devicesService.getNumberOfInactiveDevices();
+		model.addAttribute("numberOfInactiveDevices", numberOfInactiveDevices);
+
 		return "index";
 	}
 
