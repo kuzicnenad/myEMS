@@ -17,8 +17,12 @@ public class WaterLiveDataServiceImpl implements WaterLiveDataService {
     public WaterLiveDataServiceImpl(WaterLiveDataRepository waterLiveDataRepository){
         this.waterLiveDataRepository = waterLiveDataRepository;
     }
-
-
+    
+    /** ---------------------------------------------------------------------------------------
+     * - Get all live data records. valuable for GET APIs
+     * - Get live data record by ID, valuable for CRUD APIs
+     * - Get latest(last 10) records, used on liveData html
+     --------------------------------------------------------------------------------------- **/
     @Override
     public List<WaterLiveData> getAllWaterLiveData() {
         return waterLiveDataRepository.findAll();
