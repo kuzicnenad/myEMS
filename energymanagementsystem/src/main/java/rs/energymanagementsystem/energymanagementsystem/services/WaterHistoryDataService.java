@@ -28,4 +28,9 @@ public interface WaterHistoryDataService {
 
     Date getWaterMaxValueDate();
 
+    Integer getWaterAvgValue();
+
+    Date getFirstDate();
+
+    Date getLastDate();
 }

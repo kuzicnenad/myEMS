@@ -30,10 +30,11 @@ public interface GasHistoryDataService {
 
     Integer getGasAvgValue();
 
-    Integer getGasMinValue();
-
     Date getFirstDate();
+
     Date getLastDate();
+
+    Integer getGasMinValue();
 
     Date getGasMinValueDate();
 }

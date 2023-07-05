@@ -77,8 +77,8 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("request", request);
 
 		/**
-		 * Calculate MIN values
-		 * Get date of MIN value
+		 * Calculate MAX values
+		 * Get date of MAX value
 		 * **/
 		/* Electricity */
 		Integer electricityMaxValue = electricityHistoryDataService.getElectricityMaxValue();
@@ -102,6 +102,7 @@ public class EnergymanagementsystemApplication {
 		 * Calculate AVG values
 		 * Get date of first and last record
 		 * **/
+		/* Electricity */
 		Integer electricityAvgValue = electricityHistoryDataService.getElectricityAvgValue();
 		model.addAttribute("electricityAvgValue", electricityAvgValue);
 		Date getElectricityFirstRecordDate = electricityHistoryDataService.getFirstDate();
@@ -109,13 +110,21 @@ public class EnergymanagementsystemApplication {
 		Date getElectricityLastRecordDate = electricityHistoryDataService.getLastDate();
 		model.addAttribute("getElectricityLastRecordDate", getElectricityLastRecordDate);
 
+		/* Gas */
 		Integer gasAvgValue = gasHistoryDataService.getGasAvgValue();
 		model.addAttribute("gasAvgValue", gasAvgValue);
-		Date getGasFirstRecordDate = electricityHistoryDataService.getFirstDate();
+		Date getGasFirstRecordDate = gasHistoryDataService.getFirstDate();
 		model.addAttribute("getGasFirstRecordDate", getGasFirstRecordDate);
-		Date getGasLastRecordDate = electricityHistoryDataService.getLastDate();
+		Date getGasLastRecordDate = gasHistoryDataService.getLastDate();
 		model.addAttribute("getGasLastRecordDate", getGasLastRecordDate);
 
+		/* Water */
+		Integer waterAvgValue = waterHistoryDataService.getWaterAvgValue();
+		model.addAttribute("waterAvgValue", waterAvgValue);
+		Date getWaterFirstRecordDate = waterHistoryDataService.getFirstDate();
+		model.addAttribute("getWaterFirstRecordDate", getWaterFirstRecordDate);
+		Date getWaterLastRecordDate = waterHistoryDataService.getLastDate();
+		model.addAttribute("getWaterLastRecordDate", getWaterLastRecordDate);
 
 		/**
 		 * Calculate MIN values

@@ -17,4 +17,16 @@ public interface WaterHistoryDataRepository extends JpaRepository<WaterHistoryDa
             "(SELECT MAX(water_consumption) FROM water_history_data)",
             nativeQuery = true)
     Date getMaxValueDate();
+
+    @Query(value = "SELECT AVG(water_consumption) FROM water_history_data",
+            nativeQuery = true)
+    Integer getAvgValue();
+
+    @Query(value = "SELECT date FROM water_history_data ORDER BY hist_data_id ASC LIMIT 1",
+            nativeQuery = true)
+    Date getFirstDate();
+
+    @Query(value = "SELECT date FROM water_history_data ORDER BY hist_data_id DESC LIMIT 1",
+            nativeQuery = true)
+    Date getLastDate();
 }

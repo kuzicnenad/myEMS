@@ -49,5 +49,20 @@ public class WaterHistoryDataServiceImpl implements WaterHistoryDataService {
         return waterHistoryDataRepository.getMaxValueDate();
     }
 
+    @Override
+    public Integer getWaterAvgValue() {
+        return waterHistoryDataRepository.getAvgValue();
+    }
+
+    @Override
+    public Date getFirstDate() {
+        return waterHistoryDataRepository.getFirstDate();
+    }
+
+    @Override
+    public Date getLastDate() {
+        return waterHistoryDataRepository.getLastDate();
+    }
+
 
 }
