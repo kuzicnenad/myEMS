@@ -4,7 +4,7 @@
       <a class="nav-link" href="/index">Home (TBD)</a>
     </li>
     <li class="nav-item" th:class="${request.getRequestURI() == '/liveData' ? 'nav-item active' : 'nav-item'}">
-      <a class="nav-link" href="/liveData">Live data</a>
+      <a class="nav-link" href="/liveData">Latest data</a>
     </li>
     <li class="nav-item" th:class="${#strings.startsWith(request.getRequestURI(), '/historyData') ? 'nav-item active' : 'nav-item'}">
       <a class="nav-link" href="/historyDataElectricity/1">History data</a>
