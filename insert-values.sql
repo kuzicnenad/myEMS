@@ -18,9 +18,7 @@ VALUES	('ADMIN'),
 		('USER');
         
 INSERT INTO users_roles
-VALUES	(1,2),
-		(1,2),
-		(2,2);
+VALUES	(1,1);
 
 
 /* ---------- Generate devices ---------- */

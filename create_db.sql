@@ -10,7 +10,7 @@ CREATE TABLE User (
     password VARCHAR(255) NOT NULL,
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     last_update DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY CLUSTERED (id ASC),
+    PRIMARY KEY (id ASC),
     UNIQUE KEY (email)
 );
 
@@ -109,7 +109,6 @@ CREATE TABLE Devices(
     active_flag BOOL NOT NULL DEFAULT 0,
     PRIMARY KEY (device_id)
 );
-
 
 drop table if exists users_roles;
 drop table if exists role;

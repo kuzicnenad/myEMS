@@ -1,3 +1,6 @@
+/* ------------------------------------------------------------------
+    GENERAL styles
+------------------------------------------------------------------- */
 html, body {
     height: 100%;
     max-height:100%;
@@ -20,7 +23,34 @@ body {
     font-size: 16px;
 }
 
-/* INDEX specific styles
+h1, h2, h3, h5, p {
+	margin: 0;
+	padding: 0;
+}
+
+.allWrapper{
+    display: inline-flex;
+    width: 100%;
+}
+
+menu {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    left: 0;
+    top: 0;
+    height:100vh;
+    min-width: 280px;
+    background-image: linear-gradient(to bottom, #063146, #03394b, #04414f, #0a4853, #145055);
+    position: sticky;
+    float: left;
+    box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+/*-------------------------------------------------------------------
+    INDEX specific styles
 ------------------------------------------------------------------- */
 .indexPage{
     background: #0a1f2b;
@@ -31,7 +61,6 @@ body {
     padding: 0;
     height: auto;
     width: 100%;
-    display: inline-flex;
 }
 
 .wrapIndexItems{
@@ -74,12 +103,12 @@ body {
     background-color: rgba(31, 111, 118, 0.1);
 }
 
-
 .indexValuesTable tbody td{
 	font-size: 14px;
 	padding: .2em;
 	text-align: left;
 	min-width: 5ch;
+    font-size: 1.2em;
 }
 
 .indexValuesTable table thead{
@@ -105,39 +134,9 @@ body {
     background-color: rgba(20, 80, 85, 0.7);
 }
 
-/* INDEX END
+/*-------------------------------------------------------------------
+    LOGO, HEADER and NAV styles
 ------------------------------------------------------------------- */
-
-.liveDataPage{
-    background: #0a1f2b;
-}
-
-h1, h2, h3, h5, p {
-	margin: 0;
-	padding: 0;
-}
-
-.allWrapper{
-    display: inline-flex;
-    width: 100%;
-}
-
-menu {
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    left: 0;
-    top: 0;
-    height:100vh;
-    min-width: 280px;
-    background-image: linear-gradient(to bottom, #063146, #03394b, #04414f, #0a4853, #145055);
-    position: sticky;
-    float: left;
-    box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.75);
-}
-
 .logo {
     font-size: 42px;
     color: #f2f2f2;
@@ -247,10 +246,17 @@ header p{
 .fa-wifi{ padding-right: 5px;}
 
 
+/*-------------------------------------------------------------------
+    MAIN styles, HISTORY and LIVE data pages
+------------------------------------------------------------------- */
 main{
     margin: 0 auto;
     width: 100%;
     margin-left: 2px;
+}
+
+.liveDataPage{
+    background: #0a1f2b;
 }
 
 .contentDataWrapper{
@@ -352,7 +358,7 @@ section{
 .dataItems{
     display: inline-block;
     width: auto;
-    min-width: 250px;
+    min-width: 200px;
     margin: 3px;
     border: 1px solid #063146;
 }
@@ -360,9 +366,6 @@ section{
 .sectionText{
     padding: 0;
     margin: 0;
-}
-
-.sectionText p{
     font-size: 18px;
     font-weight: bold;
     letter-spacing: 1px;
