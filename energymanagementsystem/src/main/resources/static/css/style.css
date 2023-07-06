@@ -20,8 +20,18 @@ body {
     font-size: 16px;
 }
 
+/* INDEX specific styles
+------------------------------------------------------------------- */
 .indexPage{
     background: #0a1f2b;
+}
+
+.indexPage main{
+    margin: 0 auto;
+    padding: 0;
+    height: auto;
+    width: 100%;
+    display: inline-flex;
 }
 
 .wrapIndexItems{
@@ -35,35 +45,74 @@ body {
 .indexMainLeft{
     display: inline-block;
     height: auto;
-    margin-left: 100px;
+    max-width: 40%;
+    background-color: rgba(31, 111, 118, 0.1);
 }
 
 .indexMainRight{
-    display: inline-flex;
-    margin-left: 100px;
+    display: flex;
+    height: auto;
+    max-width: 60%;
 }
 
 .deviceStatus, .alarmEventStatus{
     width: auto;
-    width: 350px;
-    height: 340px;
-    background-color: rgba(31, 111, 118, 0.4);
 }
 
 .alarmEventStatus{
     margin-top: 20px;
 }
 
-.peakValues, .previousDayValues {
-    width: auto;
-    width: 350px;
-    height: 700px;
-    background: #063146;
-    background-color: rgba(31, 111, 118, 0.4);
+.peakValues {
+    height: auto;
+    font-size: 1em;
 }
-.peakValues .dataItems{
+.indexDataItems .td-1{
+    font-size: 2em;
 }
 
+.indexValuesWrapper{
+    display: block;
+}
+
+.indexValuesTable{
+	width: auto;
+	max-width: 960px;
+	padding-bottom: 1em;
+}
+
+
+.indexValuesTable tbody td{
+	font-size: 14px;
+	padding: .2em;
+	text-align: left;
+	width: 30ch;
+}
+
+.indexValuesTable table thead{
+	font-weight: bolder;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+	font-size: 14px;
+	margin: 2px;
+	padding: 0px;
+}
+
+.indexValuesTable .td-center-items{
+	text-align: center;
+	width: 20ch;
+}
+
+.td-index, .indexValuesTable tr{
+    height: auto;
+    line-height: 25px;
+    width: auto;
+    font-size: 14px;
+    background-color: rgba(20, 80, 85, 0.7);
+}
+
+/* INDEX END
+------------------------------------------------------------------- */
 
 .liveDataPage{
     background: #0a1f2b;
@@ -211,7 +260,7 @@ main{
 }
 
 .contentDataWrapper{
-    max-width: 1680px;
+    width: 1280px;
     margin: 0 auto;
 }
 
@@ -317,7 +366,6 @@ section{
 .sectionText{
     padding: 0;
     margin: 0;
-    min-width: 250px;
 }
 
 .sectionText p{

@@ -34,33 +34,41 @@
                 <div class="wrapIndexItems">
                     <div class="indexMainLeft">
                         <div class="deviceStatus">
-                            <h2>Devices Status</h2>
                             <div class="section-data-wrapper">
-                                <table>
-                                    <tr>
-                                        <td class="td-2">Active</td>
-                                        <td th:text="${numberOfActiveDevices}" class="td-1"></td>
-                                        <td class="td-2">Inactive</td>
-                                        <td th:text="${numberOfInactiveDevices}" class="td-1"></td>
+                                <table class="indexValuesTable">
+                                    <thead>
+                                    <tr class="indexDataItems">
+                                        <h2>Devices Status</h2>
                                     </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="indexDataItems">
+                                            <tr>
+                                            <td class="td-index">Total Active: </td>
+                                            <td th:text="${numberOfActiveDevices}" class="td-index"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-index">Total Inactive: </td>
+                                            <td th:text="${numberOfInactiveDevices}" class="td-index"></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="alarmEventStatus">
-                            <h2>Alarm Event Status</h2>
+                            <h2>Latest alarms</h2>
                             <div class="section-data-wrapper">
-                                <thead>
-                                <tr>
-                                    <th>Code</th><th>Description</th><th>Timestamp</th>
-                                </tr>
-                                </thead>
                                 <table>
+                                    <thead>
+                                        <tr class="indexDataItems">
+                                            <th>Code</th><th>Description</th><th>Timestamp</th>
+                                        </tr>
+                                    </thead>
                                     <tbody>
-                                    <tr th:each="alarm_data : ${latestAlarmData}" class="dataItems">
-                                        <td th:inline="text">[[${alarm_data.alarm_code}]]</td>
-                                        <td th:inline="text">[[${alarm_data.alarm_desc}]]</td>
-                                        <td th:inline="text">[[${alarm_data.time_stamp}]]</td>
+                                    <tr th:each="alarm_data : ${latestAlarmData}" class="indexDataItems">
+                                        <td th:inline="text" class="td-index">[[${alarm_data.alarm_code}]]</td>
+                                        <td th:inline="text" class="td-index">[[${alarm_data.alarm_desc}]]</td>
+                                        <td th:inline="text" class="td-index">[[${alarm_data.time_stamp}]]</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -70,66 +78,86 @@
 
                     <div class="indexMainRight">
                         <section class="peakValues">
-                            <div class="section-data-wrapper">
-                                <table>
-                                    <tbody>
-                                    <tr class="dataItems">
-                                        <td th:text="${electricityMaxValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(electricityMaxValueDate, 'dd-MM-yyyy')}" class="td-2"></td>
-                                    </tr>
-                                    <tr class="dataItems">
-                                        <td th:text="${electricityAvgValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(getElectricityFirstRecordDate, 'dd-MM-yyyy')}  +
-                                        '-' + ${#dates.format(getElectricityLastRecordDate, 'dd-MM-yyyy')}" class="td-2"></td>
-                                    </tr>
-                                    <tr class="dataItems">
-                                        <td th:text="${electricityMinValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(electricityMinValueDate, 'dd-MM-yyyy')}" class="td-2"></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="section-data-wrapper">
-                                <table>
-                                    <tbody>
-                                    <tr class="dataItems">
-                                        <td th:text="${gasMaxValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(gasMaxValueDate, 'dd-MM-yyyy')}" class="td-2"></td>
-                                    </tr>
-                                    <tr class="dataItems">
-                                        <td th:text="${gasAvgValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(getGasFirstRecordDate, 'dd-MM-yyyy')}  +
-                                        '-' + ${#dates.format(getGasLastRecordDate, 'dd-MM-yyyy')}" class="td-2"></td>
-                                    </tr>
-                                    <tr class="dataItems">
-                                        <td th:text="${gasMinValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(gasMinValueDate, 'dd-MM-yyyy')}" class="td-2"></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="section-data-wrapper">
-                                <table>
-                                    <tbody>
-                                    <tr class="dataItems">
-                                        <td th:text="${waterMaxValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(waterMaxValueDate, 'YYY/dd/MM')}" class="td-2"></td>
-                                    </tr>
-                                    <tr class="dataItems">
-                                        <td th:text="${waterAvgValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(getWaterFirstRecordDate, 'YYY/MM/dd')}  +
-                                        '-' + ${#dates.format(getWaterLastRecordDate, 'YYY/MM/dd')}" class="td-2"></td>
-                                    </tr>
-                                    <tr class="dataItems">
-                                        <td th:text="${waterMinValue}" class="td-1"></td>
-                                        <td th:text="${#dates.format(waterMinValueDate, 'YYY/dd/MM')}" class="td-2"></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <div class="indexValuesWrapper">
+                                <div class="">
+                                    <table class="indexValuesTable">
+                                        <thead>
+                                            <tr>
+                                                <h2>Electricity values</h2>
+                                            </tr>
+                                            <tr>
+                                                <th>Maximum</th><th>Date</th><th>Average</th><th>Date</th><th>Minimum</th><th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="indexDataItems">
+                                            <td th:text="${electricityMaxValue}" class="td-index"></td>
+                                            <td th:text="${#dates.format(electricityMaxValueDate, 'dd-MM-yyyy')}" class="td-index"></td>
 
-                            <div class="sectionText">
-                                <p>Peak values</p>
+                                            <td th:text="${electricityAvgValue}" class="td-index"></td>
+                                            <td th:text="${#dates.format(getElectricityFirstRecordDate, 'dd-MM-yyyy')}  +
+                                        '-' + ${#dates.format(getElectricityLastRecordDate, 'dd-MM-yyyy')}" class="td-index"></td>
+
+                                            <td th:text="${electricityMinValue}" class="td-index"></td>
+                                            <td th:text="${#dates.format(electricityMinValueDate, 'dd-MM-yyyy')}" class="td-index"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="indexValuesTable">
+                                        <thead>
+                                        <tr>
+                                            <h2>Gas values</h2>
+                                        </tr>
+                                        <tr>
+                                            <th>Maximum</th><th>Date</th><th>Average</th><th>Date</th><th>Minimum</th><th>Date</th>
+                                        </tr>
+                                        </thead>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="indexDataItems">
+                                            <td th:text="${gasMaxValue}" class="td-index"></td>
+                                            <td th:text="${#dates.format(gasMaxValueDate, 'dd-MM-yyyy')}" class="td-devices"></td>
+
+                                            <td th:text="${gasAvgValue}" class="td-index"></td>
+                                            <td th:text="${#dates.format(getGasFirstRecordDate, 'dd-MM-yyyy')}  +
+                                        '-' + ${#dates.format(getGasLastRecordDate, 'dd-MM-yyyy')}" class="td-devices"></td>
+
+                                            <td th:text="${gasMinValue}" class="td-index"></td>
+                                            <td th:text="${#dates.format(gasMinValueDate, 'dd-MM-yyyy')}" class="td-index"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="indexValuesTable">
+                                        <thead>
+                                        <tr>
+                                            <h2>Water values</h2>
+                                        </tr>
+                                        <tr>
+                                            <th>Maximum</th><th>Date</th><th>Average</th><th>Date</th><th>Minimum</th><th>Date</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="indexDataItems">
+                                            <td th:text="${waterMaxValue}" class="td-index"></td>
+                                            <td th:text="${#dates.format(waterMaxValueDate, 'YYY/dd/MM')}" class="td-index"></td>
+
+                                            <td th:text="${waterAvgValue}" class="td-index"></td>
+                                            <td th:text="${#dates.format(getWaterFirstRecordDate, 'YYY/MM/dd')}  +
+                                        '-' + ${#dates.format(getWaterLastRecordDate, 'YYY/MM/dd')}" class="td-index"></td>
+
+                                            <td th:text="${waterMinValue}" class="td-index"></td>
+                                            <td th:text="${#dates.format(waterMinValueDate, 'YYY/dd/MM')}" class="td-index"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div>
+
+
+                                </div>
                             </div>
                         </section>
 
