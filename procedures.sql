@@ -33,8 +33,8 @@ BEGIN
     DECLARE pStart_time DATETIME; 
     DECLARE pEnd_time DATETIME; 
     
-    SET pStart_time = '2021-03-20 12:00:01';
-    SET pEnd_time = '2021-03-20 13:00:00';
+    SET pStart_time = '2022-03-20 12:00:01';
+    SET pEnd_time = '2022-03-20 13:00:00';
     SET pFault_detected = '0';
     
 	WHILE pEnd_time < DATE_SUB(current_timestamp, INTERVAL 2 DAY) DO
@@ -88,8 +88,8 @@ BEGIN
     DECLARE pStart_time DATETIME; 
     DECLARE pEnd_time DATETIME; 
         
-    SET pStart_time = '2021-03-20 12:00:01';
-    SET pEnd_time = '2021-03-20 13:00:00';
+    SET pStart_time = '2022-03-20 12:00:01';
+    SET pEnd_time = '2022-03-20 13:00:00';
     SET pFault_detected = '0';
     
 	WHILE pEnd_time < DATE_SUB(current_timestamp, INTERVAL 2 DAY) DO				
@@ -145,8 +145,8 @@ BEGIN
     DECLARE pStart_time DATETIME; 
     DECLARE pEnd_time DATETIME;
     
-    SET pStart_time = '2021-03-20 12:00:01';
-    SET pEnd_time = '2021-03-20 13:00:00';
+    SET pStart_time = '2022-03-20 12:00:01';
+    SET pEnd_time = '2022-03-20 13:00:00';
     SET pFault_detected = '0';
     
 	WHILE pEnd_time < DATE_SUB(current_timestamp, INTERVAL 2 DAY) DO

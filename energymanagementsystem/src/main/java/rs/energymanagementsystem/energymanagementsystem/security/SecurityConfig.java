@@ -35,12 +35,17 @@ public class SecurityConfig {
         return configuration.getAuthenticationManager();
     }
 
+    /** adding used resources to enable them before used is logged in**/
     String[] staticResources  =  {
             "/css/**",
             "/css",
             "/images/**",
             "/image"
     };
+
+    /**Spring security configuration
+     * used variables
+     * authorisation and authentication **/
     public static final String LOGIN_URL = "/login";
     public static final String SESSION_ID = "JSESSIONID";
     public static final String LOGOUT_URL = "/logout";
@@ -57,7 +62,7 @@ public class SecurityConfig {
                         .requestMatchers(staticResources).permitAll()
                         .requestMatchers(LOGIN_URL).permitAll()
                         .requestMatchers(DEFAULT_SUCCESS_URL).hasAnyAuthority("USER","ADMIN")
-                        .requestMatchers("/api/**").hasAuthority("ADMIN")
+                        .requestMatchers("/api/**").permitAll()
                         .requestMatchers("/index").hasAnyAuthority("USER","ADMIN")
                         .requestMatchers("/logout").hasAnyAuthority("USER","ADMIN")
                         .requestMatchers("/liveData").hasAnyAuthority("USER","ADMIN")
