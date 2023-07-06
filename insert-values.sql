@@ -10,15 +10,27 @@ VALUES 	('Admin','Admin_FirstName','Admin_LastName','1'),
 ;
 
 INSERT INTO User(name, username, email, password)
-VALUES 	('Admin_1', 'Admin_1', 'admin_1@myems.com', '$2a$12$OJM5mRrY9gC61uhk5Dbtt.5xmcT0QF6loN6HnKSr9fqSWKwrqGFLC'), 	/* pass -> admin */
-		('User_1', 'User_1', 'user_1@myems.com', '$2a$12$C4brIjIkdcSF0dJBvyFsjesGqq19Spy0xGbKEPXax0NfD/j6MicrG');		/* pass -> user */
+VALUES 	('Admin1', 'Admin1', 'admin_1@myems.com', '$2a$12$OJM5mRrY9gC61uhk5Dbtt.5xmcT0QF6loN6HnKSr9fqSWKwrqGFLC'), 	/* pass -> admin */
+		('User1', 'User1', 'user_1@myems.com', '$2a$12$C4brIjIkdcSF0dJBvyFsjesGqq19Spy0xGbKEPXax0NfD/j6MicrG'),
+        ('Admin2', 'Admin2', 'admin_2@myems.com', '$2a$12$OJM5mRrY9gC61uhk5Dbtt.5xmcT0QF6loN6HnKSr9fqSWKwrqGFLC'), 	/* pass -> admin */
+		('User2', 'User2', 'user_2@myems.com', '$2a$12$C4brIjIkdcSF0dJBvyFsjesGqq19Spy0xGbKEPXax0NfD/j6MicrG'),
+        ('Admin3', 'Admin3', 'admin_3@myems.com', '$2a$12$OJM5mRrY9gC61uhk5Dbtt.5xmcT0QF6loN6HnKSr9fqSWKwrqGFLC'), 	/* pass -> admin */
+		('User3', 'User3', 'user_3@myems.com', '$2a$12$C4brIjIkdcSF0dJBvyFsjesGqq19Spy0xGbKEPXax0NfD/j6MicrG');		/* pass -> user */
         
 INSERT INTO Role(name)
 VALUES	('ADMIN'),
 		('USER');
         
 INSERT INTO users_roles
-VALUES	(1,1);
+VALUES	(1,1),
+		(1,2),
+        (2,2),
+        (3,1),
+		(3,2),
+        (4,2),
+        (5,1),
+		(5,2),
+        (6,2);
 
 
 /* ---------- Generate devices ---------- */

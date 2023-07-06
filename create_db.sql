@@ -14,15 +14,6 @@ CREATE TABLE User (
     UNIQUE KEY (email)
 );
 
-CREATE TABLE Passwords (
-	hash_algorithm_id INT NOT NULL AUTO_INCREMENT,
-    user_id BIGINT NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,
-    time_stamp  TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (hash_algorithm_id),
-    FOREIGN KEY (user_id) REFERENCES User (id) ON DELETE CASCADE ON UPDATE CASCADE
-);
-
 CREATE TABLE Role(
 	id BIGINT NOT NULL auto_increment,
     name VARCHAR(50) NOT NULL,
@@ -110,7 +101,9 @@ CREATE TABLE Devices(
     PRIMARY KEY (device_id)
 );
 
+drop table if exists passwords;
 drop table if exists users_roles;
+drop table if exists user;
 drop table if exists role;
 drop table if exists Alarm_Data;
 

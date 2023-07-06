@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import rs.energymanagementsystem.energymanagementsystem.entities.Devices;
 import rs.energymanagementsystem.energymanagementsystem.entities.User;
 import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
 import rs.energymanagementsystem.energymanagementsystem.repositories.UserRepository;
@@ -22,6 +23,12 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
 
     public CustomUserDetailsServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    /** Used for application database update via html form **/
+    @Override
+    public User saveUserViaForm(User user) {
+        return userRepository.save(user);
     }
 
     /** Create new user with default API save**/

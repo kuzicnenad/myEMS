@@ -373,7 +373,7 @@ public class EnergymanagementsystemApplication {
 	public String saveUserViaForm(@ModelAttribute(value = "user") User user){
 
 		// save user to database repository
-		usersService.updateUser(user, user.getId());
+		usersService.saveUser(user);
 		return "redirect:/users";
 	}
 
