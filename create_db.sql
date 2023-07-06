@@ -2,6 +2,10 @@ DROP DATABASE IF EXISTS myEMS;
 CREATE DATABASE myEMS;
 USE myEMS;
 	
+drop table if exists users_roles;
+drop table if exists user;
+drop table if exists role;
+
 CREATE TABLE User (
 	id BIGINT NOT NULL auto_increment,
     name VARCHAR(50) NOT NULL,
@@ -10,7 +14,7 @@ CREATE TABLE User (
     password VARCHAR(255) NOT NULL,
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     last_update DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (id ASC),
+    PRIMARY KEY CLUSTERED (id ASC),
     UNIQUE KEY (email)
 );
 
@@ -23,7 +27,7 @@ CREATE TABLE Role(
 CREATE TABLE users_roles (
   user_id BIGINT NOT NULL,
   role_id BIGINT NOT NULL,
-  FOREIGN KEY (role_id) REFERENCES Role (id) ON DELETE CASCADE,
+  FOREIGN KEY (role_id) REFERENCES Role (id) ON UPDATE CASCADE,
   FOREIGN KEY (user_id) REFERENCES User (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
