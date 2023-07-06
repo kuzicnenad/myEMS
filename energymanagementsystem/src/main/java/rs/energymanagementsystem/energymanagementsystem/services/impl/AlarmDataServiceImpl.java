@@ -66,10 +66,22 @@ public class AlarmDataServiceImpl implements AlarmDataService {
 
     /** ---------------------------------------------------------------------------------------
      * Get latest (last 10) records for index page visualisation
+     * Acknowledge alarm flag, 0 -> Not Acknowledged, 1 -> Acknowledged
      --------------------------------------------------------------------------------------- **/
     @Override
     public List<AlarmData> getLatestDate() {
         return alarmDataRepository.getLatestData();
+    }
+
+    @Override
+    public void alarmAckFlag(Integer alarm_id){
+        // check if alarm is already acknowledged
+        Boolean checkValue = alarmDataRepository.ackValueCheck(alarm_id);
+
+        if (!checkValue)
+            alarmDataRepository.alarmAckFlag(alarm_id);
+        else
+            System.out.println("Alarm was already acknowledged");
     }
 
 

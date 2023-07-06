@@ -420,6 +420,12 @@ public class EnergymanagementsystemApplication {
 		return "alarms";
 	}
 
+	@GetMapping("/ackFlag/{alarm_id}") // CHANGE ACTIVE FLAG
+	public String alarmAckFlag(@PathVariable(value = "alarm_id") Integer alarm_id){
+		alarmDataService.alarmAckFlag(alarm_id);
+		return "redirect:/alarms";
+	}
+
 	/** ---------------------------------------------------------------------------------------
 	 * Get current date and time
 	 * --------------------------------------------------------------------------------------- **/

@@ -17,7 +17,11 @@ public interface AlarmDataService {
     void deleteAlarmData(Integer alarm_id);
 
     /** ---------------------------------------------------------------------------------------
-     * - Get last 10 records (for index page)
+     * Get last 10 records (for index page)
+     * Acknowledge alarm flag, 0 -> Not Acknowledged, 1 -> Acknowledged
      --------------------------------------------------------------------------------------- **/
     List<AlarmData> getLatestDate();
+
+    void alarmAckFlag(Integer alarm_id);
+
 }

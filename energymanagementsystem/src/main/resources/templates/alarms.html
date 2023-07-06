@@ -31,17 +31,17 @@
     <main>
 
         <!-- Header and pre section -->
-        <div th:replace="fragments/historyHeader :: header"></div>
+        <div th:replace="~{fragments/historyHeader :: header}"></div>
 
         <div class="contentDataWrapper">
             <section class="usersSection">
                 <div class="settingsSectionHeader">
                     <h2>Alarms list</h2>
                 </div>
-                <table  class="indexValuesTable">
+                <table  class="alarmsTable">
                     <thead>
                     <tr class="indexDataItems">
-                        <th>Code</th><th>Description</th><th>Timestamp</th>
+                        <th>Code</th><th>Description</th><th>Timestamp</th><th>Acknowledged time</th><th>ack</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -49,6 +49,13 @@
                         <td th:inline="text" class="td-index">[[${alarm_data.alarm_code}]]</td>
                         <td th:inline="text" class="td-index">[[${alarm_data.alarm_desc}]]</td>
                         <td th:inline="text" class="td-index">[[${alarm_data.time_stamp}]]</td>
+                        <td th:inline="text" class="td-index">[[${alarm_data.acknowledged_time}]]</td>
+                        <td class="td-center-items">
+                            <a th:href="@{/ackFlag/{alarm_id}(alarm_id=${alarm_data.alarm_id})}">
+                                <i th:if="${alarm_data.ack_flag}" class="fa fa-bell" style="color: #21BF73"></i>
+                                <i th:unless="${alarm_data.ack_flag}" class="fa fa-bell" style="color: #FF1700"></i>
+                            </a>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

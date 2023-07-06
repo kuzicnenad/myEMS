@@ -36,11 +36,7 @@ public class AlarmData {
     @UpdateTimestamp
     private Date acknowledged_time;
 
-    @Column
+    @Column(name = "ack_flag")
     private Boolean ack_flag;
-
-    public Integer getAlarm_id() {
-        return alarm_id;
-    }
 
 }

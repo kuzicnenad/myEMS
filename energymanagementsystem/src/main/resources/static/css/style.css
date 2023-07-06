@@ -577,13 +577,13 @@ section{
     background-color: rgba(20, 80, 85, 0.7);
 }
 
-.deviceTable, .usersTable{
+.deviceTable, .usersTable, .alarmsTable{
 	width: 100%;
 	max-width: 960px;
 	padding-bottom: 1em;
 }
 
-.deviceTable tbody td, .usersTable tbody td{
+.deviceTable tbody td, .usersTable tbody td, .alarmsTable tbpdy td{
 	font-size: 14px;
 	padding: .2em;
 	text-align: left;
@@ -612,9 +612,9 @@ section{
     	    transition: .5s;
 }
 
-.deviceTable .td-center-items, .usersTable .td-center-items{
+.deviceTable .td-center-items, .usersTable .td-center-items, .alarmsTable .td-center-items{
 	text-align: center;
-	width: 20ch;
+	min-width: 5ch;
 }
 
 .deviceTable a:hover, .settingsSectionHeader a:hover, .usersTable a:hover{
