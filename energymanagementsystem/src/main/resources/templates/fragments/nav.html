@@ -9,6 +9,10 @@
     <li class="nav-item" th:class="${#strings.startsWith(request.getRequestURI(), '/historyData') ? 'nav-item active' : 'nav-item'}">
       <a class="nav-link" href="/historyDataElectricity/1">History data</a>
     </li>
+    <li class="nav-item" th:class="${request.getRequestURI() == '/alarms' ? 'nav-item active' : 'nav-item'}">
+      <a class="nav-link" href="/alarms">Alarms</a>
+    </li>
+
     <li class="nav-item" th:class="${#strings.startsWith(request.getRequestURI(), '/settings')
               || #strings.startsWith(request.getRequestURI(), '/devices')
               || #strings.startsWith(request.getRequestURI(), '/users') ? 'nav-item active' : 'nav-item'}">
