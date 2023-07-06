@@ -158,7 +158,6 @@ public class EnergymanagementsystemApplication {
 		List<AlarmData> latestAlarmData = alarmDataService.getLatestDate();
 		model.addAttribute("latestAlarmData", latestAlarmData);
 
-
 		/** ---------------------------------------------------------------------------------------
 		 * Get Number of active devices
 		 * Get Number of inactive devices
@@ -405,6 +404,21 @@ public class EnergymanagementsystemApplication {
 		return "redirect:/users";
 	}
 
+
+
+	/** ---------------------------------------------------------------------------------------
+	 * Get history of all alarms
+	 * --------------------------------------------------------------------------------------- **/
+	@GetMapping("/alarms") // get all alarms
+	public String getAllAlarms(HttpServletRequest request, Model model){
+		List<AlarmData> getAllAlarms = alarmDataService.getAllAlarmData();
+		model.addAttribute("getAllAlarms", getAllAlarms);
+
+		/* Navigation active class object */
+		model.addAttribute("request", request);
+
+		return "alarms";
+	}
 
 	/** ---------------------------------------------------------------------------------------
 	 * Get current date and time

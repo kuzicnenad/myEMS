@@ -12,6 +12,7 @@
     <title>Energy Management System</title>
 
     <link rel="stylesheet" type="text/css" href="/css/logIn.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" href="/css/logIn.css" th:href="@{/css/formNewSave.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="indexPage">
@@ -68,13 +69,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="alarm_data : ${latestAlarmData}" class="indexDataItems">
-                                        <td th:inline="text" class="td-index">[[${alarm_data.alarm_code}]]</td>
-                                        <td th:inline="text" class="td-index">[[${alarm_data.alarm_desc}]]</td>
-                                        <td th:inline="text" class="td-index">[[${alarm_data.time_stamp}]]</td>
-                                    </tr>
+                                        <tr th:each="alarm_data : ${latestAlarmData}" class="indexDataItems">
+                                            <td th:inline="text" class="td-index">[[${alarm_data.alarm_code}]]</td>
+                                            <td th:inline="text" class="td-index">[[${alarm_data.alarm_desc}]]</td>
+                                            <td th:inline="text" class="td-index">[[${alarm_data.time_stamp}]]</td>
+                                        </tr>
                                     </tbody>
                                 </table>
+
+                                <div class="backToSettings backButton">
+                                    <a href="/alarms">
+                                        Alarms list
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
