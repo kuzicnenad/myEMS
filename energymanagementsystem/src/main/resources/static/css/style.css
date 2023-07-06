@@ -42,30 +42,22 @@ body {
     height: auto;
 }
 
-.indexMainLeft{
-    display: inline-block;
-    height: auto;
-    max-width: 40%;
-    background-color: rgba(31, 111, 118, 0.1);
-}
-
 .indexMainRight{
     display: flex;
     height: auto;
     max-width: 60%;
 }
 
-.deviceStatus, .alarmEventStatus{
-    width: auto;
-}
+.indexMainLeft{
+    height: auto;
+    max-width: 39%;
 
-.alarmEventStatus{
-    margin-top: 20px;
 }
 
 .peakValues {
     height: auto;
     font-size: 1em;
+    background-color: rgba(31, 111, 118, 0.1);
 }
 .indexDataItems .td-1{
     font-size: 2em;
@@ -78,7 +70,8 @@ body {
 .indexValuesTable{
 	width: auto;
 	max-width: 960px;
-	padding-bottom: 1em;
+	padding: 0.5em;
+    background-color: rgba(31, 111, 118, 0.1);
 }
 
 
@@ -86,7 +79,7 @@ body {
 	font-size: 14px;
 	padding: .2em;
 	text-align: left;
-	width: 30ch;
+	min-width: 5ch;
 }
 
 .indexValuesTable table thead{
@@ -98,9 +91,10 @@ body {
 	padding: 0px;
 }
 
-.indexValuesTable .td-center-items{
+.indexRightTable tbody td{
+	width: 25ch;
 	text-align: center;
-	width: 20ch;
+
 }
 
 .td-index, .indexValuesTable tr{
