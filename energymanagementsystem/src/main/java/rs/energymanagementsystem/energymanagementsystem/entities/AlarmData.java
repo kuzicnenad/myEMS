@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -29,6 +30,14 @@ public class AlarmData {
     @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date time_stamp;
+
+    @Column
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @UpdateTimestamp
+    private Date acknowledged_time;
+
+    @Column
+    private Boolean ack_flag;
 
     public Integer getAlarm_id() {
         return alarm_id;

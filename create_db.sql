@@ -89,6 +89,8 @@ CREATE TABLE Alarm_Data(
     alarm_code INT NOT NULL,
     alarm_desc VARCHAR(255),
     time_stamp  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+    acknowledged_time DATETIME,
+    ack_flag BOOL NOT NULL DEFAULT 0,
     PRIMARY KEY (alarm_id)
 );
 
