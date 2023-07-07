@@ -151,14 +151,14 @@
                                         <tbody>
                                         <tr class="indexDataItems">
                                             <td th:text="${waterMaxValue}" class="td-index"></td>
-                                            <td th:text="${#dates.format(waterMaxValueDate, 'YYY/dd/MM')}" class="td-index"></td>
+                                            <td th:text="${#dates.format(waterMaxValueDate, 'dd-MM-yyyy')}" class="td-index"></td>
 
                                             <td th:text="${waterAvgValue}" class="td-index"></td>
-                                            <td th:text="${#dates.format(getWaterFirstRecordDate, 'YYY/MM/dd')}  +
-                                        '-' + ${#dates.format(getWaterLastRecordDate, 'YYY/MM/dd')}" class="td-index"></td>
+                                            <td th:text="${#dates.format(getWaterFirstRecordDate, 'dd-MM-yyyy')}  +
+                                        '-' + ${#dates.format(getWaterLastRecordDate, 'dd-MM-yyyy')}" class="td-index"></td>
 
                                             <td th:text="${waterMinValue}" class="td-index"></td>
-                                            <td th:text="${#dates.format(waterMinValueDate, 'YYY/dd/MM')}" class="td-index"></td>
+                                            <td th:text="${#dates.format(waterMinValueDate, 'dd-MM-yyyy')}" class="td-index"></td>
                                         </tr>
                                         </tbody>
                                     </table>
