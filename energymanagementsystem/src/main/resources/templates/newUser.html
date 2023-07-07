@@ -20,7 +20,7 @@
     <h2>Create New User</h2>
 
     <div class="content">
-      <form class="loginForm" action="#" th:action="@{/saveUserViaForm}" th:object="${user}" method="POST">
+      <form class="loginForm" action="#" th:action="@{/users/saveUserViaForm}" th:object="${user}" method="POST">
 
         <div class="formGroup">
           <input class="formInput" type="text" th:field="*{name}"

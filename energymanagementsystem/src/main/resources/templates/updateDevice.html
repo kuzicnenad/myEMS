@@ -20,7 +20,7 @@
     <h2>Update Device</h2>
 
     <div class="content">
-      <form class="loginForm" action="#" th:action="@{/saveDeviceViaForm}" th:object="${devices}" method="POST">
+      <form class="loginForm" action="#" th:action="@{/devices/saveDeviceViaForm}" th:object="${devices}" method="POST">
 
         <!-- Hidden ID field to handle update requests -->
         <input type="hidden" th:field="*{device_id}">

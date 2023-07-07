@@ -301,7 +301,7 @@ public class EnergymanagementsystemApplication {
 		return "devices";
 	}
 
-	@PostMapping("/saveDeviceViaForm") // SAVE
+	@PostMapping("/devices/saveDeviceViaForm") // SAVE
 	public String saveDeviceViaForm(@ModelAttribute(value = "devices") Devices device){
 		//Assign default value for active_flag
 		if(device.getActive_flag() == null){
@@ -316,7 +316,7 @@ public class EnergymanagementsystemApplication {
 		return "redirect:/devices";
 	}
 
-	@GetMapping("/newDeviceForm") // NEW FORM
+	@GetMapping("/devices/newDeviceForm") // NEW FORM
 	public String addNewDeviceForm(Model model){
 		// Create model attribute to bind form data
 		Devices device = new Devices();
@@ -324,7 +324,7 @@ public class EnergymanagementsystemApplication {
 		return "newDevice";
 	}
 
-	@GetMapping("/deviceUpdateForm/{device_id}") // UPDATE, RETURN FORM
+	@GetMapping("/devices/deviceUpdateForm/{device_id}") // UPDATE, RETURN FORM
 	public String deviceUpdateForm(@PathVariable(value = "device_id") Integer device_id, Model model) {
 
 		// get device from the service
@@ -337,7 +337,7 @@ public class EnergymanagementsystemApplication {
 		return "updateDevice";
 	}
 
-	@GetMapping("/deleteDevice/{device_id}") // DELETE
+	@GetMapping("/devices/deleteDevice/{device_id}") // DELETE
 	public String deleteDevice(@PathVariable(value = "device_id") Integer device_id) {
 
 		// call delete device method
@@ -345,7 +345,7 @@ public class EnergymanagementsystemApplication {
 		return "redirect:/devices";
 	}
 
-	@GetMapping("/toggleFlag/{device_id}") // CHANGE ACTIVE FLAG
+	@GetMapping("/devices/toggleFlag/{device_id}") // CHANGE ACTIVE FLAG
 	public String deviceActiveFlag(@PathVariable(value = "device_id") Integer device_id){
 		devicesService.deviceActiveFlag(device_id);
 		return "redirect:/devices";
@@ -368,7 +368,7 @@ public class EnergymanagementsystemApplication {
 		return "users";
 	}
 
-	@PostMapping("/saveUserViaForm") // SAVE
+	@PostMapping("/users/saveUserViaForm") // SAVE
 	public String saveUserViaForm(@ModelAttribute(value = "user") User user){
 
 		// save user to database repository
@@ -376,7 +376,7 @@ public class EnergymanagementsystemApplication {
 		return "redirect:/users";
 	}
 
-	@GetMapping("/newUserForm") // OPEN NEW FORM
+	@GetMapping("/users/newUserForm") // OPEN NEW FORM
 	public String addNewUserForm(Model model){
 		// Create model attribute to bind form data
 		User user = new User();
@@ -384,7 +384,7 @@ public class EnergymanagementsystemApplication {
 		return "newUser";
 	}
 
-	@GetMapping("/userUpdateForm/{id}") // UPDATE, RETURN FORM
+	@GetMapping("/users/userUpdateForm/{id}") // UPDATE, RETURN FORM
 	public String userUpdateForm(@PathVariable(value = "id") Long id, Model model) {
 
 		// get device from the service
@@ -396,7 +396,7 @@ public class EnergymanagementsystemApplication {
 		return "updateUser";
 	}
 
-	@GetMapping("/deleteUser/{id}") // DELETE
+	@GetMapping("/users/deleteUser/{id}") // DELETE
 	public String deleteUser(@PathVariable(value = "id") Long id) {
 
 		// call delete user method

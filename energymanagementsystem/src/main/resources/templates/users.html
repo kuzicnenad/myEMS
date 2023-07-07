@@ -34,7 +34,7 @@
                     <div class="settingsSectionHeader">
                         <h2>Users list</h2>
                         <div class="addNewRecord">
-                            <a th:href="@{/newUserForm}"><i class="fa fa-pencil">Add new user</i></a>
+                            <a th:href="@{/users/newUserForm}"><i class="fa fa-pencil">Add new user</i></a>
                         </div>
                     </div>
                     <table class="usersTable">
@@ -51,9 +51,9 @@
                                 <td th:text="${#dates.format(user.creation_date, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
                                 <td th:text="${#dates.format(user.last_update, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
                                 <td class="td-center-items">
-                                    <a th:href="@{/userUpdateForm/{id}(id=${user.id})}">
+                                    <a th:href="@{/users/userUpdateForm/{id}(id=${user.id})}">
                                         <i class="fa fa-pencil"></i></a>
-                                    <a th:href="@{/deleteUser/{id}(id=${user.id})}">
+                                    <a th:href="@{/users/deleteUser/{id}(id=${user.id})}">
                                         <i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>

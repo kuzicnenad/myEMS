@@ -34,7 +34,7 @@
                     <div class="settingsSectionHeader">
                         <h2>Available devices</h2>
                         <div class="addNewRecord">
-                            <a th:href="@{/newDeviceForm}"><i class="fa fa-pencil">Add new device</i></a>
+                            <a th:href="@{/devices/newDeviceForm}"><i class="fa fa-pencil">Add new device</i></a>
                         </div>
                     </div>
                     <table class="deviceTable">
@@ -51,11 +51,11 @@
                                 <td th:inline="text" class="td-devices">[[${devices.made_in}]] </td>
                                 <td th:text="${#dates.format(devices.last_update, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
                                 <td class="td-center-items">
-                                    <a th:href="@{/deviceUpdateForm/{device_id}(device_id=${devices.device_id})}">
+                                    <a th:href="@{/devices/deviceUpdateForm/{device_id}(device_id=${devices.device_id})}">
                                         <i class="fa fa-pencil"></i></a>
-                                    <a th:href="@{/deleteDevice/{device_id}(device_id=${devices.device_id})}">
+                                    <a th:href="@{/devices/deleteDevice/{device_id}(device_id=${devices.device_id})}">
                                         <i class="fa fa-trash"></i></a>
-                                    <a th:href="@{/toggleFlag/{device_id}(device_id=${devices.device_id})}">
+                                    <a th:href="@{/devices/toggleFlag/{device_id}(device_id=${devices.device_id})}">
                                         <i th:if="${devices.active_flag}" class="fa fa-circle" style="color: #21BF73"></i>
                                         <i th:unless="${devices.active_flag}" class="fa fa-circle" style="color: #FF1700"></i>
                                     </a>
