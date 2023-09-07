@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/waterHistoryData")
 public class WaterHistoryDataController {
+
     private WaterHistoryDataService waterHistoryDataService;
 
     public WaterHistoryDataController(WaterHistoryDataService waterHistoryDataService){

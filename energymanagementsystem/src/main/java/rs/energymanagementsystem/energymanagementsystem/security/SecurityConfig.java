@@ -2,7 +2,6 @@ package rs.energymanagementsystem.energymanagementsystem.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -62,9 +61,10 @@ public class SecurityConfig {
                         .requestMatchers(staticResources).permitAll()
                         .requestMatchers(LOGIN_URL).permitAll()
                         .requestMatchers(DEFAULT_SUCCESS_URL).hasAnyAuthority("USER","ADMIN")
+                        .requestMatchers("/api").hasAuthority("ADMIN")
                         .requestMatchers("/api/**").hasAuthority("ADMIN")
-                        .requestMatchers("/index").hasAnyAuthority("USER","ADMIN")
-                        .requestMatchers("/logout").hasAnyAuthority("USER","ADMIN")
+                        .requestMatchers("/index").permitAll()
+                        .requestMatchers("/logout").permitAll()
                         .requestMatchers("/liveData").hasAnyAuthority("USER","ADMIN")
                         .requestMatchers("/historyDataElectricity").hasAnyAuthority("USER","ADMIN")
                         .requestMatchers("/historyDataGas").hasAnyAuthority("USER","ADMIN")
