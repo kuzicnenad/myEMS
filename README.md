@@ -1,6 +1,11 @@
 # myEMS
 Allows user to monitor the energy consumption in real-time.
 
+Passwords from SQL DB
+Admin1 -> admin
+User1 -> user
+
+
 First version include:
 1. Overview, first template
 2. "Live" and History data monitoring
@@ -15,5 +20,5 @@ Second version will include:
 2. Report generator
 3. Automatic live page update and more realistic consumption numbers
 4. Preferences, change template, date and time
-5. Create server on VM and include RabbitMQ as tool to send data from SQL to App
+5. Create server on VM and include transaction tool to send data from SQL to App
 6. Full functionality tests
