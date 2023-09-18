@@ -6,7 +6,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import rs.energymanagementsystem.energymanagementsystem.entities.Devices;
 import rs.energymanagementsystem.energymanagementsystem.entities.User;
 import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
 import rs.energymanagementsystem.energymanagementsystem.repositories.UserRepository;

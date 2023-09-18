@@ -44,6 +44,15 @@
                  placeholder="Password" required>
         </div>
 
+        <div class="formGroup">
+          <input class="formInput" type="checkbox" name="roles"
+                 th:each="role : ${roles}"
+                 th:text="${role.name}"
+                 th:value="${role.id}"
+                 th:field="*{roles}"
+          />
+        </div>
+
         <input class="saveBtn" name="AddUser" type="submit" value="Create User"></input>
 
       </form>

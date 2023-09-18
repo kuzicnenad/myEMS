@@ -45,6 +45,15 @@
                  placeholder="E-mail address"  required>
         </div>
 
+        <div class="formGroup">
+          <input class="formInput" type="checkbox" name="roles"
+                 th:each="role : ${roles}"
+                 th:text="${role.name}"
+                 th:value="${role.id}"
+                 th:field="*{roles}"
+          />
+        </div>
+
         <!-- Hidden password and production_date fields to handle update requests -->
         <input type="hidden" th:field="*{password}">
 

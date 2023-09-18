@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.*;
+import rs.energymanagementsystem.energymanagementsystem.repositories.RoleRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.*;
 
 import java.text.DateFormat;
@@ -64,6 +65,9 @@ public class EnergymanagementsystemApplication {
 
 	@Autowired
 	private AlarmDataService alarmDataService;
+
+	@Autowired
+	private RoleRepository roleRepository;
 
 	@GetMapping("/login")
 	public String showLogInScreen(){
@@ -381,17 +385,24 @@ public class EnergymanagementsystemApplication {
 		// Create model attribute to bind form data
 		User user = new User();
 		model.addAttribute("user", user);
+
+		List<Role> roles = (List<Role>) roleRepository.findAll();
+		model.addAttribute("roles", roles);
+
 		return "newUser";
 	}
 
 	@GetMapping("/users/userUpdateForm/{id}") // UPDATE, RETURN FORM
 	public String userUpdateForm(@PathVariable(value = "id") Long id, Model model) {
 
-		// get device from the service
+		// get user from the service
 		User user = usersService.getUserById(id);
-
-		// set device as a model attribute to pre-populate the form
+		// set user as a model attribute to pre-populate the form
 		model.addAttribute("user", user);
+
+		// get roles from repository
+		List<Role> roles = (List<Role>) roleRepository.findAll();
+		model.addAttribute("roles", roles);
 
 		return "updateUser";
 	}
