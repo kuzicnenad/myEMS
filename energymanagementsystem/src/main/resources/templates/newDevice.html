@@ -34,13 +34,13 @@
         </div>
 
         <div class="formGroup">
-          <input class="formInput"  type="date" th:field="*{production_date}"
+          <input class="formInput" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" th:field="*{production_date}"
                  placeholder="Production date" required>
         </div>
 
         <div class="formGroup">
           <input class="formInput"  type="text" th:field="*{made_in}"
-               pattern="[a-zA-ZÀ-ž ]{2,20}" title="Only characters are allowed and length must be between 2 and 20 characters."
+               pattern="[a-zA-ZÀ-ž ]{2,25}" title="Only characters are allowed and length must be between 2 and 20 characters."
                  placeholder="Made in" required>
         </div>
 
