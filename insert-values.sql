@@ -21,16 +21,12 @@ INSERT INTO Role(name)
 VALUES	('ADMIN'),
 		('USER');
         
-INSERT INTO users_roles
+INSERT INTO users_roles(user_id, role_id)
 VALUES	(1,1),
 		(1,2),
-        (2,2),
-        (3,1),
-		(3,2),
-        (4,2),
-        (5,1),
-		(5,2),
-        (6,2);
+        (7,2),
+        (8,1),
+        (10,2);
 
 
 /* ---------- Generate devices ---------- */
