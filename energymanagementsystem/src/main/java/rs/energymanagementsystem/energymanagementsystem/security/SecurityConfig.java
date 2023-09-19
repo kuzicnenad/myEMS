@@ -2,6 +2,7 @@ package rs.energymanagementsystem.energymanagementsystem.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -34,7 +35,7 @@ public class SecurityConfig {
         return configuration.getAuthenticationManager();
     }
 
-    /** adding used resources to enable them before used is logged in**/
+    /** adding used resources to enable them before user is logged in**/
     String[] staticResources  =  {
             "/css/**",
             "/css",
@@ -63,7 +64,7 @@ public class SecurityConfig {
                         .requestMatchers(DEFAULT_SUCCESS_URL).hasAnyAuthority("USER","ADMIN")
                         .requestMatchers("/api").hasAuthority("ADMIN")
                         .requestMatchers("/api/**").hasAuthority("ADMIN")
-                        .requestMatchers("/index").permitAll()
+                        .requestMatchers("/index").hasAnyAuthority("USER","ADMIN")
                         .requestMatchers("/logout").permitAll()
                         .requestMatchers("/liveData").hasAnyAuthority("USER","ADMIN")
                         .requestMatchers("/historyDataElectricity").hasAnyAuthority("USER","ADMIN")
@@ -75,7 +76,7 @@ public class SecurityConfig {
                         .requestMatchers("/devices/**").hasAuthority("ADMIN")
                         .requestMatchers("/users/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated()
-                )
+                ).httpBasic(Customizer.withDefaults())
                 .formLogin(form -> form
                         .loginPage(LOGIN_URL)
                         .defaultSuccessUrl(DEFAULT_SUCCESS_URL)
