@@ -19,10 +19,10 @@ public class ElectricityLiveDataController {
         this.electricityLiveDataService = electricityLiveDataService;
     }
 
-    // GET all electricity live data REST API
+    // GET latest electricity live data REST API
     @GetMapping
     public List<ElectricityLiveData> getAllElectricityLiveData(){
-        return electricityLiveDataService.getAllElectricityLiveData();
+        return electricityLiveDataService.getLastData();
     }
 
     // GET by ID electricity live data REST API

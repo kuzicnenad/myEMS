@@ -19,10 +19,10 @@ public class WaterLiveDataController {
         this.waterLiveDataService = waterLiveDataService;
     }
 
-    // GET all electricity live data REST API
+    // GET latest electricity live data REST API
     @GetMapping
     public List<WaterLiveData> getAllWaterLiveData(){
-        return waterLiveDataService.getAllWaterLiveData();
+        return waterLiveDataService.getLastData();
     }
 
     // GET by ID water live data REST API
