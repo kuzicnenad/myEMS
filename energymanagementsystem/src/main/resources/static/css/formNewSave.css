@@ -68,7 +68,7 @@ body {
 .fa-android{color: #0055d4;}
 .fa-lock{color: #870b00;}
 
-.formInput{
+.formInput, .formInputRoles{
     height: 50px;
     width: 500px;
     background: transparent;
@@ -76,6 +76,12 @@ body {
 	border: none;
 	outline: none;
 	margin-left: 10px;
+}
+
+.formInputRoles{
+    height: 30px;
+    text-align: left;
+    font-size: 0.7em;
 }
 
 .formGroup:hover {
