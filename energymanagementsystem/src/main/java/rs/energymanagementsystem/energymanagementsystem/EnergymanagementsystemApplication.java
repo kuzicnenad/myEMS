@@ -6,11 +6,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.domain.Page;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.*;
 import rs.energymanagementsystem.energymanagementsystem.repositories.RoleRepository;
+import rs.energymanagementsystem.energymanagementsystem.security.Password;
 import rs.energymanagementsystem.energymanagementsystem.services.*;
 
 import java.text.DateFormat;
@@ -376,6 +378,7 @@ public class EnergymanagementsystemApplication {
 	public String saveUserViaForm(@ModelAttribute(value = "user") User user){
 
 		// save user to database repository
+		user.setPassword(Password.hashPassword(user.getPassword()));
 		usersService.saveUser(user);
 		return "redirect:/users";
 	}
