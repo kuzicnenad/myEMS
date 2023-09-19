@@ -22,7 +22,6 @@ public class DevicesController {
     }
 
     // POST alarmData REST API
-    @PostMapping
     public ResponseEntity<Devices> saveDevice(@RequestBody Devices devices){
         return new ResponseEntity<Devices>(devicesService.saveDevice(devices), HttpStatus.CREATED);
     }

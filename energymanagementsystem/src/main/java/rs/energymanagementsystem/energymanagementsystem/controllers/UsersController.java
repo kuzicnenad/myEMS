@@ -13,19 +13,18 @@ import rs.energymanagementsystem.energymanagementsystem.services.CustomUserDetai
 import java.util.List;
 
 @Controller
+@RequestMapping("/api/user")
 public class UsersController {
 
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
     // POST users REST API
-    @PostMapping
     public ResponseEntity<User> saveUser(@RequestBody User user){
         return new ResponseEntity<User>(customUserDetailsService.saveUser(user), HttpStatus.CREATED);
     }
 
     // GET all users REST API
-    @GetMapping("/api/user")
     public String getAllUsers(Model model){
         List<User> usersEntityList = customUserDetailsService.getAllUsers();
         model.addAttribute("usersList", usersEntityList);
@@ -35,21 +34,21 @@ public class UsersController {
 
     // GET by ID user REST API
     // http://localhost:8080/api/users/user_id(number)
-    @GetMapping("/api/user/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<User> getUserById(@PathVariable ("id") Long id){
         return new ResponseEntity<User>(customUserDetailsService.getUserById(id), HttpStatus.OK);
     }
 
     // UPDATE by ID user REST API
     // http://localhost:8080/api/alarmData/alarm_id(number)
-    @PutMapping("/api/user/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<User> updateUser(@PathVariable ("id") Long id
             , @RequestBody User user){
         return new ResponseEntity<User>(customUserDetailsService.updateUser(user, id), HttpStatus.OK);
     }
 
     // DELETE by ID alarmData REST API
-    @DeleteMapping("/api/user/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<String> deleteUser(@PathVariable("id") Long id){
         customUserDetailsService.deleteUser(id);
         return new ResponseEntity<String>("User data deleted successfully!", HttpStatus.OK);
