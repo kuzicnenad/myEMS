@@ -8,6 +8,9 @@ Event is running for 15min (exam duration)
 Adding new data every 20sec.
 */
 
+/* ------------------ Active events ------------------ */
+SHOW EVENTS FROM myEMS;
+
 /* ------------------ Drop events ------------------ */
 DROP EVENT IF EXISTS insert_live_data_electricity;
 DROP EVENT IF EXISTS insert_live_data_gas;
@@ -196,12 +199,6 @@ CREATE EVENT insert_live_data_gas
 
 		END $$
 DELIMITER ;
-
-
-
-SHOW EVENTS FROM myEMS;
-
-
 
 
 
