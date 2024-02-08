@@ -29,46 +29,16 @@
         <!-- end menu-->
 
         <main>
+
             <div class="contentDataWrapper">
                 <section class="deviceSection">
                     <div class="settingsSectionHeader">
-                        <h2>Available devices</h2>
-                        <div class="addNewRecord">
-                            <a th:href="@{/devices/newDeviceForm}"><i class="fa fa-pencil">Add new device</i></a>
-                        </div>
-                    </div>
-                    <table class="deviceTable">
-                        <thead>
-                            <tr>
-                                <th>Device</th><th>Description</th><th>Produced date</th><th>Made in</th><th>Last change</th><th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="devices : ${devicesList}" >
-                                <td th:inline="text" class="td-devices">[[${devices.device_name}]] </td>
-                                <td th:inline="text" class="td-devices">[[${devices.description}]] </td>
-                                <td th:text="${#dates.format(devices.production_date, 'dd-MM-yyyy')}" class="td-devices"> </td>
-                                <td th:inline="text" class="td-devices">[[${devices.made_in}]] </td>
-                                <td th:text="${#dates.format(devices.last_update, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
-                                <td class="td-center-items">
-                                    <a th:href="@{/devices/deviceUpdateForm/{device_id}(device_id=${devices.device_id})}">
-                                        <i class="fa fa-pencil"></i></a>
-                                    <a th:href="@{/devices/deleteDevice/{device_id}(device_id=${devices.device_id})}">
-                                        <i class="fa fa-trash"></i></a>
-                                    <a th:href="@{/devices/toggleFlag/{device_id}(device_id=${devices.device_id})}">
-                                        <i th:if="${devices.active_flag}" class="fa fa-circle" style="color: #21BF73"></i>
-                                        <i th:unless="${devices.active_flag}" class="fa fa-circle" style="color: #FF1700"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-
-                <section class="deviceSection section-down">
-                    <div class="devicesHeader">
                         <h2>Active devices</h2>
                     </div>
+
+                    <!-- Navigation -->
+                    <div th:replace="fragments/devicesNavPanel :: nav"></div>
+
                     <table class="deviceTable">
                         <thead>
                             <tr>
@@ -84,6 +54,7 @@
                             </tr>
                         </tbody>
                     </table>
+
                     <div class="backToSettings paginationItems">
                         <a th:href="@{/settings}">Back</a>
                     </div>

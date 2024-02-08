@@ -14,7 +14,8 @@
     </li>
 
     <li class="nav-item" th:class="${#strings.startsWith(request.getRequestURI(), '/settings')
-              || #strings.startsWith(request.getRequestURI(), '/devices')
+              || #strings.startsWith(request.getRequestURI(), '/activeDevices')
+              || #strings.startsWith(request.getRequestURI(), '/availableDevices')
               || #strings.startsWith(request.getRequestURI(), '/users') ? 'nav-item active' : 'nav-item'}">
       <a class="nav-link" href="/settings">Administration</a>
     </li>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" content="text/html">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="EMS for monitoring consumption, giving live and history data and reports."/>
+    <meta name="keywords" content="Energy Management System, EMS, Energy"/>
+    <meta name="author" content="Kuzic Nenad" />
+    <meta name="copyright" content="Kuzic Nenad" />
+
+    <title>Energy Management System</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/logIn.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="devicesPage">
+    <div class="allWrapper">
+        <menu> <!-- start navigation menu -->
+            <div class="logo">
+                <a href="/index">My E M S</a>
+            </div>
+
+            <!-- Navigation -->
+            <nav th:replace="~{fragments/nav :: nav}"></nav>
+
+            <!-- Footer -->
+            <footer th:replace="~{fragments/footer :: footer}"></footer>
+        </menu>
+        <!-- end menu-->
+
+        <main>
+            <div class="contentDataWrapper">
+                <section class="deviceSection">
+                    <div class="settingsSectionHeader">
+                        <h2>Available devices</h2>
+                        <div class="addNewRecord">
+                            <a th:href="@{/availableDevices/newDeviceForm}"><i class="fa fa-pencil">Add new device</i></a>
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div th:replace="fragments/devicesNavPanel :: nav"></div>
+
+                    <table class="deviceTable">
+                        <thead>
+                            <tr>
+                                <th>Device</th><th>Description</th><th>Produced date</th><th>Made in</th><th>Last change</th><th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="devices : ${devicesList}" >
+                                <td th:inline="text" class="td-devices">[[${devices.device_name}]] </td>
+                                <td th:inline="text" class="td-devices">[[${devices.description}]] </td>
+                                <td th:text="${#dates.format(devices.production_date, 'dd-MM-yyyy')}" class="td-devices"> </td>
+                                <td th:inline="text" class="td-devices">[[${devices.made_in}]] </td>
+                                <td th:text="${#dates.format(devices.last_update, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
+                                <td class="td-center-items">
+                                    <a th:href="@{/availableDevices/deviceUpdateForm/{device_id}(device_id=${devices.device_id})}">
+                                        <i class="fa fa-pencil"></i></a>
+                                    <a th:href="@{/availableDevices/deleteDevice/{device_id}(device_id=${devices.device_id})}">
+                                        <i class="fa fa-trash"></i></a>
+                                    <a th:href="@{/availableDevices/toggleFlag/{device_id}(device_id=${devices.device_id})}">
+                                        <i th:if="${devices.active_flag}" class="fa fa-circle" style="color: #21BF73"></i>
+                                        <i th:unless="${devices.active_flag}" class="fa fa-circle" style="color: #FF1700"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="backToSettings paginationItems">
+                        <a th:href="@{/settings}">Back</a>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

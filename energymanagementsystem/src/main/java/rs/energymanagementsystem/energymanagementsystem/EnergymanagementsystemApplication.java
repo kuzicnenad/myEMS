@@ -293,21 +293,29 @@ public class EnergymanagementsystemApplication {
 	 * This is an additional control over the API controls that
 	 * are available under controllers package
 	 * --------------------------------------------------------------------------------------- **/
-	@GetMapping("/devices") // GET
-	public String getDevices(HttpServletRequest request, Model model){
-		List<Devices> devicesList = devicesService.getAllDevices();
-		model.addAttribute("devicesList", devicesList);
-
+	@GetMapping("/activeDevices") // GET
+	public String getActiveDevices(HttpServletRequest request, Model model){
 		List<Devices> activeDevicesList = devicesService.getActiveDevices();
 		model.addAttribute("activeDevicesList", activeDevicesList);
 
 		/* Navigation active class object */
 		model.addAttribute("request", request);
 
-		return "devices";
+		return "activeDevices";
 	}
 
-	@PostMapping("/devices/saveDeviceViaForm") // SAVE
+	@GetMapping("/availableDevices") // GET
+	public String getAvailableDevices(HttpServletRequest request, Model model){
+		List<Devices> devicesList = devicesService.getAllDevices();
+		model.addAttribute("devicesList", devicesList);
+
+		/* Navigation active class object */
+		model.addAttribute("request", request);
+
+		return "availableDevices";
+	}
+
+	@PostMapping("/availableDevices/saveDeviceViaForm") // SAVE
 	public String saveDeviceViaForm(@ModelAttribute(value = "devices") Devices device){
 		//Assign default value for active_flag
 		if(device.getActive_flag() == null){
@@ -319,10 +327,10 @@ public class EnergymanagementsystemApplication {
 		}
 		// save device to database repository
 		devicesService.saveDevice(device);
-		return "redirect:/devices";
+		return "redirect:/availableDevices";
 	}
 
-	@GetMapping("/devices/newDeviceForm") // NEW FORM
+	@GetMapping("/availableDevices/newDeviceForm") // NEW FORM
 	public String addNewDeviceForm(Model model){
 		// Create model attribute to bind form data
 		Devices device = new Devices();
@@ -330,7 +338,7 @@ public class EnergymanagementsystemApplication {
 		return "newDevice";
 	}
 
-	@GetMapping("/devices/deviceUpdateForm/{device_id}") // UPDATE, RETURN FORM
+	@GetMapping("/availableDevices/deviceUpdateForm/{device_id}") // UPDATE, RETURN FORM
 	public String deviceUpdateForm(@PathVariable(value = "device_id") Integer device_id, Model model) {
 
 		// get device from the service
@@ -343,18 +351,18 @@ public class EnergymanagementsystemApplication {
 		return "updateDevice";
 	}
 
-	@GetMapping("/devices/deleteDevice/{device_id}") // DELETE
+	@GetMapping("/availableDevices/deleteDevice/{device_id}") // DELETE
 	public String deleteDevice(@PathVariable(value = "device_id") Integer device_id) {
 
 		// call delete device method
 		this.devicesService.deleteDevice(device_id);
-		return "redirect:/devices";
+		return "redirect:/availableDevices";
 	}
 
-	@GetMapping("/devices/toggleFlag/{device_id}") // CHANGE ACTIVE FLAG
+	@GetMapping("/availableDevices/toggleFlag/{device_id}") // CHANGE ACTIVE FLAG
 	public String deviceActiveFlag(@PathVariable(value = "device_id") Integer device_id){
 		devicesService.deviceActiveFlag(device_id);
-		return "redirect:/devices";
+		return "redirect:/availableDevices";
 	}
 
 	/** ---------------------------------------------------------------------------------------

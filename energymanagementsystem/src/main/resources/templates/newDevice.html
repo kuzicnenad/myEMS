@@ -20,7 +20,7 @@
     <h2>Add new Device</h2>
 
     <div class="content">
-      <form class="loginForm" action="#" th:action="@{/devices/saveDeviceViaForm}" th:object="${device}" method="POST">
+      <form class="loginForm" action="#" th:action="@{/availableDevices/saveDeviceViaForm}" th:object="${device}" method="POST">
         <div class="formGroup">
           <input class="formInput"  type="text" th:field="*{device_name}"
                pattern="[a-zA-ZÀ-ž ]{2,20}" title="Only characters are allowed and length must be between 2 and 20 characters."
@@ -53,7 +53,7 @@
 
     <hr>
     <div class="backToSettings backButton">
-      <a th:href="@{/devices}">Back</a>
+      <a th:href="@{/availableDevices}">Back</a>
     </div>
   </main>
 </body>
