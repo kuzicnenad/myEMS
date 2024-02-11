@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" content="text/html">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="EMS for monitoring consumption, giving live and history data and reports."/>
+    <meta name="keywords" content="Energy Management System, EMS, Energy"/>
+    <meta name="author" content="Kuzic Nenad" />
+    <meta name="copyright" content="Kuzic Nenad" />
+
+    <title>Energy Management System</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/logIn.css" th:href="@{/css/formNewSave.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="usersFormPage">
+<main>
+    <div class="content">
+        <h1>Ops! Something went wrong</h1>
+        <p th:text="${message}"></p>
+        <div class="backToSettings backButton">
+            <a href="/users">Go back</a>
+        </div>
+    </div>
+</main>
+</body>
+</html>

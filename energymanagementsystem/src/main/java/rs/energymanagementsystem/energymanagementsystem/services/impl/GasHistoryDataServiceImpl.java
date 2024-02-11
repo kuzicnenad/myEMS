@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.GasHistoryData;
-import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
+import rs.energymanagementsystem.energymanagementsystem.exceptions.ResourceNotFoundException;
 import rs.energymanagementsystem.energymanagementsystem.repositories.GasHistoryDataRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.GasHistoryDataService;
 

@@ -2,7 +2,7 @@ package rs.energymanagementsystem.energymanagementsystem.services.impl;
 
 import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.AlarmData;
-import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
+import rs.energymanagementsystem.energymanagementsystem.exceptions.ResourceNotFoundException;
 import rs.energymanagementsystem.energymanagementsystem.repositories.AlarmDataRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.AlarmDataService;
 

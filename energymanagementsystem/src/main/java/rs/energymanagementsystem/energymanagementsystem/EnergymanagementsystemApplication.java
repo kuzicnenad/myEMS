@@ -4,14 +4,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.domain.Page;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.NoHandlerFoundException;
 import rs.energymanagementsystem.energymanagementsystem.entities.*;
-import rs.energymanagementsystem.energymanagementsystem.exception.FormErrorException;
 import rs.energymanagementsystem.energymanagementsystem.repositories.RoleRepository;
 import rs.energymanagementsystem.energymanagementsystem.repositories.UserRepository;
 import rs.energymanagementsystem.energymanagementsystem.security.Password;
@@ -389,20 +388,18 @@ public class EnergymanagementsystemApplication {
 	}
 
 	@PostMapping("/users/saveUserViaForm") // SAVE
-	@ExceptionHandler(NoHandlerFoundException.class)
-	public String saveUserViaForm(@ModelAttribute(value = "user") User user){
-		Boolean validateFormInputs;
+	public String saveUserViaForm(@ModelAttribute(value = "user") User user, Model model){
 
-		if((userRepository.findByUsername(user.getUsername())==null)&&(userRepository.findByEmail(user.getEmail())==null)) {
-			user.setPassword(Password.hashPassword(user.getPassword()));
-			usersService.saveUser(user);
-			return "redirect:/users";
-		} else if (userRepository.findByUsername(user.getUsername()).isPresent()) {
-			throw new FormErrorException(user.getUsername());
-		} else if (userRepository.findByEmail(user.getEmail()).isPresent()) {
-			throw new FormErrorException(user.getEmail());
-		} else
-			return "error";
+		if(userRepository.existsByUsername(user.getUsername())){
+			throw new DuplicateKeyException("Username already exists.");
+		}
+		if(userRepository.existsByEmail(user.getEmail())){
+			throw new DuplicateKeyException("Email already exists.");
+		}
+
+		user.setPassword(Password.hashPassword(user.getPassword()));
+		usersService.saveUser(user);
+		return "redirect:/users";
 	}
 
 	@GetMapping("/users/newUserForm") // OPEN NEW FORM
@@ -440,8 +437,6 @@ public class EnergymanagementsystemApplication {
 		return "redirect:/users";
 	}
 
-
-
 	/** ---------------------------------------------------------------------------------------
 	 * Get history of all alarms
 	 * --------------------------------------------------------------------------------------- **/
@@ -461,6 +456,7 @@ public class EnergymanagementsystemApplication {
 		alarmDataService.alarmAckFlag(alarm_id);
 		return "redirect:/alarms";
 	}
+
 
 	/** ---------------------------------------------------------------------------------------
 	 * Get current date and time

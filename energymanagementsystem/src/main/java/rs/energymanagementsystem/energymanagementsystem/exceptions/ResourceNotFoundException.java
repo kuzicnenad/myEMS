@@ -1,4 +1,4 @@
-package rs.energymanagementsystem.energymanagementsystem.exception;
+package rs.energymanagementsystem.energymanagementsystem.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

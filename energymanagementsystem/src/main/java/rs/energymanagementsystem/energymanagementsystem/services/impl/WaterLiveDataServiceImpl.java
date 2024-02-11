@@ -2,7 +2,7 @@ package rs.energymanagementsystem.energymanagementsystem.services.impl;
 
 import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.WaterLiveData;
-import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
+import rs.energymanagementsystem.energymanagementsystem.exceptions.ResourceNotFoundException;
 import rs.energymanagementsystem.energymanagementsystem.repositories.WaterLiveDataRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.WaterLiveDataService;
 

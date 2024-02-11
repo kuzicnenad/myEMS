@@ -3,11 +3,11 @@ package rs.energymanagementsystem.energymanagementsystem.services.impl;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.User;
-import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
+import rs.energymanagementsystem.energymanagementsystem.exceptions.ResourceNotFoundException;
 import rs.energymanagementsystem.energymanagementsystem.repositories.UserRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.CustomUserDetailsService;
 
@@ -16,7 +16,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, UserDetailsService {
+public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, UserDetailsManager {
 
     private UserRepository userRepository;
 
@@ -84,5 +84,33 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
         return new org.springframework.security.core.userdetails.User(user.getUsername(),
                 user.getPassword(),
                 authorities);
+    }
+
+    /*
+    * Methods implemented from CustomUserDetailsManager
+    * */
+    @Override
+    public void createUser(UserDetails user) {
+
+    }
+
+    @Override
+    public void updateUser(UserDetails user) {
+
+    }
+
+    @Override
+    public void deleteUser(String username) {
+
+    }
+
+    @Override
+    public void changePassword(String oldPassword, String newPassword) {
+
+    }
+
+    @Override
+    public boolean userExists(String username) {
+        return false;
     }
 }
