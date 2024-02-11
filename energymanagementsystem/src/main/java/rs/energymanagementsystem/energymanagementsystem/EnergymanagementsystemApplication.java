@@ -4,21 +4,29 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.NoHandlerFoundException;
 import rs.energymanagementsystem.energymanagementsystem.entities.*;
+import rs.energymanagementsystem.energymanagementsystem.exception.FormErrorException;
 import rs.energymanagementsystem.energymanagementsystem.repositories.RoleRepository;
+import rs.energymanagementsystem.energymanagementsystem.repositories.UserRepository;
 import rs.energymanagementsystem.energymanagementsystem.security.Password;
 import rs.energymanagementsystem.energymanagementsystem.services.*;
 
+import javax.swing.text.StyledEditorKit;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @SpringBootApplication
@@ -69,6 +77,9 @@ public class EnergymanagementsystemApplication {
 
 	@Autowired
 	private RoleRepository roleRepository;
+
+	@Autowired
+	private UserRepository userRepository;
 
 	@GetMapping("/login")
 	public String showLogInScreen(){
@@ -383,12 +394,20 @@ public class EnergymanagementsystemApplication {
 	}
 
 	@PostMapping("/users/saveUserViaForm") // SAVE
+	@ExceptionHandler(NoHandlerFoundException.class)
 	public String saveUserViaForm(@ModelAttribute(value = "user") User user){
+		Boolean validateFormInputs;
 
-		// save user to database repository
-		user.setPassword(Password.hashPassword(user.getPassword()));
-		usersService.saveUser(user);
-		return "redirect:/users";
+		if((userRepository.findByUsername(user.getUsername())==null)&&(userRepository.findByEmail(user.getEmail())==null)) {
+			user.setPassword(Password.hashPassword(user.getPassword()));
+			usersService.saveUser(user);
+			return "redirect:/users";
+		} else if (userRepository.findByUsername(user.getUsername()).isPresent()) {
+			throw new FormErrorException(user.getUsername());
+		} else if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+			throw new FormErrorException(user.getEmail());
+		} else
+			return "error";
 	}
 
 	@GetMapping("/users/newUserForm") // OPEN NEW FORM
