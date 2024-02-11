@@ -61,7 +61,9 @@
                                        th:data-confirm-delete="|Are you sure you want to delete device: ${devices.device_name}?|"
                                        onclick="return confirm(this.getAttribute('data-confirm-delete'))">
                                         <i class="fa fa-trash"></i></a>
-                                    <a th:href="@{/availableDevices/toggleFlag/{device_id}(device_id=${devices.device_id})}">
+                                    <a th:href="@{/availableDevices/toggleFlag/{device_id}(device_id=${devices.device_id})}"
+                                       th:data-confirm-status-change="|Confirm status change for ${devices.device_name}.|"
+                                       onclick="return confirm(this.getAttribute('data-confirm-status-change'))">
                                         <i th:if="${devices.active_flag}" class="fa fa-circle" style="color: #21BF73"></i>
                                         <i th:unless="${devices.active_flag}" class="fa fa-circle" style="color: #FF1700"></i>
                                     </a>
