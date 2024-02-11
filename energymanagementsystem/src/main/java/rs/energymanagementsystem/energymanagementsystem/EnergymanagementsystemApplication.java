@@ -4,14 +4,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import rs.energymanagementsystem.energymanagementsystem.entities.*;
 import rs.energymanagementsystem.energymanagementsystem.exception.FormErrorException;
@@ -20,13 +17,11 @@ import rs.energymanagementsystem.energymanagementsystem.repositories.UserReposit
 import rs.energymanagementsystem.energymanagementsystem.security.Password;
 import rs.energymanagementsystem.energymanagementsystem.services.*;
 
-import javax.swing.text.StyledEditorKit;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @SpringBootApplication

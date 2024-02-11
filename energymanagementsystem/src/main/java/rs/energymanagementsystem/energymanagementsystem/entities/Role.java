@@ -2,7 +2,6 @@ package rs.energymanagementsystem.energymanagementsystem.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
 
 @Data /* Getters and Setters */
 @NoArgsConstructor

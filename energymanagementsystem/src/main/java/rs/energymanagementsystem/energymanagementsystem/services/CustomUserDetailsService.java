@@ -1,8 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.services;
 
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import rs.energymanagementsystem.energymanagementsystem.entities.Devices;
 import rs.energymanagementsystem.energymanagementsystem.entities.User;
 
 import java.util.List;

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.User;
-import rs.energymanagementsystem.energymanagementsystem.exception.ResourceNotFoundException;
 import rs.energymanagementsystem.energymanagementsystem.services.CustomUserDetailsService;
 
 import java.util.List;

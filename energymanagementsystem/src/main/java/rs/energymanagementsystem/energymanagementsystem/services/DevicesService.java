@@ -1,6 +1,5 @@
 package rs.energymanagementsystem.energymanagementsystem.services;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import rs.energymanagementsystem.energymanagementsystem.entities.Devices;
 
 import java.util.List;
