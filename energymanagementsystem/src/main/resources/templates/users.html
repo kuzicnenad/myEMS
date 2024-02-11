@@ -54,8 +54,10 @@
                                 <td class="td-center-items">
                                     <a th:href="@{/users/userUpdateForm/{id}(id=${user.id})}">
                                         <i class="fa fa-pencil"></i></a>
-                                    <a th:href="@{/users/deleteUser/{id}(id=${user.id})}">
-                                        <i class="fa fa-trash"></i></a>
+                                    <a th:href="@{/users/deleteUser/{id}(id=${user.id})}"
+                                       th:data-confirm-delete="|Are you sure you want to delete user: ${user.name}?|"
+                                       onclick="return confirm(this.getAttribute('data-confirm-delete'))">
+                                       <i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         </tbody>
