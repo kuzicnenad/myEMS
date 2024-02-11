@@ -6,10 +6,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.domain.Page;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import rs.energymanagementsystem.energymanagementsystem.controllers.AuthController;
 import rs.energymanagementsystem.energymanagementsystem.entities.*;
 import rs.energymanagementsystem.energymanagementsystem.repositories.RoleRepository;
 import rs.energymanagementsystem.energymanagementsystem.repositories.UserRepository;
@@ -42,6 +48,7 @@ public class EnergymanagementsystemApplication {
 	 * 	-> Users
 	 * 	-> Alarms
 	 * --------------------------------------------------------------------------------------- **/
+
 	@Autowired
 	private ElectricityLiveDataService electricityLiveDataService;
 
@@ -89,6 +96,11 @@ public class EnergymanagementsystemApplication {
 
 		/* Navigation active class object */
 		model.addAttribute("request", request);
+
+		/* Show currently logged-in user */
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String loggedUser = authentication.getName();
+		model.addAttribute("loggedUser", loggedUser);
 
 		/**
 		 * Calculate MAX values
@@ -190,6 +202,13 @@ public class EnergymanagementsystemApplication {
 	 * --------------------------------------------------------------------------------------- **/
 	@GetMapping("/liveData")
 	public String getLastData(HttpServletRequest request, Model model){
+
+		/* Show currently logged-in user */
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String loggedUser = authentication.getName();
+		model.addAttribute("loggedUser", loggedUser);
+
+		/* Show data */
 		List<ElectricityLiveData> lastElectricityData = electricityLiveDataService.getLastData();
 		model.addAttribute("lastElectricityData", lastElectricityData);
 
@@ -218,6 +237,12 @@ public class EnergymanagementsystemApplication {
 	public String getHistoryData(HttpServletRequest request, @PathVariable(value = "pageNo") int pageNo, Model model){
 		int pageSize = 36;
 
+		/* Show currently logged-in user */
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String loggedUser = authentication.getName();
+		model.addAttribute("loggedUser", loggedUser);
+
+		/* Show data */
 		Page<ElectricityHistoryData> page = electricityHistoryDataService.getHistoryDataElectricity(pageNo, pageSize);
 		List<ElectricityHistoryData> listElectricityHistory = page.getContent();
 
@@ -239,6 +264,12 @@ public class EnergymanagementsystemApplication {
 	public String getHistoryDataGas(HttpServletRequest request, @PathVariable(value = "pageNo") int pageNo, Model model){
 		int pageSize = 36;
 
+		/* Show currently logged-in user */
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String loggedUser = authentication.getName();
+		model.addAttribute("loggedUser", loggedUser);
+
+		/* Show data */
 		Page<GasHistoryData> page = gasHistoryDataService.getHistoryDataGas(pageNo, pageSize);
 		List<GasHistoryData> listGasHistory = page.getContent();
 
@@ -260,6 +291,12 @@ public class EnergymanagementsystemApplication {
 	public String getHistoryDataWater(HttpServletRequest request, @PathVariable(value = "pageNo") int pageNo, Model model){
 		int pageSize = 36;
 
+		/* Show currently logged-in user */
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String loggedUser = authentication.getName();
+		model.addAttribute("loggedUser", loggedUser);
+
+		/* Show data */
 		Page<WaterHistoryData> page = waterHistoryDataService.getHistoryDataWater(pageNo, pageSize);
 		List<WaterHistoryData> listWaterHistory = page.getContent();
 
@@ -442,6 +479,12 @@ public class EnergymanagementsystemApplication {
 	 * --------------------------------------------------------------------------------------- **/
 	@GetMapping("/alarms") // get all alarms
 	public String getAllAlarms(HttpServletRequest request, Model model){
+		/* Show currently logged-in user */
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String loggedUser = authentication.getName();
+		model.addAttribute("loggedUser", loggedUser);
+
+		/* Get alarms data model */
 		List<AlarmData> getAllAlarms = alarmDataService.getAllAlarmData();
 		model.addAttribute("getAllAlarms", getAllAlarms);
 

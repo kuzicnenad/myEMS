@@ -40,4 +40,5 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return new ResponseEntity<>("User logged-in successfully!.", HttpStatus.OK);
     }
+
 }
