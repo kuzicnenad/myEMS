@@ -3,8 +3,6 @@
         <li th:class="${#strings.startsWith(request.getRequestURI(), '/activeDevices') ? 'historyActive' : ''}">
             <a href="/activeDevices">Active Devices</a>
         </li>
-    </ul>
-    <ul>
         <li th:class="${#strings.startsWith(request.getRequestURI(), '/availableDevices') ? 'historyActive' : ''}">
             <a href="/availableDevices">Available Devices</a>
         </li>
