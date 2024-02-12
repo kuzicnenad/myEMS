@@ -476,7 +476,10 @@ public class EnergymanagementsystemApplication {
 
 		// call delete user method
 		User userToDelete = usersService.getUserById(id);
-		if(loggedUser.equals(userToDelete.getUsername())){
+		if("root".equalsIgnoreCase(userToDelete.getUsername())) {
+			System.out.println("Root user can not be deleted.");
+			throw new UnsupportedOperationException("Root user can not be deleted.");
+		} else if(loggedUser.equals(userToDelete.getUsername())){
 			System.out.println("Currently logged-in user can not be deleted.");
 			throw new UnsupportedOperationException("Currently logged-in user can not be deleted.");
 		} else { // delete user is it's currently not logged-in

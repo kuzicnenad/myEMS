@@ -46,7 +46,8 @@
 
         <div class="formGroup">
           <p>Roles (for full admin access, select all roles available)</p>
-          <div class="formInputRoles" name="roles" th:each="role : ${roles}">
+          <div class="formInputRoles" name="roles" th:each="role : ${roles}"
+                                                   th:if="${role.name} != 'ROOT'">
             <input type="checkbox"
                    th:text="${role.name}"
                    th:value="${role.id}"
