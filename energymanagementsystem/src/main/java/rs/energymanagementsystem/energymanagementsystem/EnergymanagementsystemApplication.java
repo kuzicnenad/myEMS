@@ -475,8 +475,9 @@ public class EnergymanagementsystemApplication {
 			throw new DuplicateKeyException("Email already exists.");
 		}
 
-		user.setPassword(Password.hashPassword(user.getPassword()));
-		usersService.saveUser(user);
+		usersService.updateUser(user, user.getId());
+		//user.setPassword(Password.hashPassword(user.getPassword()));
+		//usersService.saveUser(user);
 		return "redirect:/users";
 	}
 
