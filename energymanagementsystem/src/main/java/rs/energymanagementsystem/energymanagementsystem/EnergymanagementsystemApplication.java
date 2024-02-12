@@ -446,7 +446,8 @@ public class EnergymanagementsystemApplication {
 
 		return "newUser";
 	}
-
+	public String updateUserName;
+	public String updateUserEmail;
 	@GetMapping("/users/userUpdateForm/{id}") // UPDATE, RETURN FORM
 	public String userUpdateForm(@PathVariable(value = "id") Long id, Model model) {
 
@@ -459,7 +460,24 @@ public class EnergymanagementsystemApplication {
 		List<Role> roles = (List<Role>) roleRepository.findAll();
 		model.addAttribute("roles", roles);
 
+		updateUserName = user.getUsername();
+		updateUserEmail = user.getEmail();
+
 		return "updateUser";
+	}
+	@PostMapping("/users/updateUserViaForm") // SAVE
+	public String updateUserViaForm(@ModelAttribute(value = "user") User user, Model model){
+
+		if(userRepository.existsByUsername(user.getUsername()) && !updateUserName.equals(user.getUsername())){
+			throw new DuplicateKeyException("Username already exists.");
+		}
+		if(userRepository.existsByEmail(user.getEmail()) && !updateUserEmail.equals(user.getEmail())){
+			throw new DuplicateKeyException("Email already exists.");
+		}
+
+		user.setPassword(Password.hashPassword(user.getPassword()));
+		usersService.saveUser(user);
+		return "redirect:/users";
 	}
 
 	@GetMapping("/users/deleteUser/{id}") // DELETE

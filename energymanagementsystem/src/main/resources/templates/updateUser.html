@@ -20,7 +20,7 @@
     <h2>Update User</h2>
 
     <div class="content">
-      <form class="loginForm" action="#" th:action="@{/users/saveUserViaForm}" th:object="${user}" method="POST">
+      <form class="loginForm" action="#" th:action="@{/users/updateUserViaForm}" th:object="${user}" method="POST">
 
         <!-- Hidden ID field to handle update requests -->
         <input type="hidden" th:field="*{id}">
