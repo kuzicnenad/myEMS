@@ -21,4 +21,9 @@ public interface CustomUserDetailsService {
     /** Necessary Information to login **/
     UserDetails loadUserByUsername(String usernameOrEmail);
 
+    /** ---------------------------------------------------------------------------------------
+     * Change device active flag, 0 -> Inactive, 1 -> Active
+     * Get active devices list
+     --------------------------------------------------------------------------------------- **/
+    void userActiveFlag(Long id);
 }

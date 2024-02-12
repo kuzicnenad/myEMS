@@ -465,7 +465,7 @@ public class EnergymanagementsystemApplication {
 
 		return "updateUser";
 	}
-	@PostMapping("/users/updateUserViaForm") // SAVE
+	@PostMapping("/users/updateUserViaForm") // This part should be refactored to match update default class above this method
 	public String updateUserViaForm(@ModelAttribute(value = "user") User user, Model model){
 
 		if(userRepository.existsByUsername(user.getUsername()) && !updateUserName.equals(user.getUsername())){
@@ -499,6 +499,11 @@ public class EnergymanagementsystemApplication {
 		} else { // delete user is it's currently not logged-in
 			this.usersService.deleteUser(id);
 		}
+		return "redirect:/users";
+	}
+	@GetMapping("/users/toggleFlag/{id}") // CHANGE ACTIVE FLAG
+	public String userActiveFlag(@PathVariable(value = "id") Long id){
+		usersService.userActiveFlag(id);
 		return "redirect:/users";
 	}
 

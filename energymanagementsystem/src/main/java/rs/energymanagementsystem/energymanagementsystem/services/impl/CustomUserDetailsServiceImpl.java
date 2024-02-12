@@ -86,6 +86,18 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
                 authorities);
     }
 
+    /** ---------------------------------------------------------------------------------------
+     * Change device active flag, 0 -> Inactive, 1 -> Active
+     * Get active devices list
+     --------------------------------------------------------------------------------------- **/
+    @Override
+    public void userActiveFlag(Long id) {
+        // check if device exists in database
+        userRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException("User", "id", id));
+        userRepository.userActiveFlag(id);
+    }
+
     /*
     * Methods implemented from CustomUserDetailsManager
     * */

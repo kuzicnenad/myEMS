@@ -58,6 +58,12 @@
                                        th:data-confirm-delete="|Are you sure you want to delete user: ${user.name}?|"
                                        onclick="return confirm(this.getAttribute('data-confirm-delete'))">
                                        <i class="fa fa-trash"></i></a>
+                                    <a th:href="@{/users/toggleFlag/{id}(id=${user.id})}"
+                                       th:data-confirm-status-change="|Change active status for ${user.name}?|"
+                                       onclick="return confirm(this.getAttribute('data-confirm-status-change'))">
+                                        <i th:if="${user.active_flag}" class="fa fa-circle" style="color: #21BF73"></i>
+                                        <i th:unless="${user.active_flag}" class="fa fa-circle" style="color: #FF1700"></i>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>

@@ -40,6 +40,8 @@ public class User {
     @UpdateTimestamp
     private Date last_update;
 
+    @Column(name = "active_flag")
+    private Boolean active_flag;
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(
