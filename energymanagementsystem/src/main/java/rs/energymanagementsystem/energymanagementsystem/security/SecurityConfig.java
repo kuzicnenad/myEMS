@@ -1,5 +1,9 @@
 package rs.energymanagementsystem.energymanagementsystem.security;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -7,10 +11,16 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+import rs.energymanagementsystem.energymanagementsystem.exceptions.ExceptionControllerAdvice;
+import rs.energymanagementsystem.energymanagementsystem.exceptions.LoginFailureHandler;
+
+import java.io.IOException;
 
 
 @Configuration
@@ -49,11 +59,15 @@ public class SecurityConfig {
     public static final String LOGIN_URL = "/login";
     public static final String SESSION_ID = "JSESSIONID";
     public static final String LOGOUT_URL = "/logout";
-    public static final String LOGIN_FAIL_URL = LOGIN_URL + "?error";
+    public static final String LOGIN_FAIL_URL = "/error";
     public static final String DEFAULT_SUCCESS_URL = "/index";
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";
 
+    @Autowired
+    private LoginFailureHandler failureHandler;
+
+    ExceptionControllerAdvice exceptionControllerAdvice = new ExceptionControllerAdvice();
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
@@ -61,26 +75,28 @@ public class SecurityConfig {
                         //authorize.anyRequest().authenticated()
                         .requestMatchers(staticResources).permitAll()
                         .requestMatchers(LOGIN_URL).permitAll()
-                        .requestMatchers(DEFAULT_SUCCESS_URL).hasAnyAuthority("USER","ADMIN")
-                        .requestMatchers("/api").hasAuthority("ADMIN")
-                        .requestMatchers("/api/**").hasAuthority("ADMIN")
-                        .requestMatchers("/index").hasAnyAuthority("USER","ADMIN")
+                        .requestMatchers(DEFAULT_SUCCESS_URL).hasAnyAuthority("USER","ADMIN","ROOT")
+                        .requestMatchers("/api").hasAnyAuthority("ADMIN","ROOT")
+                        .requestMatchers("/api/**").hasAnyAuthority("ADMIN","ROOT")
+                        .requestMatchers("/index").hasAnyAuthority("USER","ADMIN","ROOT")
                         .requestMatchers("/logout").permitAll()
-                        .requestMatchers("/liveData").hasAnyAuthority("USER","ADMIN")
-                        .requestMatchers("/historyDataElectricity").hasAnyAuthority("USER","ADMIN")
-                        .requestMatchers("/historyDataGas").hasAnyAuthority("USER","ADMIN")
-                        .requestMatchers("/historyDataWater").hasAnyAuthority("USER","ADMIN")
+                        .requestMatchers("/error").permitAll()
+                        .requestMatchers("/liveData").hasAnyAuthority("USER","ADMIN","ROOT")
+                        .requestMatchers("/historyDataElectricity").hasAnyAuthority("USER","ADMIN","ROOT")
+                        .requestMatchers("/historyDataGas").hasAnyAuthority("USER","ADMIN","ROOT")
+                        .requestMatchers("/historyDataWater").hasAnyAuthority("USER","ADMIN","ROOT")
                         //.requestMatchers("/analysis").hasAuthority("ADMIN")
                         //.requestMatchers("/reports").hasAuthority("ADMIN")
-                        .requestMatchers("/settings").hasAuthority("ADMIN")
-                        .requestMatchers("/devices/**").hasAuthority("ADMIN")
-                        .requestMatchers("/users/**").hasAuthority("ADMIN")
+                        .requestMatchers("/settings").hasAnyAuthority("ADMIN","ROOT")
+                        .requestMatchers("/devices/**").hasAnyAuthority("ADMIN","ROOT")
+                        .requestMatchers("/users/**").hasAnyAuthority("ADMIN","ROOT")
                         .anyRequest().authenticated()
                 ).httpBasic(Customizer.withDefaults())
                 .formLogin(form -> form
                         .loginPage(LOGIN_URL)
                         .defaultSuccessUrl(DEFAULT_SUCCESS_URL)
-                        .failureUrl(LOGIN_FAIL_URL)
+                        // Provide custom failed login message.
+                        .failureHandler(failureHandler)
                 )
                 .logout(logout -> logout
                         .logoutUrl(LOGOUT_URL)
@@ -91,4 +107,5 @@ public class SecurityConfig {
 
         return http.build();
     }
+
 }
