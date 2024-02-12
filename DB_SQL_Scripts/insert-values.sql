@@ -3,16 +3,10 @@ USE myEMS;
 SET GLOBAL time_zone = '+00:00';
 
 /* ---------- Generate users and passwords ---------- */
-INSERT INTO Users (user_login, first_name, last_name, job_title)
-VALUES 	('Admin','Admin_FirstName','Admin_LastName','1'),
-		('User1','User1_FirstName','User1_LastName','2'),
-		('User1','User1_FirstName','User1_LastName','3')
-;
-
 INSERT INTO User(name, username, email, password)
-VALUES 	('Root', 'Root', 'root@myems.com', '$2a$12$ayPaoeYCLYSN2eW6GvxbUOoR1GnVgVtxqCCH4NzJgQYF.gB3dzgpG'), 		/* pass -> root */
-		('Admin1', 'Admin1', 'admin_1@myems.com', '$2a$12$OJM5mRrY9gC61uhk5Dbtt.5xmcT0QF6loN6HnKSr9fqSWKwrqGFLC'), 	/* pass -> admin */
-		('User1', 'User1', 'user_1@myems.com', '$2a$12$C4brIjIkdcSF0dJBvyFsjesGqq19Spy0xGbKEPXax0NfD/j6MicrG');		/* pass -> user */
+VALUES 	('Root User', 'Root', 'root@myems.com', '$2a$12$ayPaoeYCLYSN2eW6GvxbUOoR1GnVgVtxqCCH4NzJgQYF.gB3dzgpG'), 		/* pass -> root */
+		('Admin User', 'Admin1', 'admin_1@myems.com', '$2a$12$OJM5mRrY9gC61uhk5Dbtt.5xmcT0QF6loN6HnKSr9fqSWKwrqGFLC'), 	/* pass -> admin */
+		('Basic User', 'User1', 'user_1@myems.com', '$2a$12$C4brIjIkdcSF0dJBvyFsjesGqq19Spy0xGbKEPXax0NfD/j6MicrG');		/* pass -> user */
         
 INSERT INTO Role(name)
 VALUES	('ROOT'),
