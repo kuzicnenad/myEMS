@@ -41,7 +41,7 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
         return userRepository.getUsersList();
     }
 
-    public User getUserById(Long id){
+     public User getUserById(Long id){
         return userRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("User", "id", id));
     }

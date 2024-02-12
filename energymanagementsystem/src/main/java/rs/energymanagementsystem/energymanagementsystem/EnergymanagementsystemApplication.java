@@ -27,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @SpringBootApplication
@@ -413,7 +414,7 @@ public class EnergymanagementsystemApplication {
 	 * This is an additional control over the API controls that
 	 * are available under controllers package
 	 * --------------------------------------------------------------------------------------- **/
-	@GetMapping("/users") // GET
+	@GetMapping("/users") // GET users list
 	public String getUsers(HttpServletRequest request, Model model){
 		List<User> usersList = usersService.getAllUsers();
 		model.addAttribute("usersList", usersList);
@@ -467,10 +468,20 @@ public class EnergymanagementsystemApplication {
 	}
 
 	@GetMapping("/users/deleteUser/{id}") // DELETE
-	public String deleteUser(@PathVariable(value = "id") Long id) {
+	public String deleteUser(@PathVariable(value = "id") Long id, Model model, User user) {
+		// Show currently logged-in user
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String loggedUser = authentication.getName();
+		model.addAttribute("loggedUser", loggedUser);
 
 		// call delete user method
-		this.usersService.deleteUser(id);
+		User userToDelete = usersService.getUserById(id);
+		if(loggedUser.equals(userToDelete.getUsername())){
+			System.out.println("Currently logged-in user can not be deleted.");
+			throw new UnsupportedOperationException("Currently logged-in user can not be deleted.");
+		} else { // delete user is it's currently not logged-in
+			this.usersService.deleteUser(id);
+		}
 		return "redirect:/users";
 	}
 
