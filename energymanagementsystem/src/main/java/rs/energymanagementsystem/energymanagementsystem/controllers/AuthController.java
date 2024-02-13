@@ -1,5 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,19 +17,20 @@ import rs.energymanagementsystem.energymanagementsystem.repositories.RoleReposit
 import rs.energymanagementsystem.energymanagementsystem.repositories.UserRepository;
 
 @RestController
+@RequiredArgsConstructor
 public class AuthController {
 
     @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
     @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    private RoleRepository roleRepository;
+    private final RoleRepository roleRepository;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     /** Log in API controller,
      * check if username or email is correct and create authentication token **/

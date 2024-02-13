@@ -1,5 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,14 +11,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/waterHistoryData")
+@RequiredArgsConstructor
 public class WaterHistoryDataController {
 
-    private WaterHistoryDataService waterHistoryDataService;
-
-    public WaterHistoryDataController(WaterHistoryDataService waterHistoryDataService){
-        super();
-        this.waterHistoryDataService = waterHistoryDataService;
-    }
+    private final WaterHistoryDataService waterHistoryDataService;
 
     // GET all electricity history data REST API
     @GetMapping

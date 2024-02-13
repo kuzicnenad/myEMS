@@ -1,5 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,14 +11,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/electricityLiveData")
+@RequiredArgsConstructor
 public class ElectricityLiveDataController {
 
-    private ElectricityLiveDataService electricityLiveDataService;
-
-    public ElectricityLiveDataController(ElectricityLiveDataService electricityLiveDataService) {
-        super();
-        this.electricityLiveDataService = electricityLiveDataService;
-    }
+    private final ElectricityLiveDataService electricityLiveDataService;
 
     // GET latest electricity live data REST API
     @GetMapping

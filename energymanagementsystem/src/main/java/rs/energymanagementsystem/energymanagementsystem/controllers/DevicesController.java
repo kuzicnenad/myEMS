@@ -1,5 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,15 +12,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/devices")
+@RequiredArgsConstructor
 public class DevicesController {
 
     @Autowired
-    private DevicesService devicesService;
-
-    public  DevicesController(DevicesService devicesService){
-        super();
-        this.devicesService = devicesService;
-    }
+    private final DevicesService devicesService;
 
     // POST alarmData REST API
     public ResponseEntity<Devices> saveDevice(@RequestBody Devices devices){
