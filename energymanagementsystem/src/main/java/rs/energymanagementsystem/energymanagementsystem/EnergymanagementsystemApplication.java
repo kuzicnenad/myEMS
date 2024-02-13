@@ -12,8 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.*;
-import rs.energymanagementsystem.energymanagementsystem.repositories.RoleRepository;
-import rs.energymanagementsystem.energymanagementsystem.repositories.UserRepository;
 import rs.energymanagementsystem.energymanagementsystem.ConfigCustom.security.Password;
 import rs.energymanagementsystem.energymanagementsystem.services.*;
 
@@ -67,7 +65,7 @@ public class EnergymanagementsystemApplication {
 	private DevicesService devicesService;
 
 	@Autowired
-	private UserDetailsService usersService;
+	private UsersService usersService;
 
 	@Autowired
 	private AlarmDataService alarmDataService;

@@ -4,7 +4,7 @@ import rs.energymanagementsystem.energymanagementsystem.entities.User;
 
 import java.util.List;
 
-public interface UserDetailsService {
+public interface UsersService {
 
     User saveUserViaForm(User user);
     User createUser(User user);

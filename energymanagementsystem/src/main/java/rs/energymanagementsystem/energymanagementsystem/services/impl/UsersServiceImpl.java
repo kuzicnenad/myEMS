@@ -5,13 +5,13 @@ import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.User;
 import rs.energymanagementsystem.energymanagementsystem.exceptions.ResourceNotFoundException;
 import rs.energymanagementsystem.energymanagementsystem.repositories.UserRepository;
-import rs.energymanagementsystem.energymanagementsystem.services.UserDetailsService;
+import rs.energymanagementsystem.energymanagementsystem.services.UsersService;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class UsersServiceImpl implements UsersService {
 
     private final UserRepository userRepository;
     private User user;

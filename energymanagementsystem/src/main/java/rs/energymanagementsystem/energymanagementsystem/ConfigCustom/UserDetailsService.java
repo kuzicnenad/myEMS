@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.User;
 import rs.energymanagementsystem.energymanagementsystem.repositories.UserRepository;
 
-import java.util.Optional;
 
 @Service
 public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
