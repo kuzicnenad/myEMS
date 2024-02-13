@@ -39,9 +39,8 @@ public class User {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @UpdateTimestamp
     private Date last_update;
-
     @Column(name = "active_flag")
-    private Boolean active_flag;
+    private boolean active_flag;
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(
@@ -52,5 +51,39 @@ public class User {
     private Set<Role> roles = new HashSet<>();
     /** creates an object that is a HashSet instance, and assigns a reference to that object to a variable whose type is Set
      * Hibernate doesn't remove entities from a List in an efficient way **/
+    public Long getId() {
+        return id;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Date getCreation_date() {
+        return creation_date;
+    }
+
+    public Date getLast_update() {
+        return last_update;
+    }
+
+    public boolean isActive_flag() {
+        return active_flag;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
 }

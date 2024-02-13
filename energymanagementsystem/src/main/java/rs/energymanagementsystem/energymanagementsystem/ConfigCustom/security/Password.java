@@ -1,4 +1,4 @@
-package rs.energymanagementsystem.energymanagementsystem.security;
+package rs.energymanagementsystem.energymanagementsystem.ConfigCustom.security;
 
 import org.springframework.security.crypto.bcrypt.BCrypt;
 

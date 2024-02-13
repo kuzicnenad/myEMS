@@ -5,10 +5,10 @@ import rs.energymanagementsystem.energymanagementsystem.entities.User;
 
 import java.util.List;
 
-public interface CustomUserDetailsService {
+public interface UserDetailsService {
 
     User saveUserViaForm(User user);
-    User saveUser(User user);
+    User createUser(User user);
 
     List<User> getAllUsers();
 
@@ -19,11 +19,12 @@ public interface CustomUserDetailsService {
     void deleteUser(Long user_id);
 
     /** Necessary Information to login **/
-    UserDetails loadUserByUsername(String usernameOrEmail);
+    /*UserDetails loadUserByUsername(String usernameOrEmail);*/
 
     /** ---------------------------------------------------------------------------------------
      * Change device active flag, 0 -> Inactive, 1 -> Active
      * Get active devices list
      --------------------------------------------------------------------------------------- **/
     void userActiveFlag(Long id);
+
 }

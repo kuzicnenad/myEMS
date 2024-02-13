@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.*;
 import rs.energymanagementsystem.energymanagementsystem.repositories.RoleRepository;
 import rs.energymanagementsystem.energymanagementsystem.repositories.UserRepository;
-import rs.energymanagementsystem.energymanagementsystem.security.Password;
+import rs.energymanagementsystem.energymanagementsystem.ConfigCustom.security.Password;
 import rs.energymanagementsystem.energymanagementsystem.services.*;
 
 import java.text.DateFormat;
@@ -67,7 +67,7 @@ public class EnergymanagementsystemApplication {
 	private DevicesService devicesService;
 
 	@Autowired
-	private CustomUserDetailsService usersService;
+	private UserDetailsService usersService;
 
 	@Autowired
 	private AlarmDataService alarmDataService;
@@ -431,7 +431,7 @@ public class EnergymanagementsystemApplication {
 		}
 
 		user.setPassword(Password.hashPassword(user.getPassword()));
-		usersService.saveUser(user);
+		usersService.createUser(user);
 		return "redirect:/users";
 	}
 

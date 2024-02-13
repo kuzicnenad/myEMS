@@ -28,9 +28,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
     public List<User> getUsersList();
 
     Optional<User> findByEmail(String email);
-    Optional<User> findByUsernameOrEmail(String username, String email);
-    Optional<User> findByUsername(String username);
-    Boolean existsByUsername(String username);
-    Boolean existsByEmail(String email);
+    User findByUsernameOrEmail(String username, String email);
+    User findByUsername(String username);
+    boolean existsByUsername(String username);
+    boolean existsByEmail(String email);
+
+    @Query(value = "SELECT active_flag FROM user", nativeQuery = true)
+    boolean active_flag();
 
 }

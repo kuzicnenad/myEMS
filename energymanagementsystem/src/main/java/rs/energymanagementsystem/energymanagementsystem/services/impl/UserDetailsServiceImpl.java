@@ -4,24 +4,24 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.User;
 import rs.energymanagementsystem.energymanagementsystem.exceptions.ResourceNotFoundException;
 import rs.energymanagementsystem.energymanagementsystem.repositories.UserRepository;
-import rs.energymanagementsystem.energymanagementsystem.services.CustomUserDetailsService;
+import rs.energymanagementsystem.energymanagementsystem.services.UserDetailsService;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, UserDetailsManager, UserDetails {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     private UserRepository userRepository;
 
-    public CustomUserDetailsServiceImpl(UserRepository userRepository) {
+    private User user;
+
+    public UserDetailsServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -33,7 +33,7 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
 
     /** Create new user with default API save **/
     @Override
-    public User saveUser(User user) {
+    public User createUser(User user) {
         return userRepository.save(user);
     }
 
@@ -71,7 +71,7 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
         userRepository.deleteById(id);
     }
 
-    @Override
+ /*   @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
         User user = userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)
                 .orElseThrow(() ->
@@ -85,7 +85,7 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
         return new org.springframework.security.core.userdetails.User(user.getUsername(),
                 user.getPassword(),
                 authorities);
-    }
+    }*/
 
     /** ---------------------------------------------------------------------------------------
      * Change device active flag, 0 -> Inactive, 1 -> Active
@@ -99,69 +99,4 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
         userRepository.userActiveFlag(id);
     }
 
-    /** ---------------------------------------------------------------------------------------
-    * Methods implemented from CustomUserDetailsManager
-     --------------------------------------------------------------------------------------- **/
-    @Override
-    public void createUser(UserDetails user) {
-
-    }
-
-    @Override
-    public void updateUser(UserDetails user) {
-
-    }
-
-    @Override
-    public void deleteUser(String username) {
-
-    }
-
-    @Override
-    public void changePassword(String oldPassword, String newPassword) {
-
-    }
-
-    @Override
-    public boolean userExists(String username) {
-        return false;
-    }
-
-    /** ---------------------------------------------------------------------------------------
-     * Methods implemented from UserDetails
-     --------------------------------------------------------------------------------------- **/
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
-    public String getUsername() {
-        return null;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
-    }
 }
