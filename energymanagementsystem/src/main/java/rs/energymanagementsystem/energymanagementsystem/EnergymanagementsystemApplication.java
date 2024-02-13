@@ -525,25 +525,28 @@ public class EnergymanagementsystemApplication {
 		User user = userRepository.findByUsername(connectedUser.getName());
 
 		String oldPassUser = user.getPassword();
-		String newPassCheck = passwords.getNewPassword();
 		String oldPassCheck = passwords.getOldPassword();
+		String newPass = passwords.getNewPassword();
+		String repeatNewPass = passwords.getRepeatNewPassword();
 
 		System.out.println("Before loop: " + oldPassUser);
 		System.out.println("Before loop: " + oldPassCheck);
-		System.out.println("Before loop: " + newPassCheck);
+		System.out.println("Before loop: " + newPass);
 		System.out.println(user);
 
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		if(repeatNewPass.equals(newPass)){
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-		/** Logic for password check and change */
-		if(!encoder.matches(oldPassCheck,oldPassUser)){
-			throw new Exception("Entered current password does not match with " + connectedUser.getName() + "'s password.");
-		} else {
-			System.out.println("Hash loop: " + oldPassUser);
-			System.out.println("Hash loop: " + oldPassCheck);
-			user.setPassword(Password.hashPassword(newPassCheck));
-			usersService.updateUser(user, user.getId());
-		}
+			/** Logic for password check and change */
+			if(!encoder.matches(oldPassCheck,oldPassUser)){
+				throw new Exception("Entered current password does not match with " + connectedUser.getName() + "'s password.");
+			} else {
+				System.out.println("Hash loop: " + oldPassUser);
+				System.out.println("Hash loop: " + oldPassCheck);
+				user.setPassword(Password.hashPassword(newPass));
+				usersService.updateUser(user, user.getId());
+			}
+		} else throw new Exception("Entered new password does not match. Check your typing.");
 
 		return "redirect:/users";
 	}

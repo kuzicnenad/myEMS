@@ -27,6 +27,9 @@ public class Passwords {
     private String newPassword;
 
     @Column
+    private String repeatNewPassword;
+
+    @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @CreationTimestamp
     private Date creation_date;
