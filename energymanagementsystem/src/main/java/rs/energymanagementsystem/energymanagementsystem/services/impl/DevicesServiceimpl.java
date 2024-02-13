@@ -1,5 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.services.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.Devices;
 import rs.energymanagementsystem.energymanagementsystem.exceptions.ResourceNotFoundException;
@@ -10,13 +11,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class DevicesServiceimpl implements DevicesService {
 
-    private DevicesRepository devicesRepository;
-
-    public DevicesServiceimpl(DevicesRepository devicesRepository) {
-        this.devicesRepository = devicesRepository;
-    }
+    private final DevicesRepository devicesRepository;
 
     /** Used for application database update via html form **/
     @Override

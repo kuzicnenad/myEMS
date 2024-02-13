@@ -1,5 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.services.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -14,13 +15,10 @@ import java.util.Date;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class WaterHistoryDataServiceImpl implements WaterHistoryDataService {
 
-    private WaterHistoryDataRepository waterHistoryDataRepository;
-
-    public WaterHistoryDataServiceImpl(WaterHistoryDataRepository waterHistoryDataRepository){
-        this.waterHistoryDataRepository = waterHistoryDataRepository;
-    }
+    private final WaterHistoryDataRepository waterHistoryDataRepository;
 
     /** ---------------------------------------------------------------------------------------
      * - Get all history data records. valuable for GET APIs

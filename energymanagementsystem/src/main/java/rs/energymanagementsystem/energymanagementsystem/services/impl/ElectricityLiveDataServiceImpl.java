@@ -1,5 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.services.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.ElectricityLiveData;
 import rs.energymanagementsystem.energymanagementsystem.exceptions.ResourceNotFoundException;
@@ -9,13 +10,10 @@ import rs.energymanagementsystem.energymanagementsystem.services.ElectricityLive
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ElectricityLiveDataServiceImpl implements ElectricityLiveDataService {
 
-    private ElectricityLiveDataRepository electricityLiveDataRepository;
-
-    public ElectricityLiveDataServiceImpl(ElectricityLiveDataRepository electricityLiveDataRepository){
-        this.electricityLiveDataRepository = electricityLiveDataRepository;
-    }
+    private final ElectricityLiveDataRepository electricityLiveDataRepository;
 
     /** ---------------------------------------------------------------------------------------
      * - Get all live data records. valuable for GET APIs

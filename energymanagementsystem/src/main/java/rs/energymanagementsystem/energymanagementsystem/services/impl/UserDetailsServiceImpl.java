@@ -1,9 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.services.impl;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.User;
 import rs.energymanagementsystem.energymanagementsystem.exceptions.ResourceNotFoundException;
@@ -11,19 +8,13 @@ import rs.energymanagementsystem.energymanagementsystem.repositories.UserReposit
 import rs.energymanagementsystem.energymanagementsystem.services.UserDetailsService;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private UserRepository userRepository;
-
-    private User user;
-
-    public UserDetailsServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private final UserRepository userRepository;
+    private final User user;
 
     /** Used for application database update via html form **/
     @Override

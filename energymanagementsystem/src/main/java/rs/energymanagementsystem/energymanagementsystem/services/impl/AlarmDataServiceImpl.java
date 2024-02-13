@@ -1,5 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.services.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.AlarmData;
 import rs.energymanagementsystem.energymanagementsystem.exceptions.ResourceNotFoundException;
@@ -9,13 +10,10 @@ import rs.energymanagementsystem.energymanagementsystem.services.AlarmDataServic
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class AlarmDataServiceImpl implements AlarmDataService {
 
-    private AlarmDataRepository alarmDataRepository;
-
-    public AlarmDataServiceImpl(AlarmDataRepository alarmDataRepository) {
-        this.alarmDataRepository = alarmDataRepository;
-    }
+    private final AlarmDataRepository alarmDataRepository;
 
     /** ---------------------------------------------------------------------------------------
      * Get all alarm data records and get alarm data record by ID.
