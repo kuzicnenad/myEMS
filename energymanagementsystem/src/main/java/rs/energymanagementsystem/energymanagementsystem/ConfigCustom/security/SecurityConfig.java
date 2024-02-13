@@ -1,5 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.ConfigCustom.security;
 
+import org.springframework.aop.scope.ScopedObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -87,7 +88,8 @@ public class SecurityConfig {
                         .requestMatchers("/devices/**").hasAnyAuthority("ADMIN","ROOT")
                         .requestMatchers("/users/**").hasAnyAuthority("ADMIN","ROOT")
                         .anyRequest().authenticated()
-                ).httpBasic(Customizer.withDefaults())
+                )
+                .httpBasic(Customizer.withDefaults())
                 .formLogin(form -> form
                         .loginPage(LOGIN_URL)
                         .defaultSuccessUrl(DEFAULT_SUCCESS_URL)

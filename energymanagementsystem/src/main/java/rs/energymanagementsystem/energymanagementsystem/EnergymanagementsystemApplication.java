@@ -8,8 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.domain.Page;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +17,6 @@ import rs.energymanagementsystem.energymanagementsystem.repositories.UserReposit
 import rs.energymanagementsystem.energymanagementsystem.ConfigCustom.security.Password;
 import rs.energymanagementsystem.energymanagementsystem.services.*;
 
-import java.awt.print.PrinterIOException;
 import java.security.Principal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -76,10 +73,7 @@ public class EnergymanagementsystemApplication {
 	private AlarmDataService alarmDataService;
 
 	@Autowired
-	private RoleRepository roleRepository;
-
-	@Autowired
-	private UserRepository userRepository;
+	private RoleService roleService;
 
 	@GetMapping("/login")
 	private String showLogInScreen(){
@@ -416,10 +410,10 @@ public class EnergymanagementsystemApplication {
 	@PostMapping("/users/saveUserViaForm") // SAVE
 	public String saveUserViaForm(@ModelAttribute(value = "user") User user, Model model){
 
-		if(userRepository.existsByUsername(user.getUsername())){
+		if(usersService.existsByUsername(user.getUsername())){
 			throw new DuplicateKeyException("Username already exists.");
 		}
-		if(userRepository.existsByEmail(user.getEmail())){
+		if(usersService.existsByEmail(user.getEmail())){
 			throw new DuplicateKeyException("Email already exists.");
 		}
 
@@ -434,7 +428,7 @@ public class EnergymanagementsystemApplication {
 		User user = new User();
 		model.addAttribute("user", user);
 
-		List<Role> roles = (List<Role>) roleRepository.findAll();
+		List<Role> roles = (List<Role>) roleService.findAll();
 		model.addAttribute("roles", roles);
 
 		return "newUser";
@@ -450,7 +444,7 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("user", user);
 
 		// get roles from repository
-		List<Role> roles = (List<Role>) roleRepository.findAll();
+		List<Role> roles = (List<Role>) roleService.findAll();
 		model.addAttribute("roles", roles);
 
 		updateUserName = user.getUsername();
@@ -461,10 +455,10 @@ public class EnergymanagementsystemApplication {
 	@PostMapping("/users/updateUserViaForm") // This part should be refactored to match update default class above this method
 	public String updateUserViaForm(@ModelAttribute(value = "user") User user, Model model){
 
-		if(userRepository.existsByUsername(user.getUsername()) && !updateUserName.equals(user.getUsername())){
+		if(usersService.existsByUsername(user.getUsername()) && !updateUserName.equals(user.getUsername())){
 			throw new DuplicateKeyException("Username already exists.");
 		}
-		if(userRepository.existsByEmail(user.getEmail()) && !updateUserEmail.equals(user.getEmail())){
+		if(usersService.existsByEmail(user.getEmail()) && !updateUserEmail.equals(user.getEmail())){
 			throw new DuplicateKeyException("Email already exists.");
 		}
 

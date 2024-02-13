@@ -1,6 +1,5 @@
 package rs.energymanagementsystem.energymanagementsystem.services;
 
-import org.springframework.security.core.userdetails.UserDetails;
 import rs.energymanagementsystem.energymanagementsystem.entities.User;
 
 import java.util.List;
@@ -26,5 +25,9 @@ public interface UserDetailsService {
      * Get active devices list
      --------------------------------------------------------------------------------------- **/
     void userActiveFlag(Long id);
+
+    boolean existsByUsername(String user);
+
+    boolean existsByEmail(String email);
 
 }

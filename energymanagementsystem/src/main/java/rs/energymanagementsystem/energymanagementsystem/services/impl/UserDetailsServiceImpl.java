@@ -93,4 +93,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         userRepository.userActiveFlag(id);
     }
 
+    @Override
+    public boolean existsByUsername(String user) {
+        return userRepository.existsByUsername(user);
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+
 }
