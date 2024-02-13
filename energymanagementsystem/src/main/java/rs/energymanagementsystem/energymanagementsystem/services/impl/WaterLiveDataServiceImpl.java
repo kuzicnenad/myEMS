@@ -1,5 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.services.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import rs.energymanagementsystem.energymanagementsystem.entities.WaterLiveData;
 import rs.energymanagementsystem.energymanagementsystem.exceptions.ResourceNotFoundException;
@@ -9,13 +10,10 @@ import rs.energymanagementsystem.energymanagementsystem.services.WaterLiveDataSe
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class WaterLiveDataServiceImpl implements WaterLiveDataService {
 
-    private WaterLiveDataRepository waterLiveDataRepository;
-
-    public WaterLiveDataServiceImpl(WaterLiveDataRepository waterLiveDataRepository){
-        this.waterLiveDataRepository = waterLiveDataRepository;
-    }
+    private final WaterLiveDataRepository waterLiveDataRepository;
 
     /** ---------------------------------------------------------------------------------------
      * - Get all live data records. valuable for GET APIs

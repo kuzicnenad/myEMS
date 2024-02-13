@@ -14,7 +14,7 @@ import java.util.List;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
-    private final User user;
+    private User user;
 
     /** Used for application database update via html form **/
     @Override

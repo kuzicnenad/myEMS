@@ -79,7 +79,7 @@ public class EnergymanagementsystemApplication {
 	private UserRepository userRepository;
 
 	@GetMapping("/login")
-	public String showLogInScreen(){
+	private String showLogInScreen(){
 		return "login";
 	}
 
