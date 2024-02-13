@@ -11,12 +11,13 @@ import rs.energymanagementsystem.energymanagementsystem.exceptions.ResourceNotFo
 import rs.energymanagementsystem.energymanagementsystem.repositories.UserRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.CustomUserDetailsService;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, UserDetailsManager {
+public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, UserDetailsManager, UserDetails {
 
     private UserRepository userRepository;
 
@@ -30,7 +31,7 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
         return userRepository.save(user);
     }
 
-    /** Create new user with default API save**/
+    /** Create new user with default API save **/
     @Override
     public User saveUser(User user) {
         return userRepository.save(user);
@@ -98,9 +99,9 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
         userRepository.userActiveFlag(id);
     }
 
-    /*
+    /** ---------------------------------------------------------------------------------------
     * Methods implemented from CustomUserDetailsManager
-    * */
+     --------------------------------------------------------------------------------------- **/
     @Override
     public void createUser(UserDetails user) {
 
@@ -123,6 +124,44 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
 
     @Override
     public boolean userExists(String username) {
+        return false;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
+    }
+
+    /** ---------------------------------------------------------------------------------------
+     * Methods implemented from UserDetails
+     --------------------------------------------------------------------------------------- **/
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
         return false;
     }
 }
