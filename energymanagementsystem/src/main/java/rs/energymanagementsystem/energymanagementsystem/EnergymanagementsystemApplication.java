@@ -1,6 +1,7 @@
 package rs.energymanagementsystem.energymanagementsystem;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -541,7 +542,7 @@ public class EnergymanagementsystemApplication {
 	/** ---------------------------------------------------------------------------------------
 	 * Get current date and time
 	 * --------------------------------------------------------------------------------------- **/
-	public static String getCurrentTimeUsingDate() {
+	public static @NotNull String getCurrentTimeUsingDate() {
 		Date date = new Date();
 		String strDateFormat = "yyyy/MM/dd  HH:mm";
 		DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
