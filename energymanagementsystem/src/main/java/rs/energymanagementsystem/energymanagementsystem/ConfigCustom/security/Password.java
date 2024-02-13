@@ -1,6 +1,7 @@
 package rs.energymanagementsystem.energymanagementsystem.ConfigCustom.security;
 
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class Password {
     private static int workload = 14;
@@ -20,6 +21,6 @@ public class Password {
         String salt = BCrypt.gensalt(workload);
         String hashed_password = BCrypt.hashpw(password_plaintext, salt);
 
-        return(hashed_password);
+        return hashed_password;
     }
 }

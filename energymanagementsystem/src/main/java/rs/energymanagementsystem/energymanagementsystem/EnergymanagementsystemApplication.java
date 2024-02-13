@@ -8,11 +8,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.domain.Page;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.*;
 import rs.energymanagementsystem.energymanagementsystem.ConfigCustom.security.Password;
+import rs.energymanagementsystem.energymanagementsystem.repositories.UserRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.*;
 
 import java.security.Principal;
@@ -72,6 +74,9 @@ public class EnergymanagementsystemApplication {
 
 	@Autowired
 	private RoleService roleService;
+
+	@Autowired
+	private  UserRepository userRepository;
 
 	@GetMapping("/login")
 	private String showLogInScreen(){
@@ -451,7 +456,7 @@ public class EnergymanagementsystemApplication {
 		return "updateUser";
 	}
 	@PostMapping("/users/updateUserViaForm") // This part should be refactored to match update default class above this method
-	public String updateUserViaForm(@ModelAttribute(value = "user") User user, Model model){
+	public String updateUserViaForm(@ModelAttribute(value = "user") User user){
 
 		if(usersService.existsByUsername(user.getUsername()) && !updateUserName.equals(user.getUsername())){
 			throw new DuplicateKeyException("Username already exists.");
@@ -503,6 +508,41 @@ public class EnergymanagementsystemApplication {
 			System.out.println("User " + userToChange.getUsername() + " has been deactivated.");
 			usersService.userActiveFlag(id);
 		}
+		return "redirect:/users";
+	}
+
+	@GetMapping("/changePasswordForm")
+	public String changePasswordForm(Model model, Principal connectedUser, Passwords passwords){
+
+		model.addAttribute("passwords", passwords);
+
+		return "changePasswordForm";
+	}
+
+	@PostMapping("/changePasswordLogic")
+	public String changeAccountPassword(Principal connectedUser, Passwords passwords) throws Exception {
+
+		User user = userRepository.findByUsername(connectedUser.getName());
+
+		String oldPassUser = user.getPassword();
+		String newPassCheck = passwords.getNewPassword();
+		String oldPassCheck = passwords.getOldPassword();
+
+		System.out.println("Before loop: " + oldPassUser);
+		System.out.println("Before loop: " + oldPassCheck);
+		System.out.println("Before loop: " + newPassCheck);
+		System.out.println(user);
+
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+		/** Logic for password check and change */
+		if(encoder.matches(oldPassCheck,oldPassUser)){
+			System.out.println("Hash loop: " + oldPassUser);
+			System.out.println("Hash loop: " + oldPassCheck);
+			user.setPassword(Password.hashPassword(newPassCheck));
+			usersService.updateUser(user, user.getId());
+		}
+
 		return "redirect:/users";
 	}
 
