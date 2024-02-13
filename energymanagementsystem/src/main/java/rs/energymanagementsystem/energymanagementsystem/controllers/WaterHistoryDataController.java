@@ -16,14 +16,14 @@ public class WaterHistoryDataController {
 
     private final WaterHistoryDataService waterHistoryDataService;
 
-    // GET all electricity history data REST API
+    /** GET all electricity history data REST API **/
     @GetMapping
     public List<WaterHistoryData> getAllWaterHistoryData(){
         return waterHistoryDataService.getAllWaterHistoryData();
     }
 
-    // GET by ID electricity history data REST API
-    // http://localhost:8080/api/electricityHistoryData/hist_data_id(number)
+    /** GET by ID electricity history data REST API
+      * http://localhost:8080/api/electricityHistoryData/hist_data_id(number) **/
     @GetMapping("{hist_data_id}")
     public ResponseEntity<WaterHistoryData> getElectricityHistoryDataById(@PathVariable ("hist_data_id") Integer hist_data_id){
         return new ResponseEntity<WaterHistoryData>(waterHistoryDataService.getWaterHistoryDataById(hist_data_id), HttpStatus.OK);

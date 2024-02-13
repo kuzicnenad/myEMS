@@ -33,7 +33,7 @@ public class AuthController {
     private final PasswordEncoder passwordEncoder;
 
     /** Log in API controller,
-     * check if username or email is correct and create authentication token **/
+      * check if username or email is correct and create authentication token **/
     @PostMapping("/login")
     public ResponseEntity<String> authenticateUser(@RequestBody LoginDto loginDto){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(

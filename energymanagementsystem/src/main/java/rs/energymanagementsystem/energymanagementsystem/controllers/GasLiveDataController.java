@@ -16,14 +16,14 @@ public class GasLiveDataController {
 
     private final GasLiveDataService gasLiveDataService;
 
-    // GET latest electricity live data REST API
+    /** GET latest electricity live data REST API **/
     @GetMapping
     public List<GasLiveData> getAllGasLiveData(){
         return gasLiveDataService.getLastData();
     }
 
-    // GET by ID electricity live data REST API
-    // http://localhost:8080/api/gasHistoryData/hist_data_id(number)
+    /** GET by ID electricity live data REST API
+      * http://localhost:8080/api/gasHistoryData/hist_data_id(number) **/
     @GetMapping("{live_data_id}")
     public ResponseEntity<GasLiveData> getElectricityLiveDataById(@PathVariable ("live_data_id") Integer live_data_id){
         return new ResponseEntity<GasLiveData>(gasLiveDataService.getGasLiveDataById(live_data_id), HttpStatus.OK);

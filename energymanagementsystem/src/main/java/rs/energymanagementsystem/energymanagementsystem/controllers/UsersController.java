@@ -20,12 +20,12 @@ public class UsersController {
     @Autowired
     private final UserDetailsService userDetailsService;
 
-    // POST users REST API
+    /** POST users REST API **/
     public ResponseEntity<User> saveUser(@RequestBody User user){
         return new ResponseEntity<User>(userDetailsService.createUser(user), HttpStatus.CREATED);
     }
 
-    // GET all users REST API
+    /** GET all users REST API **/
     public String getAllUsers(Model model){
         List<User> usersEntityList = userDetailsService.getAllUsers();
         model.addAttribute("usersList", usersEntityList);
@@ -33,26 +33,28 @@ public class UsersController {
         return "index";
     }
 
-    // GET by ID user REST API
-    // http://localhost:8080/api/users/user_id(number)
+    /** GET by ID user REST API
+      * http://localhost:8080/api/users/user_id(number) */
     @GetMapping("{id}")
     public ResponseEntity<User> getUserById(@PathVariable ("id") Long id){
         return new ResponseEntity<User>(userDetailsService.getUserById(id), HttpStatus.OK);
     }
 
-    // UPDATE by ID user REST API
-    // http://localhost:8080/api/alarmData/alarm_id(number)
+    /** UPDATE by ID user REST API
+      * http://localhost:8080/api/alarmData/alarm_id(number) **/
     @PutMapping("{id}")
     public ResponseEntity<User> updateUser(@PathVariable ("id") Long id
             , @RequestBody User user){
         return new ResponseEntity<User>(userDetailsService.updateUser(user, id), HttpStatus.OK);
     }
 
-    // DELETE by ID alarmData REST API
+    /** DELETE by ID alarmData REST API **/
     @DeleteMapping("{id}")
     public ResponseEntity<String> deleteUser(@PathVariable("id") Long id){
         userDetailsService.deleteUser(id);
         return new ResponseEntity<String>("User data deleted successfully!", HttpStatus.OK);
     }
+
+
 
 }

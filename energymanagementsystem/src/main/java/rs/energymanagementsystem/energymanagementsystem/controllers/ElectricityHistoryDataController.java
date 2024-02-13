@@ -16,14 +16,14 @@ public class ElectricityHistoryDataController {
 
     private final ElectricityHistoryDataService electricityHistoryDataService;
 
-    // GET all electricity history data REST API
+    /** GET all electricity history data REST API **/
     @GetMapping
     public List<ElectricityHistoryData> getAllElectricityHistoryData(){
         return electricityHistoryDataService.getAllElectricityHistoryData();
     }
 
-    // GET by ID electricity history data REST API
-    // http://localhost:8080/api/electricityHistoryData/hist_data_id(number)
+    /** GET by ID electricity history data REST API
+      * http://localhost:8080/api/electricityHistoryData/hist_data_id(number) **/
     @GetMapping("{hist_data_id}")
     public ResponseEntity<ElectricityHistoryData> getElectricityHistoryDataById(@PathVariable ("hist_data_id") Integer hist_data_id){
         return new ResponseEntity<ElectricityHistoryData>(electricityHistoryDataService.getElectricityHistoryDataById(hist_data_id), HttpStatus.OK);

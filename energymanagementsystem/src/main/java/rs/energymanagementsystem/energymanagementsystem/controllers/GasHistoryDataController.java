@@ -15,14 +15,14 @@ import java.util.List;
 public class GasHistoryDataController {
     private final GasHistoryDataService gasHistoryDataService;
 
-    // GET all gas history data REST API
+    /** GET all gas history data REST API **/
     @GetMapping
     public List<GasHistoryData> getAllGasHistoryData(){
         return gasHistoryDataService.getAllGasHistoryData();
     }
 
-    // GET by ID gas history data REST API
-    // http://localhost:8080/api/electricityHistoryData/hist_data_id(number)
+    /** GET by ID gas history data REST API
+      * http://localhost:8080/api/electricityHistoryData/hist_data_id(number) **/
     @GetMapping("{hist_data_id}")
     public ResponseEntity<GasHistoryData> getGasHistoryDataById(@PathVariable ("hist_data_id") Integer hist_data_id){
         return new ResponseEntity<GasHistoryData>(gasHistoryDataService.getGasHistoryDataById(hist_data_id), HttpStatus.OK);
