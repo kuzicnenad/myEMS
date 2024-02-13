@@ -78,6 +78,9 @@ public class EnergymanagementsystemApplication {
 	@Autowired
 	private  UserRepository userRepository;
 
+	@Autowired
+	private PasswordsService passwordsService;
+
 	@GetMapping("/login")
 	private String showLogInScreen(){
 		return "login";
@@ -529,10 +532,10 @@ public class EnergymanagementsystemApplication {
 		String newPass = passwords.getNewPassword();
 		String repeatNewPass = passwords.getRepeatNewPassword();
 
-		System.out.println("Before loop: " + oldPassUser);
-		System.out.println("Before loop: " + oldPassCheck);
-		System.out.println("Before loop: " + newPass);
-		System.out.println(user);
+		/** Set to keep record before loop for LOG
+		 * Need to think of solution to not show psd in LOG but only
+		 * if it's correct or not */
+		passwordsService.createPassword(passwords, connectedUser.getName());
 
 		if(repeatNewPass.equals(newPass)){
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
