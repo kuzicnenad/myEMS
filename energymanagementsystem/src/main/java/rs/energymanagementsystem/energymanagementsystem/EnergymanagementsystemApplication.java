@@ -90,33 +90,31 @@ public class EnergymanagementsystemApplication {
 	 * Active class is changed based on URI provided with mapping API methods
 	 * --------------------------------------------------------------------------------------- **/
 	@GetMapping({"/","/index","/home"})
-	public String showHomePage(HttpServletRequest request, Model model){
+	public String showHomePage(HttpServletRequest request, Model model, Principal connectedUser){
 
-		/* Navigation active class object */
+		/** Navigation active class object */
 		model.addAttribute("request", request);
 
-		/* Show currently logged-in user */
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String loggedUser = authentication.getName();
-		model.addAttribute("loggedUser", loggedUser);
+		/** Display connected user on header */
+		model.addAttribute("connectedUser", connectedUser.getName());
 
 		/**
 		 * Calculate MAX values
 		 * Get date of MAX value
 		 * **/
-		/* Electricity */
+		/** Electricity */
 		Integer electricityMaxValue = electricityHistoryDataService.getElectricityMaxValue();
 		model.addAttribute("electricityMaxValue", electricityMaxValue);
 		Date electricityMaxValueDate = electricityHistoryDataService.getElectricityMaxValueDate();
 		model.addAttribute("electricityMaxValueDate", electricityMaxValueDate);
 
-		/* Gas */
+		/** Gas */
 		Integer gasMaxValue = gasHistoryDataService.getGasMaxValue();
 		model.addAttribute("gasMaxValue", gasMaxValue);
 		Date gasMaxValueDate = gasHistoryDataService.getGasMaxValueDate();
 		model.addAttribute("gasMaxValueDate", gasMaxValueDate);
 
-		/* Water */
+		/** Water */
 		Integer waterMaxValue = waterHistoryDataService.getWaterMaxValue();
 		model.addAttribute("waterMaxValue", waterMaxValue);
 		Date waterMaxValueDate = waterHistoryDataService.getWaterMaxValueDate();
@@ -126,7 +124,7 @@ public class EnergymanagementsystemApplication {
 		 * Calculate AVG values
 		 * Get date of first and last record
 		 * **/
-		/* Electricity */
+		/** Electricity */
 		Integer electricityAvgValue = electricityHistoryDataService.getElectricityAvgValue();
 		model.addAttribute("electricityAvgValue", electricityAvgValue);
 		Date getElectricityFirstRecordDate = electricityHistoryDataService.getFirstDate();
@@ -134,7 +132,7 @@ public class EnergymanagementsystemApplication {
 		Date getElectricityLastRecordDate = electricityHistoryDataService.getLastDate();
 		model.addAttribute("getElectricityLastRecordDate", getElectricityLastRecordDate);
 
-		/* Gas */
+		/** Gas */
 		Integer gasAvgValue = gasHistoryDataService.getGasAvgValue();
 		model.addAttribute("gasAvgValue", gasAvgValue);
 		Date getGasFirstRecordDate = gasHistoryDataService.getFirstDate();
@@ -142,7 +140,7 @@ public class EnergymanagementsystemApplication {
 		Date getGasLastRecordDate = gasHistoryDataService.getLastDate();
 		model.addAttribute("getGasLastRecordDate", getGasLastRecordDate);
 
-		/* Water */
+		/** Water */
 		Integer waterAvgValue = waterHistoryDataService.getWaterAvgValue();
 		model.addAttribute("waterAvgValue", waterAvgValue);
 		Date getWaterFirstRecordDate = waterHistoryDataService.getFirstDate();
@@ -154,19 +152,19 @@ public class EnergymanagementsystemApplication {
 		 * Calculate MIN values
 		 * Get date of MIN value
 		 * **/
-		/* Electricity */
+		/** Electricity */
 		Integer electricityMinValue = electricityHistoryDataService.getElectricityMinValue();
 		model.addAttribute("electricityMinValue", electricityMinValue);
 		Date electricityMinValueDate = electricityHistoryDataService.getElectricityMinValueDate();
 		model.addAttribute("electricityMinValueDate", electricityMinValueDate);
 
-		/* Gas */
+		/** Gas */
 		Integer gasMinValue = gasHistoryDataService.getGasMinValue();
 		model.addAttribute("gasMinValue", gasMinValue);
 		Date gasMinValueDate = gasHistoryDataService.getGasMinValueDate();
 		model.addAttribute("gasMinValueDate", gasMinValueDate);
 
-		/* Water */
+		/** Water */
 		Integer waterMinValue = waterHistoryDataService.getWaterMinValue();
 		model.addAttribute("waterMinValue", waterMinValue);
 		Date waterMinValueDate = waterHistoryDataService.getWaterMinValueDate();
@@ -199,14 +197,12 @@ public class EnergymanagementsystemApplication {
 	 * <meta HTTP-EQUIV="Refresh" CONTENT="10">
 	 * --------------------------------------------------------------------------------------- **/
 	@GetMapping("/liveData")
-	public String getLastData(HttpServletRequest request, Model model){
+	public String getLastData(HttpServletRequest request, Model model, Principal connectedUser){
 
-		/* Show currently logged-in user */
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String loggedUser = authentication.getName();
-		model.addAttribute("loggedUser", loggedUser);
+		/** Display connected user on header */
+		model.addAttribute("connectedUser", connectedUser.getName());
 
-		/* Show data */
+		/** Show data */
 		List<ElectricityLiveData> lastElectricityData = electricityLiveDataService.getLastData();
 		model.addAttribute("lastElectricityData", lastElectricityData);
 
@@ -216,7 +212,7 @@ public class EnergymanagementsystemApplication {
 		List<WaterLiveData> lastWaterData = waterLiveDataService.getLastData();
 		model.addAttribute("lastWaterData", lastWaterData);
 
-		/* Navigation active class object */
+		/** Navigation active class object */
 		model.addAttribute("request", request);
 
 		String getCurrentDateTime = getCurrentTimeUsingDate();
@@ -232,15 +228,13 @@ public class EnergymanagementsystemApplication {
 	 * 	- Water
 	 * --------------------------------------------------------------------------------------- **/
 	@GetMapping("/historyDataElectricity/{pageNo}")
-	public String getHistoryData(HttpServletRequest request, @PathVariable(value = "pageNo") int pageNo, Model model){
+	public String getHistoryData(HttpServletRequest request, @PathVariable(value = "pageNo") int pageNo, Model model, Principal connectedUser){
 		int pageSize = 36;
 
-		/* Show currently logged-in user */
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String loggedUser = authentication.getName();
-		model.addAttribute("loggedUser", loggedUser);
+		/** Display connected user on header */
+		model.addAttribute("connectedUser", connectedUser.getName());
 
-		/* Show data */
+		/** Show data */
 		Page<ElectricityHistoryData> page = electricityHistoryDataService.getHistoryDataElectricity(pageNo, pageSize);
 		List<ElectricityHistoryData> listElectricityHistory = page.getContent();
 
@@ -249,7 +243,7 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("totalItems", page.getTotalElements());
 		model.addAttribute("listElectricityHistory", listElectricityHistory);
 
-		/* Navigation active class object */
+		/** Navigation active class object */
 		model.addAttribute("request", request);
 
 		String getCurrentDateTime = getCurrentTimeUsingDate();
@@ -259,15 +253,13 @@ public class EnergymanagementsystemApplication {
 	}
 
 	@GetMapping("/historyDataGas/{pageNo}")
-	public String getHistoryDataGas(HttpServletRequest request, @PathVariable(value = "pageNo") int pageNo, Model model){
+	public String getHistoryDataGas(HttpServletRequest request, @PathVariable(value = "pageNo") int pageNo, Model model, Principal connectedUser){
 		int pageSize = 36;
 
-		/* Show currently logged-in user */
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String loggedUser = authentication.getName();
-		model.addAttribute("loggedUser", loggedUser);
+		/** Display connected user on header */
+		model.addAttribute("connectedUser", connectedUser.getName());
 
-		/* Show data */
+		/** Show data */
 		Page<GasHistoryData> page = gasHistoryDataService.getHistoryDataGas(pageNo, pageSize);
 		List<GasHistoryData> listGasHistory = page.getContent();
 
@@ -276,7 +268,7 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("totalItems", page.getTotalElements());
 		model.addAttribute("listGasHistory", listGasHistory);
 
-		/* Navigation active class object */
+		/** Navigation active class object */
 		model.addAttribute("request", request);
 
 		String getCurrentDateTime = getCurrentTimeUsingDate();
@@ -286,15 +278,13 @@ public class EnergymanagementsystemApplication {
 	}
 
 	@GetMapping("/historyDataWater/{pageNo}")
-	public String getHistoryDataWater(HttpServletRequest request, @PathVariable(value = "pageNo") int pageNo, Model model){
+	public String getHistoryDataWater(HttpServletRequest request, @PathVariable(value = "pageNo") int pageNo, Model model, Principal connectedUser){
 		int pageSize = 36;
 
-		/* Show currently logged-in user */
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String loggedUser = authentication.getName();
-		model.addAttribute("loggedUser", loggedUser);
+		/** Display connected user on header */
+		model.addAttribute("connectedUser", connectedUser.getName());
 
-		/* Show data */
+		/** Show data */
 		Page<WaterHistoryData> page = waterHistoryDataService.getHistoryDataWater(pageNo, pageSize);
 		List<WaterHistoryData> listWaterHistory = page.getContent();
 
@@ -303,7 +293,7 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("totalItems", page.getTotalElements());
 		model.addAttribute("listWaterHistory", listWaterHistory);
 
-		/* Navigation active class object */
+		/** Navigation active class object */
 		model.addAttribute("request", request);
 
 		String getCurrentDateTime = getCurrentTimeUsingDate();
@@ -527,17 +517,15 @@ public class EnergymanagementsystemApplication {
 	 * Get history of all alarms
 	 * --------------------------------------------------------------------------------------- **/
 	@GetMapping("/alarms") // get all alarms
-	public String getAllAlarms(HttpServletRequest request, Model model){
-		/* Show currently logged-in user */
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String loggedUser = authentication.getName();
-		model.addAttribute("loggedUser", loggedUser);
+	public String getAllAlarms(HttpServletRequest request, Model model, Principal connectedUser){
+		/** Display connected user on header */
+		model.addAttribute("connectedUser", connectedUser.getName());
 
-		/* Get alarms data model */
+		/** Get alarms data model */
 		List<AlarmData> getAllAlarms = alarmDataService.getAllAlarmData();
 		model.addAttribute("getAllAlarms", getAllAlarms);
 
-		/* Navigation active class object */
+		/** Navigation active class object */
 		model.addAttribute("request", request);
 
 		return "alarms";
