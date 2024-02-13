@@ -2,8 +2,9 @@
 Allows user to monitor the energy consumption in real-time.
 
 Passwords from SQL DB
-Admin1 -> admin
-User1 -> user
+Root -> root
+Admin -> admin
+User -> user
 
 
 First version include:
