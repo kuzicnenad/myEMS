@@ -18,6 +18,8 @@ import rs.energymanagementsystem.energymanagementsystem.repositories.UserReposit
 import rs.energymanagementsystem.energymanagementsystem.ConfigCustom.security.Password;
 import rs.energymanagementsystem.energymanagementsystem.services.*;
 
+import java.awt.print.PrinterIOException;
+import java.security.Principal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -482,28 +484,42 @@ public class EnergymanagementsystemApplication {
 	}
 
 	@GetMapping("/users/deleteUser/{id}") // DELETE
-	public String deleteUser(@PathVariable(value = "id") Long id, Model model, User user) {
+	public String deleteUser(@PathVariable(value = "id") Long id, Model model, User user, Principal connectedUser) {
+/** Old method -> changed with Principal to clean code.
 		// Show currently logged-in user
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String loggedUser = authentication.getName();
 		model.addAttribute("loggedUser", loggedUser);
+**/
 
 		// call delete user method
 		User userToDelete = usersService.getUserById(id);
 		if("root".equalsIgnoreCase(userToDelete.getUsername())) {
 			System.out.println("Root user can not be deleted.");
 			throw new UnsupportedOperationException("Root user can not be deleted.");
-		} else if(loggedUser.equals(userToDelete.getUsername())){
+		} else if(connectedUser.getName().equals(userToDelete.getUsername())){
 			System.out.println("Currently logged-in user can not be deleted.");
 			throw new UnsupportedOperationException("Currently logged-in user can not be deleted.");
-		} else { // delete user is it's currently not logged-in
+		}else { // delete user if it's not root or currently logged in.
+			System.out.println("User " + user + " has been deleted.");
 			this.usersService.deleteUser(id);
 		}
 		return "redirect:/users";
 	}
 	@GetMapping("/users/toggleFlag/{id}") // CHANGE ACTIVE FLAG
-	public String userActiveFlag(@PathVariable(value = "id") Long id){
-		usersService.userActiveFlag(id);
+	public String userActiveFlag(@PathVariable(value = "id") Long id, Principal connectedUser){
+
+		User userToChange = usersService.getUserById(id);
+		if("root".equalsIgnoreCase(userToChange.getUsername())){
+			System.out.println("Root user can not be deactivated.");
+			throw new UnsupportedOperationException("Root user can not be deactivated.");
+		} else if(connectedUser.getName().equals(userToChange.getUsername())){
+			System.out.println("Currently logged-in user can not be deactivated.");
+			throw new UnsupportedOperationException("Currently logged-in user can not be deactivated.");
+		} else { // deactivate user
+			System.out.println("User " + userToChange.getUsername() + " has been deactivated.");
+			usersService.userActiveFlag(id);
+		}
 		return "redirect:/users";
 	}
 
