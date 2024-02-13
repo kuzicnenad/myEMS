@@ -71,7 +71,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         userRepository.deleteById(id);
     }
 
-    @Override
+ /*   @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
         User user = userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)
                 .orElseThrow(() ->
@@ -85,7 +85,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.getUsername(),
                 user.getPassword(),
                 authorities);
-    }
+    }*/
 
     /** ---------------------------------------------------------------------------------------
      * Change device active flag, 0 -> Inactive, 1 -> Active

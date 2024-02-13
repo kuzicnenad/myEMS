@@ -19,7 +19,7 @@ public interface UserDetailsService {
     void deleteUser(Long user_id);
 
     /** Necessary Information to login **/
-    UserDetails loadUserByUsername(String usernameOrEmail);
+    /*UserDetails loadUserByUsername(String usernameOrEmail);*/
 
     /** ---------------------------------------------------------------------------------------
      * Change device active flag, 0 -> Inactive, 1 -> Active

@@ -1,53 +1,58 @@
 package rs.energymanagementsystem.energymanagementsystem.ConfigCustom;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import rs.energymanagementsystem.energymanagementsystem.entities.User;
 
 import java.util.Collection;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class CustomUserDetails implements UserDetails {
 
-    Optional<User> user;
+    private User user;
 
-    public CustomUserDetails(Optional<User> user) {
+    public CustomUserDetails(User user) {
         super();
         this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return user.getRoles()
+                .stream()
+                .map(role -> new SimpleGrantedAuthority(role.getName()))
+                .collect(Collectors.toSet());
     }
-
     @Override
     public String getPassword() {
-        return null;
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return user.getUsername();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return user.isActive_flag();
     }
 }
+
+
