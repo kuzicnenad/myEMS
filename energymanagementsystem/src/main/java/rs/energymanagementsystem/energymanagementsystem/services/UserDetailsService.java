@@ -5,7 +5,7 @@ import rs.energymanagementsystem.energymanagementsystem.entities.User;
 
 import java.util.List;
 
-public interface CustomUserDetailsService {
+public interface UserDetailsService {
 
     User saveUserViaForm(User user);
     User saveUser(User user);
@@ -26,4 +26,5 @@ public interface CustomUserDetailsService {
      * Get active devices list
      --------------------------------------------------------------------------------------- **/
     void userActiveFlag(Long id);
+
 }
