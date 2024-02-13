@@ -64,7 +64,7 @@ public class SecurityConfig {
 
     ExceptionControllerAdvice exceptionControllerAdvice = new ExceptionControllerAdvice();
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((authorize) -> authorize
                         //authorize.anyRequest().authenticated()
