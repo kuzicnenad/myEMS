@@ -20,7 +20,7 @@ public class UsersController {
 
     // POST users REST API
     public ResponseEntity<User> saveUser(@RequestBody User user){
-        return new ResponseEntity<User>(userDetailsService.saveUser(user), HttpStatus.CREATED);
+        return new ResponseEntity<User>(userDetailsService.createUser(user), HttpStatus.CREATED);
     }
 
     // GET all users REST API

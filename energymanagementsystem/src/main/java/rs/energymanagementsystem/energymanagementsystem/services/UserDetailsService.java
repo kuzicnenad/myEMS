@@ -8,7 +8,7 @@ import java.util.List;
 public interface UserDetailsService {
 
     User saveUserViaForm(User user);
-    User saveUser(User user);
+    User createUser(User user);
 
     List<User> getAllUsers();
 

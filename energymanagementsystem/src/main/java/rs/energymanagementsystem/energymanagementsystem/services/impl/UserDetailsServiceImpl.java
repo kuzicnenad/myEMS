@@ -10,7 +10,6 @@ import rs.energymanagementsystem.energymanagementsystem.exceptions.ResourceNotFo
 import rs.energymanagementsystem.energymanagementsystem.repositories.UserRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.UserDetailsService;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -34,7 +33,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     /** Create new user with default API save **/
     @Override
-    public User saveUser(User user) {
+    public User createUser(User user) {
         return userRepository.save(user);
     }
 

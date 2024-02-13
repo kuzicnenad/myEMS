@@ -431,7 +431,7 @@ public class EnergymanagementsystemApplication {
 		}
 
 		user.setPassword(Password.hashPassword(user.getPassword()));
-		usersService.saveUser(user);
+		usersService.createUser(user);
 		return "redirect:/users";
 	}
 
