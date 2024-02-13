@@ -191,7 +191,7 @@ public class EnergymanagementsystemApplication {
 	/** ---------------------------------------------------------------------------------------
 	 * Live Data page
 	 * Electricity, Water, Gas
-	 * Idea is to update database more realistic values in future.
+	 * Idea is to update database more realistic values in the future.
 	 *
 	 * Live Data is refreshed every 10s with HTML meta tag (this is solution for exam demonstration)
 	 * <meta HTTP-EQUIV="Refresh" CONTENT="10">

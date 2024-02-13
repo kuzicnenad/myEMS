@@ -127,6 +127,9 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
         return false;
     }
 
+    /** ---------------------------------------------------------------------------------------
+     * Methods implemented from UserDetails
+     --------------------------------------------------------------------------------------- **/
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -142,9 +145,6 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService, U
         return null;
     }
 
-    /** ---------------------------------------------------------------------------------------
-     * Methods implemented from UserDetails
-     --------------------------------------------------------------------------------------- **/
     @Override
     public boolean isAccountNonExpired() {
         return false;
