@@ -71,7 +71,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         userRepository.deleteById(id);
     }
 
- /*   @Override
+    /** ---------------------------------------------------------------------------------------
+    Old method for checking user details. it was not possible to properly check active/inactive user here.
+    @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
         User user = userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)
                 .orElseThrow(() ->
@@ -85,7 +87,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.getUsername(),
                 user.getPassword(),
                 authorities);
-    }*/
+    }
+     --------------------------------------------------------------------------------------- **/
 
     /** ---------------------------------------------------------------------------------------
      * Change device active flag, 0 -> Inactive, 1 -> Active
