@@ -1,6 +1,5 @@
 package rs.energymanagementsystem.energymanagementsystem.ConfigCustom.security;
 
-import org.springframework.aop.scope.ScopedObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,9 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import rs.energymanagementsystem.energymanagementsystem.exceptions.ExceptionControllerAdvice;
 import rs.energymanagementsystem.energymanagementsystem.exceptions.LoginFailureHandler;
-
-import java.io.IOException;
-
 
 @Configuration
 @EnableMethodSecurity

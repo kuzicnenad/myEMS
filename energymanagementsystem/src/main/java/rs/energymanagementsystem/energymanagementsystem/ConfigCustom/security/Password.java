@@ -1,7 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem.ConfigCustom.security;
 
 import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class Password {
     private static int workload = 14;

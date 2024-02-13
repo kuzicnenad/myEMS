@@ -1,7 +1,6 @@
 package rs.energymanagementsystem.energymanagementsystem;
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.websocket.EncodeException;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -538,7 +537,7 @@ public class EnergymanagementsystemApplication {
 
 		/** Logic for password check and change */
 		if(!encoder.matches(oldPassCheck,oldPassUser)){
-			throw new Exception("Password does not match with " + connectedUser.getName() + "'s password.");
+			throw new Exception("Entered current password does not match with " + connectedUser.getName() + "'s password.");
 		} else {
 			System.out.println("Hash loop: " + oldPassUser);
 			System.out.println("Hash loop: " + oldPassCheck);
