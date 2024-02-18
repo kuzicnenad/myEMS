@@ -2,9 +2,9 @@
 Allows user to monitor the energy consumption in real-time.
 
 Passwords from SQL DB
-Root -> root
-Admin -> admin
-User -> user
+Root -> root (created in SQL, can't be created via app or deleted)
+Admin -> admin (full access, can manage all users except root)
+User -> user (basic user)
 
 
 First version include:
