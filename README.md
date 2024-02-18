@@ -1,10 +1,10 @@
 # myEMS
 Allows user to monitor the energy consumption in real-time.
 
-Passwords from SQL DB
-Root -> root (created in SQL, can't be created via app or deleted)
-Admin -> admin (full access, can manage all users except root)
-User -> user (basic user)
+Default passwords to access predefined users:<br />
+Root -> root (created in SQL, can't be created via app or deleted)<br />
+Admin -> admin (full access, can manage all users except root)<br />
+User -> user (basic user)<br />
 
 
 First version include:
