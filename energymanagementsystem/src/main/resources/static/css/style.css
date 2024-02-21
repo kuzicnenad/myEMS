@@ -484,7 +484,7 @@ tag names will be changed accordingly in future ---*/
 /* SETTINGS specific styles
 ------------------------------------------------------------------- */
 .wrapSettingsItems{
-    margin: 100px auto;
+    margin: 25px auto;
     max-width: 1280px;
     height: auto;
     display: inline-flex;
@@ -494,7 +494,7 @@ tag names will be changed accordingly in future ---*/
 .settingsItems{
     width: 300px;
     background-color: rgba(31, 111, 118, 0.4);
-    padding: 50px;
+    padding: 60px;
     margin-left: 50px;
     text-align: center;
     font-size: 1.5em;
@@ -561,6 +561,14 @@ tag names will be changed accordingly in future ---*/
 }
 
 .deviceSection, .usersSection {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 100px;
+}
+
+.settingsSection {
     display: block;
     font-size: 12px;
     font-weight: bold;
