@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
 <head>
     <meta charset="UTF-8" content="text/html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,28 +31,39 @@
         <!-- end menu-->
 
         <main>
-
             <div class="contentDataWrapper">
-                <div class="wrapSettingsItems">
-                    <a href="/activeDevices">
-                    <div class="settingsItems">
-                        Manage Devices
-                    </div>
-                    </a>
-
-                    <a href="/users">
-                    <div class="settingsItems">
-                        Manage Users
-                    </div>
-                    </a>
-
-                    <a href="/changePasswordForm">
-                        <div class="settingsItems">
-                            Change Password
+                <section class="settingsSection">
+                    <div sec:authorize="hasAuthority('ADMIN') or hasAuthority('ROOT')">
+                        <div class="wrapSettingsItems">
+                            <a href="/activeDevices">
+                                <div class="settingsItems">
+                                    Manage Devices
+                                </div>
+                            </a>
+                            <a href="/users">
+                                <div class="settingsItems">
+                                    Manage Users
+                                </div>
+                            </a>
                         </div>
-                    </a>
+                    </div>
 
-                </div>
+                    <div>
+                        <div class="wrapSettingsItems">
+                            <a href="/changePasswordForm">
+                                <div class="settingsItems">
+                                    Change Password
+                                </div>
+                            </a>
+
+                            <a href="/changePasswordForm">
+                                <div class="settingsItems">
+                                    Change Theme
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
             </div>
         </main>
     </div>
