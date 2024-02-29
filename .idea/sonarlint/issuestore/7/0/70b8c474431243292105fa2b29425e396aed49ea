@@ -1,0 +1,7 @@
+
+h	java:S116"SRename this field "alarm_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïÕ¯ø
+j	java:S116"URename this field "alarm_code" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áÕ‰“
+o	java:S116"URename this field "alarm_desc" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷Ü®©úÿÿÿÿ
+o	java:S116 "URename this field "time_stamp" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»¹âŞüÿÿÿÿ
+q	java:S116%"\Rename this field "acknowledged_time" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ù»¿
+m	java:S116("SRename this field "ack_flag" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ‘»¥ùÿÿÿÿ

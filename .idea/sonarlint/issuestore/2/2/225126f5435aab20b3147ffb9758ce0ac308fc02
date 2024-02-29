@@ -1,0 +1,14 @@
+
+j
+java:S1192K"TUse already-defined constant 'LOGIN_FAIL_URL' instead of duplicating its value here.(‹¥æþ
+f
+java:S1192J"PUse already-defined constant 'LOGOUT_URL' instead of duplicating its value here.(ö˜Ú•
+t
+java:S1192I"YUse already-defined constant 'DEFAULT_SUCCESS_URL' instead of duplicating its value here.(ÌÂËöþÿÿÿÿ
+]
+java:S1192F"GDefine a constant instead of duplicating this literal "ADMIN" 13 times.(¶®£÷
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(›ôæÒùÿÿÿÿ
+M
+java:S1611B"7Remove the parentheses around the "authorize" parameter(–²ÇÁ
+Q
+java:S1068"6Remove this unused "userDetailsService" private field.(ÙÍ•¯üÿÿÿÿ

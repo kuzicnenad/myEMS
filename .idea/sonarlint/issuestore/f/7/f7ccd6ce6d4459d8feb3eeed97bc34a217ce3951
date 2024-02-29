@@ -1,0 +1,29 @@
+
+c	java:S112Ÿ"FDefine and throw a dedicated exception instead of using a generic one.(Ğ”­á8ÁÓÙ­ß1
+h	java:S112¦"FDefine and throw a dedicated exception instead of using a generic one.(¨éÎ·şÿÿÿÿ8ÁÓÙ­ß1
+n
+java:S1192¬"PDefine a constant instead of duplicating this literal "redirect:/users" 5 times.(Ñ“é8ÃÓÙ­ß1
+p
+java:S1192d"NDefine a constant instead of duplicating this literal "connectedUser" 6 times.(¶¥¹İùÿÿÿÿ8ÃÓÙ­ß1
+f
+java:S1192a"IDefine a constant instead of duplicating this literal "request" 10 times.(›í·ÿ8ÃÓÙ­ß1
+h
+java:S1192ô"KDefine a constant instead of duplicating this literal "totalItems" 3 times.(­˜¼'8ÄÓÙ­ß1
+~
+java:S1192é"[Define a constant instead of duplicating this literal "redirect:/availableDevices" 3 times.(§ıÿÿÿÿ8ÄÓÙ­ß1
+v
+java:S1192Ü"SDefine a constant instead of duplicating this literal "getCurrentDateTime" 4 times.(úÀ˜Åøÿÿÿÿ8ÄÓÙ­ß1
+n
+java:S1192ó"KDefine a constant instead of duplicating this literal "totalPages" 3 times.(ÃØäÎúÿÿÿÿ8ÄÓÙ­ß1
+j
+java:S1192ò"LDefine a constant instead of duplicating this literal "currentPage" 3 times.(‘’ï¿8ÄÓÙ­ß1
+n	java:S117õ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…òŞ¨8ÅÓÙ­ß1
+s	java:S117‚"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­™§‘üÿÿÿÿ8ÅÓÙ­ß1
+s	java:S117Š"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›Ü”áüÿÿÿÿ8ÅÓÙ­ß1
+n	java:S117¾"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÆÖÓ8ÅÓÙ­ß1
+ƒ
+java:S1488Ë"eImmediately return this expression instead of assigning it to the temporary variable "formattedDate".(Åë÷÷8ÅÓÙ­ß1
+}
+java:S1104º"ZMake updateUserName a static final constant or non-public and provide accessors if needed.(Öò¿ªøÿÿÿÿ8ÅÓÙ­ß1
+~
+java:S1104»"[Make updateUserEmail a static final constant or non-public and provide accessors if needed.(Â°¤Œÿÿÿÿÿ8ÅÓÙ­ß1

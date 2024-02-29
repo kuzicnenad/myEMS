@@ -1,0 +1,7 @@
+
+i	java:S116"TRename this field "device_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÂÄ„ç
+p	java:S116"VRename this field "device_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ðœ¼÷úÿÿÿÿ
+t	java:S116 "ZRename this field "production_date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢ªºÜüÿÿÿÿ
+f	java:S116#"RRename this field "made_in" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùƒ¦
+p	java:S116("VRename this field "last_update" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÈÇšïûÿÿÿÿ
+k	java:S116+"VRename this field "active_flag" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢Õš—

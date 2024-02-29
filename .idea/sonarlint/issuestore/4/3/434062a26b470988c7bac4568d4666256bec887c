@@ -1,0 +1,7 @@
+
+r	java:S116%"XRename this field "creation_date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æšóËÿÿÿÿÿ
+p	java:S116)"VRename this field "last_update" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÈÇšïûÿÿÿÿ
+k	java:S116+"VRename this field "active_flag" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³Ìè
+h	java:S100J"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Í‘•üÿÿÿÿ
+h	java:S100N"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô—ÑÖøÿÿÿÿ
+c	java:S100R"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´âÙ®

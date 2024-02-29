@@ -1,0 +1,10 @@
+
+e
+java:S1192&"JDefine a constant instead of duplicating this literal "device_id" 5 times.(Ï½Öîúÿÿÿÿ
+b
+java:S1192&"GDefine a constant instead of duplicating this literal "Device" 5 times.(Ï½Öîúÿÿÿÿ
+k	java:S117$"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®ÌØ’øÿÿÿÿ
+k	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼ê¤Èýÿÿÿÿ
+k	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒéÙ©üÿÿÿÿ
+k	java:S117G"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Þü¤âùÿÿÿÿ
+k	java:S117S"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŠµÖÔýÿÿÿÿ
