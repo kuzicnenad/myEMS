@@ -1,5 +1,0 @@
-
-l	java:S116"WRename this field "live_data_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(È“ó—
-n	java:S116"YRename this field "fault_detected" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§¥∂ƒ
-j	java:S116"URename this field "start_time" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(∑¨©Ú
-h	java:S116!"SRename this field "end_time" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Œê±é
