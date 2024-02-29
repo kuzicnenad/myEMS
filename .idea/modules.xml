@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/energymanagementsystem/energymanagementsystem.iml" filepath="$PROJECT_DIR$/energymanagementsystem/energymanagementsystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/myEMS.iml" filepath="$PROJECT_DIR$/.idea/myEMS.iml" />
     </modules>
   </component>
