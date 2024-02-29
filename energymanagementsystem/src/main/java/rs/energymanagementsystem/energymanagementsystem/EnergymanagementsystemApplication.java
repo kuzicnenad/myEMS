@@ -82,7 +82,7 @@ public class EnergymanagementsystemApplication {
 	private PasswordsService passwordsService;
 
 	@GetMapping("/login")
-	private String showLogInScreen(){
+	public String showLogInScreen(){
 		return "login";
 	}
 
@@ -353,7 +353,8 @@ public class EnergymanagementsystemApplication {
 			device.setActive_flag(false); // default value set to false (same as in SQL)
 		}
 
-		if(device.getDescription() == null || device.getDescription() == ""){
+		String deviceDescription = device.getDescription();
+		if(deviceDescription.isEmpty() || deviceDescription.isBlank()){
 			device.setDescription("missing description entry"); // autofill message
 		}
 		// save device to database repository
@@ -469,8 +470,6 @@ public class EnergymanagementsystemApplication {
 		}
 
 		usersService.updateUser(user, user.getId());
-		//user.setPassword(Password.hashPassword(user.getPassword()));
-		//usersService.saveUser(user);
 		return "redirect:/users";
 	}
 
@@ -585,8 +584,7 @@ public class EnergymanagementsystemApplication {
 	public static @NotNull String getCurrentTimeUsingDate() {
 		Date date = new Date();
 		String strDateFormat = "yyyy/MM/dd  HH:mm";
-		DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
-		String formattedDate= dateFormat.format(date);
+		String formattedDate = new SimpleDateFormat(strDateFormat).format(date);
 
 		return formattedDate;
 	}
