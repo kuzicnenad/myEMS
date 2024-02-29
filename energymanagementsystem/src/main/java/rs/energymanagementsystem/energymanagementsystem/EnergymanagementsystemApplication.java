@@ -469,8 +469,6 @@ public class EnergymanagementsystemApplication {
 		}
 
 		usersService.updateUser(user, user.getId());
-		//user.setPassword(Password.hashPassword(user.getPassword()));
-		//usersService.saveUser(user);
 		return "redirect:/users";
 	}
 
@@ -486,13 +484,13 @@ public class EnergymanagementsystemApplication {
 		// call delete user method
 		User userToDelete = usersService.getUserById(id);
 		if("root".equalsIgnoreCase(userToDelete.getUsername())) {
-			System.out.println("Root user can not be deleted.");
+			logger.log("Root user can not be deleted.");
 			throw new UnsupportedOperationException("Root user can not be deleted.");
 		} else if(connectedUser.getName().equals(userToDelete.getUsername())){
-			System.out.println("Currently logged-in user can not be deleted.");
+			logger.log("Currently logged-in user can not be deleted.");
 			throw new UnsupportedOperationException("Currently logged-in user can not be deleted.");
 		}else { // delete user if it's not root or currently logged in.
-			System.out.println("User " + user + " has been deleted.");
+			logger.log("User " + user + " has been deleted.");
 			this.usersService.deleteUser(id);
 		}
 		return "redirect:/users";
@@ -502,13 +500,13 @@ public class EnergymanagementsystemApplication {
 
 		User userToChange = usersService.getUserById(id);
 		if("root".equalsIgnoreCase(userToChange.getUsername())){
-			System.out.println("Root user can not be deactivated.");
+			logger.log("Root user can not be deactivated.");
 			throw new UnsupportedOperationException("Root user can not be deactivated.");
 		} else if(connectedUser.getName().equals(userToChange.getUsername())){
-			System.out.println("Currently logged-in user can not be deactivated.");
+			logger.log("Currently logged-in user can not be deactivated.");
 			throw new UnsupportedOperationException("Currently logged-in user can not be deactivated.");
 		} else { // deactivate user
-			System.out.println("User " + userToChange.getUsername() + " has been deactivated.");
+			logger.log("User " + userToChange.getUsername() + " has been deactivated.");
 			usersService.userActiveFlag(id);
 		}
 		return "redirect:/users";
@@ -544,8 +542,8 @@ public class EnergymanagementsystemApplication {
 			if(!encoder.matches(oldPassCheck,oldPassUser)){
 				throw new Exception("Entered current password does not match with " + connectedUser.getName() + "'s password.");
 			} else {
-				System.out.println("Hash loop: " + oldPassUser);
-				System.out.println("Hash loop: " + oldPassCheck);
+				logger.log("Hash loop: " + oldPassUser);
+				logger.log("Hash loop: " + oldPassCheck);
 				user.setPassword(Password.hashPassword(newPass));
 				usersService.updateUser(user, user.getId());
 			}
