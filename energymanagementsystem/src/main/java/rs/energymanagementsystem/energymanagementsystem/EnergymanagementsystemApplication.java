@@ -87,6 +87,14 @@ public class EnergymanagementsystemApplication {
 	}
 
 	/** ---------------------------------------------------------------------------------------
+	 * Define CONSTANT variables to make it easier to refactor or change code in the future.
+	 * These constants are mostly used in models data retrieval.
+	 * --------------------------------------------------------------------------------------- **/
+	private static final String attrRequest = "request";
+	private static final String attrConnectedUser = "connectedUser";
+	private static final String attrgetCurrentDateTime = "getCurrentDateTime";
+
+	/** ---------------------------------------------------------------------------------------
 	 * For nav style active class is switched with thymeleaf and HttpServletRequest
 	 * Active class is changed based on URI provided with mapping API methods
 	 * --------------------------------------------------------------------------------------- **/
@@ -94,10 +102,10 @@ public class EnergymanagementsystemApplication {
 	public String showHomePage(HttpServletRequest request, Model model, Principal connectedUser){
 
 		/** Navigation active class object */
-		model.addAttribute("request", request);
+		model.addAttribute(attrRequest, request);
 
 		/** Display connected user on header */
-		model.addAttribute("connectedUser", connectedUser.getName());
+		model.addAttribute(attrConnectedUser, connectedUser.getName());
 
 		/**
 		 * Calculate MAX values
@@ -201,7 +209,7 @@ public class EnergymanagementsystemApplication {
 	public String getLastData(HttpServletRequest request, Model model, Principal connectedUser){
 
 		/** Display connected user on header */
-		model.addAttribute("connectedUser", connectedUser.getName());
+		model.addAttribute(attrConnectedUser, connectedUser.getName());
 
 		/** Show data */
 		List<ElectricityLiveData> lastElectricityData = electricityLiveDataService.getLastData();
@@ -214,10 +222,10 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("lastWaterData", lastWaterData);
 
 		/** Navigation active class object */
-		model.addAttribute("request", request);
+		model.addAttribute(attrRequest, request);
 
 		String getCurrentDateTime = getCurrentTimeUsingDate();
-		model.addAttribute("getCurrentDateTime", getCurrentDateTime);
+		model.addAttribute(attrgetCurrentDateTime, getCurrentDateTime);
 
 		return "liveData";
 	}
@@ -233,7 +241,7 @@ public class EnergymanagementsystemApplication {
 		int pageSize = 36;
 
 		/** Display connected user on header */
-		model.addAttribute("connectedUser", connectedUser.getName());
+		model.addAttribute(attrConnectedUser, connectedUser.getName());
 
 		/** Show data */
 		Page<ElectricityHistoryData> page = electricityHistoryDataService.getHistoryDataElectricity(pageNo, pageSize);
@@ -245,10 +253,10 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("listElectricityHistory", listElectricityHistory);
 
 		/** Navigation active class object */
-		model.addAttribute("request", request);
+		model.addAttribute(attrRequest, request);
 
 		String getCurrentDateTime = getCurrentTimeUsingDate();
-		model.addAttribute("getCurrentDateTime", getCurrentDateTime);
+		model.addAttribute(attrgetCurrentDateTime, getCurrentDateTime);
 
 		return "historyDataElectricity";
 	}
@@ -258,7 +266,7 @@ public class EnergymanagementsystemApplication {
 		int pageSize = 36;
 
 		/** Display connected user on header */
-		model.addAttribute("connectedUser", connectedUser.getName());
+		model.addAttribute(attrConnectedUser, connectedUser.getName());
 
 		/** Show data */
 		Page<GasHistoryData> page = gasHistoryDataService.getHistoryDataGas(pageNo, pageSize);
@@ -270,10 +278,10 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("listGasHistory", listGasHistory);
 
 		/** Navigation active class object */
-		model.addAttribute("request", request);
+		model.addAttribute(attrRequest, request);
 
 		String getCurrentDateTime = getCurrentTimeUsingDate();
-		model.addAttribute("getCurrentDateTime", getCurrentDateTime);
+		model.addAttribute(attrgetCurrentDateTime, getCurrentDateTime);
 
 		return "historyDataGas";
 	}
@@ -283,7 +291,7 @@ public class EnergymanagementsystemApplication {
 		int pageSize = 36;
 
 		/** Display connected user on header */
-		model.addAttribute("connectedUser", connectedUser.getName());
+		model.addAttribute(attrConnectedUser, connectedUser.getName());
 
 		/** Show data */
 		Page<WaterHistoryData> page = waterHistoryDataService.getHistoryDataWater(pageNo, pageSize);
@@ -295,10 +303,10 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("listWaterHistory", listWaterHistory);
 
 		/** Navigation active class object */
-		model.addAttribute("request", request);
+		model.addAttribute(attrRequest, request);
 
 		String getCurrentDateTime = getCurrentTimeUsingDate();
-		model.addAttribute("getCurrentDateTime", getCurrentDateTime);
+		model.addAttribute(attrgetCurrentDateTime, getCurrentDateTime);
 
 		return "historyDataWater";
 	}
@@ -312,7 +320,7 @@ public class EnergymanagementsystemApplication {
 	public String showSettingsPage(HttpServletRequest request, Model model){
 
 		/* Navigation active class object */
-		model.addAttribute("request", request);
+		model.addAttribute(attrRequest, request);
 
 		return "settings";
 	}
@@ -330,7 +338,7 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("activeDevicesList", activeDevicesList);
 
 		/* Navigation active class object */
-		model.addAttribute("request", request);
+		model.addAttribute(attrRequest, request);
 
 		return "activeDevices";
 	}
@@ -341,7 +349,7 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("devicesList", devicesList);
 
 		/* Navigation active class object */
-		model.addAttribute("request", request);
+		model.addAttribute(attrRequest, request);
 
 		return "availableDevices";
 	}
@@ -409,7 +417,7 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("usersList", usersList);
 
 		/* Navigation active class object */
-		model.addAttribute("request", request);
+		model.addAttribute(attrRequest, request);
 
 		return "users";
 	}
@@ -559,14 +567,14 @@ public class EnergymanagementsystemApplication {
 	@GetMapping("/alarms") // get all alarms
 	public String getAllAlarms(HttpServletRequest request, Model model, Principal connectedUser){
 		/** Display connected user on header */
-		model.addAttribute("connectedUser", connectedUser.getName());
+		model.addAttribute(attrConnectedUser, connectedUser.getName());
 
 		/** Get alarms data model */
 		List<AlarmData> getAllAlarms = alarmDataService.getAllAlarmData();
 		model.addAttribute("getAllAlarms", getAllAlarms);
 
 		/** Navigation active class object */
-		model.addAttribute("request", request);
+		model.addAttribute(attrRequest, request);
 
 		return "alarms";
 	}
