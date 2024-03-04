@@ -450,7 +450,7 @@ public class EnergymanagementsystemApplication {
 		User user = new User();
 		model.addAttribute("user", user);
 
-		List<Role> roles = (List<Role>) roleService.findAll();
+		List<Role> roles = roleService.findAll();
 		model.addAttribute("roles", roles);
 
 		return "newUser";
@@ -466,7 +466,7 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute("user", user);
 
 		// get roles from repository
-		List<Role> roles = (List<Role>) roleService.findAll();
+		List<Role> roles = roleService.findAll();
 		model.addAttribute("roles", roles);
 
 		updateUserName = user.getUsername();
