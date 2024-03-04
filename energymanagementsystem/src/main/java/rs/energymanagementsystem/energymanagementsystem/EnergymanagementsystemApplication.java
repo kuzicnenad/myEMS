@@ -18,7 +18,6 @@ import rs.energymanagementsystem.energymanagementsystem.repositories.UserReposit
 import rs.energymanagementsystem.energymanagementsystem.services.*;
 
 import java.security.Principal;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
