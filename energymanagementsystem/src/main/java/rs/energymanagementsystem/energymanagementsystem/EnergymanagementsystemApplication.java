@@ -88,11 +88,18 @@ public class EnergymanagementsystemApplication {
 
 	/** ---------------------------------------------------------------------------------------
 	 * Define CONSTANT variables to make it easier to refactor or change code in the future.
-	 * These constants are mostly used in models data retrieval.
+	 * These constants are used:
+	 * 		- in models data retrieval (attributes)
+	 * 		- redirecting pages
 	 * --------------------------------------------------------------------------------------- **/
 	private static final String attrRequest = "request";
 	private static final String attrConnectedUser = "connectedUser";
-	private static final String attrgetCurrentDateTime = "getCurrentDateTime";
+	private static final String attrCurrentDateTime = "getCurrentDateTime";
+	private static final String attrCurrentPage = "currentPage";
+	private static final String attrTotalPages = "totalPages";
+	private static final String attrTotalItems = "totalItems";
+	private static final String redirectAvailableDevices = "redirect:/availableDevices";
+	private static final String redirectUsers = "redirect:/users";
 
 	/** ---------------------------------------------------------------------------------------
 	 * For nav style active class is switched with thymeleaf and HttpServletRequest
@@ -225,7 +232,7 @@ public class EnergymanagementsystemApplication {
 		model.addAttribute(attrRequest, request);
 
 		String getCurrentDateTime = getCurrentTimeUsingDate();
-		model.addAttribute(attrgetCurrentDateTime, getCurrentDateTime);
+		model.addAttribute(attrCurrentDateTime, getCurrentDateTime);
 
 		return "liveData";
 	}
@@ -247,16 +254,16 @@ public class EnergymanagementsystemApplication {
 		Page<ElectricityHistoryData> page = electricityHistoryDataService.getHistoryDataElectricity(pageNo, pageSize);
 		List<ElectricityHistoryData> listElectricityHistory = page.getContent();
 
-		model.addAttribute("currentPage", pageNo);
-		model.addAttribute("totalPages", page.getTotalPages());
-		model.addAttribute("totalItems", page.getTotalElements());
+		model.addAttribute(attrCurrentPage, pageNo);
+		model.addAttribute(attrTotalPages, page.getTotalPages());
+		model.addAttribute(attrTotalItems, page.getTotalElements());
 		model.addAttribute("listElectricityHistory", listElectricityHistory);
 
 		/** Navigation active class object */
 		model.addAttribute(attrRequest, request);
 
 		String getCurrentDateTime = getCurrentTimeUsingDate();
-		model.addAttribute(attrgetCurrentDateTime, getCurrentDateTime);
+		model.addAttribute(attrCurrentDateTime, getCurrentDateTime);
 
 		return "historyDataElectricity";
 	}
@@ -272,16 +279,16 @@ public class EnergymanagementsystemApplication {
 		Page<GasHistoryData> page = gasHistoryDataService.getHistoryDataGas(pageNo, pageSize);
 		List<GasHistoryData> listGasHistory = page.getContent();
 
-		model.addAttribute("currentPage", pageNo);
-		model.addAttribute("totalPages", page.getTotalPages());
-		model.addAttribute("totalItems", page.getTotalElements());
+		model.addAttribute(attrCurrentPage, pageNo);
+		model.addAttribute(attrTotalPages, page.getTotalPages());
+		model.addAttribute(attrTotalItems, page.getTotalElements());
 		model.addAttribute("listGasHistory", listGasHistory);
 
 		/** Navigation active class object */
 		model.addAttribute(attrRequest, request);
 
 		String getCurrentDateTime = getCurrentTimeUsingDate();
-		model.addAttribute(attrgetCurrentDateTime, getCurrentDateTime);
+		model.addAttribute(attrCurrentDateTime, getCurrentDateTime);
 
 		return "historyDataGas";
 	}
@@ -297,16 +304,16 @@ public class EnergymanagementsystemApplication {
 		Page<WaterHistoryData> page = waterHistoryDataService.getHistoryDataWater(pageNo, pageSize);
 		List<WaterHistoryData> listWaterHistory = page.getContent();
 
-		model.addAttribute("currentPage", pageNo);
-		model.addAttribute("totalPages", page.getTotalPages());
-		model.addAttribute("totalItems", page.getTotalElements());
+		model.addAttribute(attrCurrentPage, pageNo);
+		model.addAttribute(attrTotalPages, page.getTotalPages());
+		model.addAttribute(attrTotalItems, page.getTotalElements());
 		model.addAttribute("listWaterHistory", listWaterHistory);
 
 		/** Navigation active class object */
 		model.addAttribute(attrRequest, request);
 
 		String getCurrentDateTime = getCurrentTimeUsingDate();
-		model.addAttribute(attrgetCurrentDateTime, getCurrentDateTime);
+		model.addAttribute(attrCurrentDateTime, getCurrentDateTime);
 
 		return "historyDataWater";
 	}
@@ -367,7 +374,7 @@ public class EnergymanagementsystemApplication {
 		}
 		// save device to database repository
 		devicesService.saveDevice(device);
-		return "redirect:/availableDevices";
+		return redirectAvailableDevices;
 	}
 
 	@GetMapping("/availableDevices/newDeviceForm") // NEW FORM
@@ -396,13 +403,13 @@ public class EnergymanagementsystemApplication {
 
 		// call delete device method
 		this.devicesService.deleteDevice(device_id);
-		return "redirect:/availableDevices";
+		return redirectAvailableDevices;
 	}
 
 	@GetMapping("/availableDevices/toggleFlag/{device_id}") // CHANGE ACTIVE FLAG
 	public String deviceActiveFlag(@PathVariable(value = "device_id") Integer device_id){
 		devicesService.deviceActiveFlag(device_id);
-		return "redirect:/availableDevices";
+		return redirectAvailableDevices;
 	}
 
 	/** ---------------------------------------------------------------------------------------
@@ -434,7 +441,7 @@ public class EnergymanagementsystemApplication {
 
 		user.setPassword(Password.hashPassword(user.getPassword()));
 		usersService.createUser(user);
-		return "redirect:/users";
+		return redirectUsers;
 	}
 
 	@GetMapping("/users/newUserForm") // OPEN NEW FORM
@@ -478,7 +485,7 @@ public class EnergymanagementsystemApplication {
 		}
 
 		usersService.updateUser(user, user.getId());
-		return "redirect:/users";
+		return redirectUsers;
 	}
 
 	@GetMapping("/users/deleteUser/{id}") // DELETE
@@ -502,7 +509,7 @@ public class EnergymanagementsystemApplication {
 			System.out.println("User " + user + " has been deleted.");
 			this.usersService.deleteUser(id);
 		}
-		return "redirect:/users";
+		return redirectUsers;
 	}
 	@GetMapping("/users/toggleFlag/{id}") // CHANGE ACTIVE FLAG
 	public String userActiveFlag(@PathVariable(value = "id") Long id, Principal connectedUser){
@@ -518,7 +525,7 @@ public class EnergymanagementsystemApplication {
 			System.out.println("User " + userToChange.getUsername() + " has been deactivated.");
 			usersService.userActiveFlag(id);
 		}
-		return "redirect:/users";
+		return redirectUsers;
 	}
 
 	@GetMapping("/changePasswordForm")
@@ -558,7 +565,7 @@ public class EnergymanagementsystemApplication {
 			}
 		} else throw new Exception("Entered new password does not match. Check your typing.");
 
-		return "redirect:/users";
+		return redirectUsers;
 	}
 
 	/** ---------------------------------------------------------------------------------------
