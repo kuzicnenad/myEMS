@@ -13,7 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import rs.energymanagementsystem.energymanagementsystem.entities.*;
-import rs.energymanagementsystem.energymanagementsystem.ConfigCustom.security.Password;
+import rs.energymanagementsystem.energymanagementsystem.configCustom.security.Password;
 import rs.energymanagementsystem.energymanagementsystem.repositories.UserRepository;
 import rs.energymanagementsystem.energymanagementsystem.services.*;
 

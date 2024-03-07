@@ -1,4 +1,4 @@
-package rs.energymanagementsystem.energymanagementsystem.ConfigCustom;
+package rs.energymanagementsystem.energymanagementsystem.configCustom;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
