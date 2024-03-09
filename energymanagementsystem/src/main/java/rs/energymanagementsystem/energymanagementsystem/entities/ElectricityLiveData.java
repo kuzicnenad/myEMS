@@ -16,20 +16,20 @@ public class ElectricityLiveData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Integer live_data_id;
+    private Integer liveDataId;
 
     @Column
     private Integer consumption;
 
     @Column
-    private String fault_detected;
+    private String faultDetected;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column
-    private Date start_time;
+    private Date startTime;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column
-    private Date end_time;
+    private Date endTime;
 
 }
