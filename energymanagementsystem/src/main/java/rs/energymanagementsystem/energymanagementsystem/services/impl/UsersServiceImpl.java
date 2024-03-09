@@ -48,7 +48,7 @@ public class UsersServiceImpl implements UsersService {
         existingUser.setUsername(usersEntity.getUsername());
         existingUser.setEmail(usersEntity.getEmail());
         existingUser.setPassword(usersEntity.getPassword());
-        existingUser.setLast_update(usersEntity.getLast_update());
+        existingUser.setLastUpdate(usersEntity.getLastUpdate());
         // save existing alarmData to DB
         userRepository.save(existingUser);
         return existingUser;

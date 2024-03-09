@@ -34,13 +34,13 @@ public class User {
     @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @CreationTimestamp
-    private Date creation_date;
+    private Date creationDate;
     @Column
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @UpdateTimestamp
-    private Date last_update;
+    private Date lastUpdate;
     @Column(name = "active_flag")
-    private boolean active_flag;
+    private boolean activeFlag;
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(
@@ -71,16 +71,16 @@ public class User {
         return password;
     }
 
-    public Date getCreation_date() {
-        return creation_date;
+    public Date getCreationDate() {
+        return creationDate;
     }
 
-    public Date getLast_update() {
-        return last_update;
+    public Date getLastUpdate() {
+        return lastUpdate;
     }
 
-    public boolean isActive_flag() {
-        return active_flag;
+    public boolean isActiveFlag() {
+        return activeFlag;
     }
 
     public Set<Role> getRoles() {
