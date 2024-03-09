@@ -32,6 +32,6 @@ public class Passwords {
     @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @CreationTimestamp
-    private Date creation_date;
+    private Date creationDate;
 
 }
