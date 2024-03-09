@@ -19,27 +19,27 @@ public class Devices {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Integer device_id;
+    private Integer deviceId;
 
     @Column
-    private String device_name;
+    private String deviceName;
 
     @Column
     private String description;
 
     @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date production_date;
+    private Date productionDate;
 
     @Column
-    private String made_in;
+    private String madeIn;
 
     @Column
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @UpdateTimestamp
-    private Date last_update;
+    private Date lastUpdate;
 
     @Column(name = "active_flag")
-    private Boolean active_flag;
+    private Boolean activeFlag;
 
 }

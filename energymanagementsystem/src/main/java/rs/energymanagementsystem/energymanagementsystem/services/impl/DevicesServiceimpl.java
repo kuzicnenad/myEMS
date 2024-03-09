@@ -44,11 +44,11 @@ public class DevicesServiceimpl implements DevicesService {
         // check if device_id exists in database
         Devices existingDevice = devicesRepository.findById(device_id).orElseThrow(() ->
                 new ResourceNotFoundException("Device", "device_id", device_id));
-        existingDevice.setDevice_name(devices.getDevice_name());
+        existingDevice.setDeviceName(devices.getDeviceName());
         existingDevice.setDescription(devices.getDescription());
-        existingDevice.setProduction_date(devices.getProduction_date());
-        existingDevice.setMade_in(devices.getMade_in());
-        existingDevice.setLast_update(devices.getLast_update());
+        existingDevice.setProductionDate(devices.getProductionDate());
+        existingDevice.setMadeIn(devices.getMadeIn());
+        existingDevice.setLastUpdate(devices.getLastUpdate());
         // save existing device to DB
         devicesRepository.save(devices);
         return existingDevice;

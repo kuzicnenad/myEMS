@@ -363,8 +363,8 @@ public class EnergymanagementsystemApplication {
 	@PostMapping("/availableDevices/saveDeviceViaForm") // SAVE
 	public String saveDeviceViaForm(@ModelAttribute(value = "devices") Devices device){
 		//Assign default value for active_flag
-		if(device.getActive_flag() == null){
-			device.setActive_flag(false); // default value set to false (same as in SQL)
+		if(device.getActiveFlag() == null){
+			device.setActiveFlag(false); // default value set to false (same as in SQL)
 		}
 
 		String deviceDescription = device.getDescription();
