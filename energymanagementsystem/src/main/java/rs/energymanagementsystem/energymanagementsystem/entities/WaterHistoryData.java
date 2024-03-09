@@ -17,10 +17,10 @@ public class WaterHistoryData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Integer hist_data_id;
+    private Integer histDataId;
 
     @Column
-    private Integer water_consumption;
+    private Integer waterConsumption;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column
