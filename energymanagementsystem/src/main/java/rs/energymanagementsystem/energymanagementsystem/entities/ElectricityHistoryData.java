@@ -17,10 +17,10 @@ public class ElectricityHistoryData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Integer hist_data_id;
+    private Integer histDataId;
 
     @Column
-    private Integer electricity_consumption;
+    private Integer electricityConsumption;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column
