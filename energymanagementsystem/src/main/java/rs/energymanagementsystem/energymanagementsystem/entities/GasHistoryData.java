@@ -17,10 +17,10 @@ public class GasHistoryData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Integer hist_data_id;
+    private Integer histDataId;
 
     @Column
-    private Integer gas_consumption;
+    private Integer gasConsumption;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column
