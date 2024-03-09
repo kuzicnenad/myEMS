@@ -46,9 +46,9 @@ public class AlarmDataServiceImpl implements AlarmDataService {
         // check if alarm_id exists in database
         AlarmData existingAlarmData = alarmDataRepository.findById(alarm_id).orElseThrow(() ->
                 new ResourceNotFoundException("AlarmData", "alarm_id", alarm_id));
-        existingAlarmData.setAlarm_code(alarmData.getAlarm_code());
-        existingAlarmData.setAlarm_desc(alarmData.getAlarm_desc());
-        existingAlarmData.setTime_stamp(alarmData.getTime_stamp());
+        existingAlarmData.setAlarmCode(alarmData.getAlarmCode());
+        existingAlarmData.setAlarmDesc(alarmData.getAlarmDesc());
+        existingAlarmData.setTimeStamp(alarmData.getTimeStamp());
         // save existing alarmData to DB
         alarmDataRepository.save(existingAlarmData);
         return existingAlarmData;

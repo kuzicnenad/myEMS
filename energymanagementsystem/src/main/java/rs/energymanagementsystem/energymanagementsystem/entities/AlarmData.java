@@ -19,24 +19,24 @@ public class AlarmData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Integer alarm_id;
+    private Integer alarmId;
 
     @Column
-    private Integer alarm_code;
+    private Integer alarmCode;
 
     @Column
-    private String alarm_desc;
+    private String alarmDesc;
 
     @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date time_stamp;
+    private Date timeStamp;
 
     @Column
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @UpdateTimestamp
-    private Date acknowledged_time;
+    private Date acknowledgedTime;
 
     @Column(name = "ack_flag")
-    private Boolean ack_flag;
+    private Boolean ackFlag;
 
 }
