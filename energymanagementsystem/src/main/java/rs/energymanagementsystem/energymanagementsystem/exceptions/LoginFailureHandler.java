@@ -28,7 +28,5 @@ public class LoginFailureHandler extends SimpleUrlAuthenticationFailureHandler {
         System.out.println("Reason: " + error);
         String errMsg = ("A login attempt for " + username + " failed. Reason: " + error);
         throw new ServletException(errMsg); // automatically redirects to /error -> ExceptionControllerAdvice
-        //setDefaultFailureUrl(LOGIN_FAIL_URL);
-        //onAuthenticationFailure(request, response, exception);
     }
 }
