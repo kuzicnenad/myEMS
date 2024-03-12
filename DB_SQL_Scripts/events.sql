@@ -38,13 +38,13 @@ CREATE EVENT insert_live_data_electricity
 			SET pFault_detected = FLOOR(ABS(RAND())*10000);
 			CASE pFault_detected
 				WHEN 11 THEN 
-					INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
 					VALUES(pFault_detected,'Water sensor failure',updateTriger);
 				WHEN 12 THEN 
-					INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
 					VALUES(pFault_detected,'Water leak',updateTriger);
 				WHEN 13 THEN 
-					INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
 					VALUES(pFault_detected,'Water pipe blockage',updateTriger);
 				ELSE
 					SET pFault_detected = 0;
@@ -95,13 +95,13 @@ CREATE EVENT insert_live_data_water
 			SET pFault_detected = FLOOR(ABS(RAND())*10000);
 			CASE pFault_detected
 				WHEN 21 THEN 
-					INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
 					VALUES(pFault_detected,'Gas Sensor failure',updateTriger);
 				WHEN 22 THEN 
-					INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
 					VALUES(pFault_detected,'Flammable gas leak',updateTriger);
 				WHEN 23 THEN 
-					INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
 					VALUES(pFault_detected,'Toxic gas leak.',updateTriger);
 				ELSE
 					SET pFault_detected = 0;
@@ -157,13 +157,13 @@ CREATE EVENT insert_live_data_gas
 			SET pFault_detected = FLOOR(ABS(RAND())*10000);
 			CASE pFault_detected
 				WHEN 21 THEN 
-					INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
 					VALUES(pFault_detected,'Gas Sensor failure',updateTriger);
 				WHEN 22 THEN 
-					INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
 					VALUES(pFault_detected,'Flammable gas leak',updateTriger);
 				WHEN 23 THEN 
-					INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
+					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
 					VALUES(pFault_detected,'Toxic gas leak.',updateTriger);
 				ELSE
 					SET pFault_detected = 0;
