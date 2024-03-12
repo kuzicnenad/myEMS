@@ -68,7 +68,7 @@ BEGIN
 			SET pDailyConsumption = (SELECT SUM(consumption)
 									FROM electricity_live_data
 									WHERE DATE(start_time) = DATE(pStart_time));
-			INSERT INTO electricity_history_data(electricity_consumption,date)
+			INSERT INTO electricity_history_data(electricityConsumption,date)
 			VALUES(pDailyConsumption,DATE(pStart_time));
 		ELSE
 			SET pDailyConsumption = 0;
@@ -125,7 +125,7 @@ BEGIN
 			SET pDailyConsumption = (SELECT SUM(consumption)
 									FROM water_live_data
 									WHERE DATE(start_time) = DATE(pStart_time));
-			INSERT INTO water_history_data(water_consumption,date)
+			INSERT INTO water_history_data(waterConsumption,date)
 			VALUES(pDailyConsumption,DATE(pStart_time));
 		ELSE
 			SET pDailyConsumption = 0;
@@ -183,7 +183,7 @@ BEGIN
 			SET pDailyConsumption = (SELECT SUM(consumption)
 									FROM gas_live_data
 									WHERE DATE(start_time) = DATE(pStart_time));
-			INSERT INTO gas_history_data(gas_consumption,date)
+			INSERT INTO gas_history_data(gasConsumption,date)
 			VALUES(pDailyConsumption,DATE(pStart_time));
 		ELSE
 			SET pDailyConsumption = 0;

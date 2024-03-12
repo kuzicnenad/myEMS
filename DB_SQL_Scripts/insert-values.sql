@@ -48,15 +48,15 @@ CALL generateGasData();
 
 /* units yet to be fixed for all tables */
 select * from Electricity_Live_Data order by live_data_id desc;
-select histDataId as id, electricity_consumption as wattHour, date from Electricity_History_Data order by id desc;
+select histDataId as id, electricityConsumption as wattHour, date from Electricity_History_Data order by id desc;
 
 /* units yet to be fixed for all tables */
 select * from Water_Live_Data order by live_data_id desc;
-select histDataId as id, water_consumption as literDay, date from Water_History_Data order by id desc;
+select histDataId as id, waterConsumption as literDay, date from Water_History_Data order by id desc;
 
 /* units yet to be fixed for all tables */
 select * from Gas_Live_Data order by live_data_id desc;
-select histDataId as id, gas_consumption as cubeMeter, date from Gas_History_Data order by id desc;
+select histDataId as id, gasConsumption as cubeMeter, date from Gas_History_Data order by id desc;
 
 
 SELECT * FROM alarmData order by timeStamp desc;

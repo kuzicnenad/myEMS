@@ -9,16 +9,16 @@ import java.util.Date;
 
 public interface WaterHistoryDataRepository extends JpaRepository<WaterHistoryData, Integer> {
 
-    @Query(value = "SELECT MAX(water_consumption) FROM water_history_data",
+    @Query(value = "SELECT MAX(waterConsumption) FROM water_history_data",
             nativeQuery = true)
     Integer getMaxValue();
 
-    @Query(value =  "SELECT date FROM water_history_data WHERE water_consumption = " +
-            "(SELECT MAX(water_consumption) FROM water_history_data)",
+    @Query(value =  "SELECT date FROM water_history_data WHERE waterConsumption = " +
+            "(SELECT MAX(waterConsumption) FROM water_history_data)",
             nativeQuery = true)
     Date getMaxValueDate();
 
-    @Query(value = "SELECT AVG(water_consumption) FROM water_history_data",
+    @Query(value = "SELECT AVG(waterConsumption) FROM water_history_data",
             nativeQuery = true)
     Integer getAvgValue();
 
@@ -30,12 +30,12 @@ public interface WaterHistoryDataRepository extends JpaRepository<WaterHistoryDa
             nativeQuery = true)
     Date getLastDate();
 
-    @Query(value = "SELECT MIN(water_consumption) FROM water_history_data",
+    @Query(value = "SELECT MIN(waterConsumption) FROM water_history_data",
             nativeQuery = true)
     Integer getMinValue();
 
-    @Query(value =  "SELECT date FROM water_history_data WHERE water_consumption = " +
-            "(SELECT MIN(water_consumption) FROM water_history_data)",
+    @Query(value =  "SELECT date FROM water_history_data WHERE waterConsumption = " +
+            "(SELECT MIN(waterConsumption) FROM water_history_data)",
             nativeQuery = true)
     Date getMinValueDate();
 }

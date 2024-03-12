@@ -67,7 +67,7 @@ CREATE EVENT insert_live_data_electricity
 										FROM Electricity_Live_Data
 										WHERE DATE(start_time) = DATE(pStart_time));
                 
-				INSERT INTO Electricity_History_Data(electricity_consumption,date)
+				INSERT INTO Electricity_History_Data(electricityConsumption,date)
 				VALUES(pDailyConsumption,DATE(pStart_time));
                 
 			ELSE
@@ -128,7 +128,7 @@ CREATE EVENT insert_live_data_water
 										FROM water_live_data
 										WHERE DATE(start_time) = DATE(pStart_time));
                 
-				INSERT INTO water_history_data(water_consumption,date)
+				INSERT INTO water_history_data(waterConsumption,date)
 				VALUES(pDailyConsumption,DATE(pStart_time));
                 
 			ELSE
@@ -190,7 +190,7 @@ CREATE EVENT insert_live_data_gas
 										FROM gas_live_data
 										WHERE DATE(start_time) = DATE(pStart_time));
                 
-				INSERT INTO gas_history_data(gas_consumption,date)
+				INSERT INTO gas_history_data(gasConsumption,date)
 				VALUES(pDailyConsumption,DATE(pStart_time));
                 
 			ELSE
