@@ -13,7 +13,7 @@ public interface ElectricityLiveDataRepository extends JpaRepository<Electricity
     /** ---------------------------------------------------------------------------------------
      * - Get last 10 records (for live data page)
      --------------------------------------------------------------------------------------- **/
-    @Query(value = "select * from electricity_live_data ORDER BY liveDataId DESC LIMIT 10",
+    @Query(value = "select * from electricityLiveData ORDER BY liveDataId DESC LIMIT 10",
             nativeQuery = true)
     public List<ElectricityLiveData> getLastData();
 

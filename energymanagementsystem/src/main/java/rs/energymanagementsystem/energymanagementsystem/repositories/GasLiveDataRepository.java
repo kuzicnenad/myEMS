@@ -13,6 +13,6 @@ public interface GasLiveDataRepository extends JpaRepository<GasLiveData, Intege
     /** ---------------------------------------------------------------------------------------
      * - Get last 10 records (for live data page)
      --------------------------------------------------------------------------------------- **/
-    @Query(value = "select * FROM gas_live_data ORDER BY liveDataId DESC LIMIT 10", nativeQuery = true)
+    @Query(value = "select * FROM gasLiveData ORDER BY liveDataId DESC LIMIT 10", nativeQuery = true)
     public List<GasLiveData> getLastData();
 }

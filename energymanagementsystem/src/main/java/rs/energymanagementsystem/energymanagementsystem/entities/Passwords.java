@@ -11,6 +11,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @Entity
+@Table(name = "passwords")
 public class Passwords {
 
     @Id

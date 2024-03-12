@@ -50,9 +50,9 @@
 
                         <table>
                             <tbody>
-                            <tr th:each="electricity_history_data : ${listElectricityHistory}" class="dataItems">
-                                <td th:inline="text" class="td-1">[[${electricity_history_data.electricityConsumption}]] </td>
-                                <td th:text="${#dates.format(electricity_history_data.date, 'dd-MM-yyyy')}" class="td-2"></td>
+                            <tr th:each="electricityHistoryData : ${listElectricityHistory}" class="dataItems">
+                                <td th:inline="text" class="td-1">[[${electricityHistoryData.electricityConsumption}]] </td>
+                                <td th:text="${#dates.format(electricityHistoryData.date, 'dd-MM-yyyy')}" class="td-2"></td>
                             </tr>
                             </tbody>
                         </table>

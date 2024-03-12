@@ -47,16 +47,16 @@ CALL generateWaterData();
 CALL generateGasData();
 
 /* units yet to be fixed for all tables */
-select * from Electricity_Live_Data order by liveDataId desc;
-select histDataId as id, electricityConsumption as wattHour, date from Electricity_History_Data order by id desc;
+select * from electricityLiveData order by liveDataId desc;
+select histDataId as id, electricityConsumption as wattHour, date from electricityHistoryData order by id desc;
 
 /* units yet to be fixed for all tables */
-select * from Water_Live_Data order by liveDataId desc;
-select histDataId as id, waterConsumption as literDay, date from Water_History_Data order by id desc;
+select * from waterLiveData order by liveDataId desc;
+select histDataId as id, waterConsumption as literDay, date from waterHistoryData order by id desc;
 
 /* units yet to be fixed for all tables */
-select * from Gas_Live_Data order by liveDataId desc;
-select histDataId as id, gasConsumption as cubeMeter, date from Gas_History_Data order by id desc;
+select * from gasLiveData order by liveDataId desc;
+select histDataId as id, gasConsumption as cubeMeter, date from gasHistoryData order by id desc;
 
 
 SELECT * FROM alarmData order by timeStamp desc;
@@ -65,13 +65,13 @@ SELECT * FROM Devices;
 
 
 /* ------- Clear consumption tables ------- */
-truncate table Electricity_History_Data;
-truncate table Water_Live_Data;
-truncate table Gas_Live_Data;
+truncate table electricityHistoryData;
+truncate table waterLiveData;
+truncate table gasLiveData;
 
-truncate table Electricity_Live_Data;
-truncate table Water_History_Data;
-truncate table Gas_History_Data;
+truncate table electricityLiveData;
+truncate table waterHistoryData;
+truncate table gasHistoryData;
 
 /* ---------- Clear alarms table ---------- */
 truncate table alarmData;
