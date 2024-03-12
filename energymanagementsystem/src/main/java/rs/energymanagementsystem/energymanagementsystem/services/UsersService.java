@@ -13,7 +13,7 @@ public interface UsersService {
 
     User getUserById(Long userId);
 
-    User updateUser(User user, Long users_id);
+    User updateUser(User user, Long usersId);
 
     void deleteUser(Long userId);
 

@@ -111,7 +111,7 @@ CREATE TABLE Devices(
 );
 
 drop table if exists passwords;
-drop table if exists users_roles;
+drop table if exists usersRoles;
 drop table if exists user;
 drop table if exists role;
 drop table if exists alarmData;

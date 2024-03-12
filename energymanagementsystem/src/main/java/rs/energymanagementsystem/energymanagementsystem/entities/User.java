@@ -44,45 +44,46 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(
-            name = "users_roles",
+            name = "usersRoles",
             joinColumns = @JoinColumn(name = "userId"),
             inverseJoinColumns = @JoinColumn(name = "roleId")
     )
     private Set<Role> roles = new HashSet<>();
     /** creates an object that is a HashSet instance, and assigns a reference to that object to a variable whose type is Set
      * Hibernate doesn't remove entities from a List in an efficient way **/
+    @Column
     public Long getId() {
         return id;
     }
-
+    @Column
     public String getName() {
         return name;
     }
-
+    @Column
     public String getUsername() {
         return username;
     }
-
+    @Column
     public String getEmail() {
         return email;
     }
-
+    @Column
     public String getPassword() {
         return password;
     }
-
+    @Column
     public Date getCreationDate() {
         return creationDate;
     }
-
+    @Column
     public Date getLastUpdate() {
         return lastUpdate;
     }
-
+    @Column
     public boolean isActiveFlag() {
         return activeFlag;
     }
-
+    @Column
     public Set<Role> getRoles() {
         return roles;
     }
