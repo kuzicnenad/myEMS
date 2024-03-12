@@ -70,7 +70,6 @@ public class SecurityConfig {
                         .requestMatchers(DEFAULT_SUCCESS_URL).hasAnyAuthority("USER","ADMIN","ROOT")
                         .requestMatchers("/api").hasAnyAuthority("ADMIN","ROOT")
                         .requestMatchers("/api/**").hasAnyAuthority("ADMIN","ROOT")
-                        .requestMatchers(DEFAULT_SUCCESS_URL).hasAnyAuthority("USER","ADMIN","ROOT")
                         .requestMatchers(LOGOUT_URL).permitAll()
                         .requestMatchers(LOGIN_FAIL_URL).permitAll()
                         .requestMatchers("/liveData").hasAnyAuthority("USER","ADMIN","ROOT")
