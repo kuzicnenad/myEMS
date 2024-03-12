@@ -21,8 +21,8 @@
     <module name="energymanagementsystem" kind="ide-project" />
   </modules>
   <modules-in-scope>
-    <module name="energymanagementsystem" />
     <module name="myEMS" />
+    <module name="energymanagementsystem" />
   </modules-in-scope>
   <excludes>
     <exclude expression="*.*&amp;amp;*" active="true" />

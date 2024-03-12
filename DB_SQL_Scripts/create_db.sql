@@ -5,6 +5,8 @@ USE myEMS;
 drop table if exists usersRoles;
 drop table if exists user;
 drop table if exists role;
+drop table if exists passwords;
+drop table if exists alarmData;
 
 CREATE TABLE User (
 	id BIGINT NOT NULL auto_increment,
@@ -109,12 +111,6 @@ CREATE TABLE Devices(
     activeFlag BOOL NOT NULL DEFAULT 0,
     PRIMARY KEY (deviceId)
 );
-
-drop table if exists passwords;
-drop table if exists usersRoles;
-drop table if exists user;
-drop table if exists role;
-drop table if exists alarmData;
 
 /* App Menu -> Home, Live Data, History Data, Print reports, Settings*/
 
