@@ -16,21 +16,21 @@ public class GasLiveData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "liveDataId")
+    @Column
     private Integer liveDataId;
 
-    @Column(name = "consumption")
+    @Column
     private Integer consumption;
 
-    @Column(name = "faultDetected")
+    @Column
     private String faultDetected;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "startTime")
+    @Column
     private Date startTime;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "endTime")
+    @Column
     private Date endTime;
 
 

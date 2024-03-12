@@ -17,19 +17,19 @@ public class Passwords {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "userName")
+    @Column
     private String userName;
 
-    @Column(name = "oldPassword")
+    @Column
     private String oldPassword;
 
-    @Column(name = "newPassword")
+    @Column
     private String newPassword;
 
-    @Column(name = "repeatNewPassword")
+    @Column
     private String repeatNewPassword;
 
-    @Column(name = "creationDate")
+    @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @CreationTimestamp
     private Date creationDate;

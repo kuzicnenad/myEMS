@@ -18,23 +18,23 @@ public class Devices {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "deviceId")
+    @Column
     private Integer deviceId;
 
-    @Column(name = "deviceName")
+    @Column
     private String deviceName;
 
-    @Column(name = "description")
+    @Column
     private String description;
 
-    @Column(name = "productionDate")
+    @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date productionDate;
 
-    @Column(name = "madeIn")
+    @Column
     private String madeIn;
 
-    @Column(name = "lastUpdate")
+    @Column
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @UpdateTimestamp
     private Date lastUpdate;
