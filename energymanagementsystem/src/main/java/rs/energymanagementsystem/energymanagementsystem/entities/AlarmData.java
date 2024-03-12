@@ -18,7 +18,7 @@ public class AlarmData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column 
+    @Column
     private Integer alarmId;
 
     @Column

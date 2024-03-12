@@ -112,6 +112,15 @@ CREATE TABLE Devices(
     PRIMARY KEY (deviceId)
 );
 
+<<<<<<< HEAD
+=======
+drop table if exists passwords;
+drop table if exists users_roles;
+drop table if exists user;
+drop table if exists role;
+drop table if exists alarmData;
+
+>>>>>>> parent of 96efcb4 (refactor code and add @column annotation in User class)
 /* App Menu -> Home, Live Data, History Data, Print reports, Settings*/
 
 select consumption, date_format(endTime,'%H:%i') as timestamp from electricity_live_data ORDER BY liveDataId DESC LIMIT 5;

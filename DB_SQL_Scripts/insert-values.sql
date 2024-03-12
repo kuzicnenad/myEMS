@@ -77,7 +77,7 @@ truncate table Gas_History_Data;
 truncate table alarmData;
 
 /* ---- Clear users and passwords table ----*/  
-truncate table usersRoles;
+truncate table users_roles;
 truncate table Role;
 truncate table User;
 
