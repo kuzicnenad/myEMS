@@ -50,7 +50,7 @@
                         <table>
                             <tbody>
                             <tr th:each="water_history_data : ${listWaterHistory}" class="dataItems">
-                                <td th:inline="text" class="td-1">[[${water_history_data.waterConsumption}]] </td>
+                                <td th:inline="text" class="td-1">[[${water_history_data.water_consumption}]] </td>
                                 <td th:text="${#dates.format(water_history_data.date, 'dd-MM-yyyy')}" class="td-2"></td>
                             </tr>
                             </tbody>

@@ -9,16 +9,16 @@ import java.util.Date;
 
 public interface GasHistoryDataRepository extends JpaRepository<GasHistoryData, Integer> {
 
-    @Query(value = "SELECT MAX(gasConsumption) FROM gas_history_data",
+    @Query(value = "SELECT MAX(gas_consumption) FROM gas_history_data",
             nativeQuery = true)
     Integer getMaxValue();
 
-    @Query(value =  "SELECT date FROM gas_history_data WHERE gasConsumption = " +
-            "(SELECT MAX(gasConsumption) FROM gas_history_data)",
+    @Query(value =  "SELECT date FROM gas_history_data WHERE gas_consumption = " +
+            "(SELECT MAX(gas_consumption) FROM gas_history_data)",
             nativeQuery = true)
     Date getMaxValueDate();
 
-    @Query(value = "SELECT AVG(gasConsumption) FROM gas_history_data",
+    @Query(value = "SELECT AVG(gas_consumption) FROM gas_history_data",
             nativeQuery = true)
     Integer getAvgValue();
 
@@ -30,12 +30,12 @@ public interface GasHistoryDataRepository extends JpaRepository<GasHistoryData, 
             nativeQuery = true)
     Date getLastDate();
 
-    @Query(value = "SELECT MIN(gasConsumption) FROM gas_history_data",
+    @Query(value = "SELECT MIN(gas_consumption) FROM gas_history_data",
             nativeQuery = true)
     Integer getMinValue();
 
-    @Query(value =  "SELECT date FROM gas_history_data WHERE gasConsumption = " +
-            "(SELECT MIN(gasConsumption) FROM gas_history_data)",
+    @Query(value =  "SELECT date FROM gas_history_data WHERE gas_consumption = " +
+            "(SELECT MIN(gas_consumption) FROM gas_history_data)",
             nativeQuery = true)
     Date getMinValueDate();
 

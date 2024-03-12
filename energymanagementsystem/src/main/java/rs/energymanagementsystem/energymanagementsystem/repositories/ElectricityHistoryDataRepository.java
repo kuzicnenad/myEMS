@@ -9,16 +9,16 @@ import java.util.Date;
 
 public interface ElectricityHistoryDataRepository extends JpaRepository<ElectricityHistoryData, Integer>, PagingAndSortingRepository<ElectricityHistoryData, Integer> {
 
-    @Query(value = "SELECT MAX(electricityConsumption) FROM electricity_history_data",
+    @Query(value = "SELECT MAX(electricity_consumption) FROM electricity_history_data",
             nativeQuery = true)
     Integer getMaxValue();
 
-    @Query(value =  "SELECT date FROM electricity_history_data WHERE electricityConsumption = " +
-            "(SELECT MAX(electricityConsumption) FROM electricity_history_data)",
+    @Query(value =  "SELECT date FROM electricity_history_data WHERE electricity_consumption = " +
+            "(SELECT MAX(electricity_consumption) FROM electricity_history_data)",
             nativeQuery = true)
     Date getMaxValueDate();
 
-    @Query(value = "SELECT AVG(electricityConsumption) FROM electricity_history_data",
+    @Query(value = "SELECT AVG(electricity_consumption) FROM electricity_history_data",
             nativeQuery = true)
     Integer getAvgValue();
 
@@ -30,12 +30,12 @@ public interface ElectricityHistoryDataRepository extends JpaRepository<Electric
             nativeQuery = true)
     Date getLastDate();
 
-    @Query(value = "SELECT MIN(electricityConsumption) FROM electricity_history_data",
+    @Query(value = "SELECT MIN(electricity_consumption) FROM electricity_history_data",
             nativeQuery = true)
     Integer getMinValue();
 
-    @Query(value =  "SELECT date FROM electricity_history_data WHERE electricityConsumption = " +
-                    "(SELECT MIN(electricityConsumption) FROM electricity_history_data)",
+    @Query(value =  "SELECT date FROM electricity_history_data WHERE electricity_consumption = " +
+                    "(SELECT MIN(electricity_consumption) FROM electricity_history_data)",
             nativeQuery = true)
     Date getMinValueDate();
 
