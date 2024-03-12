@@ -13,7 +13,7 @@ VALUES	('ROOT'),
 		('ADMIN'),
 		('USER');
         
-INSERT INTO users_roles(userId, role_id)
+INSERT INTO users_roles(user_id, role_id)
 VALUES	(1,1),
 		(1,2),
         (1,3),
@@ -38,7 +38,7 @@ CALL addHashPassword(3,'user222');
 
 SELECT user_login as uname,first_name as Name,last_name as Surname, u.timeStamp as userCreationDate, password_hash, p.timeStamp as psdAddDate FROM Users as u
 INNER JOIN Passwords as p
-ON u.userId = p.userId;
+ON u.user_id = p.user_id;
 */
 
 /* --- Generate procedures to create initial data --- */

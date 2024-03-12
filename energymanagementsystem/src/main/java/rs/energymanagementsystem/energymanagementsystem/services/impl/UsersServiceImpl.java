@@ -41,7 +41,7 @@ public class UsersServiceImpl implements UsersService {
     /** Update user details with custom API save and native query **/
      @Override
     public User updateUser(User usersEntity, Long id) {
-        // check if userId exists in database
+        // check if user_id exists in database
         User existingUser = userRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("User", "id", id));
         existingUser.setName(usersEntity.getName());
