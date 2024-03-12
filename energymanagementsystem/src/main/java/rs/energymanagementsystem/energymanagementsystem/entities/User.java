@@ -22,20 +22,21 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-    @Column
+    @Column(name = "name")
     private String name;
-    @Column
+    @Column(name = "username")
     private String username;
-    @Column
+    @Column(name = "email")
     private String email;
-    @Column
+    @Column(name = "password")
     private String password;
-    @Column
+    @Column(name = "creationDate")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @CreationTimestamp
     private Date creationDate;
-    @Column
+    @Column(name = "lastUpdate")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @UpdateTimestamp
     private Date lastUpdate;
@@ -51,39 +52,38 @@ public class User {
     private Set<Role> roles = new HashSet<>();
     /** creates an object that is a HashSet instance, and assigns a reference to that object to a variable whose type is Set
      * Hibernate doesn't remove entities from a List in an efficient way **/
-    @Column
     public Long getId() {
         return id;
     }
-    @Column
+
     public String getName() {
         return name;
     }
-    @Column
+
     public String getUsername() {
         return username;
     }
-    @Column
+
     public String getEmail() {
         return email;
     }
-    @Column
+
     public String getPassword() {
         return password;
     }
-    @Column
+
     public Date getCreationDate() {
         return creationDate;
     }
-    @Column
+
     public Date getLastUpdate() {
         return lastUpdate;
     }
-    @Column
+
     public boolean isActiveFlag() {
         return activeFlag;
     }
-    @Column
+
     public Set<Role> getRoles() {
         return roles;
     }

@@ -18,20 +18,20 @@ public class AlarmData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column 
+    @Column (name = "alarmId")
     private Integer alarmId;
 
-    @Column
+    @Column (name = "alarmCode")
     private Integer alarmCode;
 
-    @Column
+    @Column (name = "alarmDesc")
     private String alarmDesc;
 
-    @Column
+    @Column (name = "timeStamp")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date timeStamp;
 
-    @Column
+    @Column (name = "acknowledgedTime")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @UpdateTimestamp
     private Date acknowledgedTime;

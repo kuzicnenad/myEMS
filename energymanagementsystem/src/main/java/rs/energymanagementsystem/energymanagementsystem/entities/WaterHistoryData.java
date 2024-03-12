@@ -16,14 +16,14 @@ public class WaterHistoryData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "histDataId")
     private Integer histDataId;
 
-    @Column
+    @Column(name = "waterConsumption")
     private Integer waterConsumption;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column
+    @Column(name = "date")
     private Date date;
 
 

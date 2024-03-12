@@ -16,21 +16,21 @@ public class WaterLiveData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "livedataId")
     private Integer liveDataId;
 
-    @Column
+    @Column(name = "consumption")
     private Integer consumption;
 
-    @Column
+    @Column(name = "faultDetected")
     private String faultDetected;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column
+    @Column(name = "startTime")
     private Date startTime;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column
+    @Column(name = "endTime")
     private Date endTime;
 
 }

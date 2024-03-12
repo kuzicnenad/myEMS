@@ -16,14 +16,14 @@ public class ElectricityHistoryData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "histDataId")
     private Integer histDataId;
 
-    @Column
+    @Column(name = "electricityConsumption")
     private Integer electricityConsumption;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column
+    @Column(name = "date")
     private Date date;
 
 
