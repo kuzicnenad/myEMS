@@ -23,10 +23,10 @@
       <form class="loginForm" action="#" th:action="@{/availableDevices/saveDeviceViaForm}" th:object="${devices}" method="POST">
 
         <!-- Hidden ID field to handle update requests -->
-        <input type="hidden" th:field="*{deviceId}">
+        <input type="hidden" th:field="*{device_id}">
 
         <div class="formGroup">
-          <input class="formInput" type="text" th:field="*{deviceName}" th:value="true"
+          <input class="formInput" type="text" th:field="*{device_name}" th:value="true"
                pattern="[a-zA-ZÀ-ž ]{2,20}" title="Only characters are allowed and length must be between 2 and 20 characters." required>
         </div>
 
@@ -36,18 +36,18 @@
         </div>
 
         <div class="formGroup">
-          <input class="formInput" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" th:field="*{productionDate}" required>
+          <input class="formInput" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" th:field="*{production_date}" required>
         </div>
 
         <div class="formGroup">
-          <input class="formInput" type="text" th:field="*{madeIn}"
+          <input class="formInput" type="text" th:field="*{made_in}"
                pattern="[a-zA-ZÀ-ž ]{2,25}" title="Only characters are allowed and length must be between 2 and 20 characters." required>
         </div>
 
-        <!-- Hidden activeFlag field to handle update requests -->
-        <input type="hidden" th:field="*{activeFlag}">
+        <!-- Hidden active_flag field to handle update requests -->
+        <input type="hidden" th:field="*{active_flag}">
 
-        <input class="saveBtn" name="updateDevice" type="submit" th:field="*{deviceId}" value="Update device"></input>
+        <input class="saveBtn" name="updateDevice" type="submit" th:field="*{device_id}" value="Update device"></input>
 
       </form>
     </div>

@@ -39,7 +39,7 @@ public class Devices {
     @UpdateTimestamp
     private Date lastUpdate;
 
-    @Column(name = "activeFlag")
+    @Column(name = "active_flag")
     private Boolean activeFlag;
 
 }

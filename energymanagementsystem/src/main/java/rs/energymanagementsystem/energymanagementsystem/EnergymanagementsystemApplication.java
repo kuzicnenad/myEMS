@@ -362,7 +362,7 @@ public class EnergymanagementsystemApplication {
 
 	@PostMapping("/availableDevices/saveDeviceViaForm") // SAVE
 	public String saveDeviceViaForm(@ModelAttribute(value = "devices") Devices device){
-		//Assign default value for activeFlag
+		//Assign default value for active_flag
 		if(device.getActiveFlag() == null){
 			device.setActiveFlag(false); // default value set to false (same as in SQL)
 		}
@@ -384,11 +384,11 @@ public class EnergymanagementsystemApplication {
 		return "newDevice";
 	}
 
-	@GetMapping("/availableDevices/deviceUpdateForm/{deviceId}") // UPDATE, RETURN FORM
-	public String deviceUpdateForm(@PathVariable(value = "deviceId") Integer deviceId, Model model) {
+	@GetMapping("/availableDevices/deviceUpdateForm/{device_id}") // UPDATE, RETURN FORM
+	public String deviceUpdateForm(@PathVariable(value = "device_id") Integer device_id, Model model) {
 
 		// get device from the service
-		Devices devices = devicesService.getDeviceById(deviceId);
+		Devices devices = devicesService.getDeviceById(device_id);
 
 		// set device as a model attribute to pre-populate the form
 		model.addAttribute("devices", devices);
@@ -397,17 +397,17 @@ public class EnergymanagementsystemApplication {
 		return "updateDevice";
 	}
 
-	@GetMapping("/availableDevices/deleteDevice/{deviceId}") // DELETE
-	public String deleteDevice(@PathVariable(value = "deviceId") Integer deviceId) {
+	@GetMapping("/availableDevices/deleteDevice/{device_id}") // DELETE
+	public String deleteDevice(@PathVariable(value = "device_id") Integer device_id) {
 
 		// call delete device method
-		this.devicesService.deleteDevice(deviceId);
+		this.devicesService.deleteDevice(device_id);
 		return redirectAvailableDevices;
 	}
 
-	@GetMapping("/availableDevices/toggleFlag/{deviceId}") // CHANGE ACTIVE FLAG
-	public String deviceActiveFlag(@PathVariable(value = "deviceId") Integer deviceId){
-		devicesService.deviceActiveFlag(deviceId);
+	@GetMapping("/availableDevices/toggleFlag/{device_id}") // CHANGE ACTIVE FLAG
+	public String deviceActiveFlag(@PathVariable(value = "device_id") Integer device_id){
+		devicesService.deviceActiveFlag(device_id);
 		return redirectAvailableDevices;
 	}
 

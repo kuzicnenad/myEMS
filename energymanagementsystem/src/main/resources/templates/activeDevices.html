@@ -47,10 +47,10 @@
                         </thead>
                         <tbody>
                             <tr th:each="devices : ${activeDevicesList}" >
-                                <td th:inline="text" class="td-devices">[[${devices.deviceName}]] </td>
-                                <td th:text="${#dates.format(devices.productionDate, 'dd-MM-yyyy')}"> </td>
-                                <td th:inline="text" class="td-devices">[[${devices.madeIn}]] </td>
-                                <td th:text="${#dates.format(devices.lastUpdate, 'dd-MM-yyyy HH:mm')}"> </td>
+                                <td th:inline="text" class="td-devices">[[${devices.device_name}]] </td>
+                                <td th:text="${#dates.format(devices.production_date, 'dd-MM-yyyy')}"> </td>
+                                <td th:inline="text" class="td-devices">[[${devices.made_in}]] </td>
+                                <td th:text="${#dates.format(devices.last_update, 'dd-MM-yyyy HH:mm')}"> </td>
                             </tr>
                         </tbody>
                     </table>

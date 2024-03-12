@@ -22,7 +22,7 @@
     <div class="content">
       <form class="loginForm" action="#" th:action="@{/availableDevices/saveDeviceViaForm}" th:object="${device}" method="POST">
         <div class="formGroup">
-          <input class="formInput"  type="text" th:field="*{deviceName}"
+          <input class="formInput"  type="text" th:field="*{device_name}"
                pattern="[a-zA-ZÀ-ž ]{2,20}" title="Only characters are allowed and length must be between 2 and 20 characters."
                  placeholder="Device name" required>
         </div>
@@ -34,17 +34,17 @@
         </div>
 
         <div class="formGroup">
-          <input class="formInput" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" th:field="*{productionDate}"
+          <input class="formInput" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" th:field="*{production_date}"
                  placeholder="Production date" required>
         </div>
 
         <div class="formGroup">
-          <input class="formInput"  type="text" th:field="*{madeIn}"
+          <input class="formInput"  type="text" th:field="*{made_in}"
                pattern="[a-zA-ZÀ-ž ]{2,25}" title="Only characters are allowed and length must be between 2 and 20 characters."
                  placeholder="Made in" required>
         </div>
 
-        <input class="formInput" type="hidden" th:field="*{activeFlag}" th:value="true"> <!-- Assign default -->
+        <input class="formInput" type="hidden" th:field="*{active_flag}" th:value="true"> <!-- Assign default -->
 
         <input class="saveBtn" name="AddDevice" type="submit" value="Add Device"></input>
 
