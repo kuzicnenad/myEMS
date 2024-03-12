@@ -9,7 +9,7 @@ import java.util.List;
 public interface WaterLiveDataService {
 
     List<WaterLiveData> getAllWaterLiveData();
-    WaterLiveData getWaterLiveDataById(Integer live_data_id);
+    WaterLiveData getWaterLiveDataById(Integer liveDataId);
     List<WaterLiveData> getLastData();
 
 }

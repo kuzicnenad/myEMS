@@ -50,8 +50,8 @@
                              <tbody>
                              <tr th:each="electricity_live_data : ${lastElectricityData}" class="dataItems">
                                  <td th:inline="text" class="td-1">[[${electricity_live_data.consumption}]]</td>
-                                 <td th:text="${#dates.format(electricity_live_data.start_time, 'HH:mm')} +
-                            '-' + ${#dates.format(electricity_live_data.end_time, 'HH:mm')}" class="td-2"></td>
+                                 <td th:text="${#dates.format(electricity_live_data.startTime, 'HH:mm')} +
+                            '-' + ${#dates.format(electricity_live_data.endTime, 'HH:mm')}" class="td-2"></td>
                              </tr>
                              </tbody>
                          </table>
@@ -68,8 +68,8 @@
                             <tbody>
                             <tr th:each="gas_live_data : ${lastGasData}" class="dataItems">
                                 <td th:inline="text" class="td-1">[[${gas_live_data.consumption}]] </td>
-                                <td th:text="${#dates.format(gas_live_data.start_time, 'HH:mm')} +
-                                '-' + ${#dates.format(gas_live_data.end_time, 'HH:mm')}" class="td-2"></td>
+                                <td th:text="${#dates.format(gas_live_data.startTime, 'HH:mm')} +
+                                '-' + ${#dates.format(gas_live_data.endTime, 'HH:mm')}" class="td-2"></td>
                             </tr>
                             </tbody>
                          </table>
@@ -86,8 +86,8 @@
                             <tbody>
                             <tr th:each="water_live_data : ${lastWaterData}" class="dataItems">
                                 <td th:inline="text" class="td-1">[[${water_live_data.consumption}]] </td>
-                                <td th:text="${#dates.format(water_live_data.start_time, 'HH:mm')} +
-                                '-' + ${#dates.format(water_live_data.end_time, 'HH:mm')}" class="td-2"></td>
+                                <td th:text="${#dates.format(water_live_data.startTime, 'HH:mm')} +
+                                '-' + ${#dates.format(water_live_data.endTime, 'HH:mm')}" class="td-2"></td>
                             </tr>
                             </tbody>
                          </table>

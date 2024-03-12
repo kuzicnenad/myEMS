@@ -24,9 +24,9 @@ public class GasLiveDataController {
 
     /** GET by ID electricity live data REST API
       * http://localhost:8080/api/gasHistoryData/histDataId(number) **/
-    @GetMapping("{live_data_id}")
-    public ResponseEntity<GasLiveData> getElectricityLiveDataById(@PathVariable ("live_data_id") Integer live_data_id){
-        return new ResponseEntity<GasLiveData>(gasLiveDataService.getGasLiveDataById(live_data_id), HttpStatus.OK);
+    @GetMapping("{liveDataId}")
+    public ResponseEntity<GasLiveData> getElectricityLiveDataById(@PathVariable ("liveDataId") Integer liveDataId){
+        return new ResponseEntity<GasLiveData>(gasLiveDataService.getGasLiveDataById(liveDataId), HttpStatus.OK);
     }
 
 }

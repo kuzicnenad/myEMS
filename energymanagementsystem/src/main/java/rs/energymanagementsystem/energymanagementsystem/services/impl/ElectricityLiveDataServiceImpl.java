@@ -26,9 +26,9 @@ public class ElectricityLiveDataServiceImpl implements ElectricityLiveDataServic
     }
 
     @Override
-    public ElectricityLiveData getElectricityLiveDataById(Integer live_data_id) {
-        return electricityLiveDataRepository.findById(live_data_id).orElseThrow(() ->
-                new ResourceNotFoundException("Electricity Live Data","live_data_id",live_data_id));
+    public ElectricityLiveData getElectricityLiveDataById(Integer liveDataId) {
+        return electricityLiveDataRepository.findById(liveDataId).orElseThrow(() ->
+                new ResourceNotFoundException("Electricity Live Data","liveDataId",liveDataId));
     }
 
     @Override

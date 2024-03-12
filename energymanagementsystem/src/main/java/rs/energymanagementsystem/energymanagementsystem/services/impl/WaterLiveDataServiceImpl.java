@@ -26,9 +26,9 @@ public class WaterLiveDataServiceImpl implements WaterLiveDataService {
     }
 
     @Override
-    public WaterLiveData getWaterLiveDataById(Integer live_data_id) {
-        return waterLiveDataRepository.findById(live_data_id).orElseThrow(() ->
-                new ResourceNotFoundException("Electricity Live Data","live_data_id",live_data_id));
+    public WaterLiveData getWaterLiveDataById(Integer liveDataId) {
+        return waterLiveDataRepository.findById(liveDataId).orElseThrow(() ->
+                new ResourceNotFoundException("Electricity Live Data","liveDataId",liveDataId));
     }
     @Override
     public List<WaterLiveData> getLastData() {

@@ -40,30 +40,30 @@ CREATE TABLE users_roles (
     Gas consumption when gas meter detecs flow and preasure but at least onces every 60min
 */
 CREATE TABLE Electricity_Live_Data(
-	live_data_id INT NOT NULL AUTO_INCREMENT,
+	liveDataId INT NOT NULL AUTO_INCREMENT,
     consumption FLOAT,
-    fault_detected INT,
-    start_time  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-    end_time DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (live_data_id)
+    faultDetected INT,
+    startTime  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+    endTime DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (liveDataId)
 ); 
 
 CREATE TABLE Water_Live_Data(
-	live_data_id INT NOT NULL AUTO_INCREMENT,
+	liveDataId INT NOT NULL AUTO_INCREMENT,
     consumption FLOAT,
-    fault_detected INT,
-    start_time  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-    end_time DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY (live_data_id)
+    faultDetected INT,
+    startTime  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+    endTime DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (liveDataId)
 ); 
 
 CREATE TABLE Gas_Live_Data(
-	live_data_id INT NOT NULL AUTO_INCREMENT,
+	liveDataId INT NOT NULL AUTO_INCREMENT,
     consumption FLOAT,
-    fault_detected INT,
-    start_time  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-    end_time DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY (live_data_id)
+    faultDetected INT,
+    startTime  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+    endTime DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (liveDataId)
 ); 
 
 /* Analysis and Comparison, select date to show ---> table updated every every day at set time (00:00 default)*/
@@ -118,7 +118,7 @@ drop table if exists alarmData;
 
 /* App Menu -> Home, Live Data, History Data, Print reports, Settings*/
 
-select consumption, date_format(end_time,'%H:%i') as timestamp from electricity_live_data ORDER BY live_data_id DESC LIMIT 5;
+select consumption, date_format(endTime,'%H:%i') as timestamp from electricity_live_data ORDER BY liveDataId DESC LIMIT 5;
 
 
 

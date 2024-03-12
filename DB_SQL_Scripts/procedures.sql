@@ -29,47 +29,47 @@ CREATE PROCEDURE generateElectricityData ()
 BEGIN
 	DECLARE pConsumption INT;
     DECLARE pDailyConsumption FLOAT;
-    DECLARE pFault_detected INT; 
-    DECLARE pStart_time DATETIME; 
-    DECLARE pEnd_time DATETIME; 
+    DECLARE pfaultDetected INT;
+    DECLARE pstartTime DATETIME;
+    DECLARE pendTime DATETIME;
     
-    SET pStart_time = '2022-03-20 12:00:01';
-    SET pEnd_time = '2022-03-20 13:00:00';
-    SET pFault_detected = '0';
+    SET pstartTime = '2022-03-20 12:00:01';
+    SET pendTime = '2022-03-20 13:00:00';
+    SET pfaultDetected = '0';
     
-	WHILE pEnd_time < DATE_SUB(current_timestamp, INTERVAL 2 DAY) DO
+	WHILE pendTime < DATE_SUB(current_timestamp, INTERVAL 2 DAY) DO
 		SET pConsumption = FLOOR(ABS(RAND())*1000);		
-		SET pFault_detected = FLOOR(ABS(RAND())*10000);
-        CASE pFault_detected
+		SET pfaultDetected = FLOOR(ABS(RAND())*10000);
+        CASE pfaultDetected
 			WHEN 1 THEN 
 				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-                VALUES(pFault_detected,'Electricity sensor failure',pStart_time);
+                VALUES(pfaultDetected,'Electricity sensor failure',pstartTime);
 			WHEN 2 THEN 
 				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-                VALUES(pFault_detected,'Low voltage',pStart_time);
+                VALUES(pfaultDetected,'Low voltage',pstartTime);
 			WHEN 3 THEN 
 				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-                VALUES(pFault_detected,'High voltage',pStart_time);
+                VALUES(pfaultDetected,'High voltage',pstartTime);
 			WHEN 4 THEN 
 				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-                VALUES(pFault_detected,'Electricity failure.',pStart_time);
+                VALUES(pfaultDetected,'Electricity failure.',pstartTime);
 			ELSE
-				SET pFault_detected = 0;
+				SET pfaultDetected = 0;
         END CASE;
                       
-        SET pStart_time = DATE_ADD(pEnd_time, INTERVAL 1 SECOND);
-        SET pEnd_time = DATE_ADD(DATE_ADD(pStart_time,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
+        SET pstartTime = DATE_ADD(pendTime, INTERVAL 1 SECOND);
+        SET pendTime = DATE_ADD(DATE_ADD(pstartTime,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
 	
-		INSERT INTO electricity_live_data(consumption,fault_detected,start_time,end_time)
-		VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time);
+		INSERT INTO electricity_live_data(consumption,faultDetected,startTime,endTime)
+		VALUES (pConsumption,pfaultDetected,pstartTime,pendTime);
         
         /* Check for new day to insert history data */
-		IF DATE(pStart_time) < DATE(pEnd_time)  THEN 
+		IF DATE(pstartTime) < DATE(pendTime)  THEN
 			SET pDailyConsumption = (SELECT SUM(consumption)
 									FROM electricity_live_data
-									WHERE DATE(start_time) = DATE(pStart_time));
+									WHERE DATE(startTime) = DATE(pstartTime));
 			INSERT INTO electricity_history_data(electricityConsumption,date)
-			VALUES(pDailyConsumption,DATE(pStart_time));
+			VALUES(pDailyConsumption,DATE(pstartTime));
 		ELSE
 			SET pDailyConsumption = 0;
 		END IF;
@@ -84,49 +84,49 @@ CREATE PROCEDURE generateWaterData ()
 BEGIN
 	DECLARE pConsumption INT;
     DECLARE pDailyConsumption FLOAT;
-    DECLARE pFault_detected INT; 
-    DECLARE pStart_time DATETIME; 
-    DECLARE pEnd_time DATETIME; 
+    DECLARE pfaultDetected INT;
+    DECLARE pstartTime DATETIME;
+    DECLARE pendTime DATETIME;
         
-    SET pStart_time = '2022-03-20 12:00:01';
-    SET pEnd_time = '2022-03-20 13:00:00';
-    SET pFault_detected = '0';
+    SET pstartTime = '2022-03-20 12:00:01';
+    SET pendTime = '2022-03-20 13:00:00';
+    SET pfaultDetected = '0';
     
-	WHILE pEnd_time < DATE_SUB(current_timestamp, INTERVAL 2 DAY) DO				
-		SET pFault_detected = FLOOR(ABS(RAND())*10000);        
-        CASE pFault_detected
+	WHILE pendTime < DATE_SUB(current_timestamp, INTERVAL 2 DAY) DO
+		SET pfaultDetected = FLOOR(ABS(RAND())*10000);
+        CASE pfaultDetected
 			WHEN 11 THEN 
 				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-                VALUES(pFault_detected,'Water sensor failure',pStart_time);
+                VALUES(pfaultDetected,'Water sensor failure',pstartTime);
 			WHEN 12 THEN 
 				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-                VALUES(pFault_detected,'Water leak',pStart_time);
+                VALUES(pfaultDetected,'Water leak',pstartTime);
 			WHEN 13 THEN 
 				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-                VALUES(pFault_detected,'Water pipe blockage',pStart_time);
+                VALUES(pfaultDetected,'Water pipe blockage',pstartTime);
 			ELSE
-				SET pFault_detected = 0;
+				SET pfaultDetected = 0;
         END CASE;
 		
-        IF MONTH(pStart_time) > 6 AND MONTH(pStart_time) < 9 THEN
+        IF MONTH(pstartTime) > 6 AND MONTH(pstartTime) < 9 THEN
 			SET pConsumption = FLOOR(ABS(RAND())*1800);
 		ELSE
 			SET pConsumption = FLOOR(ABS(RAND())*(1200));
 		END IF;
         
-        SET pStart_time = DATE_ADD(pEnd_time, INTERVAL 1 SECOND);
-        SET pEnd_time = DATE_ADD(DATE_ADD(pStart_time,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
+        SET pstartTime = DATE_ADD(pendTime, INTERVAL 1 SECOND);
+        SET pendTime = DATE_ADD(DATE_ADD(pstartTime,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
 	
-		INSERT INTO Water_Live_Data(consumption,fault_detected,start_time,end_time)
-		VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time);
+		INSERT INTO Water_Live_Data(consumption,faultDetected,startTime,endTime)
+		VALUES (pConsumption,pfaultDetected,pstartTime,pendTime);
         
 		/* Check for new day to insert history data */
-		IF DATE(pStart_time) < DATE(pEnd_time)  THEN 
+		IF DATE(pstartTime) < DATE(pendTime)  THEN
 			SET pDailyConsumption = (SELECT SUM(consumption)
 									FROM water_live_data
-									WHERE DATE(start_time) = DATE(pStart_time));
+									WHERE DATE(startTime) = DATE(pstartTime));
 			INSERT INTO water_history_data(waterConsumption,date)
-			VALUES(pDailyConsumption,DATE(pStart_time));
+			VALUES(pDailyConsumption,DATE(pstartTime));
 		ELSE
 			SET pDailyConsumption = 0;
 		END IF;
@@ -141,50 +141,50 @@ CREATE PROCEDURE generateGasData ()
 BEGIN
 	DECLARE pConsumption INT;
     DECLARE pDailyConsumption FLOAT;
-    DECLARE pFault_detected INT; 
-    DECLARE pStart_time DATETIME; 
-    DECLARE pEnd_time DATETIME;
+    DECLARE pfaultDetected INT;
+    DECLARE pstartTime DATETIME;
+    DECLARE pendTime DATETIME;
     
-    SET pStart_time = '2022-03-20 12:00:01';
-    SET pEnd_time = '2022-03-20 13:00:00';
-    SET pFault_detected = '0';
+    SET pstartTime = '2022-03-20 12:00:01';
+    SET pendTime = '2022-03-20 13:00:00';
+    SET pfaultDetected = '0';
     
-	WHILE pEnd_time < DATE_SUB(current_timestamp, INTERVAL 2 DAY) DO
+	WHILE pendTime < DATE_SUB(current_timestamp, INTERVAL 2 DAY) DO
     
-		SET pFault_detected = FLOOR(ABS(RAND())*10000);
-        CASE pFault_detected
+		SET pfaultDetected = FLOOR(ABS(RAND())*10000);
+        CASE pfaultDetected
 			WHEN 21 THEN 
 				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-                VALUES(pFault_detected,'Gas Sensor failure',pStart_time);
+                VALUES(pfaultDetected,'Gas Sensor failure',pstartTime);
 			WHEN 22 THEN 
 				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-                VALUES(pFault_detected,'Flammable gas leak',pStart_time);
+                VALUES(pfaultDetected,'Flammable gas leak',pstartTime);
 			WHEN 23 THEN 
 				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-                VALUES(pFault_detected,'Toxic gas leak.',pStart_time);
+                VALUES(pfaultDetected,'Toxic gas leak.',pstartTime);
 			ELSE
-				SET pFault_detected = 0;
+				SET pfaultDetected = 0;
         END CASE;
                       
-        SET pStart_time = DATE_ADD(pEnd_time, INTERVAL 1 SECOND);
-        SET pEnd_time = DATE_ADD(DATE_ADD(pStart_time,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
+        SET pstartTime = DATE_ADD(pendTime, INTERVAL 1 SECOND);
+        SET pendTime = DATE_ADD(DATE_ADD(pstartTime,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
 	
-		IF MONTH(pStart_time) < 5 OR MONTH(pStart_time) > 9 THEN
+		IF MONTH(pstartTime) < 5 OR MONTH(pstartTime) > 9 THEN
 			SET pConsumption = FLOOR(ABS(RAND())*2000);
 		ELSE
 			SET pConsumption = FLOOR(ABS(RAND())*300);
         END IF;
         
-		INSERT INTO gas_live_data(consumption,fault_detected,start_time,end_time)
-		VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time);
+		INSERT INTO gas_live_data(consumption,faultDetected,startTime,endTime)
+		VALUES (pConsumption,pfaultDetected,pstartTime,pendTime);
         
         /* Check for new day to insert history data */
-		IF DATE(pStart_time) < DATE(pEnd_time)  THEN 
+		IF DATE(pstartTime) < DATE(pendTime)  THEN
 			SET pDailyConsumption = (SELECT SUM(consumption)
 									FROM gas_live_data
-									WHERE DATE(start_time) = DATE(pStart_time));
+									WHERE DATE(startTime) = DATE(pstartTime));
 			INSERT INTO gas_history_data(gasConsumption,date)
-			VALUES(pDailyConsumption,DATE(pStart_time));
+			VALUES(pDailyConsumption,DATE(pstartTime));
 		ELSE
 			SET pDailyConsumption = 0;
 		END IF;

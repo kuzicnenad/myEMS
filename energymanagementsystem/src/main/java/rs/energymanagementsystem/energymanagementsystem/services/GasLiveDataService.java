@@ -8,6 +8,6 @@ import java.util.List;
 @Repository
 public interface GasLiveDataService {
     List<GasLiveData> getAllGasLiveData();
-    GasLiveData getGasLiveDataById(Integer live_data_id);
+    GasLiveData getGasLiveDataById(Integer liveDataId);
     List<GasLiveData> getLastData();
 }
