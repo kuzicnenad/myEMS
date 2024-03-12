@@ -10,7 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "electricityLiveData") // Tells Hibernate to make a table out of this class
+@Table(name = "electricity_live_data") // Tells Hibernate to make a table out of this class
 public class ElectricityLiveData {
 
     @Id

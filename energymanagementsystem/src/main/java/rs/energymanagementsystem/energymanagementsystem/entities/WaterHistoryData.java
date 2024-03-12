@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "waterHistoryData")
+@Table(name = "water_history_data")
 public class WaterHistoryData {
 
     @Id

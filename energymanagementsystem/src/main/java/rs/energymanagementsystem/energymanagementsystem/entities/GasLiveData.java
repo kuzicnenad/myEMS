@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "gasLiveData") // Tells Hibernate to make a table out of this class
+@Table(name = "gas_live_data") // Tells Hibernate to make a table out of this class
 public class GasLiveData {
 
     @Id
