@@ -34,7 +34,7 @@ public class UsersController {
     }
 
     /** GET by ID user REST API
-      * http://localhost:8080/api/users/user_id(number) */
+      * http://localhost:8080/api/users/userId(number) */
     @GetMapping("{id}")
     public ResponseEntity<User> getUserById(@PathVariable ("id") Long id){
         return new ResponseEntity<User>(usersService.getUserById(id), HttpStatus.OK);

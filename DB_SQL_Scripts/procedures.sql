@@ -6,12 +6,12 @@ SET GLOBAL time_zone = '+00:00';
 DROP PROCEDURE IF EXISTS addHashPassword;
 DELIMITER $$
 CREATE PROCEDURE addHashPassword(
-	IN pUser_id INT,
+	IN puserId INT,
     IN pPassword_hash VARCHAR(255)
 )
 BEGIN
-	INSERT INTO passwords(user_id,password_hash)
-    VALUES (pUser_id,sha2(pPassword_hash,512));
+	INSERT INTO passwords(userId,password_hash)
+    VALUES (puserId,sha2(pPassword_hash,512));
 END $$
 DELIMITER ;
 

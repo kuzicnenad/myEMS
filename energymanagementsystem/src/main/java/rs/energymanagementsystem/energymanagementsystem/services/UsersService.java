@@ -11,11 +11,11 @@ public interface UsersService {
 
     List<User> getAllUsers();
 
-    User getUserById(Long user_id);
+    User getUserById(Long userId);
 
     User updateUser(User user, Long users_id);
 
-    void deleteUser(Long user_id);
+    void deleteUser(Long userId);
 
     /** Necessary Information to login **/
     /*UserDetails loadUserByUsername(String usernameOrEmail);*/
