@@ -29,46 +29,46 @@ CREATE EVENT insert_live_data_electricity
 		BEGIN
 			DECLARE pConsumption INT;
 			DECLARE pDailyConsumption FLOAT;
-			DECLARE pfaultDetected INT;
-			DECLARE pstartTime DATETIME;
-			DECLARE pendTime DATETIME;
+			DECLARE pFault_detected INT; 
+			DECLARE pStart_time DATETIME; 
+			DECLARE pEnd_time DATETIME; 
             
-			SET pfaultDetected = '0';
+			SET pFault_detected = '0';
 						
-			SET pfaultDetected = FLOOR(ABS(RAND())*10000);
-			CASE pfaultDetected
+			SET pFault_detected = FLOOR(ABS(RAND())*10000);
+			CASE pFault_detected
 				WHEN 11 THEN 
 					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-					VALUES(pfaultDetected,'Water sensor failure',updateTriger);
+					VALUES(pFault_detected,'Water sensor failure',updateTriger);
 				WHEN 12 THEN 
 					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-					VALUES(pfaultDetected,'Water leak',updateTriger);
+					VALUES(pFault_detected,'Water leak',updateTriger);
 				WHEN 13 THEN 
 					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-					VALUES(pfaultDetected,'Water pipe blockage',updateTriger);
+					VALUES(pFault_detected,'Water pipe blockage',updateTriger);
 				ELSE
-					SET pfaultDetected = 0;
+					SET pFault_detected = 0;
 			END CASE;
 			
-			SET pstartTime = (	SELECT IF (endTime IS NULL, '2021-03-20 22:00:00', endTime)
+			SET pStart_time = (	SELECT IF (end_time IS NULL, '2021-03-20 22:00:00', end_time)
 								FROM electricity_live_data 
-								ORDER BY endTime DESC
+								ORDER BY end_time DESC
 								LIMIT 1);
-			SET pstartTime = DATE_ADD(pstartTime, INTERVAL 1 SECOND);
-            SET pendTime = DATE_ADD(DATE_ADD(pstartTime,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
+			SET pStart_time = DATE_ADD(pStart_time, INTERVAL 1 SECOND);
+            SET pEnd_time = DATE_ADD(DATE_ADD(pStart_time,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
 			SET pConsumption = FLOOR(ABS(RAND())*1000);
             
-			INSERT INTO Electricity_Live_Data(consumption,faultDetected,startTime,endTime)
-			VALUES (pConsumption,pfaultDetected,pstartTime,pendTime);
+			INSERT INTO Electricity_Live_Data(consumption,fault_detected,start_time,end_time)
+			VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time); 
                         
             /* Check for new day to insert history data */
-			IF DATE(pstartTime) < DATE(pendTime)  THEN
+			IF DATE(pStart_time) < DATE(pEnd_time)  THEN 
 				SET pDailyConsumption = (SELECT SUM(consumption)
 										FROM Electricity_Live_Data
-										WHERE DATE(startTime) = DATE(pstartTime));
+										WHERE DATE(start_time) = DATE(pStart_time));
                 
 				INSERT INTO Electricity_History_Data(electricityConsumption,date)
-				VALUES(pDailyConsumption,DATE(pstartTime));
+				VALUES(pDailyConsumption,DATE(pStart_time));
                 
 			ELSE
 				SET pDailyConsumption = 0;
@@ -86,50 +86,50 @@ CREATE EVENT insert_live_data_water
 		BEGIN
 			DECLARE pConsumption INT;
 			DECLARE pDailyConsumption FLOAT;
-			DECLARE pfaultDetected INT;
-			DECLARE pstartTime DATETIME;
-			DECLARE pendTime DATETIME;
+			DECLARE pFault_detected INT; 
+			DECLARE pStart_time DATETIME; 
+			DECLARE pEnd_time DATETIME; 
             
-			SET pfaultDetected = '0';
+			SET pFault_detected = '0';			
 		
-			SET pfaultDetected = FLOOR(ABS(RAND())*10000);
-			CASE pfaultDetected
+			SET pFault_detected = FLOOR(ABS(RAND())*10000);
+			CASE pFault_detected
 				WHEN 21 THEN 
 					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-					VALUES(pfaultDetected,'Gas Sensor failure',updateTriger);
+					VALUES(pFault_detected,'Gas Sensor failure',updateTriger);
 				WHEN 22 THEN 
 					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-					VALUES(pfaultDetected,'Flammable gas leak',updateTriger);
+					VALUES(pFault_detected,'Flammable gas leak',updateTriger);
 				WHEN 23 THEN 
 					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-					VALUES(pfaultDetected,'Toxic gas leak.',updateTriger);
+					VALUES(pFault_detected,'Toxic gas leak.',updateTriger);
 				ELSE
-					SET pfaultDetected = 0;
+					SET pFault_detected = 0;
 			END CASE;
 			
-			SET pstartTime = (	SELECT IF (endTime IS NULL, '2021-03-20 22:00:00', endTime)
+			SET pStart_time = (	SELECT IF (end_time IS NULL, '2021-03-20 22:00:00', end_time)
 								FROM gas_live_data 
-								ORDER BY endTime DESC
+								ORDER BY end_time DESC
 								LIMIT 1);
-			SET pstartTime = DATE_ADD(pstartTime, INTERVAL 1 SECOND);
-            SET pendTime = DATE_ADD(DATE_ADD(pstartTime,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
-			IF MONTH(pstartTime) > 6 AND MONTH(pstartTime) < 9 THEN
+			SET pStart_time = DATE_ADD(pStart_time, INTERVAL 1 SECOND);
+            SET pEnd_time = DATE_ADD(DATE_ADD(pStart_time,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
+			IF MONTH(pStart_time) > 6 AND MONTH(pStart_time) < 9 THEN
 				SET pConsumption = FLOOR(ABS(RAND())*1800);
 			ELSE
 				SET pConsumption = FLOOR(ABS(RAND())*1200);
 			END IF;
                         
-			INSERT INTO water_live_data(consumption,faultDetected,startTime,endTime)
-			VALUES (pConsumption,pfaultDetected,pstartTime,pendTime);
+			INSERT INTO water_live_data(consumption,fault_detected,start_time,end_time)
+			VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time); 
                         
             /* Check for new day to insert history data */
-			IF DATE(pstartTime) < DATE(pendTime)  THEN
+			IF DATE(pStart_time) < DATE(pEnd_time)  THEN 
 				SET pDailyConsumption = (SELECT SUM(consumption)
 										FROM water_live_data
-										WHERE DATE(startTime) = DATE(pstartTime));
+										WHERE DATE(start_time) = DATE(pStart_time));
                 
 				INSERT INTO water_history_data(waterConsumption,date)
-				VALUES(pDailyConsumption,DATE(pstartTime));
+				VALUES(pDailyConsumption,DATE(pStart_time));
                 
 			ELSE
 				SET pDailyConsumption = 0;
@@ -147,51 +147,51 @@ CREATE EVENT insert_live_data_gas
 		BEGIN
 			DECLARE pConsumption INT;
 			DECLARE pDailyConsumption FLOAT;
-			DECLARE pfaultDetected INT;
-			DECLARE pstartTime DATETIME;
-			DECLARE pendTime DATETIME;
+			DECLARE pFault_detected INT; 
+			DECLARE pStart_time DATETIME; 
+			DECLARE pEnd_time DATETIME; 
             
-			SET pfaultDetected = '0';
+			SET pFault_detected = '0';
 			
 		
-			SET pfaultDetected = FLOOR(ABS(RAND())*10000);
-			CASE pfaultDetected
+			SET pFault_detected = FLOOR(ABS(RAND())*10000);
+			CASE pFault_detected
 				WHEN 21 THEN 
 					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-					VALUES(pfaultDetected,'Gas Sensor failure',updateTriger);
+					VALUES(pFault_detected,'Gas Sensor failure',updateTriger);
 				WHEN 22 THEN 
 					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-					VALUES(pfaultDetected,'Flammable gas leak',updateTriger);
+					VALUES(pFault_detected,'Flammable gas leak',updateTriger);
 				WHEN 23 THEN 
 					INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
-					VALUES(pfaultDetected,'Toxic gas leak.',updateTriger);
+					VALUES(pFault_detected,'Toxic gas leak.',updateTriger);
 				ELSE
-					SET pfaultDetected = 0;
+					SET pFault_detected = 0;
 			END CASE;
 			
-			SET pstartTime = (	SELECT IF (endTime IS NULL, '2021-03-20 22:00:00', endTime)
+			SET pStart_time = (	SELECT IF (end_time IS NULL, '2021-03-20 22:00:00', end_time)
 								FROM gas_live_data 
-								ORDER BY endTime DESC
+								ORDER BY end_time DESC
 								LIMIT 1);
-			SET pstartTime = DATE_ADD(pstartTime, INTERVAL 1 SECOND);
-            SET pendTime = DATE_ADD(DATE_ADD(pstartTime,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
-			IF MONTH(pstartTime) < 5 OR MONTH(pstartTime) > 9 THEN
+			SET pStart_time = DATE_ADD(pStart_time, INTERVAL 1 SECOND);
+            SET pEnd_time = DATE_ADD(DATE_ADD(pStart_time,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
+			IF MONTH(pStart_time) < 5 OR MONTH(pStart_time) > 9 THEN
 				SET pConsumption = FLOOR(ABS(RAND())*2000);
 			ELSE
 				SET pConsumption = FLOOR(ABS(RAND())*300);
 			END IF;
             
-			INSERT INTO Gas_Live_Data(consumption,faultDetected,startTime,endTime)
-			VALUES (pConsumption,pfaultDetected,pstartTime,pendTime);
+			INSERT INTO Gas_Live_Data(consumption,fault_detected,start_time,end_time)
+			VALUES (pConsumption,pFault_detected,pStart_time,pEnd_time); 
                         
             /* Check for new day to insert history data */
-			IF DATE(pstartTime) < DATE(pendTime)  THEN
+			IF DATE(pStart_time) < DATE(pEnd_time)  THEN 
 				SET pDailyConsumption = (SELECT SUM(consumption)
 										FROM gas_live_data
-										WHERE DATE(startTime) = DATE(pstartTime));
+										WHERE DATE(start_time) = DATE(pStart_time));
                 
 				INSERT INTO gas_history_data(gasConsumption,date)
-				VALUES(pDailyConsumption,DATE(pstartTime));
+				VALUES(pDailyConsumption,DATE(pStart_time));
                 
 			ELSE
 				SET pDailyConsumption = 0;

@@ -42,30 +42,30 @@ CREATE TABLE users_roles (
     Gas consumption when gas meter detecs flow and preasure but at least onces every 60min
 */
 CREATE TABLE Electricity_Live_Data(
-	liveDataId INT NOT NULL AUTO_INCREMENT,
+	live_data_id INT NOT NULL AUTO_INCREMENT,
     consumption FLOAT,
-    faultDetected INT,
-    startTime  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-    endTime DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (liveDataId)
+    fault_detected INT,
+    start_time  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+    end_time DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (live_data_id)
 ); 
 
 CREATE TABLE Water_Live_Data(
-	liveDataId INT NOT NULL AUTO_INCREMENT,
+	live_data_id INT NOT NULL AUTO_INCREMENT,
     consumption FLOAT,
-    faultDetected INT,
-    startTime  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-    endTime DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY (liveDataId)
+    fault_detected INT,
+    start_time  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+    end_time DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (live_data_id)
 ); 
 
 CREATE TABLE Gas_Live_Data(
-	liveDataId INT NOT NULL AUTO_INCREMENT,
+	live_data_id INT NOT NULL AUTO_INCREMENT,
     consumption FLOAT,
-    faultDetected INT,
-    startTime  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-    endTime DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY (liveDataId)
+    fault_detected INT,
+    start_time  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+    end_time DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (live_data_id)
 ); 
 
 /* Analysis and Comparison, select date to show ---> table updated every every day at set time (00:00 default)*/
@@ -123,7 +123,7 @@ drop table if exists alarmData;
 >>>>>>> parent of 96efcb4 (refactor code and add @column annotation in User class)
 /* App Menu -> Home, Live Data, History Data, Print reports, Settings*/
 
-select consumption, date_format(endTime,'%H:%i') as timestamp from electricity_live_data ORDER BY liveDataId DESC LIMIT 5;
+select consumption, date_format(end_time,'%H:%i') as timestamp from electricity_live_data ORDER BY live_data_id DESC LIMIT 5;
 
 
 

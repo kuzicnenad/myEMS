@@ -8,7 +8,7 @@ import java.util.List;
 @Repository
 public interface ElectricityLiveDataService {
     List<ElectricityLiveData> getAllElectricityLiveData();
-    ElectricityLiveData getElectricityLiveDataById(Integer liveDataId);
+    ElectricityLiveData getElectricityLiveDataById(Integer live_data_id);
     List<ElectricityLiveData> getLastData();
 
 }

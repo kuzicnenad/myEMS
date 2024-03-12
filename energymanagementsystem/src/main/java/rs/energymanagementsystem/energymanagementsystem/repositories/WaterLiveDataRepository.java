@@ -13,7 +13,7 @@ public interface WaterLiveDataRepository extends JpaRepository<WaterLiveData, In
     /** ---------------------------------------------------------------------------------------
      * - Get last 10 records (for live data page)
      --------------------------------------------------------------------------------------- **/
-    @Query(value = "select * FROM water_live_data ORDER BY liveDataId DESC LIMIT 10", nativeQuery = true)
+    @Query(value = "select * FROM water_live_data ORDER BY live_data_id DESC LIMIT 10", nativeQuery = true)
     public List<WaterLiveData> getLastData();
 
 }
