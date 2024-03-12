@@ -1,3 +1,5 @@
+
+
 SET GLOBAL time_zone = '+00:00';
     
 /* ------------ Password procedure ------------*/
@@ -58,15 +60,15 @@ BEGIN
         SET pstartTime = DATE_ADD(pendTime, INTERVAL 1 SECOND);
         SET pendTime = DATE_ADD(DATE_ADD(pstartTime,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
 	
-		INSERT INTO electricityLiveData(consumption,faultDetected,startTime,endTime)
+		INSERT INTO electricity_live_data(consumption,faultDetected,startTime,endTime)
 		VALUES (pConsumption,pfaultDetected,pstartTime,pendTime);
         
         /* Check for new day to insert history data */
 		IF DATE(pstartTime) < DATE(pendTime)  THEN
 			SET pDailyConsumption = (SELECT SUM(consumption)
-									FROM electricityLiveData
+									FROM electricity_live_data
 									WHERE DATE(startTime) = DATE(pstartTime));
-			INSERT INTO electricityHistoryData(electricityConsumption,date)
+			INSERT INTO electricity_history_data(electricityConsumption,date)
 			VALUES(pDailyConsumption,DATE(pstartTime));
 		ELSE
 			SET pDailyConsumption = 0;
@@ -115,15 +117,15 @@ BEGIN
         SET pstartTime = DATE_ADD(pendTime, INTERVAL 1 SECOND);
         SET pendTime = DATE_ADD(DATE_ADD(pstartTime,INTERVAL 59 SECOND), INTERVAL 59 MINUTE);
 	
-		INSERT INTO WaterLiveData(consumption,faultDetected,startTime,endTime)
+		INSERT INTO Water_Live_Data(consumption,faultDetected,startTime,endTime)
 		VALUES (pConsumption,pfaultDetected,pstartTime,pendTime);
         
 		/* Check for new day to insert history data */
 		IF DATE(pstartTime) < DATE(pendTime)  THEN
 			SET pDailyConsumption = (SELECT SUM(consumption)
-									FROM waterLiveData
+									FROM water_live_data
 									WHERE DATE(startTime) = DATE(pstartTime));
-			INSERT INTO waterHistoryData(waterConsumption,date)
+			INSERT INTO water_history_data(waterConsumption,date)
 			VALUES(pDailyConsumption,DATE(pstartTime));
 		ELSE
 			SET pDailyConsumption = 0;
@@ -173,15 +175,15 @@ BEGIN
 			SET pConsumption = FLOOR(ABS(RAND())*300);
         END IF;
         
-		INSERT INTO gasLiveData(consumption,faultDetected,startTime,endTime)
+		INSERT INTO gas_live_data(consumption,faultDetected,startTime,endTime)
 		VALUES (pConsumption,pfaultDetected,pstartTime,pendTime);
         
         /* Check for new day to insert history data */
 		IF DATE(pstartTime) < DATE(pendTime)  THEN
 			SET pDailyConsumption = (SELECT SUM(consumption)
-									FROM gasLiveData
+									FROM gas_live_data
 									WHERE DATE(startTime) = DATE(pstartTime));
-			INSERT INTO gasHistoryData(gasConsumption,date)
+			INSERT INTO gas_history_data(gasConsumption,date)
 			VALUES(pDailyConsumption,DATE(pstartTime));
 		ELSE
 			SET pDailyConsumption = 0;
