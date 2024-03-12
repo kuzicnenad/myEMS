@@ -5,11 +5,11 @@ DROP PROCEDURE IF EXISTS addHashPassword;
 DELIMITER $$
 CREATE PROCEDURE addHashPassword(
 	IN puserId INT,
-    IN pPasswordHash VARCHAR(255)
+    IN pPassword_hash VARCHAR(255)
 )
 BEGIN
-	INSERT INTO passwords(userId,passwordHash)
-    VALUES (puserId,sha2(pPasswordHash,512));
+	INSERT INTO passwords(userId,password_hash)
+    VALUES (puserId,sha2(pPassword_hash,512));
 END $$
 DELIMITER ;
 

@@ -36,7 +36,7 @@ CALL addHashPassword(1,'admin111');
 CALL addHashPassword(2,'user111');
 CALL addHashPassword(3,'user222');
 
-SELECT userLogin as uname,firstName as Name,lastName as Surname, u.timeStamp as userCreationDate, passwordHash, p.timeStamp as psdAddDate FROM Users as u
+SELECT user_login as uname,first_name as Name,last_name as Surname, u.timeStamp as userCreationDate, password_hash, p.timeStamp as psdAddDate FROM Users as u
 INNER JOIN Passwords as p
 ON u.userId = p.userId;
 */
