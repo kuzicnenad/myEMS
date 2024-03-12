@@ -89,14 +89,14 @@ CREATE TABLE Gas_History_Data(
 );
 
 /* Alarm messages can be sent to email*/
-CREATE TABLE alarmData(
-	alarmId INT NOT NULL AUTO_INCREMENT,
-    alarmCode INT NOT NULL,
-    alarmDesc VARCHAR(255),
-    timeStamp  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-    acknowledgedTime DATETIME,
-    ackFlag BOOL NOT NULL DEFAULT 0,
-    PRIMARY KEY (alarmId)
+CREATE TABLE Alarm_Data(
+	alarm_id INT NOT NULL AUTO_INCREMENT,
+    alarm_code INT NOT NULL,
+    alarm_desc VARCHAR(255),
+    time_stamp  DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+    acknowledged_time DATETIME,
+    ack_flag BOOL NOT NULL DEFAULT 0,
+    PRIMARY KEY (alarm_id)
 );
 
 
@@ -118,7 +118,7 @@ drop table if exists passwords;
 drop table if exists users_roles;
 drop table if exists user;
 drop table if exists role;
-drop table if exists alarmData;
+drop table if exists Alarm_Data;
 
 >>>>>>> parent of 96efcb4 (refactor code and add @column annotation in User class)
 /* App Menu -> Home, Live Data, History Data, Print reports, Settings*/

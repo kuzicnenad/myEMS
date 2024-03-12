@@ -42,16 +42,16 @@ BEGIN
 		SET pFault_detected = FLOOR(ABS(RAND())*10000);
         CASE pFault_detected
 			WHEN 1 THEN 
-				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
                 VALUES(pFault_detected,'Electricity sensor failure',pStart_time);
 			WHEN 2 THEN 
-				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
                 VALUES(pFault_detected,'Low voltage',pStart_time);
 			WHEN 3 THEN 
-				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
                 VALUES(pFault_detected,'High voltage',pStart_time);
 			WHEN 4 THEN 
-				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
                 VALUES(pFault_detected,'Electricity failure.',pStart_time);
 			ELSE
 				SET pFault_detected = 0;
@@ -96,13 +96,13 @@ BEGIN
 		SET pFault_detected = FLOOR(ABS(RAND())*10000);        
         CASE pFault_detected
 			WHEN 11 THEN 
-				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
                 VALUES(pFault_detected,'Water sensor failure',pStart_time);
 			WHEN 12 THEN 
-				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
                 VALUES(pFault_detected,'Water leak',pStart_time);
 			WHEN 13 THEN 
-				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
                 VALUES(pFault_detected,'Water pipe blockage',pStart_time);
 			ELSE
 				SET pFault_detected = 0;
@@ -154,13 +154,13 @@ BEGIN
 		SET pFault_detected = FLOOR(ABS(RAND())*10000);
         CASE pFault_detected
 			WHEN 21 THEN 
-				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
                 VALUES(pFault_detected,'Gas Sensor failure',pStart_time);
 			WHEN 22 THEN 
-				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
                 VALUES(pFault_detected,'Flammable gas leak',pStart_time);
 			WHEN 23 THEN 
-				INSERT INTO alarmData(alarmCode,alarmDesc,timeStamp)
+				INSERT INTO Alarm_Data(alarm_code,alarm_desc,time_stamp)
                 VALUES(pFault_detected,'Toxic gas leak.',pStart_time);
 			ELSE
 				SET pFault_detected = 0;

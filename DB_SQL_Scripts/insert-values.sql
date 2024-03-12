@@ -36,7 +36,7 @@ CALL addHashPassword(1,'admin111');
 CALL addHashPassword(2,'user111');
 CALL addHashPassword(3,'user222');
 
-SELECT user_login as uname,first_name as Name,last_name as Surname, u.timeStamp as userCreationDate, password_hash, p.timeStamp as psdAddDate FROM Users as u
+SELECT user_login as uname,first_name as Name,last_name as Surname, u.time_stamp as userCreationDate, password_hash, p.time_stamp as psdAddDate FROM Users as u
 INNER JOIN Passwords as p
 ON u.user_id = p.user_id;
 */
@@ -59,7 +59,7 @@ select * from Gas_Live_Data order by live_data_id desc;
 select hist_data_id as id, gas_consumption as cubeMeter, date from Gas_History_Data order by id desc;
 
 
-SELECT * FROM alarmData order by timeStamp desc;
+SELECT * FROM Alarm_Data order by time_stamp desc;
 
 SELECT * FROM Devices;
 
@@ -74,7 +74,7 @@ truncate table Water_History_Data;
 truncate table Gas_History_Data;
 
 /* ---------- Clear alarms table ---------- */
-truncate table alarmData;
+truncate table Alarm_Data;
 
 /* ---- Clear users and passwords table ----*/  
 truncate table users_roles;
