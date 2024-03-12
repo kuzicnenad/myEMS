@@ -31,9 +31,9 @@ public class GasHistoryDataServiceImpl implements GasHistoryDataService {
     }
 
     @Override
-    public GasHistoryData getGasHistoryDataById(Integer histDataId) {
-        return gasHistoryDataRepository.findById(histDataId).orElseThrow(() ->
-                new ResourceNotFoundException("Gas History Data", "histDataId", histDataId));
+    public GasHistoryData getGasHistoryDataById(Integer hist_data_id) {
+        return gasHistoryDataRepository.findById(hist_data_id).orElseThrow(() ->
+                new ResourceNotFoundException("Gas History Data", "hist_data_id", hist_data_id));
     }
 
     @Override

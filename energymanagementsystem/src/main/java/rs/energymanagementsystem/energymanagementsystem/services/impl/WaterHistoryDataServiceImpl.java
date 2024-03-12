@@ -31,9 +31,9 @@ public class WaterHistoryDataServiceImpl implements WaterHistoryDataService {
     }
 
     @Override
-    public WaterHistoryData getWaterHistoryDataById(Integer histDataId) {
-        return waterHistoryDataRepository.findById(histDataId).orElseThrow(() ->
-                new ResourceNotFoundException("Water History Data", "histDataId", histDataId));
+    public WaterHistoryData getWaterHistoryDataById(Integer hist_data_id) {
+        return waterHistoryDataRepository.findById(hist_data_id).orElseThrow(() ->
+                new ResourceNotFoundException("Water History Data", "hist_data_id", hist_data_id));
     }
 
     @Override

@@ -23,7 +23,7 @@ public class ElectricityLiveDataController {
     }
 
     /** GET by ID electricity live data REST API
-      * http://localhost:8080/api/electricityLiveData/histDataId(number) **/
+      * http://localhost:8080/api/electricityLiveData/hist_data_id(number) **/
     @GetMapping("{live_data_id}")
     public ResponseEntity<ElectricityLiveData> getElectricityLiveDataById(@PathVariable ("live_data_id") Integer live_data_id){
         return new ResponseEntity<ElectricityLiveData>(electricityLiveDataService.getElectricityLiveDataById(live_data_id), HttpStatus.OK);

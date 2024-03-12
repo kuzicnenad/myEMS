@@ -14,7 +14,7 @@ public interface GasHistoryDataService {
      * - Service for pagination of history records
      --------------------------------------------------------------------------------------- **/
     List<GasHistoryData> getAllGasHistoryData();
-    GasHistoryData getGasHistoryDataById(Integer histDataId);
+    GasHistoryData getGasHistoryDataById(Integer hist_data_id);
     Page<GasHistoryData> getHistoryDataGas(int pageNo, int pageSize);
 
     /** ---------------------------------------------------------------------------------------

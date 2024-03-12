@@ -23,10 +23,10 @@ public class ElectricityHistoryDataController {
     }
 
     /** GET by ID electricity history data REST API
-      * http://localhost:8080/api/electricityHistoryData/histDataId(number) **/
-    @GetMapping("{histDataId}")
-    public ResponseEntity<ElectricityHistoryData> getElectricityHistoryDataById(@PathVariable ("histDataId") Integer histDataId){
-        return new ResponseEntity<ElectricityHistoryData>(electricityHistoryDataService.getElectricityHistoryDataById(histDataId), HttpStatus.OK);
+      * http://localhost:8080/api/electricityHistoryData/hist_data_id(number) **/
+    @GetMapping("{hist_data_id}")
+    public ResponseEntity<ElectricityHistoryData> getElectricityHistoryDataById(@PathVariable ("hist_data_id") Integer hist_data_id){
+        return new ResponseEntity<ElectricityHistoryData>(electricityHistoryDataService.getElectricityHistoryDataById(hist_data_id), HttpStatus.OK);
     }
 
 }

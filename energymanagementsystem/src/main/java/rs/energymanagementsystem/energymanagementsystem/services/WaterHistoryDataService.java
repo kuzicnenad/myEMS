@@ -14,7 +14,7 @@ public interface WaterHistoryDataService {
      * - Service for pagination of history records
      --------------------------------------------------------------------------------------- **/
     List<WaterHistoryData> getAllWaterHistoryData();
-    WaterHistoryData getWaterHistoryDataById(Integer histDataId);
+    WaterHistoryData getWaterHistoryDataById(Integer hist_data_id);
     Page<WaterHistoryData> getHistoryDataWater(int pageNo, int pageSize);
 
     /** ---------------------------------------------------------------------------------------

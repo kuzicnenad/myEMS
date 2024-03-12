@@ -22,11 +22,11 @@ public interface WaterHistoryDataRepository extends JpaRepository<WaterHistoryDa
             nativeQuery = true)
     Integer getAvgValue();
 
-    @Query(value = "SELECT date FROM water_history_data ORDER BY histDataId ASC LIMIT 1",
+    @Query(value = "SELECT date FROM water_history_data ORDER BY hist_data_id ASC LIMIT 1",
             nativeQuery = true)
     Date getFirstDate();
 
-    @Query(value = "SELECT date FROM water_history_data ORDER BY histDataId DESC LIMIT 1",
+    @Query(value = "SELECT date FROM water_history_data ORDER BY hist_data_id DESC LIMIT 1",
             nativeQuery = true)
     Date getLastDate();
 
