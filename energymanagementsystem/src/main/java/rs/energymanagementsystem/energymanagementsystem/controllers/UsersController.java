@@ -41,7 +41,7 @@ public class UsersController {
     }
 
     /** UPDATE by ID user REST API
-      * http://localhost:8080/api/alarmData/alarmId(number) **/
+      * http://localhost:8080/api/alarmData/alarm_id(number) **/
     @PutMapping("{id}")
     public ResponseEntity<User> updateUser(@PathVariable ("id") Long id
             , @RequestBody User user){

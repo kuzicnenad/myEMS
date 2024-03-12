@@ -45,15 +45,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="alarmData : ${getAllAlarms}" class="indexDataItems">
-                        <td th:inline="text" class="td-index">[[${alarmData.alarmCode}]]</td>
-                        <td th:inline="text" class="td-index">[[${alarmData.alarmDesc}]]</td>
-                        <td th:inline="text" class="td-index">[[${alarmData.timeStamp}]]</td>
-                        <td th:inline="text" class="td-index">[[${alarmData.acknowledgedTime}]]</td>
+                    <tr th:each="alarm_data : ${getAllAlarms}" class="indexDataItems">
+                        <td th:inline="text" class="td-index">[[${alarm_data.alarm_code}]]</td>
+                        <td th:inline="text" class="td-index">[[${alarm_data.alarm_desc}]]</td>
+                        <td th:inline="text" class="td-index">[[${alarm_data.time_stamp}]]</td>
+                        <td th:inline="text" class="td-index">[[${alarm_data.acknowledged_time}]]</td>
                         <td class="td-center-items">
-                            <a th:href="@{/ackFlag/{alarmId}(alarmId=${alarmData.alarmId})}">
-                                <i th:if="${alarmData.ackFlag}" class="fa fa-bell" style="color: #21BF73"></i>
-                                <i th:unless="${alarmData.ackFlag}" class="fa fa-bell" style="color: #FF1700"></i>
+                            <a th:href="@{/ackFlag/{alarm_id}(alarm_id=${alarm_data.alarm_id})}">
+                                <i th:if="${alarm_data.ack_flag}" class="fa fa-bell" style="color: #21BF73"></i>
+                                <i th:unless="${alarm_data.ack_flag}" class="fa fa-bell" style="color: #FF1700"></i>
                             </a>
                         </td>
                     </tr>

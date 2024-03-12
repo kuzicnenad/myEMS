@@ -69,10 +69,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr th:each="alarmData : ${latestAlarmData}" class="indexDataItems">
-                                            <td th:inline="text" class="td-index">[[${alarmData.alarmCode}]]</td>
-                                            <td th:inline="text" class="td-index">[[${alarmData.alarmDesc}]]</td>
-                                            <td th:inline="text" class="td-index">[[${alarmData.timeStamp}]]</td>
+                                        <tr th:each="alarm_data : ${latestAlarmData}" class="indexDataItems">
+                                            <td th:inline="text" class="td-index">[[${alarm_data.alarm_code}]]</td>
+                                            <td th:inline="text" class="td-index">[[${alarm_data.alarm_desc}]]</td>
+                                            <td th:inline="text" class="td-index">[[${alarm_data.time_stamp}]]</td>
                                         </tr>
                                     </tbody>
                                 </table>
