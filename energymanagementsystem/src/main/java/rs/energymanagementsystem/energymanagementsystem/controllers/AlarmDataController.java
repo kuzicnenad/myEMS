@@ -29,24 +29,24 @@ public class AlarmDataController {
     }
 
     /** GET by ID alarmData REST API
-      * http://localhost:8080/api/alarmData/alarm_id(number) **/
-    @GetMapping("{alarm_id}")
-    public ResponseEntity<AlarmData> getAlarmDataById(@PathVariable ("alarm_id") Integer alarm_id){
-        return new ResponseEntity<AlarmData>(alarmDataService.getAlarmDataById(alarm_id), HttpStatus.OK);
+      * http://localhost:8080/api/alarmData/alarmId(number) **/
+    @GetMapping("{alarmId}")
+    public ResponseEntity<AlarmData> getAlarmDataById(@PathVariable ("alarmId") Integer alarmId){
+        return new ResponseEntity<AlarmData>(alarmDataService.getAlarmDataById(alarmId), HttpStatus.OK);
     }
 
     /** UPDATE by ID alarmData REST API
-      * http://localhost:8080/api/alarmData/alarm_id(number) **/
-    @PutMapping("{alarm_id}")
-    public ResponseEntity<AlarmData> updateAlarmDate(@PathVariable ("alarm_id") Integer alarm_id
+      * http://localhost:8080/api/alarmData/alarmId(number) **/
+    @PutMapping("{alarmId}")
+    public ResponseEntity<AlarmData> updateAlarmDate(@PathVariable ("alarmId") Integer alarmId
                                                     ,@RequestBody AlarmData alarmData){
-        return new ResponseEntity<AlarmData>(alarmDataService.updateAlarmDate(alarmData, alarm_id), HttpStatus.OK);
+        return new ResponseEntity<AlarmData>(alarmDataService.updateAlarmDate(alarmData, alarmId), HttpStatus.OK);
     }
 
     /** DELETE by ID alarmData REST API **/
-    @DeleteMapping("{alarm_id}")
-    public ResponseEntity<String> deleteAlarmData(@PathVariable("alarm_id") Integer alarm_id){
-        alarmDataService.deleteAlarmData(alarm_id);
+    @DeleteMapping("{alarmId}")
+    public ResponseEntity<String> deleteAlarmData(@PathVariable("alarmId") Integer alarmId){
+        alarmDataService.deleteAlarmData(alarmId);
         return new ResponseEntity<String>("Alarm data deleted successfully!", HttpStatus.OK);
     }
 

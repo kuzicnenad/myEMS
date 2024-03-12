@@ -13,8 +13,8 @@ public interface AlarmDataService {
     AlarmData saveAlarmData(AlarmData alarmData);
     List<AlarmData> getAllAlarmData();
     AlarmData getAlarmDataById(Integer id);
-    AlarmData updateAlarmDate(AlarmData alarmData, Integer alarm_id);
-    void deleteAlarmData(Integer alarm_id);
+    AlarmData updateAlarmDate(AlarmData alarmData, Integer alarmId);
+    void deleteAlarmData(Integer alarmId);
 
     /** ---------------------------------------------------------------------------------------
      * Get last 10 records (for index page)
@@ -22,6 +22,6 @@ public interface AlarmDataService {
      --------------------------------------------------------------------------------------- **/
     List<AlarmData> getLatestDate();
 
-    void alarmAckFlag(Integer alarm_id);
+    void alarmAckFlag(Integer alarmId);
 
 }

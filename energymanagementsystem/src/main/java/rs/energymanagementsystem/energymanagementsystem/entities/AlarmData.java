@@ -13,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "alarm_data")
+@Table(name = "alarmData")
 public class AlarmData {
 
     @Id
@@ -36,7 +36,7 @@ public class AlarmData {
     @UpdateTimestamp
     private Date acknowledgedTime;
 
-    @Column(name = "ack_flag")
+    @Column(name = "ackFlag")
     private Boolean ackFlag;
 
 }

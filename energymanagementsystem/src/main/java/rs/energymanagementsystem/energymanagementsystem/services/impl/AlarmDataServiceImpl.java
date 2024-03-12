@@ -29,23 +29,23 @@ public class AlarmDataServiceImpl implements AlarmDataService {
         return  alarmDataRepository.findAll();
     }
 
-    public AlarmData getAlarmDataById(Integer alarm_id){
-//        Optional<AlarmData> alarmData = alarmDataRepository.findById(alarm_id);
+    public AlarmData getAlarmDataById(Integer alarmId){
+//        Optional<AlarmData> alarmData = alarmDataRepository.findById(alarmId);
 //        if(alarmData.isPresent()){
 //            return alarmData.get();
 //        }else {
-//            throw new ResourceNotFoundException("Alarm data", "alarm_id", alarm_id);
+//            throw new ResourceNotFoundException("Alarm data", "alarmId", alarmId);
 //        }
         // lambda expression simplify the above expression
-        return alarmDataRepository.findById(alarm_id).orElseThrow(() ->
-                new ResourceNotFoundException("Alarm data", "alarm_id", alarm_id));
+        return alarmDataRepository.findById(alarmId).orElseThrow(() ->
+                new ResourceNotFoundException("Alarm data", "alarmId", alarmId));
     }
 
     @Override
-    public AlarmData updateAlarmDate(AlarmData alarmData, Integer alarm_id) {
-        // check if alarm_id exists in database
-        AlarmData existingAlarmData = alarmDataRepository.findById(alarm_id).orElseThrow(() ->
-                new ResourceNotFoundException("AlarmData", "alarm_id", alarm_id));
+    public AlarmData updateAlarmDate(AlarmData alarmData, Integer alarmId) {
+        // check if alarmId exists in database
+        AlarmData existingAlarmData = alarmDataRepository.findById(alarmId).orElseThrow(() ->
+                new ResourceNotFoundException("AlarmData", "alarmId", alarmId));
         existingAlarmData.setAlarmCode(alarmData.getAlarmCode());
         existingAlarmData.setAlarmDesc(alarmData.getAlarmDesc());
         existingAlarmData.setTimeStamp(alarmData.getTimeStamp());
@@ -55,11 +55,11 @@ public class AlarmDataServiceImpl implements AlarmDataService {
     }
 
     @Override
-    public void deleteAlarmData(Integer alarm_id) {
+    public void deleteAlarmData(Integer alarmId) {
         // check if alarm exists in database
-        alarmDataRepository.findById(alarm_id).orElseThrow(() ->
-                new ResourceNotFoundException("AlarmData", "alarm_id", alarm_id));
-        alarmDataRepository.deleteById(alarm_id);
+        alarmDataRepository.findById(alarmId).orElseThrow(() ->
+                new ResourceNotFoundException("AlarmData", "alarmId", alarmId));
+        alarmDataRepository.deleteById(alarmId);
     }
 
     /** ---------------------------------------------------------------------------------------
@@ -72,12 +72,12 @@ public class AlarmDataServiceImpl implements AlarmDataService {
     }
 
     @Override
-    public void alarmAckFlag(Integer alarm_id){
+    public void alarmAckFlag(Integer alarmId){
         // check if alarm is already acknowledged
-        Boolean checkValue = alarmDataRepository.ackValueCheck(alarm_id);
+        Boolean checkValue = alarmDataRepository.ackValueCheck(alarmId);
 
         if (!checkValue)
-            alarmDataRepository.alarmAckFlag(alarm_id);
+            alarmDataRepository.alarmAckFlag(alarmId);
         else
             System.out.println("Alarm was already acknowledged");
     }

@@ -585,9 +585,9 @@ public class EnergymanagementsystemApplication {
 		return "alarms";
 	}
 
-	@GetMapping("/ackFlag/{alarm_id}") // CHANGE ACTIVE FLAG
-	public String alarmAckFlag(@PathVariable(value = "alarm_id") Integer alarm_id){
-		alarmDataService.alarmAckFlag(alarm_id);
+	@GetMapping("/ackFlag/{alarmId}") // CHANGE ACTIVE FLAG
+	public String alarmAckFlag(@PathVariable(value = "alarmId") Integer alarmId){
+		alarmDataService.alarmAckFlag(alarmId);
 		return "redirect:/alarms";
 	}
 
