@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS myEMS;
 CREATE DATABASE myEMS;
 USE myEMS;
 	
-drop table if exists users_roles;
+drop table if exists usersRoles;
 drop table if exists user;
 drop table if exists role;
 
@@ -25,11 +25,11 @@ CREATE TABLE Role(
     PRIMARY KEY CLUSTERED (id ASC)
 );
 
-CREATE TABLE users_roles (
+CREATE TABLE usersRoles (
 	id BIGINT NOT NULL auto_increment,
 	userId BIGINT NOT NULL,
-	role_id BIGINT NOT NULL,
-	FOREIGN KEY (role_id) REFERENCES Role (id) ON DELETE CASCADE ON UPDATE CASCADE,
+	roleId BIGINT NOT NULL,
+	FOREIGN KEY (roleId) REFERENCES Role (id) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY (userId) REFERENCES User (id) ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (id)
 );
@@ -39,7 +39,7 @@ CREATE TABLE users_roles (
     Water consumption when water meter detecs flow and preasure but at least onces every 60min,
     Gas consumption when gas meter detecs flow and preasure but at least onces every 60min
 */
-CREATE TABLE Electricity_Live_Data(
+CREATE TABLE ElectricityLiveData(
 	liveDataId INT NOT NULL AUTO_INCREMENT,
     consumption FLOAT,
     faultDetected INT,
@@ -48,7 +48,7 @@ CREATE TABLE Electricity_Live_Data(
     PRIMARY KEY (liveDataId)
 ); 
 
-CREATE TABLE Water_Live_Data(
+CREATE TABLE WaterLiveData(
 	liveDataId INT NOT NULL AUTO_INCREMENT,
     consumption FLOAT,
     faultDetected INT,
@@ -57,7 +57,7 @@ CREATE TABLE Water_Live_Data(
 	PRIMARY KEY (liveDataId)
 ); 
 
-CREATE TABLE Gas_Live_Data(
+CREATE TABLE GasLiveData(
 	liveDataId INT NOT NULL AUTO_INCREMENT,
     consumption FLOAT,
     faultDetected INT,
@@ -67,19 +67,19 @@ CREATE TABLE Gas_Live_Data(
 ); 
 
 /* Analysis and Comparison, select date to show ---> table updated every every day at set time (00:00 default)*/
-CREATE TABLE Electricity_History_Data(
+CREATE TABLE ElectricityHistoryData(
 	histDataId INT NOT NULL AUTO_INCREMENT,
     electricityConsumption FLOAT,
     date DATE,
     PRIMARY KEY (histDataId)
 );
-CREATE TABLE Water_History_Data(
+CREATE TABLE WaterHistoryData(
 	histDataId INT NOT NULL AUTO_INCREMENT,
     waterConsumption FLOAT,
     date DATE,
     PRIMARY KEY (histDataId)
 );
-CREATE TABLE Gas_History_Data(
+CREATE TABLE GasHistoryData(
 	histDataId INT NOT NULL AUTO_INCREMENT,
     gasConsumption FLOAT,
     date DATE,

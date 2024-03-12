@@ -13,7 +13,7 @@ VALUES	('ROOT'),
 		('ADMIN'),
 		('USER');
         
-INSERT INTO users_roles(userId, role_id)
+INSERT INTO usersRoles(userId, roleId)
 VALUES	(1,1),
 		(1,2),
         (1,3),

@@ -46,7 +46,7 @@ public class User {
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "userId"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
+            inverseJoinColumns = @JoinColumn(name = "roleId")
     )
     private Set<Role> roles = new HashSet<>();
     /** creates an object that is a HashSet instance, and assigns a reference to that object to a variable whose type is Set
