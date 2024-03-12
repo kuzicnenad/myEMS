@@ -63,25 +63,6 @@ public class UsersServiceImpl implements UsersService {
     }
 
     /** ---------------------------------------------------------------------------------------
-    Old method for checking user details. it was not possible to properly check active/inactive user here.
-    @Override
-    public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
-        User user = userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)
-                .orElseThrow(() ->
-                        new UsernameNotFoundException("User not found with username or email: "+ usernameOrEmail));
-
-        Set<GrantedAuthority> authorities = user
-                .getRoles()
-                .stream()
-                .map((role) -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toSet());
-
-        return new org.springframework.security.core.userdetails.User(user.getUsername(),
-                user.getPassword(),
-                authorities);
-    }
-     --------------------------------------------------------------------------------------- **/
-
-    /** ---------------------------------------------------------------------------------------
      * Change device active flag, 0 -> Inactive, 1 -> Active
      * Get active devices list
      --------------------------------------------------------------------------------------- **/

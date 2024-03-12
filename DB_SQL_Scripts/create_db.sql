@@ -118,7 +118,7 @@ drop table if exists alarmData;
 
 /* App Menu -> Home, Live Data, History Data, Print reports, Settings*/
 
-select consumption, date_format(endTime,'%H:%i') as timestamp from electricity_live_data ORDER BY liveDataId DESC LIMIT 5;
+select consumption, date_format(endTime,'%H:%i') as timestamp from electricityLiveData ORDER BY liveDataId DESC LIMIT 5;
 
 
 
