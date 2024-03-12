@@ -19,7 +19,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
      --------------------------------------------------------------------------------------- **/
     @Transactional
     @Modifying(clearAutomatically = true)
-    @Query(value = "UPDATE user u SET u.active_flag = IF(active_flag=1, 0, 1), u.last_update = CURRENT_TIMESTAMP WHERE u.id = :id",
+    @Query(value = "UPDATE user u SET u.activeFlag = IF(activeFlag=1, 0, 1), u.lastUpdate = CURRENT_TIMESTAMP WHERE u.id = :id",
             nativeQuery = true)
     void userActiveFlag(@Param("id") Long id);
 
@@ -33,7 +33,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     boolean existsByUsername(String username);
     boolean existsByEmail(String email);
 
-    @Query(value = "SELECT active_flag FROM user", nativeQuery = true)
-    boolean active_flag();
+    @Query(value = "SELECT activeFlag FROM user", nativeQuery = true)
+    boolean activeFlag();
 
 }

@@ -30,24 +30,24 @@ public class DevicesController {
     }
 
     /** GET by ID device REST API
-      * http://localhost:8080/api/devices/device_id(number) **/
-    @GetMapping("{device_id}")
-    public ResponseEntity<Devices> getDeviceById(@PathVariable ("device_id") Integer device_id){
-        return new ResponseEntity<Devices>(devicesService.getDeviceById(device_id), HttpStatus.OK);
+      * http://localhost:8080/api/devices/deviceId(number) **/
+    @GetMapping("{deviceId}")
+    public ResponseEntity<Devices> getDeviceById(@PathVariable ("deviceId") Integer deviceId){
+        return new ResponseEntity<Devices>(devicesService.getDeviceById(deviceId), HttpStatus.OK);
     }
 
     /** UPDATE by ID device REST API
-      * http://localhost:8080/api/device/device_id(number) **/
-    @PutMapping("{device_id}")
-    public ResponseEntity<Devices> updateDevice(@PathVariable ("device_id") Integer device_id
+      * http://localhost:8080/api/device/deviceId(number) **/
+    @PutMapping("{deviceId}")
+    public ResponseEntity<Devices> updateDevice(@PathVariable ("deviceId") Integer deviceId
             ,@RequestBody Devices devices){
-        return new ResponseEntity<Devices>(devicesService.updateDevice(devices, device_id), HttpStatus.OK);
+        return new ResponseEntity<Devices>(devicesService.updateDevice(devices, deviceId), HttpStatus.OK);
     }
 
     /** DELETE by ID device REST API **/
-    @DeleteMapping("{device_id}")
-    public ResponseEntity<String> deleteDevice(@PathVariable("device_id") Integer device_id){
-        devicesService.deleteDevice(device_id);
+    @DeleteMapping("{deviceId}")
+    public ResponseEntity<String> deleteDevice(@PathVariable("deviceId") Integer deviceId){
+        devicesService.deleteDevice(deviceId);
         return new ResponseEntity<String>("Device deleted successfully!", HttpStatus.OK);
     }
 

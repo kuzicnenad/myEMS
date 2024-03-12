@@ -49,7 +49,7 @@
                                 <td th:inline="text" class="td-devices">[[${user.username}]] </td>
                                 <td th:inline="text" class="td-devices">[[${user.email}]] </td>
                                 <td th:text="${#dates.format(user.creation_date, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
-                                <td th:text="${#dates.format(user.last_update, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
+                                <td th:text="${#dates.format(user.lastUpdate, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
                                 <td th:inline="text" class="td-devices">[[${user.roles}]] </td>
                                 <td class="td-center-items">
                                     <a th:href="@{/users/userUpdateForm/{id}(id=${user.id})}">
@@ -61,8 +61,8 @@
                                     <a th:href="@{/users/toggleFlag/{id}(id=${user.id})}"
                                        th:data-confirm-status-change="|Change active status for ${user.name}?|"
                                        onclick="return confirm(this.getAttribute('data-confirm-status-change'))">
-                                        <i th:if="${user.active_flag}" class="fa fa-circle" style="color: #21BF73"></i>
-                                        <i th:unless="${user.active_flag}" class="fa fa-circle" style="color: #FF1700"></i>
+                                        <i th:if="${user.activeFlag}" class="fa fa-circle" style="color: #21BF73"></i>
+                                        <i th:unless="${user.activeFlag}" class="fa fa-circle" style="color: #FF1700"></i>
                                     </a>
                                 </td>
                             </tr>

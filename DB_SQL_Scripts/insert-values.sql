@@ -23,7 +23,7 @@ VALUES	(1,1),
 
 
 /* ---------- Generate devices ---------- */
-INSERT INTO Devices(device_name, production_date, made_in, active_flag)
+INSERT INTO Devices(deviceName, productionDate, madeIn, activeFlag)
 VALUES	('device_one','2017-11-20','Serbia', 1),
 		('device_two','2014-09-22','Germany', 0),
 		('device_three','2022-05-11','Germany', 1),

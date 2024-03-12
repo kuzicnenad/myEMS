@@ -17,16 +17,16 @@ public interface DevicesService {
 
     Devices getDeviceById(Integer id);
 
-    Devices updateDeviceById(Integer device_id);
-    Devices updateDevice(Devices devices, Integer device_id);
+    Devices updateDeviceById(Integer deviceId);
+    Devices updateDevice(Devices devices, Integer deviceId);
 
-    void deleteDevice(Integer device_id);
+    void deleteDevice(Integer deviceId);
 
     /** ---------------------------------------------------------------------------------------
      * Change device active flag, 0 -> Inactive, 1 -> Active
      * Get active devices list
      --------------------------------------------------------------------------------------- **/
-    void deviceActiveFlag(Integer device_id);
+    void deviceActiveFlag(Integer deviceId);
 
     List<Devices> getActiveDevices();
 

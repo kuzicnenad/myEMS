@@ -39,7 +39,7 @@ public class User {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @UpdateTimestamp
     private Date lastUpdate;
-    @Column(name = "active_flag")
+    @Column(name = "activeFlag")
     private boolean activeFlag;
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})

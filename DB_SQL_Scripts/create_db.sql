@@ -13,8 +13,8 @@ CREATE TABLE User (
     email VARCHAR(100) NOT NULL,
     password VARCHAR(255) NOT NULL,
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    last_update DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    active_flag BOOL NOT NULL DEFAULT 1,
+    lastUpdate DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    activeFlag BOOL NOT NULL DEFAULT 1,
     PRIMARY KEY CLUSTERED (id ASC),
     UNIQUE KEY (email)
 );
@@ -100,14 +100,14 @@ CREATE TABLE alarmData(
 
 /* Devices in system */
 CREATE TABLE Devices(
-	device_id INT NOT NULL AUTO_INCREMENT,
-    device_name VARCHAR (100) NOT NULL,
+	deviceId INT NOT NULL AUTO_INCREMENT,
+    deviceName VARCHAR (100) NOT NULL,
     description VARCHAR(255),
-    production_date DATE NOT NULL,
-    made_in VARCHAR (50) NOT NULL,
-    last_update DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    active_flag BOOL NOT NULL DEFAULT 0,
-    PRIMARY KEY (device_id)
+    productionDate DATE NOT NULL,
+    madeIn VARCHAR (50) NOT NULL,
+    lastUpdate DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    activeFlag BOOL NOT NULL DEFAULT 0,
+    PRIMARY KEY (deviceId)
 );
 
 drop table if exists passwords;

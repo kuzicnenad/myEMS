@@ -16,14 +16,14 @@ public interface DevicesRepository extends JpaRepository<Devices, Integer> {
      --------------------------------------------------------------------------------------- **/
     @Transactional
     @Modifying(clearAutomatically = true)
-    @Query(value = "UPDATE devices d SET d.active_flag = IF(active_flag=1, 0, 1), d.last_update = CURRENT_TIMESTAMP WHERE d.device_id = :device_id",
+    @Query(value = "UPDATE devices d SET d.activeFlag = IF(activeFlag=1, 0, 1), d.lastUpdate = CURRENT_TIMESTAMP WHERE d.deviceId = :deviceId",
             nativeQuery = true)
-    void deviceActiveFlag(@Param("device_id") Integer device_id);
+    void deviceActiveFlag(@Param("deviceId") Integer deviceId);
 
     /** ---------------------------------------------------------------------------------------
      * Get active devices list
      --------------------------------------------------------------------------------------- **/
-    @Query(value = "SELECT * FROM devices WHERE active_flag = 1",
+    @Query(value = "SELECT * FROM devices WHERE activeFlag = 1",
             nativeQuery = true)
     public List<Devices> getActiveDevices();
 
@@ -31,14 +31,14 @@ public interface DevicesRepository extends JpaRepository<Devices, Integer> {
     /** ---------------------------------------------------------------------------------------
      * Get number of Active devices
      --------------------------------------------------------------------------------------- **/
-    @Query(value = "SELECT COUNT(device_id) FROM devices WHERE active_flag = 1;",
+    @Query(value = "SELECT COUNT(deviceId) FROM devices WHERE activeFlag = 1;",
             nativeQuery = true)
     public Integer numberOfActiveDevices();
 
     /** ---------------------------------------------------------------------------------------
      * Get number of Inactive devices
      --------------------------------------------------------------------------------------- **/
-    @Query(value = "SELECT COUNT(device_id) FROM devices WHERE active_flag = 0;",
+    @Query(value = "SELECT COUNT(deviceId) FROM devices WHERE activeFlag = 0;",
             nativeQuery = true)
     public Integer numberOfInactiveDevices();
 }
