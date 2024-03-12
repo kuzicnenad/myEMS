@@ -68,22 +68,22 @@ CREATE TABLE Gas_Live_Data(
 
 /* Analysis and Comparison, select date to show ---> table updated every every day at set time (00:00 default)*/
 CREATE TABLE Electricity_History_Data(
-	hist_data_id INT NOT NULL AUTO_INCREMENT,
+	histDataId INT NOT NULL AUTO_INCREMENT,
     electricity_consumption FLOAT,
     date DATE,
-    PRIMARY KEY (hist_data_id)
+    PRIMARY KEY (histDataId)
 );
 CREATE TABLE Water_History_Data(
-	hist_data_id INT NOT NULL AUTO_INCREMENT,
+	histDataId INT NOT NULL AUTO_INCREMENT,
     water_consumption FLOAT,
     date DATE,
-    PRIMARY KEY (hist_data_id)
+    PRIMARY KEY (histDataId)
 );
 CREATE TABLE Gas_History_Data(
-	hist_data_id INT NOT NULL AUTO_INCREMENT,
+	histDataId INT NOT NULL AUTO_INCREMENT,
     gas_consumption FLOAT,
     date DATE,
-    PRIMARY KEY (hist_data_id)
+    PRIMARY KEY (histDataId)
 );
 
 /* Alarm messages can be sent to email*/

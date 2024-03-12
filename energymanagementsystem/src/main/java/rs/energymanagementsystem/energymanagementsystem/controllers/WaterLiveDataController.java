@@ -23,7 +23,7 @@ public class WaterLiveDataController {
     }
 
     /** GET by ID water live data REST API
-      * http://localhost:8080/api/waterLiveData/hist_data_id(number) **/
+      * http://localhost:8080/api/waterLiveData/histDataId(number) **/
     @GetMapping("{live_data_id}")
     public ResponseEntity<WaterLiveData> getWaterLiveDataById(@PathVariable ("live_data_id") Integer live_data_id){
         return new ResponseEntity<WaterLiveData>(waterLiveDataService.getWaterLiveDataById(live_data_id), HttpStatus.OK);

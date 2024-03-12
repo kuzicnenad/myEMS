@@ -16,7 +16,7 @@ public interface ElectricityHistoryDataService {
      * - Service for pagination of history records
      --------------------------------------------------------------------------------------- **/
     List<ElectricityHistoryData> getAllElectricityHistoryData();
-    ElectricityHistoryData getElectricityHistoryDataById(Integer hist_data_id);
+    ElectricityHistoryData getElectricityHistoryDataById(Integer histDataId);
     Page<ElectricityHistoryData> getHistoryDataElectricity(int pageNo, int pageSize);
 
     /** ---------------------------------------------------------------------------------------
