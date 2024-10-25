@@ -44,17 +44,8 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(
-<<<<<<< HEAD
-<<<<<<< HEAD
-            name = "usersRoles",
-=======
-            name = "users_roles",
->>>>>>> parent of 96efcb4 (refactor code and add @column annotation in User class)
-            joinColumns = @JoinColumn(name = "userId"),
-=======
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
->>>>>>> parent of c03df36 (refactor user Id to match regular expression)
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles = new HashSet<>();
