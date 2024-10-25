@@ -49,9 +49,9 @@
 
                         <table>
                             <tbody>
-                            <tr th:each="gas_history_data : ${listGasHistory}" class="dataItems">
-                                <td th:inline="text" class="td-1">[[${gas_history_data.gas_consumption}]] </td>
-                                <td th:text="${#dates.format(gas_history_data.date, 'dd-MM-yyyy')}" class="td-2"></td>
+                            <tr th:each="gasHistoryData : ${listGasHistory}" class="dataItems">
+                                <td th:inline="text" class="td-1">[[${gasHistoryData.gasConsumption}]] </td>
+                                <td th:text="${#dates.format(gasHistoryData.date, 'dd-MM-yyyy')}" class="td-2"></td>
                             </tr>
                             </tbody>
                         </table>

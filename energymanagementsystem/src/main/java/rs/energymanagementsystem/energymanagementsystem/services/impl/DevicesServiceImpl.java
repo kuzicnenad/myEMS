@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class DevicesServiceimpl implements DevicesService {
+public class DevicesServiceImpl implements DevicesService {
 
     private final DevicesRepository devicesRepository;
 
