@@ -49,23 +49,23 @@
                         </thead>
                         <tbody>
                             <tr th:each="devices : ${devicesList}" >
-                                <td th:inline="text" class="td-devices">[[${devices.device_name}]] </td>
+                                <td th:inline="text" class="td-devices">[[${devices.deviceName}]] </td>
                                 <td th:inline="text" class="td-devices">[[${devices.description}]] </td>
-                                <td th:text="${#dates.format(devices.production_date, 'dd-MM-yyyy')}" class="td-devices"> </td>
-                                <td th:inline="text" class="td-devices">[[${devices.made_in}]] </td>
-                                <td th:text="${#dates.format(devices.last_update, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
+                                <td th:text="${#dates.format(devices.productionDate, 'dd-MM-yyyy')}" class="td-devices"> </td>
+                                <td th:inline="text" class="td-devices">[[${devices.madeIn}]] </td>
+                                <td th:text="${#dates.format(devices.lastUpdate, 'dd-MM-yyyy HH:mm')}" class="td-devices"></td>
                                 <td class="td-center-items">
-                                    <a th:href="@{/availableDevices/deviceUpdateForm/{device_id}(device_id=${devices.device_id})}">
+                                    <a th:href="@{/availableDevices/deviceUpdateForm/{deviceId}(deviceId=${devices.deviceId})}">
                                         <i class="fa fa-pencil"></i></a>
-                                    <a th:href="@{/availableDevices/deleteDevice/{device_id}(device_id=${devices.device_id})}"
-                                       th:data-confirm-delete="|Are you sure you want to delete device: ${devices.device_name}?|"
+                                    <a th:href="@{/availableDevices/deleteDevice/{deviceId}(deviceId=${devices.deviceId})}"
+                                       th:data-confirm-delete="|Are you sure you want to delete device: ${devices.deviceName}?|"
                                        onclick="return confirm(this.getAttribute('data-confirm-delete'))">
                                         <i class="fa fa-trash"></i></a>
-                                    <a th:href="@{/availableDevices/toggleFlag/{device_id}(device_id=${devices.device_id})}"
-                                       th:data-confirm-status-change="|Confirm status change for ${devices.device_name}.|"
+                                    <a th:href="@{/availableDevices/toggleFlag/{deviceId}(deviceId=${devices.deviceId})}"
+                                       th:data-confirm-status-change="|Confirm status change for ${devices.deviceName}.|"
                                        onclick="return confirm(this.getAttribute('data-confirm-status-change'))">
-                                        <i th:if="${devices.active_flag}" class="fa fa-circle" style="color: #21BF73"></i>
-                                        <i th:unless="${devices.active_flag}" class="fa fa-circle" style="color: #FF1700"></i>
+                                        <i th:if="${devices.activeFlag}" class="fa fa-circle" style="color: #21BF73"></i>
+                                        <i th:unless="${devices.activeFlag}" class="fa fa-circle" style="color: #FF1700"></i>
                                     </a>
                                 </td>
                             </tr>
