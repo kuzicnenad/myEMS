@@ -17,7 +17,7 @@ public class WaterHistoryData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Integer histDataId;
+    private Long histDataId;
 
     @Column
     private Integer waterConsumption;

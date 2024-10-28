@@ -17,7 +17,7 @@ public class GasLiveData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Integer liveDataId;
+    private Long liveDataId;
 
     @Column
     private Integer consumption;

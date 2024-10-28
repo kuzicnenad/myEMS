@@ -17,7 +17,7 @@ public class GasHistoryData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Integer histDataId;
+    private Long histDataId;
 
     @Column
     private Integer gasConsumption;
